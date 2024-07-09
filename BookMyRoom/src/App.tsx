@@ -1,22 +1,26 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import SideBar from './sharedLayout/SideBar';
-import { ApiProvider } from '@reduxjs/toolkit/query/react';
+import Content from './Home/Content';
 import { store } from './store/store';
+import { Provider } from 'react-redux';
 
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <SideBar />,
+    children: [{
+      element: <Content/>
+    }]
   },
 ]);
 
 function App() {
   return (
-    <ApiProvider store={store}>
+    <Provider store={store}>
      <RouterProvider router={router} />
-    </ApiProvider>
+    </Provider>
   );
 }
 
