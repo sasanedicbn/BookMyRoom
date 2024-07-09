@@ -5,7 +5,7 @@ const Room = ({ room }) => {
   return (
     <li key={id} className="room-container">
       {image && <img className="room-image" src={image} />}
-      <h2>{name}</h2>
+      {/* <h2>{name}</h2> */}
       <div className="room-details">
        <p>{description}</p>
        <p>Max Capacity: {maxCapacity}</p>
