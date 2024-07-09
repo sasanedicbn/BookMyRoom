@@ -1,11 +1,12 @@
 
 import './App.css'
+import RoomList from './RoomList'
 
 function App() {
 
   return (
    <div>
-    SASA
+     <RoomList/>
    </div>
   )
 }
