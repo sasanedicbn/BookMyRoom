@@ -7,9 +7,9 @@ const Room = ({ room }) => {
       {image && <img className="room-image" src={image} />}
       {/* <h2>{name}</h2> */}
       <div className="room-details">
-       <p>{description}</p>
-       <p>Max Capacity: {maxCapacity}</p>
-       <p>Regular Price: ${regularPrice}</p>
+       <p className="room-details-description">{description}</p>
+       <p className="room-details-capacity">Max Capacity: {maxCapacity}</p>
+       <p className="room-details-price">Regular Price: ${regularPrice}</p>
       </div>
     </li>
   );

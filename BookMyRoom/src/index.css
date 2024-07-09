@@ -57,3 +57,11 @@
   border-radius: 6px;
   margin-right: 4%;
 }
+.room-details-description{
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.room-details-capacity, .room-details-price{
+  color: rgb(58, 58, 58);
+}
