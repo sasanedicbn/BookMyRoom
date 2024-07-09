@@ -2,7 +2,6 @@ import  { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRooms } from "../store/roomsSlice";
 import { fetchRooms } from "../api/fetchRooms";
-import { Outlet } from "react-router-dom";
 
 const RoomsList = () => {
   const dispatch = useDispatch();
@@ -24,7 +23,7 @@ const RoomsList = () => {
       <h1>Room List</h1>
       <ul>
         {rooms.map((room) => (
-          <li key={room.id}>{room.name}</li>
+          <Room room={room} />
         ))}
       </ul>
     </div>
