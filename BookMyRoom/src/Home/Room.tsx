@@ -3,8 +3,8 @@ const Room = ({ room }) => {
   const { id, name, description, maxCapacity, regularPrice, image } = room;
 
   return (
-    <li key={id}>
-      {image && <img src={image} />}
+    <li key={id} className="room-container">
+      {image && <img className="room-image" src={image} />}
       <h2>{name}</h2>
       <div className="room-details">
        <p>{description}</p>
