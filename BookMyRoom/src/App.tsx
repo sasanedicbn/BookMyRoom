@@ -1,14 +1,19 @@
+import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import SideBar from './sharedLayout/SideBar';
 
-import './App.css'
-import RoomList from './RoomList'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <SideBar />,
+  },
+]);
 
 function App() {
-
   return (
-   <div>
-     <RoomList/>
-   </div>
-  )
+    <RouterProvider router={router} />
+  );
 }
 
-export default App
+export default App;
