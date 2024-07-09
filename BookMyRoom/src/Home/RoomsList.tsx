@@ -2,6 +2,7 @@ import  { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRooms } from "../store/roomsSlice";
 import { fetchRooms } from "../api/fetchRooms";
+import Room from "./Room";
 
 const RoomsList = () => {
   const dispatch = useDispatch();

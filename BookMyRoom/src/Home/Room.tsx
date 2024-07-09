@@ -4,11 +4,13 @@ const Room = ({ room }) => {
 
   return (
     <li key={id}>
+      {image && <img src={image} />}
       <h2>{name}</h2>
-      <p>{description}</p>
-      <p>Max Capacity: {maxCapacity}</p>
-      <p>Regular Price: ${regularPrice}</p>
-      {image && <img src={image} alt={`Room ${name}`} />}
+      <div className="room-details">
+       <p>{description}</p>
+       <p>Max Capacity: {maxCapacity}</p>
+       <p>Regular Price: ${regularPrice}</p>
+      </div>
     </li>
   );
 };
