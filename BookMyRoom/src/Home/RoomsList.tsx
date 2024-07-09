@@ -1,16 +1,31 @@
-
+import  { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getRooms } from "../store/roomsSlice";
+import { fetchRooms } from "../api/fetchRooms";
+import { Outlet } from "react-router-dom";
 
 const RoomsList = () => {
+  const dispatch = useDispatch();
+  const rooms = useSelector((state) => state.rooms.rooms); 
 
-  const roomsListHandler = () => {
-    const rooms
-  }
+  useEffect(() => {
+    const roomsListHandler = async () => {
+      const rooms = await fetchRooms();
+      console.log(rooms)
+      if (rooms) {
+        dispatch(getRooms(rooms));
+      }
+    };
+    roomsListHandler();
+  }, []);
 
   return (
     <div>
       <h1>Room List</h1>
       <ul>
-      
+        {rooms.map((room) => (
+          <li key={room.id}>{room.name}</li>
+        ))}
       </ul>
     </div>
   );

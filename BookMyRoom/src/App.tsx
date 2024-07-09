@@ -11,6 +11,7 @@ const router = createBrowserRouter([
     path: '/',
     element: <SideBar />,
     children: [{
+      path:'/',
       element: <Content/>
     }]
   },

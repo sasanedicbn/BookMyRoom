@@ -4,13 +4,15 @@
   box-sizing: border-box;
 }
 /* SIDEBAR */
-/* Stilizacija za Sidebar */
+.main-content{
+  display: flex;
+}
 .SideBar-container {
   background-color: #4CAF50;
   width: 15%;
   height: 100vh;
-  padding: 20px; /* Dodajemo padding za razmak unutar Sidebar-a */
-  box-sizing: border-box; /* Da bi padding bio uračunat u širinu i visinu elementa */
+  padding: 20px; 
+  box-sizing: border-box; 
 }
 
 .SideBar-ul {
@@ -33,4 +35,8 @@
 
 .SideBar-ul li button:hover {
   background-color: #2E7D32; 
+}
+/* ContentContainer */
+.Content-container{
+  margin-left: 20rem;
 }
