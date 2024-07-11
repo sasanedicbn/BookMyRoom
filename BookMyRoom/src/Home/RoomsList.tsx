@@ -4,10 +4,12 @@ import { getRooms } from "../store/roomsSlice";
 import { fetchRooms } from "../api/fetchRooms";
 import Room from "./Room";
 import TableHead from "./TableHead";
+import Modals from "./Modal/Modals";
 
 const RoomsList = () => {
   const dispatch = useDispatch();
   const rooms = useSelector((state) => state.rooms.rooms); 
+  const isOpenModal = useSelector((state) => state.modals.isModalOpen)
 
   useEffect(() => {
     const roomsListHandler = async () => {
@@ -31,6 +33,7 @@ const RoomsList = () => {
           ))}
         </tbody>
       </table>
+      {isOpenModal && <Modals/>}
     </div>
   );
 };
