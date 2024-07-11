@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getRooms } from "../store/roomsSlice";
 import { fetchRooms } from "../api/fetchRooms";
 import Room from "./Room";
+import TableHead from "./TableHead";
 
 const RoomsList = () => {
   const dispatch = useDispatch();
@@ -23,16 +24,7 @@ const RoomsList = () => {
     <div className="roomsList-container">
       <h1>Room List</h1>
       <table className="rooms-table">
-        <thead>
-          <tr>
-            <th></th> 
-            <th>Cabin</th>
-            <th>Capacity</th>
-            <th>Price</th>
-            <th>Discount</th>
-            <th></th> 
-          </tr>
-        </thead>
+      <TableHead/>
         <tbody>
           {rooms.map((room) => (
             <Room key={room.id} room={room} />
