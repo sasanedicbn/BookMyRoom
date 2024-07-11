@@ -38,33 +38,36 @@
   background-color: #2E7D32; 
 }
 /* ContentContainer */
-.Content-container {
-  background-color: #FFFFFF;
-  width: 65%;
-  cursor: pointer;
+.rooms-table {
+  border-collapse: collapse;
 }
 
-.room-container {
-  display: flex;
-  margin: 2.5rem;
-  list-style-type: none;
-  padding: .75rem;
-  border: 1px solid grey;
-  border-radius: 6px;
+.rooms-table th, .rooms-table td {
+  padding: 8px;
+  text-align: left;
+  border: none; 
 }
 
-.room-image {
-  width: 230px;
-  height: 180px;
-  border-radius: 6px;
-  margin-right: 4%;
+.rooms-table th {
+  background-color: #f2f2f2;
+  color: black;
+  border: none; 
+}
+
+.room-container img {
+  width: 100px;
+  height: 75px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.ellipsis-cell {
+  text-align: center;
 }
 
 .room-details {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
-  flex: 1;
 }
 
 .room-details-description {

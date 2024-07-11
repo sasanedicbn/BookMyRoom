@@ -1,4 +1,4 @@
-import  { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRooms } from "../store/roomsSlice";
 import { fetchRooms } from "../api/fetchRooms";
@@ -22,11 +22,23 @@ const RoomsList = () => {
   return (
     <div>
       <h1>Room List</h1>
-      <ul>
-        {rooms.map((room) => (
-          <Room room={room} />
-        ))}
-      </ul>
+      <table className="rooms-table">
+        <thead>
+          <tr>
+            <th></th> 
+            <th>Cabin</th>
+            <th>Capacity</th>
+            <th>Price</th>
+            <th>Discount</th>
+            <th></th> 
+          </tr>
+        </thead>
+        <tbody>
+          {rooms.map((room) => (
+            <Room key={room.id} room={room} />
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
