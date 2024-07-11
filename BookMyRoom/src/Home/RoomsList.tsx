@@ -20,7 +20,7 @@ const RoomsList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="roomsList-container">
       <h1>Room List</h1>
       <table className="rooms-table">
         <thead>

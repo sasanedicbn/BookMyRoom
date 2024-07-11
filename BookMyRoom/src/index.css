@@ -38,8 +38,15 @@
   background-color: #2E7D32; 
 }
 /* ContentContainer */
+.roomsList-container{
+  width: 800px;
+  margin: 0 100px;
+  
+}
 .rooms-table {
+  width: 100%;
   border-collapse: collapse;
+  
 }
 
 .rooms-table th, .rooms-table td {
@@ -63,6 +70,8 @@
 
 .ellipsis-cell {
   text-align: center;
+  cursor: pointer;
+  
 }
 
 .room-details {
