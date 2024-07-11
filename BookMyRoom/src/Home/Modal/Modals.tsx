@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { closeEditModal, closeModal, openEditModal } from '../../store/modalSlice';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 
 const Modals = () => {
@@ -23,10 +24,14 @@ const Modals = () => {
       {isModalOpen && (
         <div className="modal">
           <div className="modal-content">
-            <h2>Options for {currentRoom.name}</h2>
-            <button className="delete-button" onClick={handleDelete}>Delete</button>
+          <div className='modal-content-child'>
+            <FaEdit/>
             <button className="edit-button" onClick={handleEdit}>Edit</button>
-            <button className="close-button" onClick={() => dispatch(closeModal())}>Close</button>
+           </div>
+           <div className='modal-content-child'>
+            <FaTrash/>
+            <button className="delete-button" onClick={handleDelete}>Delete</button>
+           </div>
           </div>
         </div>
       )}
