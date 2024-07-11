@@ -16,7 +16,7 @@ const Room = ({ room }) => {
       <td>{name}</td>
       <td>{maxCapacity}</td>
       <td>${regularPrice}</td>
-      <td>{discount ? `${discount}%` : 'N/A'}</td>
+      <td>{discount ? `${discount}%` : '/'}</td>
       <td className="ellipsis-cell">
         <BiDotsVerticalRounded onClick={handleOpenModal} />
       </td>
