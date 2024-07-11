@@ -10,6 +10,7 @@ const Room = ({ room }) => {
     dispatch(openModal(room));
   };
 
+  const 
   return (
     <tr className="room-container">
       <td>{image && <img className="room-image" src={image} alt={name} />}</td>
