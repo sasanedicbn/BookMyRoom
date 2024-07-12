@@ -1,7 +1,7 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeEditModal, closeModal, openEditModal } from '../../store/modalSlice';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import NewEditCabin from '../Cabin/newEditCabin';
 
 const Modals = ({ setOpenMenu }) => {
   const dispatch = useDispatch();
@@ -36,11 +36,7 @@ const Modals = ({ setOpenMenu }) => {
               </div>
             </>
           ) : (
-            <div className="modal-content-edit">
-              {/* <h2>Edit {currentRoom.name}</h2> */}
-              <p>OVDJE STAVITI FORMU ZA EDIT</p>
-              <button className="close-button" onClick={handleCloseEditModal}>Close</button>
-            </div>
+            <NewEditCabin/>
           )}
         </div>
       </div>

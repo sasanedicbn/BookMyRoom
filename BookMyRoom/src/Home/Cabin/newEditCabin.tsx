@@ -1,5 +1,6 @@
-const newEditCabin = () => {
+const NewEditCabin = () => {
     return (
+    <>
       <form className="create-cabin-form">
         <div className="form-group">
           <label htmlFor="name">Cabin name</label>
@@ -52,8 +53,10 @@ const newEditCabin = () => {
           <button type="submit">Create new cabin</button>
         </div>
       </form>
+      <div className="overlay"></div>
+      </>
     );
   };
   
-  export default newEditCabin;
+  export default NewEditCabin;
   
