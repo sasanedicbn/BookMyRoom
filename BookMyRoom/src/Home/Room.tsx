@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import Modals from './Modal/Modals';
+import NewRoom from './Room/NewRoom';
 
 const Room = ({ room }) => {
   const { name, maxCapacity, regularPrice, image, discount } = room;

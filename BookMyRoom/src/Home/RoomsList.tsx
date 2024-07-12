@@ -4,6 +4,7 @@ import { getRooms } from "../store/roomsSlice";
 import { fetchRooms } from "../api/fetchRooms";
 import Room from "./Room";
 import TableHead from "./TableHead";
+import NewRoom from "./Room/NewRoom";
 
 const RoomsList = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const RoomsList = () => {
             <Room key={room.id} room={room} />
           ))}
         </tbody>
+        <NewRoom/>
       </table>
     </div>
   );

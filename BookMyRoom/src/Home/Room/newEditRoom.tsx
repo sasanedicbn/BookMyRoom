@@ -1,4 +1,7 @@
-const NewEditCabin = () => {
+const NewEditRoom = ({handleCloseEditModal}) => {
+    const closeEditModal = () => {
+        handleCloseEditModal()
+    }
     return (
     <>
       <form className="create-cabin-form">
@@ -49,7 +52,7 @@ const NewEditCabin = () => {
           />
         </div>
         <div className="form-actions">
-          <button type="button" onClick={() => {}}>Cancel</button>
+          <button type="button" onClick={() => closeEditModal()}>Cancel</button>
           <button type="submit">Create new cabin</button>
         </div>
       </form>
@@ -58,5 +61,5 @@ const NewEditCabin = () => {
     );
   };
   
-  export default NewEditCabin;
+  export default NewEditRoom;
   

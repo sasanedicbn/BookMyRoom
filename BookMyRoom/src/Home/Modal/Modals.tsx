@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { closeEditModal, closeModal, openEditModal } from '../../store/modalSlice';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import NewEditCabin from '../Cabin/newEditCabin';
+import NewEditRoom from '../Room/newEditRoom';
+
 
 const Modals = ({ setOpenMenu }) => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const Modals = ({ setOpenMenu }) => {
 
   const handleCloseEditModal = () => {
     dispatch(closeEditModal());
+    setOpenMenu(false)
   };
 
   return (
@@ -36,7 +38,7 @@ const Modals = ({ setOpenMenu }) => {
               </div>
             </>
           ) : (
-            <NewEditCabin/>
+            <NewEditRoom handleCloseEditModal={handleCloseEditModal}/>
           )}
         </div>
       </div>
