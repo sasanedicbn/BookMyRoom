@@ -9,12 +9,11 @@ const Modals = ({ setOpenMenu }) => {
 
   const handleDelete = () => {
     dispatch(closeModal());
-    setOpenMenu(false); // Zatvaranje lokalnog modala
+    setOpenMenu(false);
   };
 
   const handleEdit = () => {
     dispatch(openEditModal());
-    setOpenMenu(false); // Zatvaranje lokalnog modala
   };
 
   const handleCloseEditModal = () => {
@@ -25,28 +24,29 @@ const Modals = ({ setOpenMenu }) => {
     <>
       <div className="modal">
         <div className="modal-content">
-          <div className='modal-content-child'>
-            <FaEdit />
-            <button className="edit-button" onClick={handleEdit}>Edit</button>
-          </div>
-          <div className='modal-content-child'>
-            <FaTrash />
-            <button className="delete-button" onClick={handleDelete}>Delete</button>
-          </div>
+          {!isEditModalOpen ? (
+            <>
+              <div className="modal-content-child">
+                <FaEdit />
+                <button className="edit-button" onClick={handleEdit}>Edit</button>
+              </div>
+              <div className="modal-content-child">
+                <FaTrash />
+                <button className="delete-button" onClick={handleDelete}>Delete</button>
+              </div>
+            </>
+          ) : (
+            <div className="modal-content-edit">
+              {/* <h2>Edit {currentRoom.name}</h2> */}
+              <p>OVDJE STAVITI FORMU ZA EDIT</p>
+              <button className="close-button" onClick={handleCloseEditModal}>Close</button>
+            </div>
+          )}
         </div>
       </div>
-
-      {isEditModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <h2>Edit {currentRoom.name}</h2>
-            <p>OVDJE STAVITI FORMU ZA EDIT</p>
-            <button className="close-button" onClick={handleCloseEditModal}>Close</button>
-          </div>
-        </div>
-      )}
     </>
   );
 };
 
 export default Modals;
+
