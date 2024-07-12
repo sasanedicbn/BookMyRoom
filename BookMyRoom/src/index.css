@@ -41,7 +41,7 @@
 .roomsList-container{
   width: 800px;
   margin: 0 100px;
-  
+  /* position: relative; */
 }
 .rooms-table {
   width: 100%;
@@ -67,11 +67,13 @@
   object-fit: cover;
   margin-right: 10px;
 }
-
+.room-container{
+  position: relative;
+}
 .ellipsis-cell {
   text-align: center;
   cursor: pointer;
-  
+
 }
 
 .room-details {
@@ -108,26 +110,26 @@
   background-color: #45a049;
 }
 /* MODAL */
-.modal {
-  position: fixed;
-  right: 120px;
-  top: 250px;
-  width: 100px;
-  height: 60px;
+.ellipsis-cell .modal {
+  position: absolute;
+  top:77.5px;
+  right: 37.5px;
+  width: 85px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .modal-content {
   background-color: #d89494;
-  padding: 20px;
+  padding: 10px;
   border-radius: 8px;
   text-align: center;
 }
 
 .modal-content button {
- 
   margin: 10px;
   border: none;
   border-radius: 5px;

@@ -1,13 +1,13 @@
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
-import { openModal } from '../store/modalSlice';
+import Modals from './Modal/Modals';
 
 const Room = ({ room }) => {
-  const dispatch = useDispatch();
-  const { name, maxCapacity, regularPrice, image, discount,  } = room;
+  const { name, maxCapacity, regularPrice, image, discount } = room;
+  const [openMenu, setOpenMenu] = useState(false);
 
   const handleOpenModal = () => {
-    dispatch(openModal(room));
+    setOpenMenu((prev) => !prev);
   };
 
   return (
@@ -19,10 +19,10 @@ const Room = ({ room }) => {
       <td>{discount ? `${discount}%` : '/'}</td>
       <td className="ellipsis-cell">
         <BiDotsVerticalRounded onClick={handleOpenModal} />
+        {openMenu && <Modals setOpenMenu={setOpenMenu} />}
       </td>
     </tr>
   );
 };
 
 export default Room;
-
