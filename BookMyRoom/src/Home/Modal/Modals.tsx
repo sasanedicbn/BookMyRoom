@@ -3,7 +3,6 @@ import { closeEditModal, closeModal, openEditModal } from '../../store/modalSlic
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import NewEditRoom from '../Room/newEditRoom';
 
-
 const Modals = ({ setOpenMenu }) => {
   const dispatch = useDispatch();
   const { isEditModalOpen, currentRoom } = useSelector((state) => state.modals);
@@ -19,7 +18,7 @@ const Modals = ({ setOpenMenu }) => {
 
   const handleCloseEditModal = () => {
     dispatch(closeEditModal());
-    setOpenMenu(false)
+    setOpenMenu(false);
   };
 
   return (
@@ -38,7 +37,7 @@ const Modals = ({ setOpenMenu }) => {
               </div>
             </>
           ) : (
-            <NewEditRoom handleCloseEditModal={handleCloseEditModal}/>
+            <NewEditRoom handleCloseEditModal={handleCloseEditModal} />
           )}
         </div>
       </div>
@@ -47,4 +46,3 @@ const Modals = ({ setOpenMenu }) => {
 };
 
 export default Modals;
-
