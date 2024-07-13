@@ -2,10 +2,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeEditModal, closeModal, openEditModal } from '../../store/modalSlice';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import NewEditRoom from '../Room/newEditRoom';
+import { singleRoom } from '../../store/roomsSlice';
 
-const Modals = ({ setOpenMenu }) => {
+const Modals = ({ setOpenMenu, room }) => {
   const dispatch = useDispatch();
-  const { isEditModalOpen, currentRoom } = useSelector((state) => state.modals);
+  const { isEditModalOpen } = useSelector((state) => state.modals);
 
   const handleDelete = () => {
     dispatch(closeModal());
@@ -14,6 +15,7 @@ const Modals = ({ setOpenMenu }) => {
 
   const handleEdit = () => {
     dispatch(openEditModal());
+    dispatch(singleRoom(room)); // Postavi trenutnu sobu
   };
 
   const handleCloseEditModal = () => {
@@ -46,3 +48,4 @@ const Modals = ({ setOpenMenu }) => {
 };
 
 export default Modals;
+

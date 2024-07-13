@@ -20,7 +20,7 @@ const Room = ({ room }) => {
       <td>{discount ? `${discount}%` : '/'}</td>
       <td className="ellipsis-cell">
         <BiDotsVerticalRounded onClick={handleOpenModal} />
-        {openMenu && <Modals setOpenMenu={setOpenMenu} />}
+        {openMenu && <Modals setOpenMenu={setOpenMenu} room={room} />}
       </td>
     </tr>
   );

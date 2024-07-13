@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRooms } from "../store/roomsSlice";
+import { getRooms, singleRoom } from "../store/roomsSlice";
 import { fetchRooms } from "../api/fetchRooms";
 import Room from "./Room";
 import TableHead from "./TableHead";
+import Modals from "./Modal/Modals";
+import NewRoom from "./Room/NewRoom";
 import NewEditRoom from "./Room/newEditRoom";
 
 const RoomsList = () => {
@@ -22,6 +24,15 @@ const RoomsList = () => {
     roomsListHandler();
   }, [dispatch]);
 
+  const openNewRoomHandler = () => {
+    dispatch(singleRoom({}));
+    setOpenNewRoom(true);
+  };
+
+  const closeNewRoomModal = () => {
+    setOpenNewRoom(false);
+  };
+
   return (
     <div className="roomsList-container">
       <h1>Room List</h1>
@@ -33,8 +44,8 @@ const RoomsList = () => {
           ))}
         </tbody>
       </table>
-      <button className="btn-newroom" onClick={() => setOpenNewRoom(true)}>Add new room</button>
-      {openNewRoom && <NewEditRoom handleCloseEditModal={() => setOpenNewRoom(false)} />}
+      <NewRoom setOpenNewRoom={setOpenNewRoom}/>
+      {openNewRoom && <NewEditRoom handleCloseEditModal={closeNewRoomModal}/>}
     </div>
   );
 };
