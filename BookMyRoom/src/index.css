@@ -246,3 +246,7 @@ tbody{
     background-color: #45a049;
     
 }
+.form-actions button.disabled-button {
+  background-color: #cccccc; 
+  cursor: not-allowed;
+}
