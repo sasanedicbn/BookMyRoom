@@ -4,7 +4,6 @@ import { getRooms, singleRoom } from "../store/roomsSlice";
 import { fetchRooms } from "../api/fetchRooms";
 import Room from "./Room";
 import TableHead from "./TableHead";
-import Modals from "./Modal/Modals";
 import NewRoom from "./Room/NewRoom";
 import NewEditRoom from "./Room/newEditRoom";
 

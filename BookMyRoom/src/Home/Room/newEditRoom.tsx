@@ -5,17 +5,17 @@ import * as z from 'zod';
 import { useSelector } from 'react-redux';
 
 const schema = z.object({
-  name: z.string().nonempty(),
+  name: z.string(),
   maxCapacity: z.number().positive(),
   regularPrice: z.number().positive(),
   discount: z.number().optional(),
-  description: z.string().nonempty(),
-  photo: z.string().nonempty(),
+  description: z.string(),
+  photo: z.string(),
 });
 
 const NewEditRoom = ({ handleCloseEditModal }) => {
   const currentRoom = useSelector((state) => state.rooms.currentRoom);
-  console.log('current room', currentRoom)
+  console.log('current room', currentRoom);
 
   const {
     register,
@@ -25,36 +25,11 @@ const NewEditRoom = ({ handleCloseEditModal }) => {
   } = useForm({
     resolver: zodResolver(schema),
     mode: 'onChange',
-    defaultValues: {
-      name: '',
-      maxCapacity: '',
-      regularPrice: '',
-      discount: '',
-      description: '',
-      photo: '',
-    },
+    defaultValues: currentRoom, 
   });
 
   useEffect(() => {
-    if (Object.keys(currentRoom).length === 0) {
-      reset({
-        name: '',
-        maxCapacity: '',
-        regularPrice: '',
-        discount: '',
-        description: '',
-        photo: '',
-      });
-    } else {
-      reset({
-        name: currentRoom.name || '',
-        maxCapacity: currentRoom.maxCapacity || '',
-        regularPrice: currentRoom.regularPrice || '',
-        discount: currentRoom.discount || '',
-        description: currentRoom.description || '',
-        photo: currentRoom.photo || '',
-      });
-    }
+    reset(currentRoom); 
   }, [currentRoom, reset]);
 
   const closeEditModal = () => {
