@@ -25,9 +25,15 @@ const NewEditRoom = ({ handleCloseEditModal, handleEditSubmit }) => {
   } = useForm({
     resolver: zodResolver(schema),
     mode: 'onChange',
-    defaultValues: currentRoom,
+    defaultValues: {
+      name: currentRoom.name || '',
+      maxCapacity: currentRoom.maxCapacity || '',
+      regularPrice: currentRoom.regularPrice || '',
+      discount: currentRoom.discount || '',
+      description: currentRoom.description || '',
+      photo: currentRoom.photo || '',
+    },
   });
-  console.log(isValid)
 
   useEffect(() => {
     console.log('Resetting form with:', currentRoom);
@@ -70,13 +76,7 @@ const NewEditRoom = ({ handleCloseEditModal, handleEditSubmit }) => {
         </div>
         <div className="form-actions">
           <button type="button" onClick={handleCloseEditModal}>Cancel</button>
-          <button 
-            type="submit" 
-            disabled={!isValid} 
-            className={isValid ? 'green' : 'grey'}
-          >
-            Save
-          </button>
+          <button type="submit" disabled={!isValid} className={isValid ? 'green' : 'grey'}>Save</button>
         </div>
       </form>
       <div className="overlay"></div>
