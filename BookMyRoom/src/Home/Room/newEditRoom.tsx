@@ -10,12 +10,12 @@ const schema = z.object({
   regularPrice: z.number().positive(),
   discount: z.number().optional(),
   description: z.string(),
-  photo: z.string(),
+  photo: z.string().optional()
 });
 
-const NewEditRoom = ({ handleCloseEditModal }) => {
+const NewEditRoom = ({ handleCloseEditModal, handleEditSubmit }) => {
   const currentRoom = useSelector((state) => state.rooms.currentRoom);
-  console.log('current room', currentRoom);
+  console.log('currentRoom:', currentRoom);
 
   const {
     register,
@@ -25,20 +25,20 @@ const NewEditRoom = ({ handleCloseEditModal }) => {
   } = useForm({
     resolver: zodResolver(schema),
     mode: 'onChange',
-    defaultValues: currentRoom, 
+    defaultValues: currentRoom,
   });
+  console.log(isValid)
 
   useEffect(() => {
-    reset(currentRoom); 
+    console.log('Resetting form with:', currentRoom);
+    reset(currentRoom);
   }, [currentRoom, reset]);
 
-  const closeEditModal = () => {
-    handleCloseEditModal();
-  };
-
   const onSubmit = (data) => {
-    console.log(data);
-    closeEditModal();
+    console.log('sasa');
+    console.log('data:', data);
+    console.log('iz on submita currentRoom:', currentRoom);
+    handleEditSubmit({ ...currentRoom, ...data });
   };
 
   return (
@@ -69,8 +69,14 @@ const NewEditRoom = ({ handleCloseEditModal }) => {
           <input type="file" id="photo" {...register('photo')} />
         </div>
         <div className="form-actions">
-          <button type="button" onClick={closeEditModal}>Cancel</button>
-          <button type="submit" disabled={!isValid}>Create new cabin</button>
+          <button type="button" onClick={handleCloseEditModal}>Cancel</button>
+          <button 
+            type="submit" 
+            disabled={!isValid} 
+            className={isValid ? 'green' : 'grey'}
+          >
+            Save
+          </button>
         </div>
       </form>
       <div className="overlay"></div>
