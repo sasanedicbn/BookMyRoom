@@ -13,7 +13,7 @@ const schema = z.object({
   photo: z.string().optional()
 });
 
-const NewEditRoom = ({ handleCloseEditModal, handleEditSubmit }) => {
+const NewEditRoom = ({handleCloseEditModal, handleEditSubmit}) => {
   const currentRoom = useSelector((state) => state.rooms.currentRoom);
   console.log('currentRoom:', currentRoom);
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import Modals from './Modal/Modals';
 import NewRoom from './Room/NewRoom';

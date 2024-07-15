@@ -44,7 +44,7 @@ const RoomsList = () => {
         </tbody>
       </table>
       <NewRoom setOpenNewRoom={setOpenNewRoom}/>
-      {openNewRoom && <NewEditRoom handleCloseEditModal={closeNewRoomModal}/>}
+      {openNewRoom && <NewEditRoom handleCloseEditModal={closeNewRoomModal} handleEditSubmit={''}/>}
     </div>
   );
 };

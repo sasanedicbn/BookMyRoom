@@ -5,7 +5,7 @@ import NewEditRoom from '../Room/newEditRoom';
 import { singleRoom, getRooms } from '../../store/roomsSlice';
 import { supabase } from '../../superbase/superbaseClient';
 
-const Modals = ({ setOpenMenu, room }) => {
+const Modals = ({ room , setOpenMenuModal}) => {
   const dispatch = useDispatch();
   const { isEditModalOpen } = useSelector((state) => state.modals);
 
@@ -24,7 +24,7 @@ const Modals = ({ setOpenMenu, room }) => {
         dispatch(getRooms(rooms));
       }
       dispatch(closeModal());
-      setOpenMenu(false);
+      setOpenMenuModal(false);
     }
   };
 
@@ -44,7 +44,7 @@ const Modals = ({ setOpenMenu, room }) => {
         dispatch(getRooms(rooms));
       }
       dispatch(closeEditModal());
-      setOpenMenu(false);
+      setOpenMenuModal(false);
     }
   };
 
@@ -55,7 +55,7 @@ const Modals = ({ setOpenMenu, room }) => {
 
   const handleCloseEditModal = () => {
     dispatch(closeEditModal());
-    setOpenMenu(false);
+    setOpenMenuModal(false);
   };
 
   return (
