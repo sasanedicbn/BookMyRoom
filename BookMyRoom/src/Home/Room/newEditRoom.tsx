@@ -6,9 +6,9 @@ import { useSelector } from 'react-redux';
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
-  maxCapacity: z.preprocess((value) => Number(value), z.number().positive("Must be a positive number")),
-  regularPrice: z.preprocess((value) => Number(value), z.number().positive("Must be a positive number")),
-  discount: z.preprocess((value) => value === "" ? undefined : Number(value), z.number().positive("Must be a positive number").optional()),
+  maxCapacity: z.number().positive("Must be a positive number"),
+  regularPrice: z.number().positive("Must be a positive number"),
+  discount: z.number().optional(),
   description: z.string().min(1, "Description is required"),
   photo: z.string().optional()
 });
@@ -28,12 +28,7 @@ const NewEditRoom = ({ handleCloseEditModal, handleEditSubmit }) => {
   } = useForm({
     resolver: zodResolver(schema),
     mode: 'onChange',
-    defaultValues: isEditModalOpen ? {
-      ...currentRoom,
-      maxCapacity: String(currentRoom.maxCapacity || ''),
-      regularPrice: String(currentRoom.regularPrice || ''),
-      discount: String(currentRoom.discount || ''),
-    } : {
+    defaultValues: isEditModalOpen ? currentRoom : {
       name: '',
       maxCapacity: '',
       regularPrice: '',
@@ -46,12 +41,7 @@ const NewEditRoom = ({ handleCloseEditModal, handleEditSubmit }) => {
   useEffect(() => {
     console.log('Resetting form with:', currentRoom);
     if (isEditModalOpen) {
-      reset({
-        ...currentRoom,
-        maxCapacity: String(currentRoom.maxCapacity || ''),
-        regularPrice: String(currentRoom.regularPrice || ''),
-        discount: String(currentRoom.discount || ''),
-      });
+      reset(currentRoom);
     } else {
       reset({
         name: '',
@@ -63,6 +53,11 @@ const NewEditRoom = ({ handleCloseEditModal, handleEditSubmit }) => {
       });
     }
   }, [currentRoom, isEditModalOpen, reset]);
+
+  useEffect(() => {
+    console.log('isValid:', isValid);
+    console.log('errors:', errors);
+  }, [isValid, errors]);
 
   const onSubmit = (data) => {
     console.log('sasa');
@@ -142,4 +137,3 @@ const NewEditRoom = ({ handleCloseEditModal, handleEditSubmit }) => {
 };
 
 export default NewEditRoom;
-
