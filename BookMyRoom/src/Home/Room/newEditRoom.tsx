@@ -13,13 +13,10 @@ const schema = z.object({
   photo: z.string().optional()
 });
 
-const NewEditRoom = ({ handleCloseEditModal, handleEditSubmit }) => {
-  const currentRoom = useSelector((state) => state.rooms.currentRoom);
-  const { isEditModalOpen } = useSelector((state) => state.modals);
-
-  console.log('currentRoom:', currentRoom);
-  console.log('isEditModalOpen:', isEditModalOpen);
-
+const NewEditRoom = ({ handleCloseEditModal, handleEditSubmit,  }) => {
+  // const currentRoom = useSelector((state) => state.rooms.currentRoom);
+  // const { isEditModalOpen } = useSelector((state) => state.modals);
+  
   const {
     register,
     handleSubmit,
@@ -28,7 +25,7 @@ const NewEditRoom = ({ handleCloseEditModal, handleEditSubmit }) => {
   } = useForm({
     resolver: zodResolver(schema),
     mode: 'onChange',
-    defaultValues: isEditModalOpen ? currentRoom : {
+    defaultValues:  {
       name: '',
       maxCapacity: '',
       regularPrice: '',
@@ -38,32 +35,32 @@ const NewEditRoom = ({ handleCloseEditModal, handleEditSubmit }) => {
     },
   });
 
-  useEffect(() => {
-    console.log('Resetting form with:', currentRoom);
-    if (isEditModalOpen) {
-      reset(currentRoom);
-    } else {
-      reset({
-        name: '',
-        maxCapacity: '',
-        regularPrice: '',
-        discount: '',
-        description: '',
-        photo: '',
-      });
-    }
-  }, [currentRoom, isEditModalOpen, reset]);
+  // useEffect(() => {
+  //   console.log('Resetting form with:', currentRoom);
+  //   if (isEditModalOpen) {
+  //     reset(currentRoom);
+  //   } else {
+  //     reset({
+  //       name: '',
+  //       maxCapacity: '',
+  //       regularPrice: '',
+  //       discount: '',
+  //       description: '',
+  //       photo: '',
+  //     });
+  //   }
+  // }, [currentRoom, isEditModalOpen, reset]);
 
-  useEffect(() => {
-    console.log('isValid:', isValid);
-    console.log('errors:', errors);
-  }, [isValid, errors]);
+  // useEffect(() => {
+  //   console.log('isValid:', isValid);
+  //   console.log('errors:', errors);
+  // }, [isValid, errors]);
 
   const onSubmit = (data) => {
-    console.log('sasa');
-    console.log('data:', data);
-    console.log('iz on submita currentRoom:', currentRoom);
-    handleEditSubmit({ ...currentRoom, ...data });
+    // console.log('sasa');
+    // console.log('data:', data);
+    // console.log('iz on submita currentRoom:', currentRoom);
+    // handleEditSubmit({ ...currentRoom, ...data });
   };
 
   return (

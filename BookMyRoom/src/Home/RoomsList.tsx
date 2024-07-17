@@ -6,12 +6,17 @@ import Room from "./Room";
 import TableHead from "./TableHead";
 import NewRoom from "./Room/NewRoom";
 import NewEditRoom from "./Room/newEditRoom";
+import Modals from "./Modal/Modals";
 
 const RoomsList = () => {
   const dispatch = useDispatch();
-  const [openNewRoom, setOpenNewRoom] = useState(false);
+  const [addNewRoom, setAddNewRoom] = useState(false)
   const rooms = useSelector((state) => state.rooms.rooms);
 
+
+  const handleAddNewRoom = () => {
+    setAddNewRoom((state) => !state)
+  }
   useEffect(() => {
     const roomsListHandler = async () => {
       const rooms = await fetchRooms();
@@ -22,16 +27,7 @@ const RoomsList = () => {
     };
     roomsListHandler();
   }, [dispatch]);
-
-  const openNewRoomHandler = () => {
-    dispatch(singleRoom({}));
-    setOpenNewRoom(true);
-  };
-
-  const closeNewRoomModal = () => {
-    setOpenNewRoom(false);
-  };
-
+ 
   return (
     <div className="roomsList-container">
       <h1>Room List</h1>
@@ -43,8 +39,11 @@ const RoomsList = () => {
           ))}
         </tbody>
       </table>
-      <NewRoom setOpenNewRoom={setOpenNewRoom}/>
-      {openNewRoom && <NewEditRoom handleCloseEditModal={closeNewRoomModal} handleEditSubmit={''}/>}
+      <button className="btn-newroom" onClick={handleAddNewRoom}>
+        Add new room
+      </button>
+      {addNewRoom && <NewEditRoom/>}
+      {/* {openNewRoom && <NewEditRoom handleCloseEditModal={closeNewRoomModal} handleEditSubmit={''}/>} */}
     </div>
   );
 };
