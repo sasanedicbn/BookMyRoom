@@ -4,7 +4,7 @@ import NewEditRoom from '../Room/newEditRoom';
 import { useState } from 'react';
 
 
-const Modals = ({ room , setOpenManuModal}) => {
+const Modals = ({ room , setOpenMenuModal}) => {
   // provjeravam samo da li ima props ili ne ako ima -> onda je to edit ako nema onda je to create form
  const [openEditModal, setOpenEditModal] = useState(false)
  
@@ -25,7 +25,7 @@ const Modals = ({ room , setOpenManuModal}) => {
                 <button className="delete-button">Delete</button>
               </div>
             </>
-            {openEditModal && <NewEditRoom room={room}/>}
+            {openEditModal && <NewEditRoom room={room} setOpenEditModal={setOpenEditModal}/>}
         </div>
       </div>
     </>

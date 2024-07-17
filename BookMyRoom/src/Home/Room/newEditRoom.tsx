@@ -1,7 +1,7 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -9,10 +9,10 @@ const schema = z.object({
   regularPrice: z.number().positive("Must be a positive number"),
   discount: z.number().optional(),
   description: z.string().min(1, "Description is required"),
-  photo: z.string().optional()
+  photo: z.string().optional(),
 });
 
-const NewEditRoom = ({ room }) => {
+const NewEditRoom = ({ room, setOpenEditModal }) => {
   const {
     register,
     handleSubmit,
@@ -21,7 +21,7 @@ const NewEditRoom = ({ room }) => {
   } = useForm({
     resolver: zodResolver(schema),
     mode: 'onChange',
-    defaultValues:  {
+    defaultValues: {
       name: '',
       maxCapacity: '',
       regularPrice: '',
@@ -31,32 +31,26 @@ const NewEditRoom = ({ room }) => {
     },
   });
 
-  // useEffect(() => {
-  //   console.log('Resetting form with:', currentRoom);
-  //   if (isEditModalOpen) {
-  //     reset(currentRoom);
-  //   } else {
-  //     reset({
-  //       name: '',
-  //       maxCapacity: '',
-  //       regularPrice: '',
-  //       discount: '',
-  //       description: '',
-  //       photo: '',
-  //     });
-  //   }
-  // }, [currentRoom, isEditModalOpen, reset]);
+  useEffect(() => {
+    if (room) {
+      reset({
+        name: room.name,
+        maxCapacity: room.maxCapacity,
+        regularPrice: room.regularPrice,
+        discount: room.discount,
+        description: room.description,
+        photo: room.image, // assuming the 'photo' field is 'image' in your room object
+      });
+    }
+  }, [room, reset]);
 
-  // useEffect(() => {
-  //   console.log('isValid:', isValid);
-  //   console.log('errors:', errors);
-  // }, [isValid, errors]);
+  const closeEditModal = () => {
+    setOpenEditModal(false);
+  };
 
   const onSubmit = (data) => {
-    // console.log('sasa');
-    // console.log('data:', data);
-    // console.log('iz on submita currentRoom:', currentRoom);
-    // handleEditSubmit({ ...currentRoom, ...data });
+    console.log('Submit data:', data);
+    // Logika za submit formulara
   };
 
   return (
@@ -114,10 +108,10 @@ const NewEditRoom = ({ room }) => {
           />
         </div>
         <div className="form-actions">
-          <button type="button" >Cancel</button>
-          <button 
-            type="submit" 
-            disabled={!isValid} 
+          <button type="button" onClick={closeEditModal}>Cancel</button>
+          <button
+            type="submit"
+            disabled={!isValid}
             className={isValid ? 'green' : 'grey'}
           >
             Save
