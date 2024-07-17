@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { useSelector } from 'react-redux';
+
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -13,10 +12,7 @@ const schema = z.object({
   photo: z.string().optional()
 });
 
-const NewEditRoom = ({ handleCloseEditModal, handleEditSubmit,  }) => {
-  // const currentRoom = useSelector((state) => state.rooms.currentRoom);
-  // const { isEditModalOpen } = useSelector((state) => state.modals);
-  
+const NewEditRoom = ({ room }) => {
   const {
     register,
     handleSubmit,
@@ -118,7 +114,7 @@ const NewEditRoom = ({ handleCloseEditModal, handleEditSubmit,  }) => {
           />
         </div>
         <div className="form-actions">
-          <button type="button" onClick={handleCloseEditModal}>Cancel</button>
+          <button type="button" >Cancel</button>
           <button 
             type="submit" 
             disabled={!isValid} 

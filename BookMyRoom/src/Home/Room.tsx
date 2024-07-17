@@ -1,6 +1,6 @@
 import  { useState } from 'react';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
-// import Modals from './Modal/Modals';
+import Modals from './Modal/Modals';
 // import NewRoom from './Room/NewRoom';
 
 const Room = ({ room }) => {
@@ -21,7 +21,7 @@ const Room = ({ room }) => {
       <td>{discount ? `${discount}%` : '/'}</td>
       <td className="ellipsis-cell">
         <BiDotsVerticalRounded onClick={handleOpenModal} />
-        {/* {openMenuModal && <Modals setOpenMenuModal={setOpenMenuModal} room={room} />} */}
+        {openMenuModal && <Modals  setOpenMenuModal={setOpenMenuModal} room={room}  />}
       </td>
     </tr>
   );
