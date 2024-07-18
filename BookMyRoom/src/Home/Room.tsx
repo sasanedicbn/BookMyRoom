@@ -8,7 +8,7 @@ const Room = ({ room }) => {
   const [openMenuModal, setOpenMenuModal] = useState(false);
 
   const handleOpenModal = () => {
-    setOpenMenuModal((prev) => !prev);
+    setOpenMenuModal(true);
   };
 
 
@@ -26,5 +26,6 @@ const Room = ({ room }) => {
     </tr>
   );
 };
+
 
 export default Room;

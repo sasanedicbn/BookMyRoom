@@ -11,6 +11,7 @@ const Modals = ({ room , setOpenMenuModal}) => {
  function handlerOpenEditModal () {
   setOpenEditModal(true)
  }
+ 
   return (
     <>
       <div className="modal">
@@ -25,7 +26,7 @@ const Modals = ({ room , setOpenMenuModal}) => {
                 <button className="delete-button">Delete</button>
               </div>
             </>
-            {openEditModal && <NewEditRoom room={room} setOpenEditModal={setOpenEditModal}/>}
+            {openEditModal && <NewEditRoom room={room} setOpenEditModal={setOpenEditModal} closeMenuModal={setOpenMenuModal}/>}
         </div>
       </div>
     </>

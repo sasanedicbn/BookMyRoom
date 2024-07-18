@@ -168,7 +168,7 @@ tbody{
   background-color: #f7f7f7;
   gap: 16px;
   width: 700px;
-  height: 435px;
+  height: 410px;
   border-radius: 10px;
   z-index: 1001;
 }
@@ -256,6 +256,7 @@ tbody{
   width: 50%;
 }
 .input-error p {
-  margin: .15rem;
+  margin:2px;
   color: red;
+  text-align: left;
 }

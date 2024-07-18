@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-const NewEditRoom = ({ room = {}, setOpenEditModal }) => {
+const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal }) => {
   console.log('mounted');
   const isEditSeasen = room.id ? true : false;
   const {
@@ -14,6 +14,7 @@ const NewEditRoom = ({ room = {}, setOpenEditModal }) => {
 
   const closeEditModal = () => {
     setOpenEditModal(false);
+    closeMenuModal(false)
   };
 
   const onSubmit = (data) => {
@@ -70,7 +71,6 @@ const NewEditRoom = ({ room = {}, setOpenEditModal }) => {
               id="discount"
               {...register('discount')}
             />
-            {errors.discount ? <p>{errors?.discount?.message}</p> : ''}
           </div>
         </div>
         <div className="form-group">
@@ -80,7 +80,6 @@ const NewEditRoom = ({ room = {}, setOpenEditModal }) => {
               id="description"
               {...register('description')}
             ></textarea>
-            {errors.description ? <p>{errors?.description?.message}</p> : ''}
           </div>
         </div>
         <div className="form-group">
@@ -105,7 +104,7 @@ const NewEditRoom = ({ room = {}, setOpenEditModal }) => {
           </button>
         </div>
       </form>
-      <div className="overlay"></div>
+      <div className="overlay" onClick={closeEditModal}></div>
     </>
   );
 };
