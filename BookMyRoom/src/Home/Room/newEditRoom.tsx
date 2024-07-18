@@ -1,69 +1,33 @@
-import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 
-const schema = z.object({
-  name: z.string().min(1, "Name is required"),
-  maxCapacity: z.string(),
-  regularPrice: z.string(),
-  discount: z.string(),
-  description: z.string().min(1, "Description is required"),
-  photo: z.string().optional(),
-});
+// const schema = z.object({
+//   name: z.string().min(1, "Name is required"),
+//   maxCapacity: z.string(),
+//   regularPrice: z.string(),
+//   discount: z.string(),
+//   description: z.string().min(1, "Description is required"),
+//   photo: z.string().optional(),
+// });
 
-const NewEditRoom = ({ room, setOpenEditModal }) => {
+const NewEditRoom = ({ room={}, setOpenEditModal }) => {
+  console.log('mountet')
+  const isEditSeasen = room.id ? true : false
   const {
     register,
     handleSubmit,
-    formState: { isValid, errors },
+    formState: { isValid, errors},
     reset,
   } = useForm({
-    resolver: zodResolver(schema),
-    mode: 'onChange',
-    defaultValues: room ? {
-      name: room.name,
-      maxCapacity: room.maxCapacity,
-      regularPrice: room.regularPrice,
-      discount: room.discount,
-      description: room.description,
-      photo: room.image,
-    } : {
-      name: '',
-      maxCapacity: '',
-      regularPrice: '',
-      discount: '',
-      description: '',
-      photo: '',
-    }
+    defaultValues: isEditSeasen ? room : {}
   });
-
-  useEffect(() => {
-    if (room) {
-      reset({
-        name: room.name,
-        maxCapacity: room.maxCapacity,
-        regularPrice: room.regularPrice,
-        discount: room.discount,
-        description: room.description,
-        photo: room.image,
-      });
-    }
-  }, [room, reset]);
-
+  
   const closeEditModal = () => {
     setOpenEditModal(false);
   };
 
   const onSubmit = (data) => {
     console.log('Submit data:', data);
-    if (room) {
-      console.log('Updating room:', room.id);
-      // Ovdje dodajte logiku za ažuriranje kabine
-    } else {
-      console.log('Adding new room');
-      // Ovdje dodajte logiku za dodavanje nove kabine
-    }
+
   };
 
   return (
@@ -74,9 +38,11 @@ const NewEditRoom = ({ room, setOpenEditModal }) => {
           <input
             type="text"
             id="name"
-            {...register('name')}
+            {...register('name', {
+              required: 'Cabin name is required'
+            })}
           />
-          {errors.name && <span>{errors.name.message}</span>}
+          {<p>{errors?.name?.message}</p>}
         </div>
         <div className="form-group">
           <label htmlFor="maxCapacity">Maximum capacity</label>
@@ -85,7 +51,6 @@ const NewEditRoom = ({ room, setOpenEditModal }) => {
             id="maxCapacity"
             {...register('maxCapacity')}
           />
-          {errors.maxCapacity && <span>{errors.maxCapacity.message}</span>}
         </div>
         <div className="form-group">
           <label htmlFor="regularPrice">Regular price</label>
@@ -94,7 +59,6 @@ const NewEditRoom = ({ room, setOpenEditModal }) => {
             id="regularPrice"
             {...register('regularPrice')}
           />
-          {errors.regularPrice && <span>{errors.regularPrice.message}</span>}
         </div>
         <div className="form-group">
           <label htmlFor="discount">Discount</label>
@@ -110,7 +74,6 @@ const NewEditRoom = ({ room, setOpenEditModal }) => {
             id="description"
             {...register('description')}
           ></textarea>
-          {errors.description && <span>{errors.description.message}</span>}
         </div>
         <div className="form-group">
           <label htmlFor="photo">Cabin photo</label>
@@ -124,7 +87,7 @@ const NewEditRoom = ({ room, setOpenEditModal }) => {
           <button type="button" onClick={closeEditModal}>Cancel</button>
           <button
             type="submit"
-            disabled={!isValid}
+            // disabled={!isValid}
             className={isValid ? 'green' : 'grey'}
           >
             Save

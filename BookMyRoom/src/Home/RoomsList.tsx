@@ -42,8 +42,7 @@ const RoomsList = () => {
       <button className="btn-newroom" onClick={handleAddNewRoom}>
         Add new room
       </button>
-      {addNewRoom && <NewEditRoom/>}
-      {/* {openNewRoom && <NewEditRoom handleCloseEditModal={closeNewRoomModal} handleEditSubmit={''}/>} */}
+      {addNewRoom && <NewEditRoom />}
     </div>
   );
 };
