@@ -11,7 +11,7 @@ export const roomsSlice = createSlice({
       regularPrice: '',
       discount: '',
       description: '',
-      photo: '',
+      image: '',
    },
   },
   reducers: {

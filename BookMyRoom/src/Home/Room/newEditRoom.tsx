@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal }) => {
+const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal, handleEditSubmit }) => {
   console.log('mounted');
   const isEditSeasen = room.id ? true : false;
   const {
@@ -12,15 +12,13 @@ const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal }) => {
     defaultValues: isEditSeasen ? room : {}
   });
 
- 
-
   const closeEditModal = () => {
     setOpenEditModal(false);
-    closeMenuModal(false)
+    closeMenuModal(false);
   };
 
   const onSubmit = (data) => {
-    console.log('Submit data:', data);
+    handleEditSubmit({ ...data, id: room.id });
   };
 
   return (
@@ -73,6 +71,7 @@ const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal }) => {
               id="discount"
               {...register('discount')}
             />
+            {errors.discount ? <p>{errors?.discount?.message}</p> : ''}
           </div>
         </div>
         <div className="form-group">
@@ -82,6 +81,7 @@ const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal }) => {
               id="description"
               {...register('description')}
             ></textarea>
+            {errors.description ? <p>{errors?.description?.message}</p> : ''}
           </div>
         </div>
         <div className="form-group">
@@ -99,7 +99,6 @@ const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal }) => {
           <button type="button" onClick={closeEditModal}>Cancel</button>
           <button
             type="submit"
-            // disabled={!isValid}
             className={isValid ? 'green' : 'grey'}
           >
             {isEditSeasen ? 'Save' : 'Add new cabin'}

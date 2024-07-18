@@ -15,22 +15,3 @@ export const fetchRooms = async () => {
 
 
 
-  // const handleEditSubmit = async (updatedRoom) => {
-  //   console.log('updateRoom', updatedRoom)
-  //   const { error } = await supabase
-  //     .from('Bedrooms')
-  //     .update(updatedRoom)
-  //     .eq('id', updatedRoom.id);
-
-  //   if (error) {
-  //     console.error('Error updating row:', error);
-  //   } else {
-  //     console.log('Room updated successfully');
-  //     const { data: rooms, error: fetchError } = await supabase.from('Bedrooms').select('*');
-  //     if (!fetchError) {
-  //       dispatch(getRooms(rooms));
-  //     }
-  //     dispatch(closeEditModal());
-  //     setOpenMenuModal(false);
-  //   }
-  // };
