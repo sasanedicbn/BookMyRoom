@@ -12,6 +12,8 @@ const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal }) => {
     defaultValues: isEditSeasen ? room : {}
   });
 
+ 
+
   const closeEditModal = () => {
     setOpenEditModal(false);
     closeMenuModal(false)
@@ -100,7 +102,7 @@ const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal }) => {
             // disabled={!isValid}
             className={isValid ? 'green' : 'grey'}
           >
-            Save
+            {isEditSeasen ? 'Save' : 'Add new cabin'}
           </button>
         </div>
       </form>
