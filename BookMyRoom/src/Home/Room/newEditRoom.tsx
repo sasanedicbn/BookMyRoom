@@ -5,9 +5,9 @@ import * as z from 'zod';
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
-  maxCapacity: z.number().positive("Must be a positive number"),
-  regularPrice: z.number().positive("Must be a positive number"),
-  discount: z.number().optional(),
+  maxCapacity: z.string(),
+  regularPrice: z.string(),
+  discount: z.string(),
   description: z.string().min(1, "Description is required"),
   photo: z.string().optional(),
 });
@@ -21,14 +21,21 @@ const NewEditRoom = ({ room, setOpenEditModal }) => {
   } = useForm({
     resolver: zodResolver(schema),
     mode: 'onChange',
-    defaultValues: {
+    defaultValues: room ? {
+      name: room.name,
+      maxCapacity: room.maxCapacity,
+      regularPrice: room.regularPrice,
+      discount: room.discount,
+      description: room.description,
+      photo: room.image,
+    } : {
       name: '',
       maxCapacity: '',
       regularPrice: '',
       discount: '',
       description: '',
       photo: '',
-    },
+    }
   });
 
   useEffect(() => {
@@ -39,7 +46,7 @@ const NewEditRoom = ({ room, setOpenEditModal }) => {
         regularPrice: room.regularPrice,
         discount: room.discount,
         description: room.description,
-        photo: room.image, // assuming the 'photo' field is 'image' in your room object
+        photo: room.image,
       });
     }
   }, [room, reset]);
@@ -50,7 +57,13 @@ const NewEditRoom = ({ room, setOpenEditModal }) => {
 
   const onSubmit = (data) => {
     console.log('Submit data:', data);
-    // Logika za submit formulara
+    if (room) {
+      console.log('Updating room:', room.id);
+      // Ovdje dodajte logiku za ažuriranje kabine
+    } else {
+      console.log('Adding new room');
+      // Ovdje dodajte logiku za dodavanje nove kabine
+    }
   };
 
   return (
