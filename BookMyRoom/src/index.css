@@ -168,7 +168,7 @@ tbody{
   background-color: #f7f7f7;
   gap: 16px;
   width: 700px;
-  height: 380px;
+  height: 435px;
   border-radius: 10px;
   z-index: 1001;
 }
@@ -202,7 +202,7 @@ tbody{
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 50%;
+  width: 100%;
 }
 
 .form-actions {
@@ -249,4 +249,13 @@ tbody{
 .form-actions button.disabled-button {
   background-color: #cccccc; 
   cursor: not-allowed;
+}
+.input-error{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.input-error p {
+  margin: .15rem;
+  color: red;
 }

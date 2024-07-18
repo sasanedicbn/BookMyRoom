@@ -1,33 +1,23 @@
 import { useForm } from 'react-hook-form';
 
-// const schema = z.object({
-//   name: z.string().min(1, "Name is required"),
-//   maxCapacity: z.string(),
-//   regularPrice: z.string(),
-//   discount: z.string(),
-//   description: z.string().min(1, "Description is required"),
-//   photo: z.string().optional(),
-// });
-
-const NewEditRoom = ({ room={}, setOpenEditModal }) => {
-  console.log('mountet')
-  const isEditSeasen = room.id ? true : false
+const NewEditRoom = ({ room = {}, setOpenEditModal }) => {
+  console.log('mounted');
+  const isEditSeasen = room.id ? true : false;
   const {
     register,
     handleSubmit,
-    formState: { isValid, errors},
+    formState: { isValid, errors },
     reset,
   } = useForm({
     defaultValues: isEditSeasen ? room : {}
   });
-  
+
   const closeEditModal = () => {
     setOpenEditModal(false);
   };
 
   const onSubmit = (data) => {
     console.log('Submit data:', data);
-
   };
 
   return (
@@ -35,53 +25,74 @@ const NewEditRoom = ({ room={}, setOpenEditModal }) => {
       <form className="create-cabin-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
           <label htmlFor="name">Cabin name</label>
-          <input
-            type="text"
-            id="name"
-            {...register('name', {
-              required: 'Cabin name is required'
-            })}
-          />
-          {<p>{errors?.name?.message}</p>}
+          <div className='input-error'>
+            <input
+              type="text"
+              id="name"
+              {...register('name', {
+                required: 'Cabin name is required'
+              })}
+            />
+            {errors.name ? <p>{errors?.name?.message}</p> : ''}
+          </div>
         </div>
         <div className="form-group">
           <label htmlFor="maxCapacity">Maximum capacity</label>
-          <input
-            type="number"
-            id="maxCapacity"
-            {...register('maxCapacity')}
-          />
+          <div className='input-error'>
+            <input
+              type="number"
+              id="maxCapacity"
+              {...register('maxCapacity', {
+                required: 'MaxCapacity is required'
+              })}
+            />
+            {errors.maxCapacity ? <p>{errors?.maxCapacity?.message}</p> : ''}
+          </div>
         </div>
         <div className="form-group">
           <label htmlFor="regularPrice">Regular price</label>
-          <input
-            type="number"
-            id="regularPrice"
-            {...register('regularPrice')}
-          />
+          <div className='input-error'>
+            <input
+              type="number"
+              id="regularPrice"
+              {...register('regularPrice', {
+                required: 'Price is required'
+              })}
+            />
+            {errors.regularPrice ? <p>{errors?.regularPrice?.message}</p> : ''}
+          </div>
         </div>
         <div className="form-group">
           <label htmlFor="discount">Discount</label>
-          <input
-            type="number"
-            id="discount"
-            {...register('discount')}
-          />
+          <div className='input-error'>
+            <input
+              type="number"
+              id="discount"
+              {...register('discount')}
+            />
+            {errors.discount ? <p>{errors?.discount?.message}</p> : ''}
+          </div>
         </div>
         <div className="form-group">
           <label htmlFor="description">Description for website</label>
-          <textarea
-            id="description"
-            {...register('description')}
-          ></textarea>
+          <div className='input-error'>
+            <textarea
+              id="description"
+              {...register('description')}
+            ></textarea>
+            {errors.description ? <p>{errors?.description?.message}</p> : ''}
+          </div>
         </div>
         <div className="form-group">
           <label htmlFor="photo">Cabin photo</label>
-          <input
-            type="file"
-            id="photo"
-            {...register('photo')}
-          />
+          <div className='input-error'>
+            <input
+              type="file"
+              id="photo"
+              {...register('photo')}
+            />
+            {errors.photo ? <p>{errors?.photo?.message}</p> : ''}
+          </div>
         </div>
         <div className="form-actions">
           <button type="button" onClick={closeEditModal}>Cancel</button>
