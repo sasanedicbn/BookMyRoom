@@ -2,14 +2,13 @@ import { useForm } from 'react-hook-form';
 
 const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal, handleEditSubmit }) => {
   console.log('mounted');
-  const isEditSeasen = room.id ? true : false;
+  const isEditSeason = room.id ? true : false;
   const {
     register,
     handleSubmit,
     formState: { isValid, errors },
-    reset,
   } = useForm({
-    defaultValues: isEditSeasen ? room : {}
+    defaultValues: isEditSeason ? room : {}
   });
 
   const closeEditModal = () => {
@@ -18,7 +17,10 @@ const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal, handleEditSu
   };
 
   const onSubmit = (data) => {
-    handleEditSubmit({ ...data, id: room.id });
+    if(isEditSeason){
+    handleEditSubmit({ ...data })} else{
+      console.log('add new cabin')
+    }
   };
 
   return (
@@ -71,7 +73,6 @@ const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal, handleEditSu
               id="discount"
               {...register('discount')}
             />
-            {errors.discount ? <p>{errors?.discount?.message}</p> : ''}
           </div>
         </div>
         <div className="form-group">
@@ -81,18 +82,17 @@ const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal, handleEditSu
               id="description"
               {...register('description')}
             ></textarea>
-            {errors.description ? <p>{errors?.description?.message}</p> : ''}
           </div>
         </div>
         <div className="form-group">
-          <label htmlFor="photo">Cabin photo</label>
+          <label htmlFor="image">Cabin photo</label>
           <div className='input-error'>
             <input
               type="file"
-              id="photo"
-              {...register('photo')}
+              id="image"
+              {...register('image')}
             />
-            {errors.photo ? <p>{errors?.photo?.message}</p> : ''}
+            {errors.image ? <p>{errors?.image?.message}</p> : ''}
           </div>
         </div>
         <div className="form-actions">
@@ -101,7 +101,7 @@ const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal, handleEditSu
             type="submit"
             className={isValid ? 'green' : 'grey'}
           >
-            {isEditSeasen ? 'Save' : 'Add new cabin'}
+            {isEditSeason ? 'Save' : 'Add new cabin'}
           </button>
         </div>
       </form>
