@@ -1,13 +1,8 @@
 import  { useState } from 'react';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import Modals from './Modal/Modals';
-import { supabase } from '../superbase/superbaseClient';
-import { getRooms } from '../store/roomsSlice';
-import { useDispatch } from 'react-redux';
-// import NewRoom from './Room/NewRoom';
 
 const Room = ({ room }) => {
-  const dispatch = useDispatch()
   const { name, maxCapacity, regularPrice, image, discount } = room;
   const [openMenuModal, setOpenMenuModal] = useState(false);
   
