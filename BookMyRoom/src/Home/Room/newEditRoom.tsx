@@ -1,7 +1,10 @@
 import { useForm } from 'react-hook-form';
+import { supabase } from '../../superbase/superbaseClient';
+import { getRooms } from '../../store/roomsSlice';
+import { useDispatch } from 'react-redux';
 
-const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal, handleEditSubmit }) => {
-  console.log('mounted');
+const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal, handleEditSubmit, closeEditNewRoom }) => {
+  const dispatch = useDispatch();
   const isEditSeason = room.id ? true : false;
   const {
     register,
@@ -12,14 +15,38 @@ const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal, handleEditSu
   });
 
   const closeEditModal = () => {
-    setOpenEditModal(false);
+    setOpenEditModal(false); 
     closeMenuModal(false);
+    if(!isEditSeason){
+      closeEditNewRoom(); 
+    }
+  };
+
+  const handleAddSubmit = async (newRoom) => {
+    console.log('newRoom', newRoom);
+
+    const { error } = await supabase
+      .from('Bedrooms')
+      .insert(newRoom);
+
+    if (error) {
+      console.error('Error adding row:', error);
+    } else {
+      console.log('Room added successfully');
+      const { data: rooms, error: fetchError } = await supabase.from('Bedrooms').select('*');
+      if (!fetchError) {
+        dispatch(getRooms(rooms));
+      }
+      closeMenuModal(false);
+    }
   };
 
   const onSubmit = (data) => {
-    if(isEditSeason){
-    handleEditSubmit({ ...data })} else{
-      console.log('add new cabin')
+    console.log('kad je add', data);
+    if (isEditSeason) {
+      handleEditSubmit({ ...data });
+    } else {
+      handleAddSubmit(data);
     }
   };
 
@@ -85,10 +112,10 @@ const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal, handleEditSu
           </div>
         </div>
         <div className="form-group">
-          <label htmlFor="image">Cabin photo</label>
+          <label htmlFor="image">{isEditSeason ? 'Cabin photo' : 'Cabin photo (URL)' }</label>
           <div className='input-error'>
             <input
-              type="file"
+              type="input"
               id="image"
               {...register('image')}
             />
