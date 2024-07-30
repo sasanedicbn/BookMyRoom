@@ -53,25 +53,7 @@ const Modals = ({ room, setOpenMenuModal }) => {
     }
   };
 
-  const handleAddSubmit = async (newRoom) => {
-    console.log('newRoom', newRoom);
-
-    const { error } = await supabase
-      .from('Bedrooms')
-      .insert(newRoom);
-
-    if (error) {
-      console.error('Error adding row:', error);
-    } else {
-      console.log('Room added successfully');
-      const { data: rooms, error: fetchError } = await supabase.from('Bedrooms').select('*');
-      if (!fetchError) {
-        dispatch(getRooms(rooms));
-      }
-      setOpenMenuModal(false);
-    }
-  };
-
+ 
   return (
     <>
       <div className="modal">
@@ -86,7 +68,7 @@ const Modals = ({ room, setOpenMenuModal }) => {
               <button className="delete-button" onClick={handleDelete}>Delete</button>
             </div>
           </>
-          {openEditModal && <NewEditRoom room={room} setOpenEditModal={setOpenEditModal} closeMenuModal={setOpenMenuModal} handleEditSubmit={handleEditSubmit} handleAddSubmit={handleAddSubmit} />}
+          {openEditModal && <NewEditRoom room={room} setOpenEditModal={setOpenEditModal} closeMenuModal={setOpenMenuModal} handleEditSubmit={handleEditSubmit} />}
         </div>
       </div>
     </>
