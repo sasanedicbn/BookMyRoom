@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRooms, singleRoom } from "../store/roomsSlice";
+import { getRooms } from "../store/roomsSlice";
 import { fetchRooms } from "../api/fetchRooms";
 import Room from "./Room";
 import TableHead from "./TableHead";
-import NewRoom from "./Room/NewRoom";
 import NewEditRoom from "./Room/newEditRoom";
-import Modals from "./Modal/Modals";
+import SortRooms from "./SortRooms";
 
 const RoomsList = () => {
   const dispatch = useDispatch();
-  const [addNewRoom, setAddNewRoom] = useState(false)
+  const [addNewRoom, setAddNewRoom] = useState(false);
   const rooms = useSelector((state) => state.rooms.rooms);
-
+  console.log('ROOMS', rooms)
 
   const handleAddNewRoom = () => {
-    setAddNewRoom((state) => !state)
-  }
+    setAddNewRoom((state) => !state);
+  };
+
   useEffect(() => {
     const roomsListHandler = async () => {
       const rooms = await fetchRooms();
@@ -27,10 +27,11 @@ const RoomsList = () => {
     };
     roomsListHandler();
   }, [dispatch]);
- 
+
   return (
+    <div className="roomsList-main"> 
     <div className="roomsList-container">
-      <h1>Room List</h1>
+      <SortRooms/>
       <table className="rooms-table">
         <TableHead />
         <tbody>
@@ -42,7 +43,8 @@ const RoomsList = () => {
       <button className="btn-newroom" onClick={handleAddNewRoom}>
         Add new room
       </button>
-      {addNewRoom && <NewEditRoom />}
+      {addNewRoom && <NewEditRoom setOpenEditModal={setAddNewRoom} closeEditNewRoom={handleAddNewRoom} closeMenuModal={handleAddNewRoom} />}
+    </div>
     </div>
   );
 };
