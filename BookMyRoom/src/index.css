@@ -10,44 +10,110 @@
   display: flex;
 }
 .SideBar-container {
-  background-color: #4CAF50;
   width: 15%;
   height: 100vh;
   padding: 20px; 
   box-sizing: border-box; 
+  background-color: #fefefe;
+  border: 1px solid #f0eeee;
 }
-
 .SideBar-ul {
   padding: 0;
+  margin: 0 0.45rem;
 }
-
 .SideBar-ul li {
   list-style-type: none;
   margin-bottom: 10px;
+  display: flex;
+  width: 140px;
+  margin-top: 1.25rem;
+  padding: .25rem;
+  cursor: pointer;
+}
+.SideBar-ul li svg{
+  color: rgb(172, 172, 172) ;
 }
 
-.SideBar-ul li button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  background-color: #388E3C; 
-  color: #FFFFFF;
-  cursor: pointer;
+.SideBar-ul li a{
+  color: rgb(75, 75, 75);
+}
+.SideBar-icon{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+.SideBar-icon svg{
+  font-size: 36px;
+}
+.SideBar-title{
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 3.4rem;
+  color:rgb(75, 75, 75)
+}
+.SideBar-ul li a {
+  text-align: left;
+  margin-left: 1rem;
+  font-size: 20px;
+  text-decoration: none;
+}
+.SideBar-ul li svg{
+  font-size: 20px;
 }
 
 .SideBar-ul li button:hover {
   background-color: #2E7D32; 
 }
+/* ContentNavBar */
+.Content-NavBar{
+  width: 100%;
+  height: 60px;
+  background-color: #fefefe;
+  border-bottom: 1px solid #f0eeee;
+}
 /* ContentContainer */
+.Content-container{
+  width: 100%;
+}
+.Content-NavBar-items{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  padding:0.5rem 3rem;
+}
+.Content-NavBar-items img {
+  width: 44.5px;
+  height: 44.5px;
+  border-radius: 1.5rem;
+}
+.Content-NavBar-user{
+  font-size: 20px;
+}
+.Content-NavBar-icons{
+  width: 120px;
+  margin-left: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+}
+.Content-NavBar-icons svg{
+  font-size: 20px;
+  cursor: pointer;
+  color:rgb(172, 172, 172)
+}
+.roomsList-main{
+  background-color: rgb(246, 245, 245);
+  height: 100%;
+  border: 1px solid rgb(231, 228, 228);
+}
 .roomsList-container{
-  width: 800px;
-  margin: 0 100px;
-  /* position: relative; */
+  margin: 0 auto;
+  padding: 1.5rem 0;
+  max-width: 1200px;
 }
 .rooms-table {
   width: 100%;
   border-collapse: collapse;
-  
 }
 
 .rooms-table th, .rooms-table td {
@@ -56,12 +122,16 @@
   border: none; 
 }
 tbody{
-  background-color: #f2f2f2;
+  background-color: #fefefe;
+  border: 1px solid rgb(215, 215, 215);
 }
 .rooms-table th {
-  background-color: #4CAF50;
-  color: #fefefe;
-  border: none; 
+  background-color: #eaeaea;
+  color:black;
+  border: none;
+}
+.rooms-table{
+  border: 1px solid rgb(231, 228, 228)
 }
 
 .room-container img {
@@ -234,6 +304,7 @@ tbody{
 .form-actions button:hover {
   opacity: 0.8;
 }
+
 .btn-newroom{
     padding: 10px 20px;
     border: none;
@@ -244,7 +315,7 @@ tbody{
     text-align: center;
     color: #fff;
     background-color: #45a049;
-    
+    margin-top: .5rem;
 }
 .form-actions button.disabled-button {
   background-color: #cccccc; 
@@ -259,4 +330,73 @@ tbody{
   margin:2px;
   color: red;
   text-align: left;
+}
+.main-content-data{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+/* SORTROOMS */
+.sort-rooms-container {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.header {
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+
+  align-items: center;
+}
+
+.filter-buttons button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.filter-buttons button:hover {
+  background-color: #45a049;
+}
+
+.sort-options {
+  display: flex;
+  justify-content: center;
+}
+
+.sort-options select {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 16px;
+}
+/* SETTINGS */
+
+.settings-container{
+  background-color: red;
+  width: 850px;
+  height: 300px;
+  margin: 0 auto;
+}
+.settings-inputs{
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  width: 400px;
+}
+.settings-inputs p{
+  width: 50%;
 }
