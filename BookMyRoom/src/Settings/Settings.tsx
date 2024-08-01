@@ -15,10 +15,7 @@ const Settings = () => {
               <p>Maximum guests/booking</p> 
               <input type="text"/>
             </div>
-            <div className="settings-inputs">
-              <p>Breakfast price</p> 
-              <input type="text"/>
-            </div>
+            
          </div>
        </div>
     )
