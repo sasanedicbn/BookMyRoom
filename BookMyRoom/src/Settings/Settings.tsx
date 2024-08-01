@@ -1,6 +1,7 @@
 const Settings = () => {
     return(
-       <div className="settings-container">
+       <div className="main-settings">
+        <div className="settings-container">
          <h2>Update hotel settings</h2>
          <div>
             <div className="settings-inputs">
@@ -19,6 +20,7 @@ const Settings = () => {
               <p>Breakfast price</p> 
               <input type="text"/>
             </div>
+          </div>
          </div>
        </div>
     )

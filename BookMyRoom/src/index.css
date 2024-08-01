@@ -101,14 +101,14 @@
   cursor: pointer;
   color:rgb(172, 172, 172)
 }
-.roomsList-main{
+.roomsList-main, .main-settings{
   background-color: rgb(246, 245, 245);
   height: 100%;
   border: 1px solid rgb(231, 228, 228);
 }
 .roomsList-container{
   margin: 0 auto;
-  padding: 1.5rem 0;
+  padding: 1rem 10rem;
   max-width: 1200px;
 }
 .rooms-table {
@@ -423,16 +423,14 @@ tbody{
 }
 
 .settings-container {
-  max-width: 600px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: #f9f9f9;
+  background-color: white;
   border-radius: .5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .settings-container h2 {
-  text-align: center;
   margin-bottom: 2rem;
   color: #333;
 }
