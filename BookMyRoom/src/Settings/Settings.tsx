@@ -1,10 +1,10 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateSetting } from './settingsSlice';
+import { updateSetting } from '../store/settingsSlice';
 
 const Settings = () => {
   const dispatch = useDispatch();
   const { minNight, maxNight, maxGuest, breakfastPrice } = useSelector((state) => state.settings);
+
 
   const handleChange = (name, value) => {
     dispatch(updateSetting({ name, value: Number(value) }));
