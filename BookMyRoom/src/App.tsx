@@ -3,16 +3,15 @@ import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import Content from './Home/Content';
 import { store } from './store/store';
 import { Provider } from 'react-redux';
-import { FaBed, FaHotel, FaCalendarCheck, FaUsers, FaCog } from 'react-icons/fa';
-import { Link, Outlet } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Import the styles for Toastify
 import Settings from './Settings/Settings';
 import SideBar from './sharedLayout/SideBar';
-import ContentNavBar from './Home/ContentNavBar';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <SideBar/>,
+    element: <SideBar />,
     children: [
       {
         path: '/',
@@ -21,9 +20,10 @@ const router = createBrowserRouter([
       {
         path: '/rooms',
         element: <Content />,
-      },{
+      },
+      {
         path: 'settings',
-        element:<Settings/>
+        element: <Settings />,
       }
     ],
   },
@@ -33,9 +33,20 @@ function App() {
   return (
     <Provider store={store}>
       <RouterProvider router={router} />
+      <ToastContainer 
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </Provider>
   );
 }
 
 export default App;
-

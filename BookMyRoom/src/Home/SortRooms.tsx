@@ -1,38 +1,43 @@
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { supabase } from '../superbase/superbaseClient';
 import { getRooms } from '../store/roomsSlice';
-import { fetchDiscountedRooms } from '../api/fetchDiscountedRooms';
-import { fetchNonDiscountedRooms } from '../api/fetchNonDiscountRooms';
-import { fetchSortedRooms } from '../api/fetchSortedRooms';
-import { fetchRooms as fetchAllRooms  } from '../api/fetchRooms';
 
 const SortRooms = () => {
   const dispatch = useDispatch();
+  const [filter, setFilter] = useState('all');
+  const [sort, setSort] = useState('created_at');
 
-  const handleFilter = async (filterType) => {
-    let filteredRooms;
-    if (filterType === 'all') {
-      filteredRooms = await fetchAllRooms();
-    } else if (filterType === 'discount') {
-      filteredRooms = await fetchDiscountedRooms();
-    } else {
-      filteredRooms = await fetchNonDiscountedRooms();
-    }
-    dispatch(getRooms(filteredRooms));
-  };
+  useEffect(() => {
+    const fetchRooms = async () => {
+      let query = supabase.from('Bedrooms').select('*');
 
-  // agregacija podataka
+      if (filter === 'no-discount') {
+        query = query.eq('discount', 0);
+      } else if (filter === 'discount') {
+        query = query.gt('discount', 0);
+      }
 
-  const handleSort = async (sortType) => {
-    console.log('handleSortValue', sortType)
-    const sortMapping = {
-      'name-asc': { column: 'name', ascending: true },
-      'name-desc': { column: 'name', ascending: false },
-      'price-lowest': { column: 'regularPrice', ascending: true },
-      'price-highest': { column: 'regularPrice', ascending: false }
+      const sortMapping = {
+        'name-asc': { column: 'name', ascending: true },
+        'name-desc': { column: 'name', ascending: false },
+        'price-lowest': { column: 'regularPrice', ascending: true },
+        'price-highest': { column: 'regularPrice', ascending: false },
+        'created_at': { column: 'created_at', ascending: true } // Default sort
+      };
+
+      const { data, error } = await query.order(sortMapping[sort].column, { ascending: sortMapping[sort].ascending });
+
+      if (error) {
+        console.log('Error fetching rooms:', error);
+        return;
+      }
+
+      dispatch(getRooms(data));
     };
-    const sortedRooms = await fetchSortedRooms(sortMapping[sortType]);
-    dispatch(getRooms(sortedRooms));
-  };
+
+    fetchRooms();
+  }, [filter, sort, dispatch]);
 
   return (
     <div className="sort-rooms-container">
@@ -41,16 +46,17 @@ const SortRooms = () => {
       </div>
       <div className="controls">
         <div className="filter-buttons">
-          <button onClick={() => handleFilter('all')}>All</button>
-          <button onClick={() => handleFilter('no-discount')}>No discount</button>
-          <button onClick={() => handleFilter('discount')}>With discount</button>
+          <button onClick={() => setFilter('all')}>All</button>
+          <button onClick={() => setFilter('no-discount')}>No discount</button>
+          <button onClick={() => setFilter('discount')}>With discount</button>
         </div>
         <div className="sort-options">
-          <select onChange={(e) => handleSort(e.target.value)}>
+          <select onChange={(e) => setSort(e.target.value)}>
             <option value="name-asc">Sort by name (a-z)</option>
             <option value="name-desc">Sort by name (z-a)</option>
             <option value="price-lowest">Price (lowest)</option>
             <option value="price-highest">Price (highest)</option>
+            <option value="created_at">Default sort</option>
           </select>
         </div>
       </div>

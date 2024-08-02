@@ -1,14 +1,18 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import { updateSetting } from '../store/settingsSlice';
 
 const Settings = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const { minNight, maxNight, maxGuest, breakfastPrice } = useSelector((state) => state.settings);
-
 
   const handleChange = (name, value) => {
     dispatch(updateSetting({ name, value: Number(value) }));
+    toast.success('Settings updated successfully');
+
   };
+
+
 
   return (
     <div className="main-settings">

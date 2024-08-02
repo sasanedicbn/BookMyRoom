@@ -19,12 +19,6 @@ export const roomsSlice = createSlice({
       state.rooms = action.payload;
       // state.filteredRooms = action.payload; 
     },
-    // setFilteredRooms: (state, action) => {
-    //   state.filteredRooms = action.payload;
-    // },
-    // setSortedRooms: (state, action) => {
-    //   state.filteredRooms = action.payload;
-    // },
     setCurrentRoom: (state, action) => {
       state.currentRoom = action.payload;
     },
