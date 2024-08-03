@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { supabase } from '../superbase/superbaseClient';
 import { getRooms } from '../store/roomsSlice';
 
 const SortRooms = () => {
   const dispatch = useDispatch();
   const [filter, setFilter] = useState('all');
-  const [sort, setSort] = useState('created_at');
+  const [sort, setSort] = useState('name-asc');
 
   useEffect(() => {
     const fetchRooms = async () => {
@@ -23,7 +23,7 @@ const SortRooms = () => {
         'name-desc': { column: 'name', ascending: false },
         'price-lowest': { column: 'regularPrice', ascending: true },
         'price-highest': { column: 'regularPrice', ascending: false },
-        'created_at': { column: 'created_at', ascending: true } // Default sort
+        'created_at': { column: 'created_at', ascending: true }
       };
 
       const { data, error } = await query.order(sortMapping[sort].column, { ascending: sortMapping[sort].ascending });
@@ -56,7 +56,6 @@ const SortRooms = () => {
             <option value="name-desc">Sort by name (z-a)</option>
             <option value="price-lowest">Price (lowest)</option>
             <option value="price-highest">Price (highest)</option>
-            <option value="created_at">Default sort</option>
           </select>
         </div>
       </div>
