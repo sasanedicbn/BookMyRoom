@@ -1,14 +1,21 @@
 import { toast } from 'react-toastify';
 import { fetchSettings } from '../api/fetchSettings';
+import { useEffect, useState } from 'react';
 
 const Settings = () => {
+  const [settingsData, setSettingsData] = useState({})
 
-  const handleChange = async () => {
-    const settings = await  fetchSettings()
-    console.log(settings)
-    toast.success('Settings updated successfully');
+  useEffect(() => {
+    const handleChange = async () => {
+      const settings = await  fetchSettings()
+      setSettingsData(settings)
+      console.log(settings)
+      toast.success('Settings updated successfully');
+    };
 
-  };
+    handleChange()
+  }, [])
+  
 
   return (
     <div className="main-settings">

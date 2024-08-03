@@ -10,8 +10,5 @@ export const fetchSettings = async () => {
         console.log('Error fetching settings:', error);
         return 
     }
-    
-  
-     console.log(Settings)
     return Settings;
 }
