@@ -1,18 +1,14 @@
-import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { updateSetting } from '../store/settingsSlice';
+import { fetchSettings } from '../api/fetchSettings';
 
 const Settings = () => {
-  const dispatch = useDispatch()
-  const { minNight, maxNight, maxGuest, breakfastPrice } = useSelector((state) => state.settings);
 
-  const handleChange = (name, value) => {
-    dispatch(updateSetting({ name, value: Number(value) }));
+  const handleChange = async () => {
+    const settings = await  fetchSettings()
+    console.log(settings)
     toast.success('Settings updated successfully');
 
   };
-
-
 
   return (
     <div className="main-settings">
@@ -23,34 +19,31 @@ const Settings = () => {
             <p>Minimum nights/booking</p>
             <input
               type="text"
-              value={minNight}
-              onChange={(e) => handleChange('minNight', e.target.value)}
+              // value={minNight}
             />
           </div>
           <div className="settings-inputs">
             <p>Maximum nights/booking</p>
             <input
               type="text"
-              value={maxNight}
-              onChange={(e) => handleChange('maxNight', e.target.value)}
+              // value={maxNight}
             />
           </div>
           <div className="settings-inputs">
             <p>Maximum guests/booking</p>
             <input
               type="text"
-              value={maxGuest}
-              onChange={(e) => handleChange('maxGuest', e.target.value)}
+              // value={maxGuest}
             />
           </div>
           <div className="settings-inputs">
             <p>Breakfast price</p>
             <input
               type="text"
-              value={breakfastPrice}
-              onChange={(e) => handleChange('breakfastPrice', e.target.value)}
+              // value={breakfastPrice}
             />
           </div>
+          <button onClick={handleChange}>Update changes</button>
         </div>
       </div>
     </div>
