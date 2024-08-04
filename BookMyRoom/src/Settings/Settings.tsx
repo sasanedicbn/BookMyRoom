@@ -2,6 +2,7 @@ import { toast } from 'react-toastify';
 import { fetchSettings } from '../api/fetchSettings';
 import { supabase } from "../superbase/superbaseClient";
 import { useEffect, useState } from 'react';
+import SettingsForm from './SettingsForm';
 
 const Settings = () => {
   const [settingsData, setSettingsData] = useState({
@@ -24,7 +25,6 @@ const Settings = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log('name',name,'value',value)
     setSettingsData((prevSettings) => ({
       ...prevSettings,
       [name]: value,
@@ -32,10 +32,11 @@ const Settings = () => {
   };
 
   const handleUpdate = async () => {
-    const {...updatedData } = settingsData;
+    const { id, ...updatedData } = settingsData;
     const { error } = await supabase
       .from('Settings')
       .update(updatedData)
+      .eq('id', id);
 
     if (error) {
       toast.error('Error updating settings');
@@ -45,50 +46,11 @@ const Settings = () => {
   };
 
   return (
-    <div className="main-settings">
-      <div className="settings-container">
-        <h2>Update hotel settings</h2>
-        <div>
-          <div className="settings-inputs">
-            <p>Minimum nights/booking</p>
-            <input
-              type="text"
-              name="minNight"
-              value={settingsData.minNight}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="settings-inputs">
-            <p>Maximum nights/booking</p>
-            <input
-              type="text"
-              name="maxNight"
-              value={settingsData.maxNight}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="settings-inputs">
-            <p>Maximum guests/booking</p>
-            <input
-              type="text"
-              name="maxGuest"
-              value={settingsData.maxGuest}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="settings-inputs">
-            <p>Breakfast price</p>
-            <input
-              type="text"
-              name="breakfast"
-              value={settingsData.breakfast}
-              onChange={handleChange}
-            />
-          </div>
-          <button className='btn-update-settings' onClick={handleUpdate}>Update changes</button>
-        </div>
-      </div>
-    </div>
+    <SettingsForm 
+      settingsData={settingsData}
+      handleChange={handleChange}
+      handleUpdate={handleUpdate}
+    />
   );
 };
 
