@@ -164,7 +164,7 @@ tbody{
   color: rgb(58, 58, 58);
 }
 
-.btn-show-more {
+.btn-show-more, .btn-update-settings {
   background-color: #4CAF50;
   border: none;
   color: white;
@@ -178,6 +178,7 @@ tbody{
   transition: background-color 0.3s ease;
   align-self: flex-end; 
 }
+
 
 .btn-show-more:hover {
   background-color: #45a049;
@@ -389,7 +390,7 @@ tbody{
   padding: .75rem;
   background-color: rgb(250, 252, 252);
   width: 850px;
-  height: 300px;
+  height: 325px;
   margin: 0 auto;
 }
 .settings-inputs{

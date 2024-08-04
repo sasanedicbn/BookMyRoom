@@ -16,7 +16,6 @@ const Settings = () => {
       const settings = await fetchSettings();
       if (settings && settings.length > 0) {
         setSettingsData(settings[0]);
-        console.log('settingsData',settingsData)
       }
     };
 
@@ -86,7 +85,7 @@ const Settings = () => {
               onChange={handleChange}
             />
           </div>
-          <button onClick={handleUpdate}>Update changes</button>
+          <button className='btn-update-settings' onClick={handleUpdate}>Update changes</button>
         </div>
       </div>
     </div>
