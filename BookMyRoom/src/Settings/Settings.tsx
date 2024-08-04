@@ -1,21 +1,49 @@
 import { toast } from 'react-toastify';
 import { fetchSettings } from '../api/fetchSettings';
+import { supabase } from "../superbase/superbaseClient";
 import { useEffect, useState } from 'react';
 
 const Settings = () => {
-  const [settingsData, setSettingsData] = useState({})
+  const [settingsData, setSettingsData] = useState({
+    minNight: '',
+    maxNight: '',
+    maxGuest: '',
+    breakfast: ''
+  });
 
   useEffect(() => {
-    const handleChange = async () => {
-      const settings = await  fetchSettings()
-      setSettingsData(settings)
-      console.log(settings)
-      toast.success('Settings updated successfully');
+    const loadSettings = async () => {
+      const settings = await fetchSettings();
+      if (settings && settings.length > 0) {
+        setSettingsData(settings[0]);
+        console.log('settingsData',settingsData)
+      }
     };
 
-    handleChange()
-  }, [])
-  
+    loadSettings();
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log('name',name,'value',value)
+    setSettingsData((prevSettings) => ({
+      ...prevSettings,
+      [name]: value,
+    }));
+  };
+
+  const handleUpdate = async () => {
+    const {...updatedData } = settingsData;
+    const { error } = await supabase
+      .from('Settings')
+      .update(updatedData)
+
+    if (error) {
+      toast.error('Error updating settings');
+    } else {
+      toast.success('Settings updated successfully');
+    }
+  };
 
   return (
     <div className="main-settings">
@@ -26,31 +54,39 @@ const Settings = () => {
             <p>Minimum nights/booking</p>
             <input
               type="text"
-              // value={minNight}
+              name="minNight"
+              value={settingsData.minNight}
+              onChange={handleChange}
             />
           </div>
           <div className="settings-inputs">
             <p>Maximum nights/booking</p>
             <input
               type="text"
-              // value={maxNight}
+              name="maxNight"
+              value={settingsData.maxNight}
+              onChange={handleChange}
             />
           </div>
           <div className="settings-inputs">
             <p>Maximum guests/booking</p>
             <input
               type="text"
-              // value={maxGuest}
+              name="maxGuest"
+              value={settingsData.maxGuest}
+              onChange={handleChange}
             />
           </div>
           <div className="settings-inputs">
             <p>Breakfast price</p>
             <input
               type="text"
-              // value={breakfastPrice}
+              name="breakfast"
+              value={settingsData.breakfast}
+              onChange={handleChange}
             />
           </div>
-          <button onClick={handleChange}>Update changes</button>
+          <button onClick={handleUpdate}>Update changes</button>
         </div>
       </div>
     </div>
