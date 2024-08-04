@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Import the styles for Toastify
 import Settings from './Settings/Settings';
 import SideBar from './sharedLayout/SideBar';
+import Users from './Home/Users/Users';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,9 @@ const router = createBrowserRouter([
       {
         path: 'settings',
         element: <Settings />,
+      },
+      {path: 'users',
+        element:<Users/>
       }
     ],
   },
