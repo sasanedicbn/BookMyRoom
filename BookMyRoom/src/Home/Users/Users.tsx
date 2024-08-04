@@ -22,7 +22,7 @@ const Users = () => {
             />
           </div>
           <div className="settings-inputs">
-            <p>Password (min 8 characters)</p>
+            <p>Password</p>
             <input
               type="password"
               name="password"
