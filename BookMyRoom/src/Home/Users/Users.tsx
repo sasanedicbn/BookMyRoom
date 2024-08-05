@@ -34,14 +34,6 @@ const Users = () => {
       if(error){
         console.log('error',error)
       }
-    //   if (error) throw error;
-
-    //   const { error: profileError } = await supabase
-    //     .from('profiles')
-    //     .insert([{ email, password }]);
-
-    //   if (profileError) throw profileError;
-
       toast.success("User created successfully");
 
     } catch (error) {
