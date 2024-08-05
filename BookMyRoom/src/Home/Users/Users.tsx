@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { supabase } from '../../superbase/superbaseClient';
 
 const Users = () => {
   const [userData, setUserData] = useState({
@@ -16,8 +18,36 @@ const Users = () => {
     }));
   };
 
-  const handleUsersData = () => {
-    console.log('User Data:', userData);
+  const handleUsersData = async () => {
+    if (userData.password !== userData.repeatPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
+    const { email, password } = userData;
+
+    try {
+      const {  error } = await supabase.auth.signUp({
+        email,
+        password,
+      });
+      if(error){
+        console.log('error',error)
+      }
+    //   if (error) throw error;
+
+    //   const { error: profileError } = await supabase
+    //     .from('profiles')
+    //     .insert([{ email, password }]);
+
+    //   if (profileError) throw profileError;
+
+      toast.success("User created successfully");
+
+    } catch (error) {
+      console.error("Error creating user:", error);
+      toast.error(error.message);
+    }
   };
 
   return (
