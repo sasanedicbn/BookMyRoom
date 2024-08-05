@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css'; // Import the styles for Toastif
 import Settings from './Settings/Settings';
 import SideBar from './sharedLayout/SideBar';
 import Users from './Home/Users/Users';
+import Login from './Login/Login';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path:'/login',
+    element: <Login/>,
+  }
 ]);
 
 function App() {
