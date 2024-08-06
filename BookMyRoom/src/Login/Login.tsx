@@ -17,7 +17,12 @@ const Login = () => {
 
     try {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
+      
+      const { data: { user } } = await supabase.auth.getUser()
+
+
       if (error) throw error;
+      console.log('current user', user)
       
       toast.success('Logged in successfully');
       navigate('/rooms')
