@@ -1,7 +1,10 @@
+import Logo from "../Home/Logo";
+
 const Login = () => {
     return (
       <div className="login-container">
         <div className="login-form">
+          <Logo/>
           <h2>Login to your account</h2>
           <div className="login-inputs">
             <label htmlFor="email">Email address</label>

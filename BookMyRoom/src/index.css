@@ -19,7 +19,7 @@
 }
 .SideBar-ul {
   padding: 0;
-  margin: 0 0.45rem;
+  margin: 2.75rem 0.45rem;
 }
 .SideBar-ul li {
   list-style-type: none;
@@ -48,8 +48,10 @@
 .SideBar-title{
   text-align: center;
   font-size: 22px;
-  margin-bottom: 3.4rem;
-  color:rgb(75, 75, 75)
+  margin-bottom: .5rem;
+  color:rgb(49, 49, 49);
+  font-weight: bold;
+  
 }
 .SideBar-ul li a {
   text-align: left;
@@ -471,19 +473,23 @@ tbody{
 }
 
 .login-form {
+  margin-bottom: 4.5rem;
   background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 400px;
-  height: 300px;
+  height: 400px;
+  border: 1px solid rgb(235, 235, 235);
 }
 
 .login-form h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #333333;
+  margin-bottom: 2.75rem;
+  margin-top: .5rem;
+  font-size: 16px;
+  color: #3a3a3a;
   text-align: center;
+  font-weight: 400;
 }
 
 .login-inputs {
