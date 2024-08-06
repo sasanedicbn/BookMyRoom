@@ -1,13 +1,13 @@
-import { FaBed, FaCalendarCheck, FaCog, FaHotel, FaUsers } from "react-icons/fa";
+import { FaCalendarCheck, FaCog, FaHotel, FaUsers } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
 import ContentNavBar from "../Home/ContentNavBar";
+import Logo from "../Home/Logo";
 
 const SideBar = () => {
   return (
     <div className="main-content">
       <div className="SideBar-container">
-        <span className="SideBar-icon"><FaBed /></span>
-        <p className="SideBar-title">BOOK MY ROOM</p>
+       <Logo/>
         <ul className="SideBar-ul">
           <li><FaHotel /><Link to="/rooms">Rooms</Link></li>
           <li><FaCalendarCheck /><Link to="/booking">Booking</Link></li>
