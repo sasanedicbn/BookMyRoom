@@ -27,6 +27,6 @@ export const roomsSlice = createSlice({
   },
 });
 
-export const { getRooms,  setCurrentRoom } = roomsSlice.actions;
+export const { getRooms,  setCurrentRoom, getUser} = roomsSlice.actions;
 
 export default roomsSlice.reducer;

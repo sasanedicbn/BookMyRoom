@@ -3,9 +3,12 @@ import { toast } from 'react-toastify';
 import Logo from '../Home/Logo';
 import { supabase } from '../superbase/superbaseClient';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getUser } from '../store/roomsSlice';
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -31,8 +34,7 @@ const Login = () => {
 
       if (profileError) throw profileError;
 
-      console.log('User profile', profile);
-
+      dispatch(getUser(profile.fullName))
       toast.success(`Logged in successfully. Welcome ${profile.fullName}`);
       navigate('/rooms');
     } catch (error) {
