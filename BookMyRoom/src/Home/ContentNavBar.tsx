@@ -1,8 +1,10 @@
 import {FaMoon, FaSignOutAlt, FaUser } from "react-icons/fa"
+import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 const ContentNavBar = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const logOut = () => {
         navigate('/login')
     }
