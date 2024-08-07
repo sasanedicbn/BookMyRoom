@@ -24,16 +24,21 @@ const Users = () => {
       return;
     }
 
-    const { email, password } = userData;
+    const { email, password, fullName } = userData;
 
     try {
       const {  error } = await supabase.auth.signUp({
         email,
         password,
       });
-      if(error){
-        console.log('error',error)
+      const { error: profileError } = await supabase
+        .from('Profiles')
+        .insert([{  fullName ,email, password }]);
+
+      if(error && profileError){
+        console.log('error',error, profileError)
       }
+      
       toast.success("User created successfully");
 
     } catch (error) {

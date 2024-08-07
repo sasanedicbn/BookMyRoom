@@ -5,7 +5,7 @@ import { supabase } from '../superbase/superbaseClient';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -17,15 +17,24 @@ const Login = () => {
 
     try {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
-      
-      const { data: { user } } = await supabase.auth.getUser()
-
-
       if (error) throw error;
-      console.log('current user', user)
-      
-      toast.success('Logged in successfully');
-      navigate('/rooms')
+
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) throw new Error('User not found');
+
+      const { data: profile, error: profileError } = await supabase
+        .from('Profiles')
+        .select('fullName')
+        .single();
+
+        console.log('profile', profile)
+
+      if (profileError) throw profileError;
+
+      console.log('User profile', profile);
+
+      toast.success(`Logged in successfully. Welcome ${profile.fullName}`);
+      navigate('/rooms');
     } catch (error) {
       console.error('Error logging in:', error);
       toast.error(error.message);
@@ -35,7 +44,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-form">
-        <Logo/>
+        <Logo />
         <h2>Login to your account</h2>
         <div className="login-inputs">
           <label htmlFor="email">Email address</label>
