@@ -4,7 +4,7 @@ export const roomsSlice = createSlice({
   name: 'rooms',
   initialState: {
     rooms: [],
-    // filteredRooms: [],
+    currentUser:null,
     currentRoom: {
       name: '',
       maxCapacity: '',
@@ -17,11 +17,13 @@ export const roomsSlice = createSlice({
   reducers: {
     getRooms: (state, action) => {
       state.rooms = action.payload;
-      // state.filteredRooms = action.payload; 
     },
     setCurrentRoom: (state, action) => {
       state.currentRoom = action.payload;
     },
+    getUser(state, action){
+      state.currentUser = action.payload
+    }
   },
 });
 
