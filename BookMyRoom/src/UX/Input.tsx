@@ -1,4 +1,4 @@
-const Input = ({className,labelText,text,name,value,onChange}) => {
+const Input = ({className,labelText,text,name,value,onChange,inputClassName}) => {
     return(
       <div className={className}>
         <label>{labelText}</label>
@@ -6,7 +6,8 @@ const Input = ({className,labelText,text,name,value,onChange}) => {
          type={text}
          name={name}
          value={value}
-         onChange={onChange}/>
+         onChange={onChange}
+         className={inputClassName}/>
       </div>
     )
 }
