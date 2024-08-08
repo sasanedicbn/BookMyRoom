@@ -525,3 +525,7 @@ tbody{
 .btn-login:hover {
   background-color: #0056b3;
 }
+
+.active{
+  background-color: rgb(49, 49, 218);
+}

@@ -56,7 +56,7 @@ const SortRooms = () => {
           {filterButtons.map((btn, index) => (
             <Button
               key={index}
-              className={`filter-btn ${filter === btn.filterValue ? 'active' : ''}`}
+              className={`filter-btn`}
               onClick={() => setFilter(btn.filterValue)}
             >
               {btn.label}
