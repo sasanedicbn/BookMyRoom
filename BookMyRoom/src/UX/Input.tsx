@@ -12,12 +12,3 @@ const Input = ({className,labelText,text,name,value,onChange}) => {
 }
  export default Input;
 
-// {/* <div className="settings-inputs">
-// <p>Minimum nights/booking</p>
-// <input
-//   type="text"
-//   name="minNight"
-//   value={settingsData.minNight}
-//   onChange={handleChange}
-// />
-// </div> */}
