@@ -3,6 +3,7 @@ import { fetchSettings } from '../api/fetchSettings';
 import { supabase } from "../superbase/superbaseClient";
 import { useEffect, useState } from 'react';
 import Input from '../UX/Input';
+import Button from '../UX/Button';
 
 const Settings = () => {
   const [settingsData, setSettingsData] = useState({
@@ -43,7 +44,7 @@ const Settings = () => {
       toast.success('Settings updated successfully');
     }
   };
-  
+
    const inputFields = [
     { labelText: 'Minimum nights/booking', name: 'minNight', value: settingsData.minNight },
     { labelText: 'Maximum nights/booking', name: 'maxNight', value: settingsData.maxNight },
@@ -68,7 +69,7 @@ const Settings = () => {
               inputClassName="user-input"
             />
           ))}
-          <button className='btn-update-settings' onClick={handleUpdate}>Update changes</button>
+          <Button className='btn-update-settings' onClick={handleUpdate}>Update changes</Button>
         </div>
       </div>
     </div>

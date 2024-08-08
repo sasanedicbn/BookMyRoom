@@ -6,6 +6,7 @@ import Room from "./Room";
 import TableHead from "./TableHead";
 import NewEditRoom from "./Room/newEditRoom";
 import SortRooms from "./SortRooms";
+import Button from "../UX/Button";
 
 const RoomsList = () => {
   const dispatch = useDispatch();
@@ -40,9 +41,9 @@ const RoomsList = () => {
           ))}
         </tbody>
       </table>
-      <button className="btn-newroom" onClick={handleAddNewRoom}>
+      <Button className="btn-newroom" onClick={handleAddNewRoom}>
         Add new room
-      </button>
+      </Button>
       {addNewRoom && <NewEditRoom setOpenEditModal={setAddNewRoom} closeEditNewRoom={handleAddNewRoom} closeMenuModal={handleAddNewRoom} />}
     </div>
     </div>

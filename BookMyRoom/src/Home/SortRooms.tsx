@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { supabase } from '../superbase/superbaseClient';
 import { getRooms } from '../store/roomsSlice';
+import Button from '../UX/Button';
 
 const SortRooms = () => {
   const dispatch = useDispatch();
@@ -39,6 +40,12 @@ const SortRooms = () => {
     fetchRooms();
   }, [filter, sort, dispatch]);
 
+  const filterButtons = [
+    { label: 'All', filterValue: 'all' },
+    { label: 'No discount', filterValue: 'no-discount' },
+    { label: 'With discount', filterValue: 'discount' },
+  ];
+
   return (
     <div className="sort-rooms-container">
       <div className="header">
@@ -46,9 +53,15 @@ const SortRooms = () => {
       </div>
       <div className="controls">
         <div className="filter-buttons">
-          <button onClick={() => setFilter('all')}>All</button>
-          <button onClick={() => setFilter('no-discount')}>No discount</button>
-          <button onClick={() => setFilter('discount')}>With discount</button>
+          {filterButtons.map((btn, index) => (
+            <Button
+              key={index}
+              className={`filter-btn ${filter === btn.filterValue ? 'active' : ''}`}
+              onClick={() => setFilter(btn.filterValue)}
+            >
+              {btn.label}
+            </Button>
+          ))}
         </div>
         <div className="sort-options">
           <select onChange={(e) => setSort(e.target.value)}>

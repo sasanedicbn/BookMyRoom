@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { supabase } from '../../superbase/superbaseClient';
 import Input from '../../UX/Input';
+import Button from '../../UX/Button';
 
 const Users = () => {
   const [userData, setUserData] = useState({
@@ -75,8 +76,8 @@ const Users = () => {
             />
           ))}
           <div className="button-group">
-            <button className='btn-cancel'>Cancel</button>
-            <button className='btn-create-user' onClick={handleUsersData}>Create new user</button>
+            <Button className="btn-cancel" onClick={() => console.log('Clicked')}>Cancel</Button>
+            <Button className='btn-create-user' onClick={handleUsersData}>Create new user</Button>
           </div>
         </div>
       </div>
