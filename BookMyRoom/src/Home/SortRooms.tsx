@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { supabase } from '../superbase/superbaseClient';
 import { getRooms } from '../store/roomsSlice';
 import Button from '../UX/Button';
+import Select from '../UX/Select';
 
 const SortRooms = () => {
   const dispatch = useDispatch();
@@ -45,6 +46,12 @@ const SortRooms = () => {
     { label: 'No discount', filterValue: 'no-discount' },
     { label: 'With discount', filterValue: 'discount' },
   ];
+  const sortOptions = [
+    { label: 'Sort by name (a-z)', value: 'name-asc' },
+    { label: 'Sort by name (z-a)', value: 'name-desc' },
+    { label: 'Price (lowest)', value: 'price-lowest' },
+    { label: 'Price (highest)', value: 'price-highest' },
+  ];
 
   return (
     <div className="sort-rooms-container">
@@ -64,12 +71,11 @@ const SortRooms = () => {
           ))}
         </div>
         <div className="sort-options">
-          <select onChange={(e) => setSort(e.target.value)}>
-            <option value="name-asc">Sort by name (a-z)</option>
-            <option value="name-desc">Sort by name (z-a)</option>
-            <option value="price-lowest">Price (lowest)</option>
-            <option value="price-highest">Price (highest)</option>
-          </select>
+        <Select
+            options={sortOptions}
+            onChange={(e) => setSort(e.target.value)}
+            className="sort-select"
+          />
         </div>
       </div>
     </div>
