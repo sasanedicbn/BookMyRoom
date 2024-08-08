@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { supabase } from '../../superbase/superbaseClient';
-import Input from './Input';
+import Input from '../../UX/Input';
 
 const Users = () => {
   const [userData, setUserData] = useState({
