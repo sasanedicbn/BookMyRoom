@@ -4,7 +4,7 @@ export const roomsSlice = createSlice({
   name: 'rooms',
   initialState: {
     rooms: [],
-    currentUser:null,
+    currentUser:{},
     currentRoom: {
       name: '',
       maxCapacity: '',
