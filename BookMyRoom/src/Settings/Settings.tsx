@@ -50,7 +50,7 @@ const Settings = () => {
         <h2>Update hotel settings</h2>
         <div>
           <div className="settings-inputs">
-            <p>Minimum nights/booking</p>
+            <label>Minimum nights/booking</label>
             <input
               type="text"
               name="minNight"
@@ -59,7 +59,7 @@ const Settings = () => {
             />
           </div>
           <div className="settings-inputs">
-            <p>Maximum nights/booking</p>
+            <label>Maximum nights/booking</label>
             <input
               type="text"
               name="maxNight"
@@ -68,7 +68,7 @@ const Settings = () => {
             />
           </div>
           <div className="settings-inputs">
-            <p>Maximum guests/booking</p>
+            <label>Maximum guests/booking</label>
             <input
               type="text"
               name="maxGuest"
@@ -77,7 +77,7 @@ const Settings = () => {
             />
           </div>
           <div className="settings-inputs">
-            <p>Breakfast price</p>
+            <label>Breakfast price</label>
             <input
               type="text"
               name="breakfast"
