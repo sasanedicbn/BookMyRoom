@@ -69,7 +69,7 @@ const Settings = () => {
               inputClassName="user-input"
             />
           ))}
-          <Button className='btn-update-settings' onClick={handleUpdate}>Update changes</Button>
+          <Button type={'success'} onClick={handleUpdate}>Update changes</Button>
         </div>
       </div>
     </div>
