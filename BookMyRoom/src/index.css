@@ -443,9 +443,7 @@ tbody{
   justify-content: space-between;
   margin-top: 20px;
 }
-
-.btn-cancel,
-.btn-create-user {
+.base {
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
@@ -453,12 +451,12 @@ tbody{
   cursor: pointer;
 }
 
-.btn-cancel {
+.danger-btn {
   background-color: #f44336;
   color: #fff;
 }
 
-.btn-create-user {
+.success-btn {
   background-color: #4caf50;
   color: #fff;
 }
