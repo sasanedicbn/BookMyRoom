@@ -20,6 +20,14 @@ const Users = () => {
     }));
   };
 
+  const cleanInputs = () => {
+    setUserData({
+        fullName: '',
+        email: '',
+        password: '',
+        repeatPassword: '',
+    })
+  }
   const handleUsersData = async () => {
     if (userData.password !== userData.repeatPassword) {
       toast.error("Passwords do not match");
@@ -76,7 +84,7 @@ const Users = () => {
             />
           ))}
           <div className="button-group">
-            <Button className="btn-cancel" onClick={() => console.log('Clicked')}>Cancel</Button>
+            <Button className="btn-cancel" onClick={cleanInputs}>Cancel</Button>
             <Button className='btn-create-user' onClick={handleUsersData}>Create new user</Button>
           </div>
         </div>
