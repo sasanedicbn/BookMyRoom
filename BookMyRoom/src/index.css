@@ -166,22 +166,6 @@ tbody{
   color: rgb(58, 58, 58);
 }
 
-/* .btn-show-more, .btn-update-settings {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  margin: 10px 2px 0 auto; 
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  align-self: flex-end; 
-} */
-
-
 .btn-show-more:hover {
   background-color: #45a049;
 }
@@ -358,21 +342,6 @@ tbody{
   align-items: center;
 }
 
-.filter-buttons button {
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 10px 20px;
-  margin: 5px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.filter-buttons button:hover {
-  background-color: #45a049;
-}
-
 .sort-options {
   display: flex;
   justify-content: center;
@@ -450,7 +419,7 @@ tbody{
   text-align: center;
   text-decoration: none;
   font-size: 16px;
-  margin: 16px 0 0 0; 
+  margin: 0 2px ; 
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s ease;
