@@ -84,8 +84,8 @@ const Users = () => {
             />
           ))}
           <div className="button-group">
-            <Button type="btn-cancel" onClick={cleanInputs}>Cancel</Button>
-            <Button type='btn-create-user' onClick={handleUsersData}>Create new user</Button>
+            <Button className="btn-cancel" onClick={cleanInputs}>Cancel</Button>
+            <Button className='btn-create-user' onClick={handleUsersData}>Create new user</Button>
           </div>
         </div>
       </div>
