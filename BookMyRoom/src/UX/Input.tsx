@@ -1,7 +1,6 @@
-const Input = ({className,labelText,text,name,value,onChange,inputClassName}) => {
+const Input = ({className,text,name,value,onChange,inputClassName}) => {
     return(
       <div className={className}>
-        <label>{labelText}</label>
         <input
          type={text}
          name={name}

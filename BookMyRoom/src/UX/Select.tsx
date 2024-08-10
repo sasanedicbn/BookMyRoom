@@ -1,6 +1,6 @@
-const Select = ({ options, onChange, className }) => {
+const Select = ({ options, onChange}) => {
     return (
-      <select onChange={onChange} className={className}>
+      <select onChange={onChange} className='sort-select'>
         {options.map((option, index) => (
           <option key={index} value={option.value}>
             {option.label}
