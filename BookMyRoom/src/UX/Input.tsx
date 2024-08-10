@@ -1,13 +1,11 @@
-const Input = ({className,text,name,value,onChange,inputClassName}) => {
+const Input = ({type,name,value,onChange,inputClassName}) => {
     return(
-      <div className={className}>
         <input
-         type={text}
+         type={type}
          name={name}
          value={value}
          onChange={onChange}
          className={inputClassName}/>
-      </div>
     )
 }
  export default Input;

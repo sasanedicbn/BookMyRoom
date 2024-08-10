@@ -3,6 +3,8 @@ import { toast } from 'react-toastify';
 import { supabase } from '../../superbase/superbaseClient';
 import Input from '../../UX/Input';
 import Button from '../../UX/Button';
+import InputWrapper from '../../UX/InputWrapper';
+import Label from '../../UX/Label';
 
 const Users = () => {
   const [userData, setUserData] = useState({
@@ -72,16 +74,17 @@ const Users = () => {
         <h2>Create New User</h2>
         <div>
           {inputFields.map((field, index) => (
+            <InputWrapper key={index}>
+            <Label>{field.labelText}</Label>
             <Input
               key={index}
-              className="settings-inputs"
-              labelText={field.labelText}
-              text={field.type}
+              type={field.type}
               name={field.name}
               value={field.value}
               onChange={handleChange}
               inputClassName="user-input"
             />
+             </InputWrapper>
           ))}
           <div className="button-group">
             <Button type={'danger'} onClick={cleanInputs}>Cancel</Button>

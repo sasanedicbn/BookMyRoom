@@ -4,6 +4,8 @@ import { supabase } from "../superbase/superbaseClient";
 import { useEffect, useState } from 'react';
 import Input from '../UX/Input';
 import Button from '../UX/Button';
+import InputWrapper from '../UX/InputWrapper';
+import Label from '../UX/Label';
 
 const Settings = () => {
   const [settingsData, setSettingsData] = useState({
@@ -16,6 +18,7 @@ const Settings = () => {
   useEffect(() => {
     const loadSettings = async () => {
       const settings = await fetchSettings();
+      console.log('settings', settings)
       if (settings && settings.length > 0) {
         setSettingsData(settings[0]);
       }
@@ -58,16 +61,18 @@ const Settings = () => {
         <h2>Update hotel settings</h2>
         <div>
           {inputFields.map((field, index) => (
+            <InputWrapper key={index}>
+              {console.log('ra',inputFields)}
+            <Label>{field.labelText}</Label>
             <Input
               key={index}
-              className="settings-inputs"
-              labelText={field.labelText}
               text="text"
               name={field.name}
               value={field.value}
               onChange={handleChange}
               inputClassName="user-input"
             />
+            </InputWrapper>
           ))}
           <Button type={'success'} onClick={handleUpdate}>Update changes</Button>
         </div>
