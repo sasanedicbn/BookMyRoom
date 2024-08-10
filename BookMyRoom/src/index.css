@@ -357,7 +357,7 @@ tbody{
 }
 /* SETTINGS */
 
-.settings-container{
+.base-container{
   padding: .75rem;
   background-color: rgb(250, 252, 252);
   width: 850px;
@@ -394,7 +394,7 @@ tbody{
   color: #333;
 }
 
-.settings-container {
+.base-container {
   margin: 2rem auto;
   padding: 2rem;
   background-color: white;

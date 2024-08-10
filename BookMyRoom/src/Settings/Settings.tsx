@@ -6,6 +6,7 @@ import Input from '../UX/Input';
 import Button from '../UX/Button';
 import InputWrapper from '../UX/InputWrapper';
 import Label from '../UX/Label';
+import ComponentWrapper from '../UX/ComponentWrapper';
 
 const Settings = () => {
   const [settingsData, setSettingsData] = useState({
@@ -57,7 +58,7 @@ const Settings = () => {
 
   return (
     <div className="main-settings">
-      <div className="settings-container">
+      <ComponentWrapper>
         <h2>Update hotel settings</h2>
         <div>
           {inputFields.map((field, index) => (
@@ -66,7 +67,7 @@ const Settings = () => {
             <Label>{field.labelText}</Label>
             <Input
               key={index}
-              text="text"
+              type="text"
               name={field.name}
               value={field.value}
               onChange={handleChange}
@@ -76,8 +77,8 @@ const Settings = () => {
           ))}
           <Button type={'success'} onClick={handleUpdate}>Update changes</Button>
         </div>
+        </ComponentWrapper>
       </div>
-    </div>
   );
 };
 
