@@ -41,7 +41,7 @@ const RoomsList = () => {
           ))}
         </tbody>
       </table>
-      <Button className="btn-newroom" onClick={handleAddNewRoom}>
+      <Button type={'success'} onClick={handleAddNewRoom}>
         Add new room
       </Button>
       {addNewRoom && <NewEditRoom setOpenEditModal={setAddNewRoom} closeEditNewRoom={handleAddNewRoom} closeMenuModal={handleAddNewRoom} />}

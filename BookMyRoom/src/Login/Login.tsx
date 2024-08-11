@@ -12,13 +12,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async () => {
-    if (!email || !password) {
-      toast.error('All fields are required');
-      return;
-    }
 
-    try {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
 

@@ -63,7 +63,6 @@ const Settings = () => {
         <div>
           {inputFields.map((field, index) => (
             <InputWrapper key={index}>
-              {console.log('ra',inputFields)}
             <Label>{field.labelText}</Label>
             <Input
               key={index}

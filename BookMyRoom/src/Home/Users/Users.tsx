@@ -5,6 +5,7 @@ import Input from '../../UX/Input';
 import Button from '../../UX/Button';
 import InputWrapper from '../../UX/InputWrapper';
 import Label from '../../UX/Label';
+import ComponentWrapper from '../../UX/ComponentWrapper';
 
 const Users = () => {
   const [userData, setUserData] = useState({
@@ -70,7 +71,7 @@ const Users = () => {
 
   return (
     <div className="main-settings">
-      <div className="settings-container">
+      <ComponentWrapper>
         <h2>Create New User</h2>
         <div>
           {inputFields.map((field, index) => (
@@ -91,7 +92,7 @@ const Users = () => {
             <Button type={'success'} onClick={handleUsersData}>Create new user</Button>
           </div>
         </div>
-      </div>
+      </ComponentWrapper>
     </div>
   );
 };
