@@ -9,6 +9,7 @@ import Settings from './Settings/Settings';
 import SideBar from './sharedLayout/SideBar';
 import Users from './Home/Users/Users';
 import Login from './Login/Login';
+import Bookings from './Home/Bookings/Bookings';
 
 const router = createBrowserRouter([
   {
@@ -27,9 +28,12 @@ const router = createBrowserRouter([
         path: 'settings',
         element: <Settings />,
       },
-      {path: 'users',
+      { path: 'users',
         element:<Users/>
-      }
+      },
+      { path: 'booking',
+        element: <Bookings/>
+      },
     ],
   },
   {
