@@ -518,7 +518,7 @@ tbody{
 }
 
 .table-body td {
-  padding: 14px 16px;
+  padding: 14px 30px;
   border-bottom: 1px solid #dddddd;
   font-size: 14px;
 }
@@ -546,4 +546,9 @@ tbody{
   background-color: rgb(223, 222, 222);
   padding: 3px 6px;
   border-radius: 10rem;
+}
+.totalPrice-table{
+  font-family:'Courier New', Courier, monospace;
+  font-weight: bold;
+  color: rgb(53, 53, 53);
 }

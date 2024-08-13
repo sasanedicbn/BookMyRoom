@@ -16,3 +16,6 @@ export const sortMapping = {
   'price-highest': { column: 'regularPrice', ascending: false },
   'created_at': { column: 'created_at', ascending: true }
 };
+export const formatNumber = (number) => {
+  return number.toString().padStart(3, '0');
+};
