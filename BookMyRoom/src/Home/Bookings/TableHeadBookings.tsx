@@ -4,10 +4,10 @@ const TableHeadBookings = () => {
             <tr>
                 <th>Cabin</th>
                 <th>Guest</th>
-                <th>Email</th>
                 <th>Dates</th>
                 <th>Status</th>
                 <th>Amount</th>
+                <th></th>
             </tr>
         </thead>
     );

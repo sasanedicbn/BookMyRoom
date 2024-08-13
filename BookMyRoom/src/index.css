@@ -514,9 +514,36 @@ tbody{
   background-color: #f4f4f4;
   padding: 12px 15px;
   border-bottom: 1px solid #dddddd;
+  font-size: 16px;
 }
 
 .table-body td {
-  padding: 12px 15px;
+  padding: 14px 16px;
   border-bottom: 1px solid #dddddd;
+  font-size: 14px;
+}
+.table-body-guest{
+  display: flex;
+  flex-direction: column;
+}
+.table-body-guest span{
+  color: #696969;
+  margin-top: .2rem;
+}
+.checked-in {
+  background-color: rgb(190, 247, 190);
+  padding: 3px 6px;
+  border-radius: 10rem;
+}
+
+.unconfirmed {
+  background-color: rgb(197, 229, 240); 
+  padding: 3px 6px;
+  border-radius: 10rem;
+}
+
+.checked-out {
+  background-color: rgb(223, 222, 222);
+  padding: 3px 6px;
+  border-radius: 10rem;
 }

@@ -4,7 +4,7 @@ import Content from './Home/Content';
 import { store } from './store/store';
 import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // Import the styles for Toastify
+import 'react-toastify/dist/ReactToastify.css'; 
 import Settings from './Settings/Settings';
 import SideBar from './sharedLayout/SideBar';
 import Users from './Home/Users/Users';
