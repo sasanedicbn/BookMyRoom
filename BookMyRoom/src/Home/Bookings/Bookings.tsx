@@ -10,8 +10,8 @@ const Bookings = () => {
         let { data: bookings, error } = await supabase
             .from('Bookings')
             .select(`*,
-                Guests (name, email),
-                Cabins (cabinNumber)
+                Bedrooms (id),
+                Guests (fullName, email)
             `);
         if (!error) {
             setBookings(bookings);
@@ -25,10 +25,9 @@ const Bookings = () => {
     }, []);
 
     return (
-        <ComponentWrapper>
-            <h2>BOOKINGS</h2>
+        <div>
             <BookingsTable bookings={bookings} />
-        </ComponentWrapper>
+        </div>
     );
 }
 

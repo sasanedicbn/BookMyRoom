@@ -71,7 +71,7 @@ const Users = () => {
 
   return (
     <div className="main-settings">
-      <ComponentWrapper>
+      <ComponentWrapper type={'componentWrapper'}>
         <h2>Create New User</h2>
         <div>
           {inputFields.map((field, index) => (

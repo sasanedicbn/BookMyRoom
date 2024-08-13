@@ -1,7 +1,12 @@
-const ComponentWrapper = ({children}) => {
+const ComponentWrapper = ({type, children}) => {
+
+    const wrapper = {
+        componentWrapper: 'base-container',
+        tableWrapper: 'table-wrapper'
+    }
    
     return(
-        <div className={'base-container'}>
+        <div className={wrapper[type]}>
           {children}
         </div>
     )

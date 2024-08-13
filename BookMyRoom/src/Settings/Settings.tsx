@@ -58,7 +58,7 @@ const Settings = () => {
 
   return (
     <div className="main-settings">
-      <ComponentWrapper>
+      <ComponentWrapper type={'componentWrapper'}>
         <h2>Update hotel settings</h2>
         <div>
           {inputFields.map((field, index) => (
@@ -80,5 +80,5 @@ const Settings = () => {
       </div>
   );
 };
-
+// pogledaj jel ti div poreban ovaj
 export default Settings;

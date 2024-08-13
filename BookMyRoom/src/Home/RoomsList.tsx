@@ -7,6 +7,7 @@ import TableHead from "./TableHead";
 import NewEditRoom from "./Room/newEditRoom";
 import SortRooms from "./SortRooms";
 import Button from "../UX/Button";
+import ComponentWrapper from "../UX/ComponentWrapper";
 
 const RoomsList = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const RoomsList = () => {
   }, [dispatch]);
 
   return (
-    <div className="roomsList-main"> 
+    <ComponentWrapper type={'tableWrapper'}>
     <div className="roomsList-container">
       <SortRooms/>
       <table className="rooms-table">
@@ -46,7 +47,7 @@ const RoomsList = () => {
       </Button>
       {addNewRoom && <NewEditRoom setOpenEditModal={setAddNewRoom} closeEditNewRoom={handleAddNewRoom} closeMenuModal={handleAddNewRoom} />}
     </div>
-    </div>
+    </ComponentWrapper>
   );
 };
 
