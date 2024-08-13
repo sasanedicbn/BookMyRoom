@@ -25,9 +25,9 @@ const Bookings = () => {
     }, []);
 
     return (
-        <div>
+        <ComponentWrapper type={'tableWrapper'}>
             <BookingsTable bookings={bookings} />
-        </div>
+        </ComponentWrapper>
     );
 }
 
