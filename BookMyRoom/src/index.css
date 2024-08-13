@@ -501,3 +501,22 @@ tbody{
 .active{
   background-color: rgb(49, 49, 218);
 }
+/* BOOKINGS TABLE */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+.table-head tr th {
+  background-color: #f4f4f4;
+  padding: 12px 15px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.table-body td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #dddddd;
+}

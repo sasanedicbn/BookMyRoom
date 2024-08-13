@@ -1,9 +1,9 @@
-import TableHead from "../TableHead";
+import TableHeadBookings from "./TableHeadBookings";
 
 const BookingsTable = ({ bookings }) => {
     return (
         <table className="table">
-            <TableHead/>
+            <TableHeadBookings/>
             <tbody className="table-body">
                 {bookings.map((booking, index) => (
                     <tr key={index}>

@@ -1,4 +1,4 @@
-const TableHead = () => {
+const TableHeadBookings = () => {
     return(
         <thead className="table-head">
             <tr>
@@ -13,4 +13,4 @@ const TableHead = () => {
     );
 }
 
-export default TableHead;
+export default TableHeadBookings;
