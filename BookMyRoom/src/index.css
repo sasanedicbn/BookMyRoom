@@ -501,9 +501,3 @@ tbody{
 .active{
   background-color: rgb(49, 49, 218);
 }
-
-.table-head th {
-  background-color: #f4f4f4,
-  padding: 12px 15px,
-  border-bottom: 1px solid #dddddd;
-}
