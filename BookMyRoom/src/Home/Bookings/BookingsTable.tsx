@@ -1,13 +1,17 @@
 import TableHeadBookings from "./TableHeadBookings";
 
 const BookingsTable = ({ bookings }) => {
+    const formatNumber = (number) => {
+        return number.toString().padStart(3, '0');
+    };
+    
     return (
         <table className="table">
             <TableHeadBookings/>
             <tbody className="table-body">
                 {bookings.map((booking, index) => (
                     <tr key={index}>
-                        <td>{booking.Bedrooms?.id}</td>
+                        <td>{formatNumber(booking.Bedrooms?.id)}</td>
                         <td className="table-body-guest">{booking.Guests?.fullName} <span>{booking.Guests?.email}</span></td>
                         <td>
                             {new Date(booking.checkInDate).toLocaleDateString()} — {new Date(booking.checkOutDate).toLocaleDateString()}
