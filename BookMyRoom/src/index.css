@@ -347,7 +347,7 @@ tbody{
   justify-content: center;
 }
 
-.sort-options select {
+.sort-select {
   padding: 10px;
   margin: 5px;
   border-radius: 5px;
@@ -432,6 +432,7 @@ tbody{
 .secondary{
   background-color: #fff;
   color: rgb(26, 26, 26);
+  background-color: red;
 }
 .success-btn {
   background-color: #4caf50;
@@ -554,4 +555,11 @@ tbody{
   font-family:'Courier New', Courier, monospace;
   font-weight: bold;
   color: rgb(53, 53, 53);
+}
+.bookings-filters{
+  display: flex;
+  align-items: center;
+}
+.bookings-filters h1{
+  margin-right: auto;
 }

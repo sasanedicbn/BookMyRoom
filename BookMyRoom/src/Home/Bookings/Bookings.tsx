@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ComponentWrapper from "../../UX/ComponentWrapper";
 import BookingsTable from "./BookingsTable";
 import { supabase } from "../../superbase/superbaseClient";
+import BookingsFilters from "./BookingsFilters";
 
 const Bookings = () => {
     const [bookings, setBookings] = useState([]);
@@ -26,6 +27,7 @@ const Bookings = () => {
 
     return (
         <ComponentWrapper type={'tableWrapper'}>
+            <BookingsFilters/>
             <BookingsTable bookings={bookings} />
         </ComponentWrapper>
     );

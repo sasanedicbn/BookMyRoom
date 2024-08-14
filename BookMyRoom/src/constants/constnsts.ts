@@ -16,7 +16,13 @@ export const sortMapping = {
   'price-highest': { column: 'regularPrice', ascending: false },
   'created_at': { column: 'created_at', ascending: true }
 };
-export const bookingStatuses = ['All', 'Checked out', 'Checked in', 'Unconfirmed'];
+export const bookingStatuses = [
+  { label: 'All', filterValue: 'all' },
+  { label: 'Checked out', filterValue: 'checked-out' },
+  { label: 'Checked in', filterValue: 'checked-in' },
+  { label: 'Unconfirmed', filterValue: 'unconfirmed' },
+];
+
 export const selectOptions = [
     { value: 'date-desc', label: 'Sort by date (recent first)' },
     { value: 'date-asc', label: 'Sort by date (earlier first)' },
