@@ -4,7 +4,7 @@ import { supabase } from '../superbase/superbaseClient';
 import { getRooms } from '../store/roomsSlice';
 import Button from '../UX/Button';
 import Select from '../UX/Select';
-import { filterButtons, sortOptions } from '../constants/constnsts';
+import { filterButtons, sortMapping, sortOptions } from '../constants/constnsts';
 
 const SortRooms = () => {
   const dispatch = useDispatch();
@@ -15,11 +15,11 @@ const SortRooms = () => {
     const fetchRooms = async () => {
       let query = supabase.from('Bedrooms').select('*');
 
-      if (filter === 'no-discount') {
-        query = query.eq('discount', 0);
-      } else if (filter === 'discount') {
-        query = query.gt('discount', 0);
-      }
+      query = filter === 'no-discount' 
+        ? query.eq('discount', 0) 
+        : filter === 'discount' 
+        ? query.gt('discount', 0) 
+        : query;
 
       const { data, error } = await query.order(sortMapping[sort].column, { ascending: sortMapping[sort].ascending });
 
@@ -44,7 +44,6 @@ const SortRooms = () => {
           {filterButtons.map((btn, index) => (
             <Button
               key={index}
-              // className={`filter-btn`}
               type={'success'}
               onClick={() => setFilter(btn.filterValue)}
             >
@@ -56,7 +55,6 @@ const SortRooms = () => {
         <Select
             options={sortOptions}
             onChange={(e) => setSort(e.target.value)}
-            className="sort-select"
           />
         </div>
       </div>
