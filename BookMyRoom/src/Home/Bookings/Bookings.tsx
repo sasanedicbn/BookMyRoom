@@ -1,35 +1,16 @@
-import { useState, useEffect } from "react";
 import ComponentWrapper from "../../UX/ComponentWrapper";
-import BookingsTable from "./BookingsTable";
-import { supabase } from "../../superbase/superbaseClient";
-import BookingsFilters from "./BookingsFilters";
+import BookingsComponent from "./BookingsComponent";
 
 const Bookings = () => {
-    // const [bookings, setBookings] = useState([]);
-
-    // const getBookings = async () => {
-    //     let { data: bookings, error } = await supabase
-    //         .from('Bookings')
-    //         .select(`*,
-    //             Bedrooms (id),
-    //             Guests (fullName, email)
-    //         `);
-    //     if (!error) {
-    //         setBookings(bookings);
-    //     } else {
-    //         console.error(error);
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     getBookings();
-    // }, []);
-
     return (
         <ComponentWrapper type={'tableWrapper'}>
-            <BookingsFilters/>
+            <BookingsComponent/>
         </ComponentWrapper>
     );
 }
 
 export default Bookings;
+// ako je booking check-in => u modal treba da bude check-out, see-details  i delete,
+//ako je booking checked-out => u modal treba da bude see-details i delete,
+// -!- unconfermed => u modal treba da bude checked-in, see details i delete
+// isti modal kao i za kabine

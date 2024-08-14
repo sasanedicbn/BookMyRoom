@@ -5,7 +5,7 @@ import { supabase } from "../../superbase/superbaseClient";
 import BookingsTable from "./BookingsTable";
 import { bookingStatuses, selectOptions } from "../../constants/constnsts";
 
-const BookingsFilters = () => {
+const BookingsComponent = () => {
     const [bookings, setBookings] = useState([]);
     const [filter, setFilter] = useState('all');
     const [sort, setSort] = useState('date-desc');
@@ -16,7 +16,7 @@ const BookingsFilters = () => {
         'amount-high': { column: 'totalPrice', ascending: false },
         'amount-low': { column: 'totalPrice', ascending: true }
     };
-
+    
     useEffect(() => {
         const fetchBookings = async () => {
             let query = supabase.from('Bookings').select(`*,
@@ -24,14 +24,10 @@ const BookingsFilters = () => {
                 Guests (fullName, email)
             `);
 
-            if (filter === 'checked-in') {
-                query = query.eq('status', 'checked-in');
-            } else if (filter === 'checked-out') {
-                query = query.eq('status', 'checked-out');
-            } else if (filter === 'unconfirmed') {
-                query = query.eq('status', 'unconfirmed');
+            if(filter !== 'all'){
+                query = query.eq('status', filter)
             }
-
+    
             const { data, error } = await query.order(sortMapping[sort].column, { ascending: sortMapping[sort].ascending });
 
             if (error) {
@@ -63,4 +59,4 @@ const BookingsFilters = () => {
     );
 };
 
-export default BookingsFilters;
+export default BookingsComponent;
