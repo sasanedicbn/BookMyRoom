@@ -5,30 +5,29 @@ import { supabase } from "../../superbase/superbaseClient";
 import BookingsFilters from "./BookingsFilters";
 
 const Bookings = () => {
-    const [bookings, setBookings] = useState([]);
+    // const [bookings, setBookings] = useState([]);
 
-    const getBookings = async () => {
-        let { data: bookings, error } = await supabase
-            .from('Bookings')
-            .select(`*,
-                Bedrooms (id),
-                Guests (fullName, email)
-            `);
-        if (!error) {
-            setBookings(bookings);
-        } else {
-            console.error(error);
-        }
-    }
+    // const getBookings = async () => {
+    //     let { data: bookings, error } = await supabase
+    //         .from('Bookings')
+    //         .select(`*,
+    //             Bedrooms (id),
+    //             Guests (fullName, email)
+    //         `);
+    //     if (!error) {
+    //         setBookings(bookings);
+    //     } else {
+    //         console.error(error);
+    //     }
+    // }
 
-    useEffect(() => {
-        getBookings();
-    }, []);
+    // useEffect(() => {
+    //     getBookings();
+    // }, []);
 
     return (
         <ComponentWrapper type={'tableWrapper'}>
             <BookingsFilters/>
-            <BookingsTable bookings={bookings} />
         </ComponentWrapper>
     );
 }
