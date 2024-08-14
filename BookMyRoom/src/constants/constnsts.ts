@@ -16,6 +16,13 @@ export const sortMapping = {
   'price-highest': { column: 'regularPrice', ascending: false },
   'created_at': { column: 'created_at', ascending: true }
 };
+export const bookingStatuses = ['All', 'Checked out', 'Checked in', 'Unconfirmed'];
+export const selectOptions = [
+    { value: 'date-desc', label: 'Sort by date (recent first)' },
+    { value: 'date-asc', label: 'Sort by date (earlier first)' },
+    { value: 'amount-high', label: 'Sort by amount (high first)' },
+    { value: 'amount-low', label: 'Sort by amount (low first)' }
+];
 export const formatNumber = (number) => {
   return number.toString().padStart(3, '0');
 };

@@ -429,7 +429,10 @@ tbody{
   background-color: #f44336;
   color: #fff;
 }
-
+.secondary{
+  background-color: #fff;
+  color: rgb(26, 26, 26);
+}
 .success-btn {
   background-color: #4caf50;
   color: #fff;
