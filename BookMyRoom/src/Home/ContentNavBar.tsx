@@ -13,6 +13,7 @@ const ContentNavBar = () => {
         <div className="Content-NavBar">
             <div className="Content-NavBar-items">
                 <img src="../src/img/profile-img.jpg" alt="profile picture"/>
+                <p className="Content-NavBar-user">Ivo Ivic</p>
                 <div className="Content-NavBar-icons">
                  <FaUser />
                  <FaMoon/>
