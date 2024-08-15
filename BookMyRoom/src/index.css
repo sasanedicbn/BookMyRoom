@@ -563,7 +563,7 @@ tbody{
 .bookings-filters h1{
   margin-right: auto;
 }
-.bookings-container{
+/* .bookings-container{
   display: flex;
   flex-direction: column;
-}
+} */
