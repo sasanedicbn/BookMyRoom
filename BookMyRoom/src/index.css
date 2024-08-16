@@ -170,6 +170,12 @@ tbody{
   background-color: #45a049;
 }
 /* MODAL */
+.modal {
+  position: absolute;
+  right: 34px;
+  top: 94px;
+ 
+}
 .ellipsis-cell .modal {
   position: absolute;
   top:77.5px;
@@ -191,21 +197,26 @@ tbody{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+}
+.modal-details{
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .two-items{
-  padding: 8px 12px;
-  width: 90px;
+  padding: 8px 14px;
+  width: 120px;
   height: 90px;
 }
 .three-options{
-  padding: 10px 14px;
-  width: 120px;
+  padding: 10px 18px;
+  width: 130px;
   height: 120px;
 }
 
 .modal-content button {
-  margin-top: 10px;
+  /* margin-top: 10px; */
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -520,6 +531,7 @@ tbody{
   margin: 20px 0;
   font-size: 18px;
   text-align: left;
+  position: relative;
 }
 
 .table-head tr th {

@@ -79,7 +79,7 @@ const Modals = ({ room, setOpenMenuModal, options }) => {
       <div className="modal">
         <div className={`modal-content ${modalClass}`}>
           {options.map((option) => (
-            <div key={option}>
+            <div className="modal-details" key={option}>
               {modalsActions[option].icon}
               <Button type={option} onClick={modalsActions[option].onClick}>
                 {modalsActions[option].label}
