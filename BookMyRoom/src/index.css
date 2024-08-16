@@ -185,16 +185,19 @@ tbody{
 .modal-content {
   background-color: #fefefe;
   box-shadow: 4px 6px 10px rgb(223, 223, 223);
-  padding: 10px;
   border-radius: 8px;
   text-align: center;
   border: 1px solid rgb(223, 223, 223);
-  width: 85px;
-  height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+.two-items{
+  padding: 8px;
+  width: 90px;
+  height: 90px;
+}
+/* .three-items{} */
 
 .modal-content button {
   margin-top: 10px;

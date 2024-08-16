@@ -8,12 +8,12 @@ const Room = ({ room }) => {
   
 
   const handleOpenModal = () => {
-    setOpenMenuModal(true);
+    setOpenMenuModal(state => !state);
   };
-
+  
 
   return (
-    <tr className="room-container">
+    <tr className="room-container" >
       <td>{image && <img className="room-image" src={image} alt={name} />}</td>
       <td>{name}</td>
       <td>{maxCapacity}</td>

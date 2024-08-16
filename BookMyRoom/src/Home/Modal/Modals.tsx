@@ -1,4 +1,4 @@
-import { FaEdit, FaEye, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaEye, FaCheck } from 'react-icons/fa';
 import NewEditRoom from '../Room/newEditRoom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -32,24 +32,16 @@ const Modals = ({ room, setOpenMenuModal, options }) => {
     }
   };
 
-  const handleEditSubmit = async (updatedRoom) => {
-    console.log('updateRoom', updatedRoom);
+  const handleCheckOut = () => {
+    console.log('Check-out functionality here');
+  };
 
-    const { error } = await supabase
-      .from('Bedrooms')
-      .update(updatedRoom)
-      .eq('id', updatedRoom.id);
+  const handleCheckIn = () => {
+    console.log('Check-in functionality here');
+  };
 
-    if (error) {
-      console.error('Error updating row:', error);
-    } else {
-      console.log('Room updated successfully');
-      const { data: rooms, error: fetchError } = await supabase.from('Bedrooms').select('*');
-      if (!fetchError) {
-        dispatch(getRooms(rooms));
-      }
-      setOpenMenuModal(false);
-    }
+  const handleSeeDetails = () => {
+    console.log('See details functionality here');
   };
 
   const modalsActions = {
@@ -63,11 +55,26 @@ const Modals = ({ room, setOpenMenuModal, options }) => {
       onClick: handleDelete,
       label: 'Delete'
     },
-    details: {
+    'check-out': {
+      icon: <FaCheck />,
+      onClick: handleCheckOut,
+      label: 'Check Out'
+    },
+    'check-in': {
+      icon: <FaCheck />,
+      onClick: handleCheckIn,
+      label: 'Check In'
+    },
+    'see-details': {
       icon: <FaEye />,
-      onClick: () => console.log('See details'),
+      onClick: handleSeeDetails,
       label: 'See Details'
     }
+  };
+const baseClass = 'table-base'
+  const styleModal = {
+    primary: `${baseClass} two-items`,
+    secondary: `${baseClass} three-items`,
   };
 
   return (
