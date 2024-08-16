@@ -172,9 +172,7 @@ tbody{
 /* MODAL */
 .modal {
   position: absolute;
-  right: 34px;
-  top: 94px;
- 
+  right: 34px; 
 }
 .ellipsis-cell .modal {
   position: absolute;
@@ -204,10 +202,10 @@ tbody{
     align-items: center;
     justify-content: space-between;
 }
-.two-items{
+.two-options{
   padding: 8px 14px;
   width: 120px;
-  height: 90px;
+  height: 70px;
 }
 .three-options{
   padding: 10px 18px;
