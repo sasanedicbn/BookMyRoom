@@ -21,7 +21,7 @@ const Room = ({ room }) => {
       <td>{discount ? `${discount}%` : '/'}</td>
       <td className="ellipsis-cell">
         <BiDotsVerticalRounded onClick={handleOpenModal} />
-        {openMenuModal && <Modals  setOpenMenuModal={setOpenMenuModal} room={room}  />}
+        {openMenuModal && <Modals  setOpenMenuModal={setOpenMenuModal} room={room}  options={['edit', 'delete',]}  />}
       </td>
     </tr>
   );

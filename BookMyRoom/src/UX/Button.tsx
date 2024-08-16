@@ -1,28 +1,34 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Button = ({ type, onClick, children, to }) => {
-    const base = 'base';  
+  const baseClass = 'base'; 
 
-    const styles = {
-        primary: `${base} primary-btn`,
-        secondary: `${base} secondary-btn`,
-        danger: `${base} danger-btn`,
-        success: `${base} success-btn`
-    }
+  const styles = {
+    primary: `${baseClass} primary-btn`,
+    secondary: `${baseClass} secondary-btn`,
+    danger: `${baseClass} danger-btn`,
+    success: `${baseClass} success-btn`,
+    edit: ` edit-btn`, 
+    delete: ` delete-btn` 
+  };
 
-    if (to)
-        return (
-          <Link to={to} className={styles[type]}>
-            {children}
-          </Link>
-        );
+  const buttonClass = `${styles[type]} `; 
+
+  if (to) {
+    return (
+      <Link to={to} className={buttonClass}>
+        {children}
+      </Link>
+    );
+  }
 
   return (
-    <button className={styles[type]} onClick={onClick}>
+    <button className={buttonClass} onClick={onClick}>
       {children}
     </button>
   );
 };
 
 export default Button;
+
 

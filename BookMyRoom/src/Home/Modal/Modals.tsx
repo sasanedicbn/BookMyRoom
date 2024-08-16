@@ -1,11 +1,12 @@
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaEye, FaTrash } from 'react-icons/fa';
 import NewEditRoom from '../Room/newEditRoom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getRooms } from '../../store/roomsSlice';
 import { supabase } from '../../superbase/superbaseClient';
+import Button from '../../UX/Button';
 
-const Modals = ({ room, setOpenMenuModal }) => {
+const Modals = ({ room, setOpenMenuModal, options }) => {
   const [openEditModal, setOpenEditModal] = useState(false);
   const dispatch = useDispatch();
 
@@ -34,11 +35,9 @@ const Modals = ({ room, setOpenMenuModal }) => {
   const handleEditSubmit = async (updatedRoom) => {
     console.log('updateRoom', updatedRoom);
 
-    const roomData = updatedRoom;
-
     const { error } = await supabase
       .from('Bedrooms')
-      .update(roomData)
+      .update(updatedRoom)
       .eq('id', updatedRoom.id);
 
     if (error) {
@@ -53,22 +52,44 @@ const Modals = ({ room, setOpenMenuModal }) => {
     }
   };
 
- 
+  const modalsActions = {
+    edit: {
+      icon: <FaEdit />,
+      onClick: handlerOpenEditModal,
+      label: 'Edit'
+    },
+    delete: {
+      icon: <FaTrash />,
+      onClick: handleDelete,
+      label: 'Delete'
+    },
+    details: {
+      icon: <FaEye />,
+      onClick: () => console.log('See details'),
+      label: 'See Details'
+    }
+  };
+
   return (
     <>
       <div className="modal">
         <div className="modal-content">
-          <>
-            <div className="modal-content-child">
-              <FaEdit />
-              <button className="edit-button" onClick={handlerOpenEditModal}>Edit</button>
+          {options.map((option) => (
+            <div className="modal-content-child" key={option}>
+              {modalsActions[option].icon}
+              <Button type={option} onClick={modalsActions[option].onClick}>
+                {modalsActions[option].label}
+              </Button>
             </div>
-            <div className="modal-content-child">
-              <FaTrash />
-              <button className="delete-button" onClick={handleDelete}>Delete</button>
-            </div>
-          </>
-          {openEditModal && <NewEditRoom room={room} setOpenEditModal={setOpenEditModal} closeMenuModal={setOpenMenuModal} handleEditSubmit={handleEditSubmit} />}
+          ))}
+          {openEditModal && (
+            <NewEditRoom
+              room={room}
+              setOpenEditModal={setOpenEditModal}
+              closeMenuModal={setOpenMenuModal}
+              handleEditSubmit={handleEditSubmit}
+            />
+          )}
         </div>
       </div>
     </>
@@ -76,6 +97,7 @@ const Modals = ({ room, setOpenMenuModal }) => {
 };
 
 export default Modals;
+
 
 
 
