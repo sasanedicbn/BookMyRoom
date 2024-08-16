@@ -191,13 +191,18 @@ tbody{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 .two-items{
-  padding: 8px;
+  padding: 8px 12px;
   width: 90px;
   height: 90px;
 }
-/* .three-items{} */
+.three-options{
+  padding: 10px 14px;
+  width: 120px;
+  height: 120px;
+}
 
 .modal-content button {
   margin-top: 10px;

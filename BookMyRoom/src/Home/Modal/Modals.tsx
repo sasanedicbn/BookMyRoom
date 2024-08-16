@@ -71,18 +71,15 @@ const Modals = ({ room, setOpenMenuModal, options }) => {
       label: 'See Details'
     }
   };
-const baseClass = 'table-base'
-  const styleModal = {
-    primary: `${baseClass} two-items`,
-    secondary: `${baseClass} three-items`,
-  };
+
+  const modalClass = options.length === 2 ? 'two-options' : 'three-options';
 
   return (
     <>
       <div className="modal">
-        <div className="modal-content">
+        <div className={`modal-content ${modalClass}`}>
           {options.map((option) => (
-            <div className="modal-content-child" key={option}>
+            <div key={option}>
               {modalsActions[option].icon}
               <Button type={option} onClick={modalsActions[option].onClick}>
                 {modalsActions[option].label}
@@ -104,7 +101,3 @@ const baseClass = 'table-base'
 };
 
 export default Modals;
-
-
-
-
