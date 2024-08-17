@@ -15,11 +15,7 @@ const SortRooms = () => {
     const fetchRooms = async () => {
       let query = supabase.from('Bedrooms').select('*');
 
-      query = filter === 'no-discount' 
-        ? query.eq('discount', 0) 
-        : filter === 'discount' 
-        ? query.gt('discount', 0) 
-        : query;
+      query 
 
       const { data, error } = await query.order(sortMapping[sort].column, { ascending: sortMapping[sort].ascending });
 
