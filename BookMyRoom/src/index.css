@@ -342,7 +342,12 @@ tbody{
 }
 /* SORTROOMS */
 .sort-rooms-container {
-
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
 
 .header {
   text-align: center;
