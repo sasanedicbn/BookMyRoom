@@ -8,9 +8,7 @@ const Button = ({ type, onClick, children, to }) => {
     secondary: `${baseClass} secondary-btn`,
     danger: `${baseClass} danger-btn`,
     success: `${baseClass} success-btn`,
-    edit: ` edit-btn`, 
-    delete: ` delete-btn` 
-  };
+    edit: ` 
 
   const buttonClass = `${styles[type]} `; 
 
