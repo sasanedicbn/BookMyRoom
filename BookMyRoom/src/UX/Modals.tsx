@@ -87,15 +87,6 @@ const Modals = ({ room, setOpenMenuModal, options }) => {
               </Button>
             </div>
             )
-          ))}
-          {openEditModal && (
-            <NewEditRoom
-              room={room}
-              setOpenEditModal={setOpenEditModal}
-              closeMenuModal={setOpenMenuModal}
-              handleEditSubmit={handleEditSubmit}
-            />
-          )}
         </div>
       </div>
     </>
