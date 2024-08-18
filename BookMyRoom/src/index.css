@@ -330,10 +330,7 @@ tbody{
   flex-direction: column;
   width: 50%;
 }
-.input-error p {
-  margin:2px;
-  color: red;
-  text-align: left;
+
 }
 .main-content-data{
   width: 100%;
