@@ -1,7 +1,16 @@
+import { FaCheck, FaEdit, FaEye, FaTrash } from 'react-icons/fa';
 import Button from './Button';
 
-const OptionsMenu = ({ options, modalsActions }) => {
+const OptionsMenu = ({ options }) => {
     
+  const handlerOpenEditModal = () => {
+    console.log('Open Edit Modal');
+  };
+
+  const handleDelete = () => {
+    console.log('Delete functionality here');
+  };
+
   const handleCheckOut = () => {
     console.log('Check-out functionality here');
   };
@@ -41,6 +50,7 @@ const OptionsMenu = ({ options, modalsActions }) => {
       label: 'See Details'
     }
   };
+
   return (
     <div className="options-menu">
       {options.map((option) => (
