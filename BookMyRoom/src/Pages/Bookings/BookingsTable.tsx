@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Modals from '../../UX/Modals';
 import TableHeadBookings from './TableHeadBookings';
 import { formatNumber } from '../../constants/constnsts';
+import OptionsMenu from '../../UX/OptionsMenu';
 
 const BookingsTable = ({ bookings }) => {
     const [openMenuModal, setOpenMenuModal] = useState(false);
@@ -65,8 +66,8 @@ const BookingsTable = ({ bookings }) => {
                                     <path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path>
                                 </svg>
                                 {openMenuModal && currentBooking?.id === booking.id && (
-                                    <Modals 
-                                        room={currentBooking} 
+                                    <OptionsMenu 
+                                        // room={currentBooking} 
                                         setOpenMenuModal={setOpenMenuModal} 
                                         options={getModalOptions(currentBooking.status)} 
                                     />
