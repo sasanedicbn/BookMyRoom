@@ -1,15 +1,15 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
-import Content from './Home/Content';
+import Content from './Pages/Room/Content';
 import { store } from './store/store';
 import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
-import Settings from './Settings/Settings';
-import SideBar from './sharedLayout/SideBar';
-import Users from './Home/Users/Users';
+import SideBar from './UX/sharedLayout/SideBar';
+import Users from './Pages/Users/Users';
 import Login from './Login/Login';
-import Bookings from './Home/Bookings/Bookings';
+import Bookings from './Pages/Bookings/Bookings';
+import Settings from './Pages/Settings/Settings';
 
 const router = createBrowserRouter([
   {

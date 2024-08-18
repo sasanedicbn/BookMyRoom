@@ -1,10 +1,10 @@
 import { FaEdit, FaTrash, FaEye, FaCheck } from 'react-icons/fa';
-import NewEditRoom from '../Room/newEditRoom';
+import NewEditRoom from '../Pages/Room/newEditRoom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getRooms } from '../../store/roomsSlice';
-import { supabase } from '../../superbase/superbaseClient';
-import Button from '../../UX/Button';
+import { getRooms } from '../store/roomsSlice';
+import { supabase } from '../supabase/supabaseClient';
+import Button from './Button';
 
 const Modals = ({ room, setOpenMenuModal, options }) => {
   const [openEditModal, setOpenEditModal] = useState(false);

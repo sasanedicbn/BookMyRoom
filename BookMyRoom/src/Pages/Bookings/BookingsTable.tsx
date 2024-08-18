@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Modals from '../Modal/Modals';
+import Modals from '../../UX/Modals';
 import TableHeadBookings from './TableHeadBookings';
 import { formatNumber } from '../../constants/constnsts';
 

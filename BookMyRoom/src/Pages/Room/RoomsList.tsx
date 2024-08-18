@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRooms } from "../store/roomsSlice";
-import { fetchRooms } from "../api/fetchRooms";
+import { getRooms } from "../../store/roomsSlice";
+import { fetchRooms } from "../../api/fetchRooms";
 import Room from "./Room";
-import TableHead from "./TableHead";
-import NewEditRoom from "./Room/newEditRoom";
+import NewEditRoom from "./newEditRoom";
 import SortRooms from "./SortRooms";
-import Button from "../UX/Button";
-import ComponentWrapper from "../UX/ComponentWrapper";
+import Button from "../../UX/Button";
+import ComponentWrapper from "../../UX/ComponentWrapper";
+import TableHead from "./TableHead";
 
 const RoomsList = () => {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const RoomsList = () => {
     <div className="roomsList-container">
       <SortRooms/>
       <table className="rooms-table">
-        <TableHead />
+        <TableHead/>
         <tbody>
           {rooms.map((room) => (
             <Room key={room.id} room={room} />

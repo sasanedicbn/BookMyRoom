@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import Logo from '../Home/Logo';
-import { supabase } from '../superbase/superbaseClient';
+import Logo from '../assets/Logo';
+import { supabase } from '../supabase/supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getUser } from '../store/roomsSlice';

@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { supabase } from '../../superbase/superbaseClient';
+import { supabase } from '../../supabase/supabaseClient';
 import { getRooms } from '../../store/roomsSlice';
 import { useDispatch } from 'react-redux';
 

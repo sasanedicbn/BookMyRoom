@@ -1,12 +1,12 @@
 import { toast } from 'react-toastify';
-import { fetchSettings } from '../api/fetchSettings';
-import { supabase } from "../superbase/superbaseClient";
+import { fetchSettings } from '../../api/fetchSettings';
+import { supabase } from "../../supabase/supabaseClient";
 import { useEffect, useState } from 'react';
-import Input from '../UX/Input';
-import Button from '../UX/Button';
-import InputWrapper from '../UX/InputWrapper';
-import Label from '../UX/Label';
-import ComponentWrapper from '../UX/ComponentWrapper';
+import Input from '../../UX/Input';
+import Button from '../../UX/Button';
+import InputWrapper from '../../UX/InputWrapper';
+import Label from '../../UX/Label';
+import ComponentWrapper from '../../UX/ComponentWrapper';
 
 const Settings = () => {
   const [settingsData, setSettingsData] = useState({

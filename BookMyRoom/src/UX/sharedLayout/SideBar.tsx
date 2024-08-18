@@ -1,7 +1,7 @@
 import { FaCalendarCheck, FaCog, FaHotel, FaUsers } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
-import ContentNavBar from "../Home/ContentNavBar";
-import Logo from "../Home/Logo";
+import Logo from "../../assets/Logo";
+import ContentNavBar from "../../Pages/Bookings/ContentNavBar";
 
 const SideBar = () => {
   return (

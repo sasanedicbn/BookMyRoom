@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Button from "../../UX/Button";
 import Select from "../../UX/Select";
-import { supabase } from "../../superbase/superbaseClient";
+import { supabase } from "../../supabase/supabaseClient";
 import BookingsTable from "./BookingsTable";
 import { bookingStatuses, selectOptions } from "../../constants/constnsts";
 

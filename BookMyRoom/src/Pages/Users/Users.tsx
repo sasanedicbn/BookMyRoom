@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { supabase } from '../../superbase/superbaseClient';
+import { supabase } from '../../supabase/supabaseClient';
 import Input from '../../UX/Input';
 import Button from '../../UX/Button';
 import InputWrapper from '../../UX/InputWrapper';

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { supabase } from '../superbase/superbaseClient';
-import { getRooms } from '../store/roomsSlice';
-import Button from '../UX/Button';
-import Select from '../UX/Select';
-import { filterButtons, sortMapping, sortOptions } from '../constants/constnsts';
+import { supabase } from '../../supabase/supabaseClient';
+import { getRooms } from '../../store/roomsSlice';
+import Button from '../../UX/Button';
+import Select from '../../UX/Select';
+import { filterButtons, sortMapping, sortOptions } from '../../constants/constnsts';
 
 const SortRooms = () => {
   const dispatch = useDispatch();
