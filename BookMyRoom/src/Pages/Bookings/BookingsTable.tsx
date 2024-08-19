@@ -52,7 +52,7 @@ const BookingsTable = ({ bookings }) => {
                             <td className="totalPrice-table">
                                 ${booking.totalPrice + ',00'}
                             </td>
-                            <td style={{ position: 'relative' }}>
+                            <td>
                                 <svg 
                                     className='' 
                                     stroke="currentColor" 
@@ -73,8 +73,11 @@ const BookingsTable = ({ bookings }) => {
                                     />
                                 )}
                             </td>
+                          
                         </tr>
+                        
                     ))}
+                    
                 </tbody>
             </table>
         </div>

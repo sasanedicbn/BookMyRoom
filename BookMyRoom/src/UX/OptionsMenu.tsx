@@ -50,9 +50,11 @@ const OptionsMenu = ({ options }) => {
       label: 'See Details'
     }
   };
+  const modalClass = options.length === 2 ? 'two-options' : 'three-options';
+ 
 
   return (
-    <div className="options-menu">
+    <div className="options-menu two-options">
       {options.map((option) => (
         modalsActions[option] && (
           <div className="modal-details" key={option}>

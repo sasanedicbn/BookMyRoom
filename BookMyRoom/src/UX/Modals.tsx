@@ -6,7 +6,7 @@ import { getRooms } from '../store/roomsSlice';
 import { supabase } from '../supabase/supabaseClient';
 import Button from './Button';
 
-const Modals = ({ room, setOpenMenuModal, options }) => {
+const Modals = ({ room, setOpenMenuModal, options,type }) => {
   const [openEditModal, setOpenEditModal] = useState(false);
   const dispatch = useDispatch();
 
@@ -33,22 +33,15 @@ const Modals = ({ room, setOpenMenuModal, options }) => {
   };
 
 
-  const modalClass = options.length === 2 ? 'two-options' : 'three-options';
+  const modalStyle = {
+    'two-options': 'two-options',
+     'three-options': 'three-options'
+  }
 
   return (
     <>
       <div className="modal">
-        <div className={`modal-content ${modalClass}`}>
-          {options.map((option) => (
-            modalsActions[option] && (
-            <div className="modal-details" key={option}>
-              {modalsActions[option].icon}
-              <Button type={option} onClick={modalsActions[option].onClick}>
-                {modalsActions[option].label}
-              </Button>
-            </div>
-            )
-          ))}
+        <div className={`modal-content ${modalStyle[type]}`}>
           {openEditModal && (
             <NewEditRoom
               room={room}
