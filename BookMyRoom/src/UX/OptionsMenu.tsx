@@ -1,5 +1,6 @@
 import { FaCheck, FaEdit, FaEye, FaTrash } from 'react-icons/fa';
 import Button from './Button';
+import Modals from './Modals';
 
 const OptionsMenu = ({ options }) => {
     
@@ -54,6 +55,7 @@ const OptionsMenu = ({ options }) => {
  
 
   return (
+    <Modals>
     <div className={`options-menu ${modalClass}`}>
       {options.map((option) => (
         modalsActions[option] && (
@@ -66,6 +68,7 @@ const OptionsMenu = ({ options }) => {
         )
       ))}
     </div>
+    </Modals>
   );
 };
 

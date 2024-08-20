@@ -4,6 +4,7 @@ import Select from "../../UX/Select";
 import { supabase } from "../../supabase/supabaseClient";
 import BookingsTable from "./BookingsTable";
 import { bookingStatuses, selectOptions } from "../../constants/constnsts";
+import Modals from "../../UX/Modals";
 
 const BookingsComponent = () => {
     const [bookings, setBookings] = useState([]);

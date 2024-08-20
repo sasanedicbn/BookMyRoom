@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import Modals from '../../UX/Modals';
+import { useState, useEffect, useRef } from 'react';
 import TableHeadBookings from './TableHeadBookings';
 import { formatNumber } from '../../constants/constnsts';
 import OptionsMenu from '../../UX/OptionsMenu';
@@ -7,12 +6,36 @@ import OptionsMenu from '../../UX/OptionsMenu';
 const BookingsTable = ({ bookings }) => {
     const [openMenuModal, setOpenMenuModal] = useState(false);
     const [currentBooking, setCurrentBooking] = useState(null);
+    const modalRef = useRef(null); 
 
     const handleOpenModal = (booking) => {
         setCurrentBooking(booking);
         setOpenMenuModal(true);
     };
-   
+
+    const handleCloseModal = () => {
+        setOpenMenuModal(false);
+        setCurrentBooking(null);
+    };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (modalRef.current && !modalRef.current.contains(event.target)) {
+                handleCloseModal();
+            }
+        };
+
+        if (openMenuModal) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [openMenuModal]);
+
     const getModalOptions = (status) => {
         switch (status) {
             case 'checked-in':
@@ -62,22 +85,23 @@ const BookingsTable = ({ bookings }) => {
                                     height="1em" 
                                     width="1em" 
                                     xmlns="http://www.w3.org/2000/svg" 
-                                    onClick={() => handleOpenModal(booking)}>
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleOpenModal(booking);
+                                    }}>
                                     <path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path>
                                 </svg>
                                 {openMenuModal && currentBooking?.id === booking.id && (
-                                    <OptionsMenu 
-                                        // room={currentBooking} 
-                                        setOpenMenuModal={setOpenMenuModal} 
-                                        options={getModalOptions(currentBooking.status)} 
-                                    />
+                                    <div ref={modalRef}>
+                                        <OptionsMenu 
+                                            setOpenMenuModal={setOpenMenuModal} 
+                                            options={getModalOptions(currentBooking.status)} 
+                                        />
+                                    </div>
                                 )}
                             </td>
-                          
                         </tr>
-                        
                     ))}
-                    
                 </tbody>
             </table>
         </div>

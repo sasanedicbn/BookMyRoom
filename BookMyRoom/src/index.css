@@ -170,10 +170,7 @@ tbody{
   background-color: #45a049;
 }
 /* MODAL */
-.modal {
-  position: absolute;
-  right: 34px; 
-}
+
 .options-menu{
   position: absolute;
   right: 35px;
