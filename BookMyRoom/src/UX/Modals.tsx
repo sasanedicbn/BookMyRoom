@@ -38,7 +38,6 @@ const Modals = ({ children,type }) => {
   }
 
   return (
-    <>
       <div className="modal">
         {/* <div className={`modal-content ${modalStyle[type]}`}> */}
           {children}
@@ -52,7 +51,6 @@ const Modals = ({ children,type }) => {
           )} */}
         {/* </div> */}
       </div>
-    </>
   );
 };
 

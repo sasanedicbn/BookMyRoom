@@ -84,6 +84,7 @@ const BookingsTable = ({ bookings }) => {
                                     viewBox="0 0 24 24" 
                                     height="1em" 
                                     width="1em" 
+                                    cursor="pointer"
                                     xmlns="http://www.w3.org/2000/svg" 
                                     onClick={(e) => {
                                         e.stopPropagation();
@@ -94,7 +95,6 @@ const BookingsTable = ({ bookings }) => {
                                 {openMenuModal && currentBooking?.id === booking.id && (
                                     <div ref={modalRef}>
                                         <OptionsMenu 
-                                            setOpenMenuModal={setOpenMenuModal} 
                                             options={getModalOptions(currentBooking.status)} 
                                         />
                                     </div>
