@@ -218,7 +218,6 @@ tbody{
   padding: 10px 18px;
   width: 130px;
   height: 120px;
-  background-color: red;
 }
 
 .modal-content button {
@@ -370,6 +369,15 @@ tbody{
 .sort-options {
   display: flex;
   justify-content: center;
+}
+.options-btn{
+  border: none;
+  color: black;
+  padding: .1rem;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
 }
 
 .sort-select {

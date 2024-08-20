@@ -54,12 +54,12 @@ const OptionsMenu = ({ options }) => {
  
 
   return (
-    <div className="options-menu two-options">
+    <div className={`options-menu ${modalClass}`}>
       {options.map((option) => (
         modalsActions[option] && (
           <div className="modal-details" key={option}>
             {modalsActions[option].icon}
-            <Button type={option} onClick={modalsActions[option].onClick}>
+            <Button type={'options'} onClick={modalsActions[option].onClick}>
               {modalsActions[option].label}
             </Button>
           </div>
