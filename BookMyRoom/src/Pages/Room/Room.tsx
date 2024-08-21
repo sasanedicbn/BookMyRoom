@@ -12,6 +12,7 @@ const Room = ({ room }) => {
   };
 
   return (
+    <>
     <tr className="room-container">
       <td>{image && <img className="room-image" src={image} alt={name} />}</td>
       <td>{name}</td>
@@ -20,16 +21,17 @@ const Room = ({ room }) => {
       <td>{discount ? `${discount}%` : '/'}</td>
       <td className="ellipsis-cell">
         <BiDotsVerticalRounded onClick={handleOpenModal} />
-        {openMenuModal && (
-          <Modals type="two-options">
-            <NewEditRoom
-              room={room}
-              setOpenMenuModal={setOpenMenuModal}
-            />
-          </Modals>
-        )}
       </td>
     </tr>
+     {openMenuModal && (
+      <Modals type="addNewRoom">
+        <NewEditRoom
+          room={room}
+          setOpenMenuModal={setOpenMenuModal}
+        />
+      </Modals>
+    )}
+    </>
   );
 };
 
