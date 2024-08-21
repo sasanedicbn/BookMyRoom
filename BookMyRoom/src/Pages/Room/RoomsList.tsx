@@ -8,6 +8,7 @@ import SortRooms from "./SortRooms";
 import Button from "../../UX/Button";
 import ComponentWrapper from "../../UX/ComponentWrapper";
 import TableHead from "./TableHead";
+import Modals from "../../UX/Modals";
 
 const RoomsList = () => {
   const dispatch = useDispatch();
@@ -45,7 +46,11 @@ const RoomsList = () => {
       <Button type={'success'} onClick={handleAddNewRoom}>
         Add new room
       </Button>
-      {addNewRoom && <NewEditRoom setOpenEditModal={setAddNewRoom} closeEditNewRoom={handleAddNewRoom} closeMenuModal={handleAddNewRoom} />}
+      {addNewRoom &&
+      <Modals type={'addNewRoom'}>
+        <NewEditRoom setOpenEditModal={setAddNewRoom} 
+        closeEditNewRoom={handleAddNewRoom} closeMenuModal={handleAddNewRoom} />
+      </Modals>}
     </div>
     </ComponentWrapper>
   );

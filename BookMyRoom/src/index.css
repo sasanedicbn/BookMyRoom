@@ -237,10 +237,12 @@ tbody{
   justify-content: center;
 }
 /* newEditCabin */
-.create-cabin-form {
+.modal-addnewRoom{
   position: absolute;
-  top:10%;
-  right: 50%;
+  top: 20%;
+}
+.create-cabin-form {
+  position:absolute;
   padding: 1.75rem 3.5rem;
   font-size: 14px;
   background-color: #f7f7f7;

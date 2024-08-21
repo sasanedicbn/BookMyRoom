@@ -34,12 +34,12 @@ const Modals = ({ children,type }) => {
 
   const modalStyle = {
     'two-options': 'two-options',
-     'three-options': 'three-options'
+     'three-options': 'three-options',
+     'addNewRoom': 'modal-addnewRoom'
   }
 
   return (
-      <div className="modal">
-        {/* <div className={`modal-content ${modalStyle[type]}`}> */}
+      <div className={modalStyle[type]}>
           {children}
           {/* {openEditModal && (
             <NewEditRoom
@@ -49,7 +49,6 @@ const Modals = ({ children,type }) => {
               handleEditSubmit={handleEditSubmit}
             />
           )} */}
-        {/* </div> */}
       </div>
   );
 };
