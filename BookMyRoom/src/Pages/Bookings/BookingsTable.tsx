@@ -20,6 +20,8 @@ const BookingsTable = ({ bookings }) => {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
+            console.log('modalrefcurrent', modalRef.current)
+            console.log('event.target', event.target)
             if (modalRef.current && !modalRef.current.contains(event.target)) {
                 handleCloseModal();
             }

@@ -113,6 +113,10 @@
   padding: 1rem 6.5rem;
   max-width: 1200px;
 }
+.options-room{
+  display: flex;
+  justify-content: space-around;
+}
 .rooms-table {
   width: 100%;
   position: relative;

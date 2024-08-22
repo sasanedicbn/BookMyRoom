@@ -91,7 +91,7 @@ const Room = ({ room }) => {
         <Modals>
           <div className={`options-menu two-options`}>
             {Object.values(modalsActions).map(action => (
-              <Button key={action.label} type={action.label.toLowerCase()} onClick={action.onClick}>
+              <Button key={action.label} type={'optionRoom'} onClick={action.onClick}>
                 {action.icon} {action.label}
               </Button>
             ))}
