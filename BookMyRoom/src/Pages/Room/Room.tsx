@@ -27,7 +27,7 @@ const Room = ({ room }) => {
       <Modals type="addNewRoom">
         <NewEditRoom
           room={room}
-          setOpenMenuModal={setOpenMenuModal}
+          closeMenuModal={setOpenMenuModal}
         />
       </Modals>
     )}
@@ -36,3 +36,5 @@ const Room = ({ room }) => {
 };
 
 export default Room;
+{/* <NewEditRoom setOpenEditModal={setAddNewRoom} 
+closeEditNewRoom={handleAddNewRoom} closeMenuModal={handleAddNewRoom} /> */}

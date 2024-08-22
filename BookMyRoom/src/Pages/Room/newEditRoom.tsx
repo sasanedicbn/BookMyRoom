@@ -15,7 +15,7 @@ const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal, handleEditSu
   });
 
   const closeEditModal = () => {
-    setOpenEditModal(false); 
+    // setOpenEditModal(false); 
     closeMenuModal(false);
     if(!isEditSeason){
       closeEditNewRoom(); 
