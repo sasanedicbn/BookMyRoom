@@ -115,6 +115,7 @@
 }
 .rooms-table {
   width: 100%;
+  position: relative;
   border-collapse: collapse;
 }
 
@@ -123,6 +124,9 @@
   text-align: left;
   border: none; 
 }
+/* tr{
+  position: relative;
+} */
 tbody{
   background-color: #fefefe;
   border: 1px solid rgb(215, 215, 215);
@@ -171,11 +175,6 @@ tbody{
 }
 /* MODAL */
 
-.options-menu{
-  position: absolute;
-  right: 35px;
-}
-
 
 .ellipsis-cell .modal {
   position: absolute;
@@ -190,6 +189,8 @@ tbody{
 }
 
 .options-menu {
+  position: absolute;
+  right: 35px;
   background-color: #fefefe;
   box-shadow: 4px 6px 10px rgb(223, 223, 223);
   border-radius: 8px;
