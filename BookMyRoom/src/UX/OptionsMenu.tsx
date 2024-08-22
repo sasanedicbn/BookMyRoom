@@ -51,6 +51,8 @@ const OptionsMenu = ({ options }) => {
       label: 'See Details'
     }
   };
+
+  
   const modalClass = options.length === 2 ? 'two-options' : 'three-options';
  
 

@@ -15,27 +15,6 @@ const RoomsList = () => {
   const [addNewRoom, setAddNewRoom] = useState(false);
    const [openEditModal, setOpenEditModal] = useState(false);
 
-  const handlerOpenEditModal = () => {
-    setOpenEditModal(true);
-  };
-
-  const handleDelete = async () => {
-    const { error } = await supabase
-      .from('Bedrooms')
-      .delete()
-      .eq('id', room.id);
-
-    if (error) {
-      console.error('Error deleting row:', error);
-    } else {
-      console.log('Room deleted successfully');
-      const { data: rooms, error: fetchError } = await supabase.from('Bedrooms').select('*');
-      if (!fetchError) {
-        dispatch(getRooms(rooms));
-      }
-      setOpenMenuModal(false);
-    }
-  };
   const rooms = useSelector((state) => state.rooms.rooms);
   console.log('ROOMS', rooms)
 
@@ -71,8 +50,7 @@ const RoomsList = () => {
       </Button>
       {addNewRoom &&
       <Modals type={'addNewRoom'}>
-        <NewEditRoom setOpenEditModal={setOpenEditModal} 
-        closeEditNewRoom={handleAddNewRoom} closeMenuModal={handleAddNewRoom} />
+        <NewEditRoom setOpenEditModal={setOpenEditModal} closeMenuModal={handleAddNewRoom} />
       </Modals>}
     </div>
     </ComponentWrapper>

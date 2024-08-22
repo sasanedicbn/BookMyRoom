@@ -3,7 +3,7 @@ import { supabase } from '../../supabase/supabaseClient';
 import { getRooms } from '../../store/roomsSlice';
 import { useDispatch } from 'react-redux';
 
-const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal, handleEditSubmit, closeEditNewRoom }) => {
+const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal, }) => {
   const dispatch = useDispatch();
   const isEditSeason = room.id ? true : false;
   const {
@@ -15,11 +15,7 @@ const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal, handleEditSu
   });
 
   const closeEditModal = () => {
-    // setOpenEditModal(false); 
     closeMenuModal(false);
-    if(!isEditSeason){
-      closeEditNewRoom(); 
-    }
   };
 
   const handleAddSubmit = async (newRoom) => {
@@ -41,10 +37,30 @@ const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal, handleEditSu
     }
   };
 
+  const handleEditSubmit = async (updatedRoom) => {
+    console.log('updatedRoom', updatedRoom);
+
+    const { error } = await supabase
+      .from('Bedrooms')
+      .update(updatedRoom)
+      .eq('id', room.id);
+
+    if (error) {
+      console.error('Error updating room:', error);
+    } else {
+      console.log('Room updated successfully');
+      const { data: rooms, error: fetchError } = await supabase.from('Bedrooms').select('*');
+      if (!fetchError) {
+        dispatch(getRooms(rooms));
+      }
+      closeMenuModal(false);
+    }
+  };
+
   const onSubmit = (data) => {
-    console.log('kad je add', data);
+    console.log('onSubmit', data);
     if (isEditSeason) {
-      handleEditSubmit({ ...data });
+      handleEditSubmit(data);
     } else {
       handleAddSubmit(data);
     }
@@ -138,3 +154,4 @@ const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal, handleEditSu
 };
 
 export default NewEditRoom;
+
