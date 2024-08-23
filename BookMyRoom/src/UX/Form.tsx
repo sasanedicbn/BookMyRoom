@@ -7,10 +7,9 @@ const Form = ({ register, handleSubmit, onSubmit, errors, isEditSeason, isValid,
 
    useEffect(() => {
     if(formRef.current){
-        // formRef.current.scrollIntoView({ behavior: 'smooth' }); 
         window.scroll({top:0, behavior:'smooth'})
     }
-   },[])
+   },[formRef])
 
     return ReactDom.createPortal(
       <>

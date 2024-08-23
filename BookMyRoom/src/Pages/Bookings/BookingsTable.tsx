@@ -95,7 +95,7 @@ const BookingsTable = ({ bookings }) => {
                                     <path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path>
                                 </svg>
                                 {openMenuModal && currentBooking?.id === booking.id && (
-                                    <div ref={modalRef}>
+                                    <div ref={modalRef} className='optionsMenu-container'>
                                         <OptionsMenu 
                                             options={getModalOptions(currentBooking.status)} 
                                         />

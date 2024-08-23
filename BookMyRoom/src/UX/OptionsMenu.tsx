@@ -1,9 +1,12 @@
 import { FaCheck, FaEdit, FaEye, FaTrash } from 'react-icons/fa';
-import Button from './Button';
 import Modals from './Modals';
+import ModalButton from './ModalButton';
 
-const OptionsMenu = ({ options }) => {
-    
+interface OptionsMenuProps {
+  options: string[];
+}
+
+const OptionsMenu: React.FC<OptionsMenuProps> = ({ options, ref }) => {
   const handlerOpenEditModal = () => {
     console.log('Open Edit Modal');
   };
@@ -52,25 +55,19 @@ const OptionsMenu = ({ options }) => {
     }
   };
 
-  
-  const modalClass = options.length === 2 ? 'two-options' : 'three-options';
- 
+  const modalType = options.length === 2 ? 'two-options' : 'three-options';
 
   return (
-    <Modals>
-    <div className={`options-menu ${modalClass}`}>
-      {options.map((option) => (
-        modalsActions[option] && (
-          <div className="modal-details" key={option}>
-            {modalsActions[option].icon}
-            <Button type={'options'} onClick={modalsActions[option].onClick}>
-              {modalsActions[option].label}
-            </Button>
-          <p>RADOVANE</p>
-          </div>
-        )
-      ))}
-    </div>
+    <Modals type={modalType}>
+      {options.map((option) => {
+        const action = modalsActions[option];
+        return action ? (
+          <ModalButton key={option} onClick={action.onClick}>
+            {action.label}
+            {action.icon}
+          </ModalButton>
+        ) : null;
+      })}
     </Modals>
   );
 };
