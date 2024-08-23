@@ -1,5 +1,6 @@
 
 import ReactDom from 'react-dom'
+import Button from './Button';
 const Form = ({ register, handleSubmit, onSubmit, errors, isEditSeason, isValid, closeEditModal }) => {
     return ReactDom.createPortal(
       <>
@@ -74,13 +75,12 @@ const Form = ({ register, handleSubmit, onSubmit, errors, isEditSeason, isValid,
             </div>
           </div>
           <div className="form-actions">
-            <button type="button" onClick={closeEditModal}>Cancel</button>
-            <button
-              type="submit"
-              className={isValid ? 'green' : 'grey'}
+            <Button type="danger" onClick={closeEditModal}>Cancel</Button>
+            <Button
+              type={isValid ? 'success' : 'danger'}
             >
               {isEditSeason ? 'Save' : 'Add new cabin'}
-            </button>
+            </Button>
           </div>
         </form>
         <div className="overlay" onClick={closeEditModal}></div>
