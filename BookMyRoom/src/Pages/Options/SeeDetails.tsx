@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { supabase } from "../../supabase/supabaseClient";
 import ComponentWrapper from "../../UX/ComponentWrapper";
+import OptionsHeader from "./optionsHelpers/OptionsHeader";
 
 const SeeDetails = () => {
     const { id } = useParams(); 
@@ -31,15 +32,7 @@ const SeeDetails = () => {
     return (
         <ComponentWrapper type={'tableWrapper'}>
             {details ? (
-                <div>
-                    <h1>Detalji za rezervaciju {details.id}</h1>
-                    <p>Ime gosta: {details.Guests?.fullName}</p>
-                    <p>Email gosta: {details.Guests?.email}</p>
-                    <p>Datum prijave: {new Date(details.checkInDate).toLocaleDateString()}</p>
-                    <p>Datum odjave: {new Date(details.checkOutDate).toLocaleDateString()}</p>
-                    <p>Status: {details.status}</p>
-                    <p>Ukupna cena: ${details.totalPrice}</p>
-                </div>
+                <OptionsHeader details={details}/>
             ) : (
                 <p>Loading...</p> 
             )}

@@ -626,3 +626,26 @@ tbody{
   display: flex;
   flex-direction: column;
 }
+/* OPTIONS HEADER */
+.options-header{
+  width: 920px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  height: 60px;
+}
+.options-header div:nth-child(1){
+  display: flex;
+  align-items: center;
+  width: 300px;
+  margin-left: 1rem;
+  justify-content: space-between;
+}
+.options-header div:nth-child(2){
+  display: flex;
+  align-items: center;
+  width: 120px;
+  margin-left: 1rem;
+  justify-content: space-evenly;
+}
