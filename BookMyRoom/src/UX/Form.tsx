@@ -1,10 +1,20 @@
 
 import ReactDom from 'react-dom'
 import Button from './Button';
+import { useEffect, useRef } from 'react';
 const Form = ({ register, handleSubmit, onSubmit, errors, isEditSeason, isValid, closeEditModal }) => {
+    const formRef = useRef(null)
+
+   useEffect(() => {
+    if(formRef.current){
+        // formRef.current.scrollIntoView({ behavior: 'smooth' }); 
+        window.scroll({top:0, behavior:'smooth'})
+    }
+   },[])
+
     return ReactDom.createPortal(
       <>
-        <form className="create-cabin-form" onSubmit={handleSubmit(onSubmit)}>
+        <form className="create-cabin-form" onSubmit={handleSubmit(onSubmit)} ref={formRef}>
           <div className="form-group">
             <label htmlFor="name">Cabin name</label>
             <div className="input-error">

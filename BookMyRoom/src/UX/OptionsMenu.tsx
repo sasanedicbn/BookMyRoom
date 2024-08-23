@@ -66,6 +66,7 @@ const OptionsMenu = ({ options }) => {
             <Button type={'options'} onClick={modalsActions[option].onClick}>
               {modalsActions[option].label}
             </Button>
+          <p>RADOVANE</p>
           </div>
         )
       ))}
