@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { supabase } from '../../supabase/supabaseClient';
 import { getRooms } from '../../store/roomsSlice';
 import { useDispatch } from 'react-redux';
-import Form from './Form';
+import Form from '../../UX/Form';
 
 const NewEditRoom = ({ room = {}, setOpenEditModal, closeMenuModal }) => {
   const dispatch = useDispatch();
