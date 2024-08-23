@@ -4,9 +4,12 @@ import ModalButton from './ModalButton';
 
 interface OptionsMenuProps {
   options: string[];
+  modalsActions: any[];
 }
 
-const OptionsMenu: React.FC<OptionsMenuProps> = ({ options, ref }) => {
+const OptionsMenu: React.FC<OptionsMenuProps> = ({  modalsActions }) => {
+  // const modalType = options.length === 2 ? 'two-options' : 'three-options';
+  const modalType = 'two-options'
   const handlerOpenEditModal = () => {
     console.log('Open Edit Modal');
   };
@@ -27,46 +30,18 @@ const OptionsMenu: React.FC<OptionsMenuProps> = ({ options, ref }) => {
     console.log('See details functionality here');
   };
 
-  const modalsActions = {
-    edit: {
-      icon: <FaEdit />,
-      onClick: handlerOpenEditModal,
-      label: 'Edit'
-    },
-    delete: {
-      icon: <FaTrash />,
-      onClick: handleDelete,
-      label: 'Delete'
-    },
-    'check-out': {
-      icon: <FaCheck />,
-      onClick: handleCheckOut,
-      label: 'Check Out'
-    },
-    'check-in': {
-      icon: <FaCheck />,
-      onClick: handleCheckIn,
-      label: 'Check In'
-    },
-    'see-details': {
-      icon: <FaEye />,
-      onClick: handleSeeDetails,
-      label: 'See Details'
-    }
-  };
+ 
 
-  const modalType = options.length === 2 ? 'two-options' : 'three-options';
 
   return (
-    <Modals type={modalType}>
-      {options.map((option) => {
-        const action = modalsActions[option];
-        return action ? (
-          <ModalButton key={option} onClick={action.onClick}>
-            {action.label}
-            {action.icon}
+    <Modals type={modalType} >
+      {modalsActions.map((option) => {
+        return  (
+          <ModalButton key={option.label} onClick={option.onClick}>
+            {option.label}
+            {option.icon}
           </ModalButton>
-        ) : null;
+        ) 
       })}
     </Modals>
   );

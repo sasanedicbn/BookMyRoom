@@ -2,12 +2,15 @@ import { useState, useEffect, useRef } from 'react';
 import TableHeadBookings from './TableHeadBookings';
 import { formatNumber } from '../../constants/constnsts';
 import OptionsMenu from '../../UX/OptionsMenu';
+import { FaCheck, FaEye, FaTrash } from 'react-icons/fa';
 
 const BookingsTable = ({ bookings }) => {
+    console.log(bookings, 'BOOKINGS')
     const [openMenuModal, setOpenMenuModal] = useState(false);
     const [currentBooking, setCurrentBooking] = useState(null);
     const modalRef = useRef(null); 
 
+    // Definišite sve moguće akcije
     const handleOpenModal = (booking) => {
         setCurrentBooking(booking);
         setOpenMenuModal(true);
@@ -20,8 +23,6 @@ const BookingsTable = ({ bookings }) => {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            console.log('modalrefcurrent', modalRef.current)
-            console.log('event.target', event.target)
             if (modalRef.current && !modalRef.current.contains(event.target)) {
                 handleCloseModal();
             }
@@ -38,6 +39,13 @@ const BookingsTable = ({ bookings }) => {
         };
     }, [openMenuModal]);
 
+    const modalsActions = [
+        { key: 'delete', icon: <FaTrash />, label: 'Delete', /* onClick: handleDelete */ },
+        { key: 'check-out', icon: <FaCheck />, label: 'Check Out', /* onClick: handleCheckOut */ },
+        { key: 'check-in', icon: <FaCheck />, label: 'Check In', /* onClick: handleCheckIn */ },
+        { key: 'see-details', icon: <FaEye />, label: 'See Details', /* onClick: handleSeeDetails */ },
+    ];
+
     const getModalOptions = (status) => {
         switch (status) {
             case 'checked-in':
@@ -45,10 +53,14 @@ const BookingsTable = ({ bookings }) => {
             case 'checked-out':
                 return ['see-details', 'delete'];
             case 'unconfirmed':
-                return ['checked-in', 'see-details', 'delete'];
+                return ['check-in', 'see-details', 'delete'];
             default:
                 return [];
         }
+    };
+
+    const getModalsActions = (options) => {
+        return modalsActions.filter(action => options.includes(action.key));
     };
 
     return (
@@ -97,7 +109,7 @@ const BookingsTable = ({ bookings }) => {
                                 {openMenuModal && currentBooking?.id === booking.id && (
                                     <div ref={modalRef} className='optionsMenu-container'>
                                         <OptionsMenu 
-                                            options={getModalOptions(currentBooking.status)} 
+                                            modalsActions={getModalsActions(getModalOptions(currentBooking.status))}
                                         />
                                     </div>
                                 )}
