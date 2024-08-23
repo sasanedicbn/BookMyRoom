@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import TableHeadBookings from './TableHeadBookings';
 import { formatNumber } from '../../constants/constnsts';
 import OptionsMenu from '../../UX/OptionsMenu';
-import { FaCheck, FaEye, FaTrash } from 'react-icons/fa';
+import { FaCheck, FaEdit, FaEye, FaTrash } from 'react-icons/fa';
 
 const BookingsTable = ({ bookings }) => {
     console.log(bookings, 'BOOKINGS')
@@ -44,6 +44,7 @@ const BookingsTable = ({ bookings }) => {
         { key: 'check-out', icon: <FaCheck />, label: 'Check Out', /* onClick: handleCheckOut */ },
         { key: 'check-in', icon: <FaCheck />, label: 'Check In', /* onClick: handleCheckIn */ },
         { key: 'see-details', icon: <FaEye />, label: 'See Details', /* onClick: handleSeeDetails */ },
+        { key: 'edit', icon: <FaEdit/>, label: 'Edit', },
     ];
 
     const getModalOptions = (status) => {
@@ -54,6 +55,8 @@ const BookingsTable = ({ bookings }) => {
                 return ['see-details', 'delete'];
             case 'unconfirmed':
                 return ['check-in', 'see-details', 'delete'];
+            case 'edit':
+                return ['edit', 'delete'];
             default:
                 return [];
         }

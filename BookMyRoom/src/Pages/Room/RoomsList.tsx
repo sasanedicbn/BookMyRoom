@@ -10,6 +10,7 @@ import ComponentWrapper from "../../UX/ComponentWrapper";
 import TableHead from "./TableHead";
 import Modals from "../../UX/Modals";
 
+
 const RoomsList = () => {
   const dispatch = useDispatch();
   const [addNewRoom, setAddNewRoom] = useState(false);
@@ -18,6 +19,10 @@ const RoomsList = () => {
   const rooms = useSelector((state) => state.rooms.rooms);
   console.log('ROOMS', rooms)
 
+  // export const optionsAction = [
+  //   {key: 'edit', icon: <FaEdit/>, label: 'Edit'},
+  //   {key: 'delete', icon: <FaTrash/>, label: 'Delete'}
+  //  ]
   const handleAddNewRoom = () => {
     setAddNewRoom((state) => !state);
   };

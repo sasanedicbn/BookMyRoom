@@ -112,6 +112,8 @@
   margin: 0 auto;
   padding: 1rem 6.5rem;
   max-width: 1200px;
+  overflow-y: scroll;
+  max-height: 550px;
 }
 .options-room{
   display: flex;
