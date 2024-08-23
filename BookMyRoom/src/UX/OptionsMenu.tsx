@@ -1,4 +1,3 @@
-import { FaCheck, FaEdit, FaEye, FaTrash } from 'react-icons/fa';
 import Modals from './Modals';
 import ModalButton from './ModalButton';
 
@@ -8,8 +7,7 @@ interface OptionsMenuProps {
 }
 
 const OptionsMenu: React.FC<OptionsMenuProps> = ({  modalsActions }) => {
-  // const modalType = options.length === 2 ? 'two-options' : 'three-options';
-  const modalType = 'two-options'
+  const modalType = modalsActions.length === 2 ? 'two-options' : 'three-options';
   const handlerOpenEditModal = () => {
     console.log('Open Edit Modal');
   };
@@ -31,8 +29,6 @@ const OptionsMenu: React.FC<OptionsMenuProps> = ({  modalsActions }) => {
   };
 
  
-
-
   return (
     <Modals type={modalType} >
       {modalsActions.map((option) => {

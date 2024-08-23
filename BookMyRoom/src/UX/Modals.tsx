@@ -1,11 +1,7 @@
-const Modals = ({ children }) => {
-  // const modalStyle = {
-  //   'two-options': 'two-options',
-  //   'three-options': 'three-options',
-  // };
+const Modals = ({ children, type }) => {
 
   return (
-    <div className={`options-menu}`}>
+    <div className={`options-menu ${type}`}>
       {children}
     </div>
   );
