@@ -10,7 +10,7 @@ import Users from './Pages/Users/Users';
 import Login from './Login/Login';
 import Bookings from './Pages/Bookings/Bookings';
 import Settings from './Pages/Settings/Settings';
-
+import SeeDetails from './Pages/Options/SeeDetails';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -28,17 +28,23 @@ const router = createBrowserRouter([
         path: 'settings',
         element: <Settings />,
       },
-      { path: 'users',
-        element:<Users/>
+      { 
+        path: 'users',
+        element: <Users />
       },
-      { path: 'booking',
-        element: <Bookings/>
+      { 
+        path: 'booking',
+        element: <Bookings />,
       },
+      { 
+        path: 'booking/:id',  
+        element: <SeeDetails />
+      }
     ],
   },
   {
-    path:'/login',
-    element: <Login  />,
+    path: '/login',
+    element: <Login />,
   }
 ]);
 

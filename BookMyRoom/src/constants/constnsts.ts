@@ -1,3 +1,4 @@
+
 export const filterButtons = [
   { label: 'All', filterValue: 'all' },
   { label: 'No discount', filterValue: 'no-discount' },
@@ -32,3 +33,21 @@ export const selectOptions = [
 export const formatNumber = (number) => {
   return number.toString().padStart(3, '0');
 };
+export const handlerOpenEditModal = () => {
+  console.log('Open Edit Modal');
+};
+
+export const handleDelete = () => {
+  console.log('Delete functionality here');
+};
+
+export const handleCheckOut = () => {
+  console.log('Check-out functionality here');
+};
+
+export const handleCheckIn = () => {
+  console.log('Check-in functionality here');
+};
+
+
+

@@ -1,14 +1,22 @@
 import { useState, useEffect, useRef } from 'react';
 import TableHeadBookings from './TableHeadBookings';
-import { formatNumber } from '../../constants/constnsts';
+import { formatNumber, handleCheckIn, handleCheckOut, handleDelete, handleSeeDetails } from '../../constants/constnsts';
 import OptionsMenu from '../../UX/OptionsMenu';
 import { FaCheck, FaEdit, FaEye, FaTrash } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const BookingsTable = ({ bookings }) => {
     console.log(bookings, 'BOOKINGS')
     const [openMenuModal, setOpenMenuModal] = useState(false);
     const [currentBooking, setCurrentBooking] = useState(null);
     const modalRef = useRef(null); 
+    const navigate = useNavigate(); 
+
+
+     const handleSeeDetails = (id) => {
+        console.log('da li se id prosledjuje', id)
+        navigate(`/booking/${id}`);
+      };
 
     // Definišite sve moguće akcije
     const handleOpenModal = (booking) => {
@@ -40,12 +48,12 @@ const BookingsTable = ({ bookings }) => {
     }, [openMenuModal]);
 
     const modalsActions = [
-        { key: 'delete', icon: <FaTrash />, label: 'Delete', /* onClick: handleDelete */ },
-        { key: 'check-out', icon: <FaCheck />, label: 'Check Out', /* onClick: handleCheckOut */ },
-        { key: 'check-in', icon: <FaCheck />, label: 'Check In', /* onClick: handleCheckIn */ },
-        { key: 'see-details', icon: <FaEye />, label: 'See Details', /* onClick: handleSeeDetails */ },
-        { key: 'edit', icon: <FaEdit/>, label: 'Edit', },
+        { key: 'delete', icon: <FaTrash />, label: 'Delete',  onClick: handleDelete },
+        { key: 'check-out', icon: <FaCheck />, label: 'Check Out', onClick: handleCheckOut },
+        { key: 'check-in', icon: <FaCheck />, label: 'Check In',  onClick: handleCheckIn  },
+        { key: 'see-details', icon: <FaEye />, label: 'See Details', onClick: () => handleSeeDetails(currentBooking?.id)  },
     ];
+   
 
     const getModalOptions = (status) => {
         switch (status) {
