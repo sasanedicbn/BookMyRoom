@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { supabase } from "../../supabase/supabaseClient";
+import ComponentWrapper from "../../UX/ComponentWrapper";
 
 const SeeDetails = () => {
     const { id } = useParams(); 
@@ -28,7 +29,7 @@ const SeeDetails = () => {
     console.log('Detalji iz single:', details); 
 
     return (
-        <div>
+        <ComponentWrapper type={'tableWrapper'}>
             {details ? (
                 <div>
                     <h1>Detalji za rezervaciju {details.id}</h1>
@@ -42,7 +43,7 @@ const SeeDetails = () => {
             ) : (
                 <p>Loading...</p> 
             )}
-        </div>
+        </ComponentWrapper>
     );
 };
 
