@@ -129,8 +129,7 @@ const OptionsBody = ({ details }) => {
                     </footer>
                 </section>
             </section>
-            
-            <div>
+            <div className="optionsBtns">
                 {currentBtns.map((btn, index) => (
                     <Button key={index} type={getButtonType(btn)}>
                         {btn}

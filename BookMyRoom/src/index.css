@@ -749,3 +749,8 @@ tbody{
   font-size: 0.8rem;
   color: rgb(136, 136, 136);
 }
+.optionsBtns{
+  margin-top: .5rem;
+  display: flex;
+  justify-content: flex-end;
+}
