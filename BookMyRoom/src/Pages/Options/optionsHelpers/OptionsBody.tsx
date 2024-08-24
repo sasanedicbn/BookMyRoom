@@ -2,7 +2,16 @@ import { FaInfoCircle, FaCheckCircle, FaDollarSign } from "react-icons/fa";
 import Button from "../../../UX/Button";
 
 const OptionsBody = ({ details }) => {
-    const { nationalID, observations, hasBreakfast, totalPrice, isPaid } = details;
+    const {
+        nationalID,
+        observations,
+        hasBreakfast,
+        totalPrice,
+        isPaid,
+        priceForBreakfast = 105,  
+    } = details;
+   
+    const actualPriceForCabin = totalPrice - (hasBreakfast ? priceForBreakfast : 0);
 
     return (
         <>
@@ -65,9 +74,15 @@ const OptionsBody = ({ details }) => {
                     <div className={`info-block-footer ${isPaid ? 'paid' : 'not-paid'}`}>
                         <div className="price-block">
                             <span className="icon-text">
+                                <FaDollarSign />
                                 <span>Total price</span>
                             </span>
-                            ${totalPrice?.toFixed(2) || "0.00"}
+                            ${totalPrice.toFixed(2)} (
+                            ${actualPriceForCabin.toFixed(2)} cabin
+                            {hasBreakfast && (
+                                <> + ${priceForBreakfast.toFixed(2)} breakfast</>
+                            )}
+                            )
                         </div>
                         <p className="status-pay">{isPaid ? "Paid" : "Will pay at property"}</p>
                     </div>
@@ -84,6 +99,7 @@ const OptionsBody = ({ details }) => {
 };
 
 export default OptionsBody;
+
 
 
 // const modalsActions = [
