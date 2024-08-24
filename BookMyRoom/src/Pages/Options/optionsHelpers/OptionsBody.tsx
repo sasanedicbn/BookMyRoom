@@ -34,7 +34,7 @@ const OptionsBody = ({ details }) => {
         setCurrentBtns(btns);
     }, [details]);
 
-    
+    // Function to determine the button type
     const getButtonType = (btn) => {
         switch (btn) {
             case 'Check-out':
@@ -43,9 +43,46 @@ const OptionsBody = ({ details }) => {
             case 'Delete booking':
                 return 'danger';
             case 'Back':
-                return 'back'
+                return 'back';
             default:
                 return 'default'; 
+        }
+    };
+
+    // Handler functions for each button action
+    const handleCheckOut = () => {
+        console.log("Check-out action");
+        // Add your check-out logic here
+    };
+
+    const handleCheckIn = () => {
+        console.log("Check-in action");
+        // Add your check-in logic here
+    };
+
+    const handleDeleteBooking = () => {
+        console.log("Delete booking action");
+        // Add your delete booking logic here
+    };
+
+    const handleBack = () => {
+        console.log("Back action");
+        // Add your back action logic here
+    };
+
+    // Function to get the onClick handler for each button
+    const getButtonAction = (btn) => {
+        switch (btn) {
+            case 'Check-out':
+                return handleCheckOut;
+            case 'Check-in':
+                return handleCheckIn;
+            case 'Delete booking':
+                return handleDeleteBooking;
+            case 'Back':
+                return handleBack;
+            default:
+                return () => {}; 
         }
     };
 
@@ -131,7 +168,7 @@ const OptionsBody = ({ details }) => {
             </section>
             <div className="optionsBtns">
                 {currentBtns.map((btn, index) => (
-                    <Button key={index} type={getButtonType(btn)}>
+                    <Button key={index} type={getButtonType(btn)} onClick={getButtonAction(btn)}>
                         {btn}
                     </Button>
                 ))}
