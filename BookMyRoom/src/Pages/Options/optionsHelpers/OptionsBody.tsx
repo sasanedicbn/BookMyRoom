@@ -1,18 +1,53 @@
 import { FaInfoCircle, FaCheckCircle, FaDollarSign } from "react-icons/fa";
 import Button from "../../../UX/Button";
 import { formatBookingDate, formatNumber } from "../../../constants/constnsts";
+import { useEffect, useState } from "react";
 
 const OptionsBody = ({ details }) => {
+    const [currentBtns, setCurrentBtns] = useState([]);
     const {
         nationalID,
         observations,
         hasBreakfast,
         totalPrice,
         isPaid,
-        priceForBreakfast = 105,  
+        priceForBreakfast = 105,
     } = details;
    
     const actualPriceForCabin = totalPrice - (hasBreakfast ? priceForBreakfast : 0);
+
+    useEffect(() => {
+        const getSeeDetailsBtns = (status) => {
+            switch (status) {
+                case 'checked-in':
+                    return ['Check-out', 'Delete booking', 'Back'];
+                case 'checked-out':
+                    return ['Delete booking', 'Back'];
+                case 'unconfirmed':
+                    return ['Check-in', 'Delete booking', 'Back'];
+                default:
+                    return [];
+            }
+        };
+
+        const btns = getSeeDetailsBtns(details.status);
+        setCurrentBtns(btns);
+    }, [details]);
+
+    
+    const getButtonType = (btn) => {
+        switch (btn) {
+            case 'Check-out':
+            case 'Check-in':
+                return 'success';
+            case 'Delete booking':
+                return 'danger';
+            case 'Back':
+                return 'back'
+            default:
+                return 'default'; 
+        }
+    };
 
     return (
         <>
@@ -62,6 +97,7 @@ const OptionsBody = ({ details }) => {
                         </span>
                     </div>
 
+                    {/* Breakfast included */}
                     <div className="info-block">
                         <span className="icon-text">
                             <FaCheckCircle />
@@ -72,9 +108,11 @@ const OptionsBody = ({ details }) => {
                         </span>
                     </div>
 
+                    {/* Price Details */}
                     <div className={`info-block-footer ${isPaid ? 'paid' : 'not-paid'}`}>
                         <div className="price-block">
                             <span className="icon-text">
+                                <FaDollarSign />
                                 <span>Total price</span>
                             </span>
                             ${totalPrice.toFixed(2)} (
@@ -91,20 +129,16 @@ const OptionsBody = ({ details }) => {
                     </footer>
                 </section>
             </section>
+            
             <div>
-                <Button type={'success'}>Done</Button>
+                {currentBtns.map((btn, index) => (
+                    <Button key={index} type={getButtonType(btn)}>
+                        {btn}
+                    </Button>
+                ))}
             </div>
         </>
     );
 };
 
 export default OptionsBody;
-
-
-
-// const modalsActions = [
-//     { key: 'delete', icon: <FaTrash />, label: 'Delete',  onClick: handleDelete },
-//     { key: 'check-out', icon: <FaCheck />, label: 'Check Out', onClick: handleCheckOut },
-//     { key: 'check-in', icon: <FaCheck />, label: 'Check In',  onClick: handleCheckIn  },
-//     { key: 'see-details', icon: <FaEye />, label: 'See Details', onClick: () => handleSeeDetails(currentBooking?.id)  },
-// ];

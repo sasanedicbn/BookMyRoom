@@ -8,6 +8,7 @@ const Button = ({ type, onClick, children, to }) => {
     secondary: `${baseClass} secondary-btn`,
     danger: `${baseClass} danger-btn`,
     success: `${baseClass} success-btn`,
+    back: `${baseClass}  back-btn`,
     edit: ` edit-btn`, 
     delete: ` delete-btn`,
     options: ` options-btn`,

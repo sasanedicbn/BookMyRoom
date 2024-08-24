@@ -482,7 +482,10 @@ tbody{
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
-
+.back-btn{
+  background-color: rgb(168, 168, 168);
+  color: #fff;
+}
 .danger-btn {
   background-color: #f44336;
   color: #fff;
