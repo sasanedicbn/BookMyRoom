@@ -39,7 +39,7 @@ const Login = () => {
       navigate('/rooms');
     } catch (error) {
       console.error('Error logging in:', error);
-      toast.error(error.message);
+      toast.error(error?.message);
     }
   };
 
