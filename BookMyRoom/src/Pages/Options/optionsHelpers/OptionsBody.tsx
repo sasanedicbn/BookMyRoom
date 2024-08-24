@@ -1,6 +1,6 @@
 import { FaInfoCircle, FaCheckCircle, FaDollarSign } from "react-icons/fa";
 import Button from "../../../UX/Button";
-import { formatBookingDate } from "../../../constants/constnsts";
+import { formatBookingDate, getButtonAction, getButtonType, getSeeDetailsBtns } from "../../../constants/constnsts";
 import { useEffect, useState } from "react";
 
 const OptionsBody = ({ details }) => {
@@ -16,68 +16,10 @@ const OptionsBody = ({ details }) => {
     const actualPriceForCabin = totalPrice - (hasBreakfast ? priceForBreakfast : 0);
 
     useEffect(() => {
-        const getSeeDetailsBtns = (status) => {
-            switch (status) {
-                case 'checked-in':
-                    return ['Check-out', 'Delete booking', 'Back'];
-                case 'checked-out':
-                    return ['Delete booking', 'Back'];
-                case 'unconfirmed':
-                    return ['Check-in', 'Delete booking', 'Back'];
-                default:
-                    return [];
-            }
-        };
-
-        const btns = getSeeDetailsBtns(details.status);
-        setCurrentBtns(btns);
+        setCurrentBtns(getSeeDetailsBtns(details.status));
     }, [details]);
 
-    const getButtonType = (btn) => {
-        switch (btn) {
-            case 'Check-out':
-            case 'Check-in':
-                return 'success';
-            case 'Delete booking':
-                return 'danger';
-            case 'Back':
-                return 'back';
-            default:
-                return 'default'; 
-        }
-    };
-
-    const handleCheckOut = () => {
-        console.log("Check-out action");
-    };
-
-    const handleCheckIn = () => {
-        console.log("Check-in action");
-    };
-
-    const handleDeleteBooking = () => {
-        console.log("Delete booking action");
-    };
-
-    const handleBack = () => {
-        console.log("Back action");
-    };
-
-    const getButtonAction = (btn) => {
-        switch (btn) {
-            case 'Check-out':
-                return handleCheckOut;
-            case 'Check-in':
-                return handleCheckIn;
-            case 'Delete booking':
-                return handleDeleteBooking;
-            case 'Back':
-                return handleBack;
-            default:
-                return () => {}; 
-        }
-    };
-
+  
     return (
         <>
             <section className="optionsBody-wrapper">

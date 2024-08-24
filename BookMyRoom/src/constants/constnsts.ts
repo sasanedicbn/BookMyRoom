@@ -73,4 +73,60 @@ export const formatBookingDate = (isoDate)  =>{
   return `Booked ${day}, ${month} ${dayOfMonth} ${year}, ${hours}:${minutes} ${ampm}`;
 }
 
+export const getButtonType = (btn) => {
+  switch (btn) {
+      case 'Check-out':
+      case 'Check-in':
+          return 'success';
+      case 'Delete booking':
+          return 'danger';
+      case 'Back':
+          return 'back';
+      default:
+          return 'default'; 
+  }
+};
 
+const handleCheckOutDetails = () => {
+  console.log("Check-out action");
+};
+
+const handleCheckInDetails = () => {
+  console.log("Check-in action");
+};
+
+const handleDeleteBookingDetails = () => {
+  console.log("Delete booking action");
+};
+
+const handleBackDetails = () => {
+  console.log("Back action");
+};
+
+export const getButtonAction = (btn) => {
+  switch (btn) {
+      case 'Check-out':
+          return handleCheckOutDetails;
+      case 'Check-in':
+          return handleCheckInDetails;
+      case 'Delete booking':
+          return handleDeleteBookingDetails;
+      case 'Back':
+          return handleBackDetails;
+      default:
+          return () => {}; 
+  }
+};
+
+export  const getSeeDetailsBtns = (status) => {
+  switch (status) {
+      case 'checked-in':
+          return ['Check-out', 'Delete booking', 'Back'];
+      case 'checked-out':
+          return ['Delete booking', 'Back'];
+      case 'unconfirmed':
+          return ['Check-in', 'Delete booking', 'Back'];
+      default:
+          return [];
+  }
+};
