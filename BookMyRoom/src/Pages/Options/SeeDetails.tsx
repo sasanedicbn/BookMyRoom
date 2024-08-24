@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "../../supabase/supabaseClient";
 import ComponentWrapper from "../../UX/ComponentWrapper";
 import OptionsHeader from "./optionsHelpers/OptionsHeader";
+import OptionsBody from "./optionsHelpers/OptionsBody";
 
 const SeeDetails = () => {
     const { id } = useParams(); 
@@ -12,7 +13,7 @@ const SeeDetails = () => {
         const fetchDetails = async () => {
             const { data, error } = await supabase
                 .from('Bookings')
-                .select('*') 
+                .select('*, Guests(*)') 
                 .eq('id', id)
                 .single(); 
 
@@ -32,7 +33,10 @@ const SeeDetails = () => {
     return (
         <ComponentWrapper type={'tableWrapper'}>
             {details ? (
+                <>
                 <OptionsHeader details={details}/>
+                <OptionsBody details={details}/>
+                </>
             ) : (
                 <p>Loading...</p> 
             )}
