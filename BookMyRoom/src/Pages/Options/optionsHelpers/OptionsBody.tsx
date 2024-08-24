@@ -38,7 +38,7 @@ const OptionsBody = ({ details }) => {
                     <span>•</span>
                     <p>{details?.Guests?.email || "N/A"}</p>
                     <span>•</span>
-                    <p>National ID: {nationalID || "N/A"}</p>
+                    <p>National ID: #{details?.Guests?.nationalID || "N/A"}</p>
                 </div>
 
                 {/* Observations */}
@@ -76,11 +76,18 @@ const OptionsBody = ({ details }) => {
                    <p>Booked Sun, Jun 16 2024, 11:26 AM</p>
                </footer>
             </section>
-
-           
-            
+            <div>
+               
+            </div>
         </section>
     );
 };
 
 export default OptionsBody;
+
+// const modalsActions = [
+//     { key: 'delete', icon: <FaTrash />, label: 'Delete',  onClick: handleDelete },
+//     { key: 'check-out', icon: <FaCheck />, label: 'Check Out', onClick: handleCheckOut },
+//     { key: 'check-in', icon: <FaCheck />, label: 'Check In',  onClick: handleCheckIn  },
+//     { key: 'see-details', icon: <FaEye />, label: 'See Details', onClick: () => handleSeeDetails(currentBooking?.id)  },
+// ];

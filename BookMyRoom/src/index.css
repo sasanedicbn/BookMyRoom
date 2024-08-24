@@ -638,7 +638,7 @@ tbody{
 .options-header div:nth-child(1){
   display: flex;
   align-items: center;
-  width: 300px;
+  width: 265px;
   justify-content: space-between;
 }
 .options-header div:nth-child(2){
