@@ -1,12 +1,11 @@
 import { FaInfoCircle, FaCheckCircle, FaDollarSign } from "react-icons/fa";
 import Button from "../../../UX/Button";
-import { formatBookingDate, formatNumber } from "../../../constants/constnsts";
+import { formatBookingDate } from "../../../constants/constnsts";
 import { useEffect, useState } from "react";
 
 const OptionsBody = ({ details }) => {
     const [currentBtns, setCurrentBtns] = useState([]);
     const {
-        nationalID,
         observations,
         hasBreakfast,
         totalPrice,
@@ -34,7 +33,6 @@ const OptionsBody = ({ details }) => {
         setCurrentBtns(btns);
     }, [details]);
 
-    // Function to determine the button type
     const getButtonType = (btn) => {
         switch (btn) {
             case 'Check-out':
@@ -49,28 +47,22 @@ const OptionsBody = ({ details }) => {
         }
     };
 
-    // Handler functions for each button action
     const handleCheckOut = () => {
         console.log("Check-out action");
-        // Add your check-out logic here
     };
 
     const handleCheckIn = () => {
         console.log("Check-in action");
-        // Add your check-in logic here
     };
 
     const handleDeleteBooking = () => {
         console.log("Delete booking action");
-        // Add your delete booking logic here
     };
 
     const handleBack = () => {
         console.log("Back action");
-        // Add your back action logic here
     };
 
-    // Function to get the onClick handler for each button
     const getButtonAction = (btn) => {
         switch (btn) {
             case 'Check-out':
@@ -123,7 +115,6 @@ const OptionsBody = ({ details }) => {
                         <p>National ID: #{details?.Guests?.nationalID || "N/A"}</p>
                     </div>
 
-                    {/* Observations */}
                     <div className="info-block">
                         <span className="icon-text">
                             <FaInfoCircle />
@@ -134,7 +125,6 @@ const OptionsBody = ({ details }) => {
                         </span>
                     </div>
 
-                    {/* Breakfast included */}
                     <div className="info-block">
                         <span className="icon-text">
                             <FaCheckCircle />
@@ -145,7 +135,6 @@ const OptionsBody = ({ details }) => {
                         </span>
                     </div>
 
-                    {/* Price Details */}
                     <div className={`info-block-footer ${isPaid ? 'paid' : 'not-paid'}`}>
                         <div className="price-block">
                             <span className="icon-text">
