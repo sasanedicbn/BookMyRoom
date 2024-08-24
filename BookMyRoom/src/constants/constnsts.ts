@@ -50,4 +50,27 @@ export const handleCheckIn = () => {
 };
 
 
+export const formatBookingDate = (isoDate)  =>{
+  const date = new Date(isoDate);
+
+  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const months = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+  ];
+
+  const day = daysOfWeek[date.getUTCDay()];
+  const month = months[date.getUTCMonth()];
+  const dayOfMonth = date.getUTCDate().toString().padStart(2, "0");
+  const year = date.getUTCFullYear();
+
+  let hours = date.getUTCHours();
+  const minutes = date.getUTCMinutes().toString().padStart(2, "0");
+  const ampm = hours >= 12 ? "PM" : "AM";
+
+  hours = hours % 12 || 12; 
+
+  return `Booked ${day}, ${month} ${dayOfMonth} ${year}, ${hours}:${minutes} ${ampm}`;
+}
+
 

@@ -1,5 +1,6 @@
 import { FaInfoCircle, FaCheckCircle, FaDollarSign } from "react-icons/fa";
 import Button from "../../../UX/Button";
+import { formatBookingDate, formatNumber } from "../../../constants/constnsts";
 
 const OptionsBody = ({ details }) => {
     const {
@@ -74,7 +75,6 @@ const OptionsBody = ({ details }) => {
                     <div className={`info-block-footer ${isPaid ? 'paid' : 'not-paid'}`}>
                         <div className="price-block">
                             <span className="icon-text">
-                                <FaDollarSign />
                                 <span>Total price</span>
                             </span>
                             ${totalPrice.toFixed(2)} (
@@ -87,7 +87,7 @@ const OptionsBody = ({ details }) => {
                         <p className="status-pay">{isPaid ? "Paid" : "Will pay at property"}</p>
                     </div>
                     <footer className="optionsBody-footer">
-                        <p>Booked Sun, Jun 16 2024, 11:26 AM</p>
+                        <p>{formatBookingDate(details.Guests.created_at)}</p>
                     </footer>
                 </section>
             </section>
