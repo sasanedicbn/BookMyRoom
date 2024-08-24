@@ -595,20 +595,23 @@ tbody{
 }
 .checked-in {
   background-color: rgb(190, 247, 190);
-  padding: 3px 6px;
+  padding: 6px 10px;
   border-radius: 10rem;
+  font-size: .8rem;
 }
 
 .unconfirmed {
   background-color: rgb(197, 229, 240); 
-  padding: 3px 6px;
+  padding: 6px 10px;
   border-radius: 10rem;
+  font-size: .8rem
 }
 
 .checked-out {
   background-color: rgb(223, 222, 222);
-  padding: 3px 6px;
+  padding: 6px 10px;
   border-radius: 10rem;
+  font-size: .8rem;
 }
 .totalPrice-table{
   font-family:'Courier New', Courier, monospace;
@@ -716,8 +719,14 @@ tbody{
     padding: 1.2rem 2rem;
     border-radius: 10px;
     margin-top: 2.4rem;
-    background-color: #fef9c3;
-    color: #a16207;
+}
+.paid{
+  background-color: #b6f1b8;
+  color: rgb(0, 94, 0);
+}
+.not-paid{
+  background-color: #fef9c3;
+  color: #a16207;
 }
 .price-block{
   display: flex;
