@@ -82,6 +82,8 @@ const handleCheckInDetails = () => {
   console.log("Check-in action");
 };
 
+
+
 const handleBackDetails = () => {
   console.log("Back action");
 };
@@ -100,7 +102,6 @@ export const getButtonType = (btn) => {
   }
 };
 export const getButtonAction = (btn, bookingId) => {
-  console.log(' da li ima u getButtonAction id', bookingId)
   switch (btn) {
       case 'Check-out':
           return handleCheckOutDetails;

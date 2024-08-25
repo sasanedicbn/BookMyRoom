@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import TableHeadBookings from './TableHeadBookings';
-import { formatNumber, handleCheckIn, handleCheckOut, handleSeeDetails } from '../../constants/constnsts';
+import { formatNumber, handleCheckIn, handleCheckOut } from '../../constants/constnsts';
 import OptionsMenu from '../../UX/OptionsMenu';
 import { FaCheck, FaEye, FaTrash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { deleteBookingById } from '../../api/deleteBookingById';
-import { toast } from 'react-toastify';
 
 const BookingsTable = ({ bookings, setBookings }) => {
     const [openMenuModal, setOpenMenuModal] = useState(false);
@@ -48,12 +47,9 @@ const BookingsTable = ({ bookings, setBookings }) => {
     const handleDeleteBooking = async () => {
         if (currentBooking?.id) {
             const success = await deleteBookingById(currentBooking.id);
-            console.log('success', success)
             if (success) {
                 handleCloseModal(); 
                 setBookings((prevBooking) => prevBooking.filter((booking) => booking.id !== currentBooking.id))
-                navigate('/booking')
-                toast.success(success)
             }
         }
     };
