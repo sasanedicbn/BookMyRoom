@@ -18,7 +18,6 @@ const BookingsTable = ({ bookings }) => {
         navigate(`/booking/${id}`);
       };
 
-    // Definišite sve moguće akcije
     const handleOpenModal = (booking) => {
         setCurrentBooking(booking);
         setOpenMenuModal(true);

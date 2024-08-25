@@ -750,7 +750,7 @@ tbody{
   color: rgb(136, 136, 136);
 }
 .optionsBtns{
-  margin-top: .5rem;
+  margin-top: .75rem;
   display: flex;
   justify-content: flex-end;
 }

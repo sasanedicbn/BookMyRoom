@@ -1,3 +1,4 @@
+import { deleteBookingById } from "../api/deleteBookingById";
 
 export const filterButtons = [
   { label: 'All', filterValue: 'all' },
@@ -73,6 +74,18 @@ export const formatBookingDate = (isoDate)  =>{
   return `Booked ${day}, ${month} ${dayOfMonth} ${year}, ${hours}:${minutes} ${ampm}`;
 }
 
+const handleCheckOutDetails = () => {
+  console.log("Check-out action");
+};
+
+const handleCheckInDetails = () => {
+  console.log("Check-in action");
+};
+
+const handleBackDetails = () => {
+  console.log("Back action");
+};
+
 export const getButtonType = (btn) => {
   switch (btn) {
       case 'Check-out':
@@ -86,38 +99,21 @@ export const getButtonType = (btn) => {
           return 'default'; 
   }
 };
-
-const handleCheckOutDetails = () => {
-  console.log("Check-out action");
-};
-
-const handleCheckInDetails = () => {
-  console.log("Check-in action");
-};
-
-const handleDeleteBookingDetails = () => {
-  console.log("Delete booking action");
-};
-
-const handleBackDetails = () => {
-  console.log("Back action");
-};
-
-export const getButtonAction = (btn) => {
+export const getButtonAction = (btn, bookingId) => {
+  console.log(' da li ima u getButtonAction id', bookingId)
   switch (btn) {
       case 'Check-out':
           return handleCheckOutDetails;
       case 'Check-in':
           return handleCheckInDetails;
       case 'Delete booking':
-          return handleDeleteBookingDetails;
+          return () => deleteBookingById(bookingId);
       case 'Back':
           return handleBackDetails;
       default:
           return () => {}; 
   }
 };
-
 export  const getSeeDetailsBtns = (status) => {
   switch (status) {
       case 'checked-in':

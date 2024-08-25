@@ -5,13 +5,7 @@ import { useEffect, useState } from "react";
 
 const OptionsBody = ({ details }) => {
     const [currentBtns, setCurrentBtns] = useState([]);
-    const {
-        observations,
-        hasBreakfast,
-        totalPrice,
-        isPaid,
-        priceForBreakfast = 105,
-    } = details;
+    const { observations, hasBreakfast, totalPrice, isPaid, priceForBreakfast = 105,} = details;
    
     const actualPriceForCabin = totalPrice - (hasBreakfast ? priceForBreakfast : 0);
 
@@ -99,7 +93,7 @@ const OptionsBody = ({ details }) => {
             </section>
             <div className="optionsBtns">
                 {currentBtns.map((btn, index) => (
-                    <Button key={index} type={getButtonType(btn)} onClick={getButtonAction(btn)}>
+                    <Button key={index} type={getButtonType(btn)} onClick={getButtonAction(btn, details.id)}>
                         {btn}
                     </Button>
                 ))}
