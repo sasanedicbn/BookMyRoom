@@ -1,6 +1,6 @@
 import { FaInfoCircle, FaCheckCircle, FaDollarSign } from "react-icons/fa";
 import Button from "../../../UX/Button";
-import { formatBookingDate, getButtonAction, getButtonType, getSeeDetailsBtns } from "../../../constants/constnsts";
+import { btnsMap, formatBookingDate, getButtonAction, getButtonType, getSeeDetailsBtns } from "../../../constants/constnsts";
 import { useEffect, useState } from "react";
 
 const OptionsBody = ({ details }) => {
@@ -93,7 +93,7 @@ const OptionsBody = ({ details }) => {
             </section>
             <div className="optionsBtns">
                 {currentBtns.map((btn, index) => (
-                    <Button key={index} type={getButtonType(btn)} onClick={getButtonAction(btn, details.id)}>
+                    <Button key={index}  type={btnsMap[btn].type} onClick={() => btnsMap[btn].handler(details.id)}>
                         {btn}
                     </Button>
                 ))}

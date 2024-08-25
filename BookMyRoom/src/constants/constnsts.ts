@@ -83,39 +83,26 @@ const handleCheckInDetails = () => {
 };
 
 
-export const getButtonType = (btn) => {
-  switch (btn) {
-      case 'Check-out':
-      case 'Check-in':
-          return 'success';
-      case 'Delete booking':
-          return 'danger';
-      default:
-          return 'default'; 
-  }
-};
-const btnsMap = {
+// hash map
+export const btnsMap = {
   'Check-out': {
     type: 'success',
-    handler: handleCheckInDetails,
+    handler: handleCheckOutDetails,
     content: ['Delete booking'],
-  }
-
-}
-const btn = 'Check-out'
-console.log('97777', btnsMap[btn])
-export const getButtonAction = (btn, bookingId, navigate) => {
-  switch (btn) {
-      case 'Check-out':
-          return handleCheckOutDetails;
-      case 'Check-in':
-          return handleCheckInDetails;
-      case 'Delete booking':
-          return () => deleteBookingById(bookingId, navigate);
-      default:
-          return () => {}; 
-  }
+  },
+  'Check-in': {
+    type: 'success',
+    handler: handleCheckInDetails,
+    content: ['Check-out', 'Delete booking'],
+  },
+  'Delete booking': {
+    type: 'danger',
+    handler: (bookingId) => deleteBookingById(bookingId),
+    content: [],
+  },
 };
+
+
 export  const getSeeDetailsBtns = (status) => {
   switch (status) {
       case 'checked-in':
