@@ -763,6 +763,7 @@ tbody{
   height: 50px;
   animation: spin 1s linear infinite;
   margin: auto; 
+  margin-top: 2rem;
 }
 
 @keyframes spin {

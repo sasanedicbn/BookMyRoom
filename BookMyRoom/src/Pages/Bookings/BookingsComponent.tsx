@@ -4,11 +4,13 @@ import Select from "../../UX/Select";
 import { supabase } from "../../supabase/supabaseClient";
 import BookingsTable from "./BookingsTable";
 import { bookingStatuses, selectOptions } from "../../constants/constnsts";
+import Spinner from "../../global/Spinner";
 
 const BookingsComponent = () => {
     const [bookings, setBookings] = useState([]);
     const [filter, setFilter] = useState('all');
     const [sort, setSort] = useState('date-desc');
+    const [loading, setLoading] = useState(true); 
 
     const sortMapping = {
         'date-desc': { column: 'created_at', ascending: false },
@@ -18,18 +20,19 @@ const BookingsComponent = () => {
     };
     
     useEffect(() => {
+        setLoading(true);
         const fetchBookings = async () => {
             let query = supabase.from('Bookings').select(`*,
                 Bedrooms (id),
                 Guests (fullName, email)
             `);
 
-            if(filter !== 'all'){
-                query = query.eq('status', filter)
+            if (filter !== 'all') {
+                query = query.eq('status', filter);
             }
     
             const { data, error } = await query.order(sortMapping[sort].column, { ascending: sortMapping[sort].ascending });
-
+            setLoading(false);
             if (error) {
                 console.error('Error fetching bookings:', error);
             } else {
@@ -54,7 +57,11 @@ const BookingsComponent = () => {
                     onChange={(e) => setSort(e.target.value)}
                 />
             </div>
-            <BookingsTable bookings={bookings} setBookings={setBookings} />
+            {loading ? ( 
+                <Spinner />
+            ) : (
+                <BookingsTable bookings={bookings} setBookings={setBookings} />
+            )}
         </div>
     );
 };
