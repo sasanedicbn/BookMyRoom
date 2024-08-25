@@ -112,7 +112,6 @@
   margin: 0 auto;
   padding: 1rem 6.5rem;
   max-width: 1200px;
-  overflow-y: scroll;
   max-height: 550px;
 }
 .options-room{
@@ -762,8 +761,7 @@ tbody{
   width: 50px;
   height: 50px;
   animation: spin 1s linear infinite;
-  margin: auto; 
-  margin-top: 2rem;
+  margin: 5rem auto; 
 }
 
 @keyframes spin {

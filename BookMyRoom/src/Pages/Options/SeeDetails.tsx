@@ -4,6 +4,7 @@ import { supabase } from "../../supabase/supabaseClient";
 import ComponentWrapper from "../../UX/ComponentWrapper";
 import OptionsHeader from "./optionsHelpers/OptionsHeader";
 import OptionsBody from "./optionsHelpers/OptionsBody";
+import Spinner from "../../global/Spinner";
 
 const SeeDetails = () => {
     const { id } = useParams(); 
@@ -28,7 +29,6 @@ const SeeDetails = () => {
         fetchDetails();
     }, [id]);
 
-    console.log('Detalji iz single:', details); 
 
     return (
         <ComponentWrapper type={'tableWrapper'}>
@@ -38,7 +38,7 @@ const SeeDetails = () => {
                 <OptionsBody details={details}/>
                 </>
             ) : (
-                <p>Loading...</p> 
+                <Spinner/>
             )}
         </ComponentWrapper>
     );
