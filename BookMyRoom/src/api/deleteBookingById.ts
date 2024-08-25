@@ -1,7 +1,8 @@
 import { supabase } from "../supabase/supabaseClient";
 
 
-export const deleteBookingById = async (bookingId) => {
+
+export const deleteBookingById = async (bookingId ) => {
   try {
     const { error } = await supabase
       .from("Bookings")
@@ -12,7 +13,7 @@ export const deleteBookingById = async (bookingId) => {
       console.error("Error deleting booking:", error.message);
       return false; 
     }
-
+   
     console.log("Booking deleted successfully");
     return true; 
     

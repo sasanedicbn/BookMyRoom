@@ -94,6 +94,16 @@ export const getButtonType = (btn) => {
           return 'default'; 
   }
 };
+const btnsMap = {
+  'Check-out': {
+    type: 'success',
+    handler: handleCheckInDetails,
+    content: ['Delete booking'],
+  }
+
+}
+const btn = 'Check-out'
+console.log('97777', btnsMap[btn])
 export const getButtonAction = (btn, bookingId, navigate) => {
   switch (btn) {
       case 'Check-out':
