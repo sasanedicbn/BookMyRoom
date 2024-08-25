@@ -83,11 +83,6 @@ const handleCheckInDetails = () => {
 };
 
 
-
-const handleBackDetails = () => {
-  console.log("Back action");
-};
-
 export const getButtonType = (btn) => {
   switch (btn) {
       case 'Check-out':
@@ -95,22 +90,18 @@ export const getButtonType = (btn) => {
           return 'success';
       case 'Delete booking':
           return 'danger';
-      case 'Back':
-          return 'back';
       default:
           return 'default'; 
   }
 };
-export const getButtonAction = (btn, bookingId) => {
+export const getButtonAction = (btn, bookingId, navigate) => {
   switch (btn) {
       case 'Check-out':
           return handleCheckOutDetails;
       case 'Check-in':
           return handleCheckInDetails;
       case 'Delete booking':
-          return () => deleteBookingById(bookingId);
-      case 'Back':
-          return handleBackDetails;
+          return () => deleteBookingById(bookingId, navigate);
       default:
           return () => {}; 
   }
@@ -118,11 +109,11 @@ export const getButtonAction = (btn, bookingId) => {
 export  const getSeeDetailsBtns = (status) => {
   switch (status) {
       case 'checked-in':
-          return ['Check-out', 'Delete booking', 'Back'];
+          return ['Check-out', 'Delete booking'];
       case 'checked-out':
-          return ['Delete booking', 'Back'];
+          return ['Delete booking'];
       case 'unconfirmed':
-          return ['Check-in', 'Delete booking', 'Back'];
+          return ['Check-in', 'Delete booking'];
       default:
           return [];
   }
