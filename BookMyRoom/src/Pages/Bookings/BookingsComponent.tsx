@@ -54,7 +54,7 @@ const BookingsComponent = () => {
                     onChange={(e) => setSort(e.target.value)}
                 />
             </div>
-            <BookingsTable bookings={bookings} />
+            <BookingsTable bookings={bookings} setBookings={setBookings} />
         </div>
     );
 };

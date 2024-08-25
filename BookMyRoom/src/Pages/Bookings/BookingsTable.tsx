@@ -1,22 +1,21 @@
 import { useState, useEffect, useRef } from 'react';
 import TableHeadBookings from './TableHeadBookings';
-import { formatNumber, handleCheckIn, handleCheckOut, handleDelete, handleSeeDetails } from '../../constants/constnsts';
+import { formatNumber, handleCheckIn, handleCheckOut, handleSeeDetails } from '../../constants/constnsts';
 import OptionsMenu from '../../UX/OptionsMenu';
-import { FaCheck, FaEdit, FaEye, FaTrash } from 'react-icons/fa';
+import { FaCheck, FaEye, FaTrash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { deleteBookingById } from '../../api/deleteBookingById';
+import { toast } from 'react-toastify';
 
-const BookingsTable = ({ bookings }) => {
-    console.log(bookings, 'BOOKINGS')
+const BookingsTable = ({ bookings, setBookings }) => {
     const [openMenuModal, setOpenMenuModal] = useState(false);
     const [currentBooking, setCurrentBooking] = useState(null);
     const modalRef = useRef(null); 
     const navigate = useNavigate(); 
 
-
-     const handleSeeDetails = (id) => {
-        console.log('da li se id prosledjuje', id)
+    const handleSeeDetails = (id) => {
         navigate(`/booking/${id}`);
-      };
+    };
 
     const handleOpenModal = (booking) => {
         setCurrentBooking(booking);
@@ -46,13 +45,25 @@ const BookingsTable = ({ bookings }) => {
         };
     }, [openMenuModal]);
 
+    const handleDeleteBooking = async () => {
+        if (currentBooking?.id) {
+            const success = await deleteBookingById(currentBooking.id);
+            console.log('success', success)
+            if (success) {
+                handleCloseModal(); 
+                setBookings((prevBooking) => prevBooking.filter((booking) => booking.id !== currentBooking.id))
+                navigate('/booking')
+                toast.success(success)
+            }
+        }
+    };
+
     const modalsActions = [
-        { key: 'delete', icon: <FaTrash />, label: 'Delete',  onClick: handleDelete },
+        { key: 'delete', icon: <FaTrash />, label: 'Delete', onClick: handleDeleteBooking },
         { key: 'check-out', icon: <FaCheck />, label: 'Check Out', onClick: handleCheckOut },
-        { key: 'check-in', icon: <FaCheck />, label: 'Check In',  onClick: handleCheckIn  },
-        { key: 'see-details', icon: <FaEye />, label: 'See Details', onClick: () => handleSeeDetails(currentBooking?.id)  },
+        { key: 'check-in', icon: <FaCheck />, label: 'Check In', onClick: handleCheckIn },
+        { key: 'see-details', icon: <FaEye />, label: 'See Details', onClick: () => handleSeeDetails(currentBooking?.id) },
     ];
-   
 
     const getModalOptions = (status) => {
         switch (status) {
@@ -62,8 +73,6 @@ const BookingsTable = ({ bookings }) => {
                 return ['see-details', 'delete'];
             case 'unconfirmed':
                 return ['check-in', 'see-details', 'delete'];
-            case 'edit':
-                return ['edit', 'delete'];
             default:
                 return [];
         }
@@ -130,6 +139,7 @@ const BookingsTable = ({ bookings }) => {
             </table>
         </div>
     );
-}
+};
 
 export default BookingsTable;
+
