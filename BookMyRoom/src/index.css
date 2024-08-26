@@ -627,6 +627,12 @@ tbody{
 .bookings-filters h1{
   margin-right: auto;
 }
+.bookings-container{
+  display: flex;
+  flex-direction: column;
+  width: 923px;
+}
+/* OPTIONS HEADER */
 .options-header{
   width: 920px;
   display: flex;
