@@ -1,6 +1,6 @@
 import { FaInfoCircle, FaCheckCircle, FaDollarSign } from "react-icons/fa";
 import Button from "../../../UX/Button";
-import { btnsMap, formatBookingDate, getButtonAction, getButtonType, getSeeDetailsBtns } from "../../../constants/constnsts";
+import { btnsMap, formatBookingDate, getSeeDetailsBtns } from "../../../constants/constnsts";
 import { useEffect, useState } from "react";
 
 const OptionsBody = ({ details }) => {
