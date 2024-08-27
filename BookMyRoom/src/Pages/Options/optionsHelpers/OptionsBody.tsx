@@ -13,12 +13,11 @@ const OptionsBody = ({ details }) => {
 
     const createdAt = parseISO(details.created_at);
     const finishBooking = parseISO(details.finish_booking);
-    console.log('PARSE ISO', createdAt)
     const nights = differenceInDays(finishBooking, createdAt);
 
     const formattedStartDate = format(createdAt, "EEE, d MMM  yyyy");
     const formattedEndDate = format(finishBooking, "EEE, d MMM  yyyy");
-
+    const finalPrice =   totalPrice * nights
     useEffect(() => {
         setCurrentBtns(getSeeDetailsBtns(details.status));
     }, [details]);
@@ -86,7 +85,7 @@ const OptionsBody = ({ details }) => {
                                 <FaDollarSign />
                                 <span>Total price</span>
                             </span>
-                            ${totalPrice.toFixed(2)} (
+                            ${finalPrice.toFixed(2)} (
                             ${actualPriceForCabin.toFixed(2)} cabin
                             {hasBreakfast && (
                                 <> + ${priceForBreakfast.toFixed(2)} breakfast</>
