@@ -85,12 +85,12 @@ const handleCheckInDetails = () => {
 
 // hash map
 export const btnsMap = {
-  'check-out': {
+  'Check-out': {
     type: 'success',
     handler: handleCheckOutDetails,
     content: ['Delete booking'],
   },
-  'check-in': {
+  'Check-in': {
     type: 'success',
     handler: handleCheckInDetails,
     content: ['Check-out', 'Delete booking'],

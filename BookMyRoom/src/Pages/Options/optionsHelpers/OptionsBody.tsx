@@ -2,18 +2,27 @@ import { FaInfoCircle, FaCheckCircle, FaDollarSign } from "react-icons/fa";
 import Button from "../../../UX/Button";
 import { btnsMap, formatBookingDate, getSeeDetailsBtns } from "../../../constants/constnsts";
 import { useEffect, useState } from "react";
+import { differenceInDays, parseISO, format } from "date-fns"; 
 
 const OptionsBody = ({ details }) => {
     const [currentBtns, setCurrentBtns] = useState([]);
-    const { observations, hasBreakfast, totalPrice, isPaid, priceForBreakfast = 105,} = details;
-   
+    console.log('BRANJEVO', details);
+    const { observations, hasBreakfast, totalPrice, isPaid, priceForBreakfast = 105 } = details;
+
     const actualPriceForCabin = totalPrice - (hasBreakfast ? priceForBreakfast : 0);
+
+    const createdAt = parseISO(details.created_at);
+    const finishBooking = parseISO(details.finish_booking);
+    console.log('PARSE ISO', createdAt)
+    const nights = differenceInDays(finishBooking, createdAt);
+
+    const formattedStartDate = format(createdAt, "EEE, d MMM  yyyy");
+    const formattedEndDate = format(finishBooking, "EEE, d MMM  yyyy");
 
     useEffect(() => {
         setCurrentBtns(getSeeDetailsBtns(details.status));
     }, [details]);
 
-  
     return (
         <>
             <section className="optionsBody-wrapper">
@@ -36,10 +45,10 @@ const OptionsBody = ({ details }) => {
                             ></path>
                         </svg>
                         <p>
-                            3 nights in Cabin <span>001</span>
+                            {nights} nights in Cabin <span>001</span>
                         </p>
                     </div>
-                    <p>Tue, Sep 18 2029 (In 5 years) — Fri, Sep 21 2029</p>
+                    <p>{formattedStartDate} — {formattedEndDate}</p>
                 </header>
 
                 <section className="optionsBody-section">
@@ -93,7 +102,7 @@ const OptionsBody = ({ details }) => {
             </section>
             <div className="optionsBtns">
                 {currentBtns.map((btn, index) => (
-                    <Button key={index}  type={btnsMap[btn].type} onClick={() => btnsMap[btn].handler(details.id)}>
+                    <Button key={index} type={btnsMap[btn].type} onClick={() => btnsMap[btn].handler(details.id)}>
                         {btn}
                     </Button>
                 ))}

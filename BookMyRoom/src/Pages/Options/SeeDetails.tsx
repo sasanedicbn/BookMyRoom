@@ -10,6 +10,7 @@ const SeeDetails = () => {
     const { id } = useParams(); 
     const [details, setDetails] = useState(null); 
 
+    console.log('detaliss1239812903821', details)
     useEffect(() => {
         const fetchDetails = async () => {
             const { data, error } = await supabase
