@@ -1,4 +1,6 @@
-const fetchBreakfastSetting = async () => {
+import { supabase } from "../supabase/supabaseClient";
+
+export const fetchBreakfastSetting = async () => {
     try {
       const { data, error } = await supabase
         .from('Settings')

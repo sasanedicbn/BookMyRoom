@@ -3,11 +3,25 @@ import Button from "../../../UX/Button";
 import { btnsMap, formatBookingDate, getSeeDetailsBtns } from "../../../constants/constnsts";
 import { useEffect, useState } from "react";
 import { differenceInDays, parseISO, format } from "date-fns"; 
+import { fetchBreakfastSetting } from "../../../api/fetchBreakfast";
 
 const OptionsBody = ({ details }) => {
     const [currentBtns, setCurrentBtns] = useState([]);
+    const [priceForBreakfast, setPriceForBreakfast] = useState(0);
+
     console.log('BRANJEVO', details);
-    const { observations, hasBreakfast, totalPrice, isPaid, priceForBreakfast = 105, cabinId } = details;
+    const { observations, hasBreakfast, totalPrice, isPaid, cabinId } = details;
+
+    useEffect(() => {
+        const fetchPrice = async () => {
+            const data = await fetchBreakfastSetting();
+            if (data) {
+                setPriceForBreakfast(data[0].breakfast);
+            }
+        };
+
+        fetchPrice();
+    }, []);
 
     const actualPriceForCabin = totalPrice - (hasBreakfast ? priceForBreakfast : 0);
 
@@ -17,7 +31,9 @@ const OptionsBody = ({ details }) => {
 
     const formattedStartDate = format(createdAt, "EEE, d MMM  yyyy");
     const formattedEndDate = format(finishBooking, "EEE, d MMM  yyyy");
-    const finalPrice =   totalPrice * nights
+    const finalPrice = totalPrice * nights;
+    const finalPriceBreakfast = priceForBreakfast * nights
+
     useEffect(() => {
         setCurrentBtns(getSeeDetailsBtns(details.status));
     }, [details]);
@@ -87,7 +103,7 @@ const OptionsBody = ({ details }) => {
                             ${finalPrice.toFixed(2)} (
                             ${actualPriceForCabin.toFixed(2)} cabin
                             {hasBreakfast && (
-                                <> + ${priceForBreakfast.toFixed(2)} breakfast</>
+                                <> + ${finalPriceBreakfast.toFixed(2)} breakfast</>
                             )}
                             )
                         </div>
