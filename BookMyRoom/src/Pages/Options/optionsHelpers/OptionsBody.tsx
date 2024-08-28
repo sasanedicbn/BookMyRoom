@@ -4,6 +4,7 @@ import { btnsMap, formatBookingDate, getSeeDetailsBtns } from "../../../constant
 import { useEffect, useState } from "react";
 import { differenceInDays, parseISO, format } from "date-fns"; 
 import { fetchBreakfastSetting } from "../../../api/fetchBreakfast";
+import BreakfastCheckbox from "./BreakFastCheckBox";
 
 const OptionsBody = ({ details }) => {
     const [currentBtns, setCurrentBtns] = useState([]);
@@ -110,6 +111,7 @@ const OptionsBody = ({ details }) => {
                         <p className="status-pay">{isPaid ? "Paid" : "Will pay at property"}</p>
                     </div>
                     <footer className="optionsBody-footer">
+                         {!hasBreakfast && <BreakfastCheckbox/>}
                         <p>{formatBookingDate(details.Guests.created_at)}</p>
                     </footer>
                 </section>

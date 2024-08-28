@@ -744,7 +744,7 @@ tbody{
 }
 .optionsBody-footer{
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-top: 1.75rem;
   font-size: 0.8rem;
   color: rgb(136, 136, 136);
