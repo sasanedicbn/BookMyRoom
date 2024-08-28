@@ -15,7 +15,7 @@ const SeeDetails = () => {
         const fetchDetails = async () => {
             const { data, error } = await supabase
                 .from('Bookings')
-                .select('*, Guests(*)') 
+                .select('*, Guests(*)',) 
                 .eq('id', id)
                 .single(); 
 

@@ -7,7 +7,7 @@ import { differenceInDays, parseISO, format } from "date-fns";
 const OptionsBody = ({ details }) => {
     const [currentBtns, setCurrentBtns] = useState([]);
     console.log('BRANJEVO', details);
-    const { observations, hasBreakfast, totalPrice, isPaid, priceForBreakfast = 105 } = details;
+    const { observations, hasBreakfast, totalPrice, isPaid, priceForBreakfast = 105, cabinId } = details;
 
     const actualPriceForCabin = totalPrice - (hasBreakfast ? priceForBreakfast : 0);
 
@@ -44,7 +44,7 @@ const OptionsBody = ({ details }) => {
                             ></path>
                         </svg>
                         <p>
-                            {nights} nights in Cabin <span>001</span>
+                            {nights} nights in Cabin <span>{cabinId}</span>
                         </p>
                     </div>
                     <p>{formattedStartDate} — {formattedEndDate}</p>
@@ -82,7 +82,6 @@ const OptionsBody = ({ details }) => {
                     <div className={`info-block-footer ${isPaid ? 'paid' : 'not-paid'}`}>
                         <div className="price-block">
                             <span className="icon-text">
-                                <FaDollarSign />
                                 <span>Total price</span>
                             </span>
                             ${finalPrice.toFixed(2)} (
