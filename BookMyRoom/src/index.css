@@ -769,3 +769,9 @@ tbody{
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+.breakfast-checkbox label input{
+  margin-left: 10px;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+}
