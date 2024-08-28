@@ -1,13 +1,17 @@
-import  { useState } from 'react';
+import { useState } from 'react';
+import { updateHasBreakfast } from '../../../api/updateBreakfast';
 
-const BreakfastCheckbox = ({ onChange }) => {
+const BreakfastCheckbox = ({ bookingId, onChange }) => {
     const [checked, setChecked] = useState(false);
 
-    const handleCheckboxChange = (event) => {
-        setChecked(event.target.checked);
+    const handleCheckboxChange = async (event) => {
+        const isChecked = event.target.checked;
+        setChecked(isChecked);
         if (onChange) {
-            onChange(event.target.checked);
+            onChange(isChecked);
         }
+        
+        await updateHasBreakfast(bookingId, isChecked);
     };
 
     return (

@@ -1,6 +1,6 @@
 import { supabase } from "../supabase/supabaseClient";
 
-const updateHasBreakfast = async (bookingId, hasBreakfast) => {
+export const updateHasBreakfast = async (bookingId, hasBreakfast) => {
     try {
         const { error } = await supabase
             .from('Bookings')

@@ -9,9 +9,11 @@ import BreakfastCheckbox from "./BreakFastCheckBox";
 const OptionsBody = ({ details }) => {
     const [currentBtns, setCurrentBtns] = useState([]);
     const [priceForBreakfast, setPriceForBreakfast] = useState(0);
+    const [hasBreakfast, setHasBreakfast] = useState(details.hasBreakfast); 
+
 
     console.log('BRANJEVO', details);
-    const { observations, hasBreakfast, totalPrice, isPaid, cabinId } = details;
+    const { observations, totalPrice, isPaid, cabinId } = details;
 
     useEffect(() => {
         const fetchPrice = async () => {
@@ -111,7 +113,7 @@ const OptionsBody = ({ details }) => {
                         <p className="status-pay">{isPaid ? "Paid" : "Will pay at property"}</p>
                     </div>
                     <footer className="optionsBody-footer">
-                         {!hasBreakfast && <BreakfastCheckbox/>}
+                         {!hasBreakfast && <BreakfastCheckbox bookingId={details.id} onChange={(isChecked) => setHasBreakfast(isChecked)}/>}
                         <p>{formatBookingDate(details.Guests.created_at)}</p>
                     </footer>
                 </section>
