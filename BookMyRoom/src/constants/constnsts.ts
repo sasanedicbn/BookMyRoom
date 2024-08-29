@@ -1,4 +1,6 @@
+import { toast } from "react-toastify";
 import { deleteBookingById } from "../api/deleteBookingById";
+import { supabase } from "../supabase/supabaseClient";
 
 export const filterButtons = [
   { label: 'All', filterValue: 'all' },
@@ -88,8 +90,9 @@ const handleCheckInDetails = async (bookingId) => {
     if (error) throw error;
 
     console.log('Booking checked in:', data);
+    toast.success('Booking successfully checked in!');
   } catch (error) {
-    console.error('Error checking in:', error.message);
+    toast.error('Failed to check in the booking.');
   }
 };
 
