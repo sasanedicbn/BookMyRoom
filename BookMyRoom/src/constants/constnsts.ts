@@ -78,10 +78,20 @@ const handleCheckOutDetails = () => {
   console.log("Check-out action");
 };
 
-const handleCheckInDetails = () => {
-  console.log("Check-in action");
-};
+const handleCheckInDetails = async (bookingId) => {
+  try {
+    const { data, error } = await supabase
+      .from('Bookings')
+      .update({ status: 'checked-in' })
+      .eq('id', bookingId);
 
+    if (error) throw error;
+
+    console.log('Booking checked in:', data);
+  } catch (error) {
+    console.error('Error checking in:', error.message);
+  }
+};
 
 // hash map
 export const btnsMap = {
