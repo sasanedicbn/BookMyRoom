@@ -76,9 +76,6 @@ export const formatBookingDate = (isoDate)  =>{
   return `Booked ${day}, ${month} ${dayOfMonth} ${year}, ${hours}:${minutes} ${ampm}`;
 }
 
-const handleCheckOutDetails = () => {
-  console.log("Check-out action");
-};
 
 const handleCheckInDetails = async (bookingId) => {
   try {
@@ -93,6 +90,23 @@ const handleCheckInDetails = async (bookingId) => {
     toast.success('Booking successfully checked in!');
   } catch (error) {
     toast.error('Failed to check in the booking.');
+  }
+};
+
+ const handleCheckOutDetails = async (bookingId) => {
+  try {
+    const { data, error } = await supabase
+      .from('Bookings')
+      .update({ status: 'checked-out' })
+      .eq('id', bookingId);
+
+    if (error) throw error;
+
+    console.log('booking chekcked out', data)
+    toast.success('Booking successfully checked-out!');
+  } catch (error) {
+    toast.error('Failed to check in the booking.');
+
   }
 };
 
