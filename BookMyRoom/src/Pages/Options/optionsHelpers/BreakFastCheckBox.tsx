@@ -6,6 +6,7 @@ const BreakfastCheckbox = ({ bookingId, onChange }) => {
 
     const handleCheckboxChange = async (event) => {
         const isChecked = event.target.checked;
+        console.log('ischedked', isChecked)
         setChecked(isChecked);
         if (onChange) {
             onChange(isChecked);
