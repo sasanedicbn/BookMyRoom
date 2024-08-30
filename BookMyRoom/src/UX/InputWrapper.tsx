@@ -1,4 +1,4 @@
-const InputWrapper = ({children}) => {
+const InputWrapper = ({children}:{children:React.ReactNode}) => {
     return(
         <div className="settings-inputs">
             {children}
