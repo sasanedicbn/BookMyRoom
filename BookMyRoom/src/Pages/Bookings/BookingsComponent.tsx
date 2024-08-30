@@ -5,20 +5,9 @@ import { supabase } from "../../supabase/supabaseClient";
 import BookingsTable from "./BookingsTable";
 import { bookingStatuses, selectOptions } from "../../constants/constnsts";
 import Spinner from "../../global/Spinner";
+import { Booking } from "../../types/types";
 
-type Booking = {
-    id: string;
-    status: string;
-    created_at: string;
-    totalPrice: number;
-    Bedrooms: {
-        id: string;
-    };
-    Guests: {
-        fullName: string;
-        email: string;
-    }[];
-};
+
 
 type SortOption = 'date-desc' | 'date-asc' | 'amount-high' | 'amount-low';
 type FilterOption = 'all' | string;

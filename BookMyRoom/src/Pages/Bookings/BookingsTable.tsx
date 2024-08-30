@@ -5,18 +5,26 @@ import OptionsMenu from '../../UX/OptionsMenu';
 import { FaCheck, FaEye, FaTrash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { deleteBookingById } from '../../api/deleteBookingById';
+import { Booking } from '../../types/types';
 
-const BookingsTable = ({ bookings, setBookings }) => {
-    const [openMenuModal, setOpenMenuModal] = useState(false);
-    const [currentBooking, setCurrentBooking] = useState(null);
-    const modalRef = useRef(null); 
+type BookingTableProps = {
+    bookings: Booking[],
+    setBookings: React.Dispatch<React.SetStateAction<Booking[]>>,
+};
+
+const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
+    const [openMenuModal, setOpenMenuModal] = useState<boolean>(false);
+    const [currentBooking, setCurrentBooking] = useState<Booking | null>(null);
+    const modalRef = useRef<HTMLDivElement | null>(null); 
     const navigate = useNavigate(); 
 
-    const handleSeeDetails = (id) => {
-        navigate(`/booking/${id}`);
+    const handleSeeDetails = (id: number | undefined) => {
+        if (id) {
+            navigate(`/booking/${id}`);
+        }
     };
 
-    const handleOpenModal = (booking) => {
+    const handleOpenModal = (booking: Booking) => {
         setCurrentBooking(booking);
         setOpenMenuModal(true);
     };
@@ -27,8 +35,8 @@ const BookingsTable = ({ bookings, setBookings }) => {
     };
 
     useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (modalRef.current && !modalRef.current.contains(event.target)) {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
                 handleCloseModal();
             }
         };
@@ -49,7 +57,7 @@ const BookingsTable = ({ bookings, setBookings }) => {
             const success = await deleteBookingById(currentBooking.id);
             if (success) {
                 handleCloseModal(); 
-                setBookings((prevBooking) => prevBooking.filter((booking) => booking.id !== currentBooking.id))
+                setBookings((prevBooking) => prevBooking.filter((booking) => booking.id !== currentBooking.id));
             }
         }
     };
@@ -58,10 +66,10 @@ const BookingsTable = ({ bookings, setBookings }) => {
         { key: 'delete', icon: <FaTrash />, label: 'Delete', onClick: handleDeleteBooking },
         { key: 'check-out', icon: <FaCheck />, label: 'Check Out', onClick: handleCheckOut },
         { key: 'check-in', icon: <FaCheck />, label: 'Check In', onClick: handleCheckIn },
-        { key: 'see-details', icon: <FaEye />, label: 'See Details', onClick: () => handleSeeDetails(currentBooking?.id) },
+        { key: 'see-details', icon: <FaEye />, label: 'See Details', onClick: () => handleSeeDetails(Number(currentBooking?.id)) }, // Ensuring id is a number
     ];
 
-    const getModalOptions = (status) => {
+    const getModalOptions = (status: string) => {
         switch (status) {
             case 'checked-in':
                 return ['check-out', 'see-details', 'delete'];
@@ -74,22 +82,24 @@ const BookingsTable = ({ bookings, setBookings }) => {
         }
     };
 
-    const getModalsActions = (options) => {
+    const getModalsActions = (options: string[]) => {
         return modalsActions.filter(action => options.includes(action.key));
     };
 
     return (
         <div>
             <table className="table">
-                <TableHeadBookings/>
+                <TableHeadBookings />
                 <tbody className="table-body">
-                    {bookings.map((booking, index) => (
-                        <tr key={index}>
+                    {bookings.map((booking) => (
+                        <tr key={booking.id}>
                             <td>{formatNumber(booking.Bedrooms?.id)}</td>
                             <td className="table-body-guest">
-                                {booking.Guests?.fullName} <span>{booking.Guests?.email}</span>
+                                {/* Assuming Guests is an array, access the first guest's details */}
+                                {booking.Guests[0]?.fullName} <span>{booking.Guests[0]?.email}</span>
                             </td>
                             <td>
+                                {/* Ensure these dates exist on Booking type */}
                                 {new Date(booking.checkInDate).toLocaleDateString()} — {new Date(booking.checkOutDate).toLocaleDateString()}
                             </td>
                             <td>
@@ -109,7 +119,7 @@ const BookingsTable = ({ bookings, setBookings }) => {
                                     className='' 
                                     stroke="currentColor" 
                                     fill="currentColor" 
-                                    stroke-width="0" 
+                                    strokeWidth="0" 
                                     viewBox="0 0 24 24" 
                                     height="1em" 
                                     width="1em" 
@@ -125,6 +135,7 @@ const BookingsTable = ({ bookings, setBookings }) => {
                                     <div ref={modalRef} className='optionsMenu-container'>
                                         <OptionsMenu 
                                             modalsActions={getModalsActions(getModalOptions(currentBooking.status))}
+                                            options={[]} 
                                         />
                                     </div>
                                 )}
@@ -138,4 +149,3 @@ const BookingsTable = ({ bookings, setBookings }) => {
 };
 
 export default BookingsTable;
-
