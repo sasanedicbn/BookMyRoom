@@ -1,4 +1,4 @@
-import { supabase } from "../supabase/supabaseClient";
+import { supabase } from "../../supabase/supabaseClient";
 
 export const fetchRooms = async () => {
   let { data: rooms, error } = await supabase

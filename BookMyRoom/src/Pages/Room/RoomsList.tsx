@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRooms } from "../../store/roomsSlice";
-import { fetchRooms } from "../../api/fetchRooms";
+import { fetchRooms } from "../../api/Rooms/fetchRooms";
 import Room from "./Room";
 import NewEditRoom from "./newEditRoom";
 import SortRooms from "./SortRooms";

@@ -6,6 +6,7 @@ import { FaCheck, FaEye, FaTrash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { deleteBookingById } from '../../api/Booking/deleteBookingById';
 import { Booking } from '../../types/types';
+import { format } from 'date-fns';
 
 type BookingTableProps = {
     bookings: Booking[],
@@ -33,7 +34,7 @@ const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
         setOpenMenuModal(false);
         setCurrentBooking(null);
     };
-
+     
     // probati napraviti custom huk useclickoutisede za modale
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -87,6 +88,8 @@ const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
         return modalsActions.filter(action => options.includes(action.key));
     };
 
+    
+  
     return (
         <div>
             <table className="table">
@@ -99,7 +102,9 @@ const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
                                 {booking.Guests?.fullName} <span>{booking.Guests?.email}</span>
                             </td>
                             <td>
-                                {new Date(booking.checkInDate).toLocaleDateString()} — {new Date(booking.checkOutDate).toLocaleDateString()}
+                            {booking.create_booking ? format(new Date(booking.create_booking), "EEE, d MMM yyyy") : 'Invalid date'} <br></br>
+                             — {booking.finish_booking ? format(new Date(booking.finish_booking), "EEE, d MMM yyyy") : 'Invalid date'}
+
                             </td>
                             <td>
                                 <span className={`${
