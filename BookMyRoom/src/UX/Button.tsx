@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom';
 
-const Button = ({ type, onClick, children, to }) => {
+const Button = ({ type, onClick, children }) => {
   const baseClass = 'base'; 
 
   const styles = {
@@ -17,13 +16,7 @@ const Button = ({ type, onClick, children, to }) => {
 
   const buttonClass = `${styles[type]} `; 
 
-  if (to) {
-    return (
-      <Link to={to} className={buttonClass}>
-        {children}
-      </Link>
-    );
-  }
+ 
 
   return (
     <button className={buttonClass} onClick={onClick}>
