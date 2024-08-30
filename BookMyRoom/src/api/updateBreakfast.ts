@@ -1,8 +1,10 @@
 import { supabase } from "../supabase/supabaseClient";
 
-export const updateHasBreakfast = async (bookingId, hasBreakfast) => {
+
+
+export const updateHasBreakfast = async (bookingId: string, hasBreakfast: boolean): Promise<void> => {
     try {
-        const { error } = await supabase
+        const { error }: SupabaseResponse = await supabase
             .from('Bookings')
             .update({ hasBreakfast })
             .eq('id', bookingId);
@@ -10,7 +12,7 @@ export const updateHasBreakfast = async (bookingId, hasBreakfast) => {
         if (error) throw error;
 
         console.log('Booking updated successfully');
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error updating booking:', error.message);
     }
 };
