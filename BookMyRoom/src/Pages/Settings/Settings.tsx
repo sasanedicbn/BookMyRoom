@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 import { fetchSettings } from '../../api/fetchSettings';
 import { supabase } from "../../supabase/supabaseClient";
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import Input from '../../UX/Input';
 import Button from '../../UX/Button';
 import InputWrapper from '../../UX/InputWrapper';
@@ -28,7 +28,7 @@ const Settings = () => {
     loadSettings();
   }, []);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setSettingsData((prevSettings) => ({
       ...prevSettings,
@@ -70,7 +70,6 @@ const Settings = () => {
               name={field.name}
               value={field.value}
               onChange={handleChange}
-              inputClassName="user-input"
             />
             </InputWrapper>
           ))}
@@ -80,5 +79,4 @@ const Settings = () => {
       </div>
   );
 };
-// pogledaj jel ti div poreban ovaj
 export default Settings;

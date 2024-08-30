@@ -20,3 +20,39 @@ export type Booking = {
 };
 export type SortOption = 'date-desc' | 'date-asc' | 'amount-high' | 'amount-low';
 export type FilterOption = 'all' | string;
+
+export type Guest = {
+    id: number;
+    fullName: string;
+    email: string;
+    nationalID: string;
+    created_at: string;
+    country: string;
+    nationality: string;
+};
+
+export type BookingDetails = {
+    id: number;
+    created_at: string;
+    totalPrice: number;
+    status: string;
+    hasBreakfast: boolean;
+    finish_booking: string;
+    create_booking: string;
+    guestId: number;
+    isPaid: boolean;
+    observations: string | null;
+    cabinId: number;
+    handler: (bookingId: string) => Promise<void>;
+    Guests: Guest;
+};
+type ButtonConfig = {
+    type: string;
+    handler: (bookingId: string) => Promise<void>;
+    content: string[];
+  };
+  
+ export type BtnsMap = {
+    [key: string]: ButtonConfig;
+  };
+  

@@ -1,14 +1,21 @@
 import { FaArrowLeft } from "react-icons/fa";
 import Button from "../../../UX/Button";
 import { useNavigate } from "react-router-dom";
+import { BookingDetails } from "../../../types/types";
+ 
 
-const OptionsHeader = ({ details }) => {
+type OptionsHeaderProps = {
+    details: BookingDetails;
+}
+
+const OptionsHeader = ({ details }:OptionsHeaderProps) => {
     const { id, status } = details;
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     
     const backHandler = () => {
-     navigate('/booking')
-    }
+        navigate('/booking');
+    };
+
     return (
         <div className="options-header">
             <div>
@@ -21,7 +28,7 @@ const OptionsHeader = ({ details }) => {
                     {status}
                 </p>
             </div>
-            <div className="back" >
+            <div className="back">
                 <FaArrowLeft />
                 <Button type={'danger'} onClick={backHandler}>Back</Button>
             </div>

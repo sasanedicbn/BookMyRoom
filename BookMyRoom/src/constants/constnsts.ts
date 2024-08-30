@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
 import { deleteBookingById } from "../api/deleteBookingById";
 import { supabase } from "../supabase/supabaseClient";
+import { BtnsMap } from "../types/types";
 
 export const filterButtons = [
   { label: 'All', filterValue: 'all' },
@@ -33,12 +34,16 @@ export const selectOptions = [
     { value: 'amount-high', label: 'Sort by amount (high first)' },
     { value: 'amount-low', label: 'Sort by amount (low first)' }
 ];
-export const formatNumber = (number) => {
+export const formatNumber = (number:string ) => {
   return number.toString().padStart(3, '0');
 };
 export const handlerOpenEditModal = () => {
   console.log('Open Edit Modal');
 };
+const handleDeleteBooking = async (bookingId: string): Promise<void> => {
+  await deleteBookingById(bookingId);
+};
+
 
 export const handleDelete = () => {
   console.log('Delete functionality here');
@@ -53,7 +58,7 @@ export const handleCheckIn = () => {
 };
 
 
-export const formatBookingDate = (isoDate)  =>{
+export const formatBookingDate = (isoDate:string)  =>{
   const date = new Date(isoDate);
 
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -77,7 +82,7 @@ export const formatBookingDate = (isoDate)  =>{
 }
 
 
-const handleCheckInDetails = async (bookingId) => {
+const handleCheckInDetails = async (bookingId:string) => {
   try {
     const { data, error } = await supabase
       .from('Bookings')
@@ -93,7 +98,7 @@ const handleCheckInDetails = async (bookingId) => {
   }
 };
 
- const handleCheckOutDetails = async (bookingId) => {
+ const handleCheckOutDetails = async (bookingId:string) => {
   try {
     const { data, error } = await supabase
       .from('Bookings')
@@ -111,7 +116,7 @@ const handleCheckInDetails = async (bookingId) => {
 };
 
 // hash map
-export const btnsMap = {
+export const btnsMap:BtnsMap = {
   'Check-out': {
     type: 'success',
     handler: handleCheckOutDetails,
@@ -124,13 +129,13 @@ export const btnsMap = {
   },
   'Delete booking': {
     type: 'danger',
-    handler: (bookingId) => deleteBookingById(bookingId),
+    handler: handleDeleteBooking,
     content: [],
   },
 };
 
 
-export  const getSeeDetailsBtns = (status) => {
+export  const getSeeDetailsBtns = (status:string) => {
   switch (status) {
       case 'checked-in':
           return ['Check-out', 'Delete booking'];

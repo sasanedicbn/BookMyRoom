@@ -1,18 +1,22 @@
-import { FaInfoCircle, FaCheckCircle, FaDollarSign } from "react-icons/fa";
+// OptionsBody.tsx
+import { FaInfoCircle, FaCheckCircle } from "react-icons/fa";
 import Button from "../../../UX/Button";
 import { btnsMap, formatBookingDate, getSeeDetailsBtns } from "../../../constants/constnsts";
 import { useEffect, useState } from "react";
-import { differenceInDays, parseISO, format } from "date-fns"; 
+import { differenceInDays, parseISO, format } from "date-fns";
 import { fetchBreakfastSetting } from "../../../api/fetchBreakfast";
 import BreakfastCheckbox from "./BreakFastCheckBox";
+import { BookingDetails } from "../../../types/types";
 
-const OptionsBody = ({ details }) => {
-    const [currentBtns, setCurrentBtns] = useState([]);
-    const [priceForBreakfast, setPriceForBreakfast] = useState(0);
-    const [hasBreakfast, setHasBreakfast] = useState(details.hasBreakfast); 
+type OptionsBodyProps = {
+    details: BookingDetails;
+};
 
+const OptionsBody = ({ details }: OptionsBodyProps) => {
+    const [currentBtns, setCurrentBtns] = useState<string[]>([]);
+    const [priceForBreakfast, setPriceForBreakfast] = useState<number>(0);
+    const [hasBreakfast, setHasBreakfast] = useState<boolean>(details.hasBreakfast);
 
-    console.log('BRANJEVO', details);
     const { observations, totalPrice, isPaid, cabinId } = details;
 
     useEffect(() => {
@@ -32,10 +36,10 @@ const OptionsBody = ({ details }) => {
     const finishBooking = parseISO(details.finish_booking);
     const nights = differenceInDays(finishBooking, createdAt);
 
-    const formattedStartDate = format(createdAt, "EEE, d MMM  yyyy");
-    const formattedEndDate = format(finishBooking, "EEE, d MMM  yyyy");
+    const formattedStartDate = format(createdAt, "EEE, d MMM yyyy");
+    const formattedEndDate = format(finishBooking, "EEE, d MMM yyyy");
     const finalPrice = totalPrice * nights;
-    const finalPriceBreakfast = priceForBreakfast * nights
+    const finalPriceBreakfast = priceForBreakfast * nights;
 
     useEffect(() => {
         setCurrentBtns(getSeeDetailsBtns(details.status));
@@ -113,14 +117,14 @@ const OptionsBody = ({ details }) => {
                         <p className="status-pay">{isPaid ? "Paid" : "Will pay at property"}</p>
                     </div>
                     <footer className="optionsBody-footer">
-                         {!hasBreakfast && <BreakfastCheckbox bookingId={details.id} onChange={(isChecked) => setHasBreakfast(isChecked)}/>}
+                        {!hasBreakfast && <BreakfastCheckbox bookingId={details.id.toString()} onChange={(isChecked) => setHasBreakfast(isChecked)} />}
                         <p>{formatBookingDate(details.Guests.created_at)}</p>
                     </footer>
                 </section>
             </section>
             <div className="optionsBtns">
                 {currentBtns.map((btn, index) => (
-                    <Button key={index} type={btnsMap[btn].type} onClick={() => btnsMap[btn].handler(details.id)}>
+                    <Button key={index} type={btnsMap[btn].type} onClick={() => btnsMap[btn].handler(details.id.toString())}>
                         {btn}
                     </Button>
                 ))}
