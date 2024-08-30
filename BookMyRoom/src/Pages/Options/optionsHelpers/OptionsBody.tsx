@@ -4,7 +4,7 @@ import Button from "../../../UX/Button";
 import { btnsMap, formatBookingDate, getSeeDetailsBtns } from "../../../constants/constnsts";
 import { useEffect, useState } from "react";
 import { differenceInDays, parseISO, format } from "date-fns";
-import { fetchBreakfastSetting } from "../../../api/fetchBreakfast";
+import { fetchBreakfastSetting } from "../../../api/Booking/fetchBreakfast";
 import BreakfastCheckbox from "./BreakFastCheckBox";
 import { BookingDetails } from "../../../types/types";
 

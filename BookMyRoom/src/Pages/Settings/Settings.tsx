@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { fetchSettings } from '../../api/fetchSettings';
+import { fetchSettings } from '../../api/Settings/fetchSettings';
 import { supabase } from "../../supabase/supabaseClient";
 import { ChangeEvent, useEffect, useState } from 'react';
 import Input from '../../UX/Input';

@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { deleteBookingById } from "../api/deleteBookingById";
+import { deleteBookingById } from "../api/Booking/deleteBookingById";
 import { supabase } from "../supabase/supabaseClient";
 import { BtnsMap } from "../types/types";
 

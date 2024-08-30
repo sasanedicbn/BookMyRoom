@@ -4,7 +4,7 @@ import { formatNumber, handleCheckIn, handleCheckOut } from '../../constants/con
 import OptionsMenu from '../../UX/OptionsMenu';
 import { FaCheck, FaEye, FaTrash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { deleteBookingById } from '../../api/deleteBookingById';
+import { deleteBookingById } from '../../api/Booking/deleteBookingById';
 import { Booking } from '../../types/types';
 
 type BookingTableProps = {
@@ -34,6 +34,7 @@ const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
         setCurrentBooking(null);
     };
 
+    // probati napraviti custom huk useclickoutisede za modale
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (modalRef.current && !modalRef.current.contains(event.target as Node)) {

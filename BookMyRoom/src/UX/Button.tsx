@@ -2,7 +2,7 @@ import React from 'react';
 
 type ButtonType = 'primary' | 'secondary' | 'danger' | 'success' | 'back' | 'edit' | 'delete' | 'options' | 'optionRoom';
 
-interface ButtonProps {
+type ButtonProps = {
   type: ButtonType;
   onClick?: () => void; 
   children: React.ReactNode; 
@@ -16,11 +16,11 @@ const Button: React.FC<ButtonProps> = ({ type, onClick, children }) => {
     secondary: `${baseClass} secondary-btn`,
     danger: `${baseClass} danger-btn`,
     success: `${baseClass} success-btn`,
-    back: `${baseClass} back-btn`,
-    edit: `${baseClass} edit-btn`,
-    delete: `${baseClass} delete-btn`,
-    options: `${baseClass} options-btn`,
-    optionRoom: `${baseClass} options-btn options-room`,
+    back: `back-btn`,
+    edit: `edit-btn`,
+    delete: ` delete-btn`,
+    options: ` options-btn`,
+    optionRoom: ` options-btn options-room`,
   };
 
   const buttonClass = styles[type];

@@ -1,5 +1,5 @@
 import { useState, ChangeEvent } from 'react';
-import { updateHasBreakfast } from '../../../api/updateBreakfast';
+import { updateHasBreakfast } from '../../../api/Booking/updateBreakfast';
 
 type BreakfastCheckboxProps = {
     bookingId: string;

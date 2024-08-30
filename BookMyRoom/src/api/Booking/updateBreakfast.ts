@@ -1,5 +1,5 @@
-import { supabase } from "../supabase/supabaseClient";
-import { SupabaseResponse } from "../types/types";
+import { supabase } from "../../supabase/supabaseClient";
+import { SupabaseResponse } from "../../types/types";
 
 
 
