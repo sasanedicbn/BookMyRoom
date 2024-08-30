@@ -14,7 +14,7 @@ export type Booking = {
         id: string;
     };
     Guests: {
-        fullName: string;
+        fullName: string ;
         email: string;
     }[];
 };
