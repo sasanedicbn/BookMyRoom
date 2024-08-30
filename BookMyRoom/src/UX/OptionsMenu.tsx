@@ -1,6 +1,6 @@
-import Modals from './Modals';
 import ModalButton from './ModalButton';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import Modals from './Modals';
+
 
 interface OptionsMenuProps {
   options: string[];

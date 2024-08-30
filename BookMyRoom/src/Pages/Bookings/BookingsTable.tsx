@@ -66,7 +66,7 @@ const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
         { key: 'delete', icon: <FaTrash />, label: 'Delete', onClick: handleDeleteBooking },
         { key: 'check-out', icon: <FaCheck />, label: 'Check Out', onClick: handleCheckOut },
         { key: 'check-in', icon: <FaCheck />, label: 'Check In', onClick: handleCheckIn },
-        { key: 'see-details', icon: <FaEye />, label: 'See Details', onClick: () => handleSeeDetails(Number(currentBooking?.id)) }, // Ensuring id is a number
+        { key: 'see-details', icon: <FaEye />, label: 'See Details', onClick: () => handleSeeDetails(Number(currentBooking?.id)) }, 
     ];
 
     const getModalOptions = (status: string) => {
@@ -95,11 +95,9 @@ const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
                         <tr key={booking.id}>
                             <td>{formatNumber(booking.Bedrooms?.id)}</td>
                             <td className="table-body-guest">
-                                {/* Assuming Guests is an array, access the first guest's details */}
-                                {booking.Guests[0]?.fullName} <span>{booking.Guests[0]?.email}</span>
+                                {booking.Guests?.fullName} <span>{booking.Guests?.email}</span>
                             </td>
                             <td>
-                                {/* Ensure these dates exist on Booking type */}
                                 {new Date(booking.checkInDate).toLocaleDateString()} — {new Date(booking.checkOutDate).toLocaleDateString()}
                             </td>
                             <td>
