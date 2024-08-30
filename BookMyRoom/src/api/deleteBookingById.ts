@@ -1,24 +1,25 @@
+type SupabaseResponse = boolean;
+
 import { supabase } from "../supabase/supabaseClient";
 
-
-
-export const deleteBookingById = async (bookingId ) => {
+export const deleteBookingById = async (bookingId: string): Promise<SupabaseResponse> => {
   try {
     const { error } = await supabase
       .from("Bookings")
       .delete()
-      .eq("id", bookingId); 
+      .eq("id", bookingId);
 
     if (error) {
       console.error("Error deleting booking:", error.message);
-      return false; 
+      return false;
     }
-   
+
     console.log("Booking deleted successfully");
-    return true; 
-    
-  } catch (error) {
+    return true;
+
+  } catch (error: any) {
     console.error("Unexpected error deleting booking:", error.message);
     return false;
   }
 };
+
