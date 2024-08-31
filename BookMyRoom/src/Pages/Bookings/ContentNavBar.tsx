@@ -1,10 +1,11 @@
+import { RootState } from "@reduxjs/toolkit/query"
 import {FaMoon, FaSignOutAlt, FaUser } from "react-icons/fa"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 const ContentNavBar = () => {
     const navigate = useNavigate()
-    const userName = useSelector(state => state.rooms.currentUser)
+    const userName = useSelector((state:RootState) => state.rooms.currentUser)
     console.log('userName', userName)
     const logOut = () => {
         navigate('/login')

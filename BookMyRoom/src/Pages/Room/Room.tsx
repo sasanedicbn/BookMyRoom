@@ -8,6 +8,7 @@ import { supabase } from '../../supabase/supabaseClient';
 import { useDispatch } from 'react-redux';
 import { getRooms } from '../../store/roomsSlice';
 import { toast } from 'react-toastify';
+import OptionsMenu from '../../UX/OptionsMenu';
 
 const Room = ({ room }) => {
   const { name, maxCapacity, regularPrice, image, discount } = room;
@@ -78,18 +79,18 @@ const Room = ({ room }) => {
     }
   };
 
-  const modalsActions = {
-    'edit': {
+  const modalsActions = [
+     {
       icon: <FaEdit />,
       onClick: handleOpenEditModal,
       label: 'Edit'
     },
-    'delete': {
+     {
       icon: <FaTrash />,
       onClick: handleDelete,
       label: 'Delete'
     },
-  };
+  ]
 
   return (
     <>
@@ -105,15 +106,7 @@ const Room = ({ room }) => {
       </tr>
 
       {openMenuModal && (
-        <Modals>
-          <div className={`options-menu two-options`}>
-            {Object.values(modalsActions).map(action => (
-              <Button key={action.label} type={'optionRoom'} onClick={action.onClick}>
-                {action.icon} {action.label}
-              </Button>
-            ))}
-          </div>
-        </Modals>
+        <OptionsMenu modalsActions={modalsActions}/>
       )}
 
       {openEditModal && (
