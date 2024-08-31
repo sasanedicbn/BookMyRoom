@@ -5,11 +5,10 @@ import { supabase } from "../../supabase/supabaseClient";
 import BookingsTable from "./BookingsTable";
 import { bookingStatuses, selectOptions } from "../../constants/constnsts";
 import Spinner from "../../global/Spinner";
-import { Booking, FilterOption, SortOption } from "../../types/types";
+import { Booking, SortOption } from "../../types/types";
 
 const BookingsComponent = () => {
     const [bookings, setBookings] = useState<Booking[]>([]);
-    const [filter, setFilter] = useState<FilterOption>('all');
     const [loading, setLoading] = useState<boolean>(true);
 
     const sortMapping: Record<SortOption, { column: string; ascending: boolean }> = {
@@ -19,7 +18,7 @@ const BookingsComponent = () => {
         'amount-low': { column: 'totalPrice', ascending: true }
     };
 
-    const fetchBookings = async (sort: SortOption) => {
+    const fetchBookings = async (sort: SortOption = 'date-desc', filter: string = 'all') => {
         setLoading(true);
 
         let query = supabase.from('Bookings').select(`
@@ -33,6 +32,7 @@ const BookingsComponent = () => {
         }
 
         const { column, ascending } = sortMapping[sort];
+        console.log('column', column , 'ascending', ascending)
 
         const { data, error } = await query.order(column, { ascending });
         setLoading(false);
@@ -44,12 +44,16 @@ const BookingsComponent = () => {
     };
 
     useEffect(() => {
-        fetchBookings('date-desc'); 
-    }, [filter]);
+        fetchBookings();
+    }, []);
 
     const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedSort = e.target.value as SortOption;
         fetchBookings(selectedSort);
+    };
+
+    const handleFilterChange = (filter: string) => {
+        fetchBookings(undefined, filter);
     };
 
     return (
@@ -57,7 +61,7 @@ const BookingsComponent = () => {
             <div className="bookings-filters">
                 <h1>Bookings</h1>
                 {bookingStatuses.map((status, index) => (
-                    <Button key={index} type="success" onClick={() => setFilter(status.filterValue as FilterOption)}>
+                    <Button key={index} type="success" onClick={() => handleFilterChange(status.filterValue)}>
                         {status.label}
                     </Button>
                 ))}
@@ -76,3 +80,4 @@ const BookingsComponent = () => {
 };
 
 export default BookingsComponent;
+
