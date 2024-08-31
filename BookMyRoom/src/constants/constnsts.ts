@@ -1,4 +1,4 @@
-import { deleteBookingById } from "../api/Booking/deleteBookingById";
+import { deleteBookingById } from "../api/deleteBookingById";
 import { BtnsMap } from "../types/types";
 import { handleCheckOutDetails } from "../api/Booking/checkOutDetails";
 import { handleCheckInDetails } from "../api/Booking/checkInDetails";

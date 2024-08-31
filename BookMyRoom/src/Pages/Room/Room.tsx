@@ -7,6 +7,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import { supabase } from '../../supabase/supabaseClient';
 import { useDispatch } from 'react-redux';
 import { getRooms } from '../../store/roomsSlice';
+import { toast } from 'react-toastify';
 
 const Room = ({ room }) => {
   const { name, maxCapacity, regularPrice, image, discount } = room;
@@ -24,22 +25,38 @@ const Room = ({ room }) => {
   };
 
   const handleDelete = async () => {
-    const { error } = await supabase
-      .from('Bedrooms')
-      .delete()
-      .eq('id', room.id);
-
-    if (error) {
-      console.error('Error deleting row:', error);
-    } else {
-      console.log('Room deleted successfully');
-      const { data: rooms, error: fetchError } = await supabase.from('Bedrooms').select('*');
-      if (!fetchError) {
-        dispatch(getRooms(rooms));
+    try {
+      const { error: bookingsError } = await supabase
+        .from('Bookings')
+        .delete()
+        .eq('cabinId', room.id);
+  
+      if (bookingsError) {
+        console.error('Error deleting bookings:', bookingsError);
+        return;
       }
-      setOpenMenuModal(false);
+  
+      const { error: roomError } = await supabase
+        .from('Bedrooms')
+        .delete()
+        .eq('id', room.id);
+  
+      if (roomError) {
+        toast.error('You can not delete room!')
+
+      } else {
+        toast.success('Room deleted successfully!')
+        const { data: rooms, error: fetchError } = await supabase.from('Bedrooms').select('*');
+        if (!fetchError) {
+          dispatch(getRooms(rooms));
+        }
+        setOpenMenuModal(false);
+      }
+    } catch (error) {
+      console.error('An unexpected error occurred:', error);
     }
   };
+  
 
   const handleEditSubmit = async (updatedRoom) => {
     console.log('updatedRoom', updatedRoom);
