@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import TableHeadBookings from './TableHeadBookings';
-import { formatNumber, handleCheckIn, handleCheckOut } from '../../constants/constnsts';
+import { formatNumber, } from '../../constants/constnsts';
 import OptionsMenu from '../../UX/OptionsMenu';
 import { FaCheck, FaEye, FaTrash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
@@ -66,8 +66,8 @@ const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
 
     const modalsActions = [
         { key: 'delete', icon: <FaTrash />, label: 'Delete', onClick: handleDeleteBooking },
-        { key: 'check-out', icon: <FaCheck />, label: 'Check Out', onClick: handleCheckOut },
-        { key: 'check-in', icon: <FaCheck />, label: 'Check In', onClick: handleCheckIn },
+        { key: 'check-out', icon: <FaCheck />, label: 'Check Out', onClick: '/' },
+        { key: 'check-in', icon: <FaCheck />, label: 'Check In', onClick: '.' },
         { key: 'see-details', icon: <FaEye />, label: 'See Details', onClick: () => handleSeeDetails(Number(currentBooking?.id)) }, 
     ];
 
@@ -88,7 +88,6 @@ const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
         return modalsActions.filter(action => options.includes(action.key));
     };
 
-    
   
     return (
         <div>
@@ -102,9 +101,8 @@ const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
                                 {booking.Guests?.fullName} <span>{booking.Guests?.email}</span>
                             </td>
                             <td>
-                            {booking.create_booking ? format(new Date(booking.create_booking), "EEE, d MMM yyyy") : 'Invalid date'} <br></br>
-                             — {booking.finish_booking ? format(new Date(booking.finish_booking), "EEE, d MMM yyyy") : 'Invalid date'}
-
+                            {booking.create_booking ? format(new Date(booking.create_booking), "d MMM yyyy") : 'Invalid date'}
+                             — {booking.finish_booking ? format(new Date(booking.finish_booking), "d MMM yyyy") : 'Invalid date'}
                             </td>
                             <td>
                                 <span className={`${

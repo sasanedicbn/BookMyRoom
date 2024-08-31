@@ -5,18 +5,12 @@ import { supabase } from "../../supabase/supabaseClient";
 import BookingsTable from "./BookingsTable";
 import { bookingStatuses, selectOptions } from "../../constants/constnsts";
 import Spinner from "../../global/Spinner";
-import { Booking } from "../../types/types";
-
-
-
-type SortOption = 'date-desc' | 'date-asc' | 'amount-high' | 'amount-low';
-type FilterOption = 'all' | string;
+import { Booking, FilterOption, SortOption } from "../../types/types";
 
 const BookingsComponent = () => {
     const [bookings, setBookings] = useState<Booking[]>([]);
     const [filter, setFilter] = useState<FilterOption>('all');
-    const [sort, setSort] = useState<SortOption>('date-desc');
-    const [loading, setLoading] = useState<boolean>(true); 
+    const [loading, setLoading] = useState<boolean>(true);
 
     const sortMapping: Record<SortOption, { column: string; ascending: boolean }> = {
         'date-desc': { column: 'created_at', ascending: false },
@@ -24,31 +18,39 @@ const BookingsComponent = () => {
         'amount-high': { column: 'totalPrice', ascending: false },
         'amount-low': { column: 'totalPrice', ascending: true }
     };
-    
-    useEffect(() => {
+
+    const fetchBookings = async (sort: SortOption) => {
         setLoading(true);
-        const fetchBookings = async () => {
-            let query = supabase.from('Bookings').select(`
-                *,
-                Bedrooms (id),
-                Guests (fullName, email)
-            `);
 
-            if (filter !== 'all') {
-                query = query.eq('status', filter);
-            }
-    
-            const { data, error } = await query.order(sortMapping[sort].column, { ascending: sortMapping[sort].ascending });
-            setLoading(false);
-            if (error) {
-                console.error('Error fetching bookings:', error);
-            } else {
-                setBookings(data || []);
-            }
-        };
+        let query = supabase.from('Bookings').select(`
+            *,
+            Bedrooms (id),
+            Guests (fullName, email)
+        `);
 
-        fetchBookings();
-    }, [filter, sort]);
+        if (filter !== 'all') {
+            query = query.eq('status', filter);
+        }
+
+        const { column, ascending } = sortMapping[sort];
+
+        const { data, error } = await query.order(column, { ascending });
+        setLoading(false);
+        if (error) {
+            console.error('Error fetching bookings:', error);
+        } else {
+            setBookings(data || []);
+        }
+    };
+
+    useEffect(() => {
+        fetchBookings('date-desc'); 
+    }, [filter]);
+
+    const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedSort = e.target.value as SortOption;
+        fetchBookings(selectedSort);
+    };
 
     return (
         <div className="bookings-container">
@@ -61,10 +63,10 @@ const BookingsComponent = () => {
                 ))}
                 <Select
                     options={selectOptions}
-                    onChange={(e : React.ChangeEvent<HTMLSelectElement>) => setSort(e.target.value as SortOption)}
+                    onChange={handleSortChange}
                 />
             </div>
-            {loading ? ( 
+            {loading ? (
                 <Spinner />
             ) : (
                 <BookingsTable bookings={bookings} setBookings={setBookings} />

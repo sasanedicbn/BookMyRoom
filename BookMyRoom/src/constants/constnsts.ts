@@ -37,26 +37,10 @@ export const selectOptions = [
 export const formatNumber = (number:string ) => {
   return number.toString().padStart(3, '0');
 };
-export const handlerOpenEditModal = () => {
-  console.log('Open Edit Modal');
-};
+
 const handleDeleteBooking = async (bookingId: string): Promise<void> => {
   await deleteBookingById(bookingId);
 };
-
-
-export const handleDelete = () => {
-  console.log('Delete functionality here');
-};
-
-export const handleCheckOut = () => {
-  console.log('Check-out functionality here');
-};
-
-export const handleCheckIn = () => {
-  console.log('Check-in functionality here');
-};
-
 
 export const formatBookingDate = (isoDate:string)  =>{
   const date = new Date(isoDate);
