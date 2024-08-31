@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import Logo from '../assets/Logo';
 import { supabase } from '../supabase/supabaseClient';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getUser } from '../store/roomsSlice';
 
@@ -11,6 +11,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -42,6 +43,7 @@ const Login = () => {
       toast.error(error?.message);
     }
   };
+
 
   return (
     <div className="login-container">

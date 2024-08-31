@@ -14,10 +14,9 @@ const ContentNavBar = () => {
         <div className="Content-NavBar">
             <div className="Content-NavBar-items">
                 <img src="../src/assets/img/profile-img.jpg" alt="profile picture"/>
-                <p className="Content-NavBar-user">Ivo Ivic</p>
+                <p className="Content-NavBar-user">{userName}</p>
                 <div className="Content-NavBar-icons">
                  <FaUser />
-                 <FaMoon/>
                  <FaSignOutAlt onClick={logOut}/> 
                 </div>
 
