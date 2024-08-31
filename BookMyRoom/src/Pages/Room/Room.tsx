@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import Modals from '../../UX/Modals';
-import Button from '../../UX/Button';
 import NewEditRoom from './newEditRoom';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { supabase } from '../../supabase/supabaseClient';

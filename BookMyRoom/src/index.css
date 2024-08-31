@@ -559,11 +559,14 @@ tbody{
 }
 
 .btn-login:hover {
-  background-color: #0056b3;
+  background-color: rgb(26, 186, 26);
 }
 
 .active{
-  background-color: rgb(49, 49, 218);
+  background-color:#62ee69;
+  border-radius: 5px;
+  padding: 2px 4px;
+  color: #fff;
 }
 /* BOOKINGS TABLE */
 .table {
@@ -601,6 +604,10 @@ tbody{
   border-radius: 10rem;
   font-size: .8rem;
 }
+/* .active-link {
+  color: rgb(59, 170, 59); 
+  font-weight: bold; 
+} */
 
 .unconfirmed {
   background-color: rgb(197, 229, 240); 
