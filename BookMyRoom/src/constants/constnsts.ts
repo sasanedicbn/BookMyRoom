@@ -1,7 +1,7 @@
-import { toast } from "react-toastify";
 import { deleteBookingById } from "../api/Booking/deleteBookingById";
-import { supabase } from "../supabase/supabaseClient";
 import { BtnsMap } from "../types/types";
+import { handleCheckOutDetails } from "../api/Booking/checkOutDetails";
+import { handleCheckInDetails } from "../api/Booking/checkInDetails";
 
 export const filterButtons = [
   { label: 'All', filterValue: 'all' },
@@ -66,38 +66,7 @@ export const formatBookingDate = (isoDate:string)  =>{
 }
 
 
-const handleCheckInDetails = async (bookingId:string) => {
-  try {
-    const { data, error } = await supabase
-      .from('Bookings')
-      .update({ status: 'checked-in' })
-      .eq('id', bookingId);
 
-    if (error) throw error;
-
-    console.log('Booking checked in:', data);
-    toast.success('Booking successfully checked in!');
-  } catch (error) {
-    toast.error('Failed to check in the booking.');
-  }
-};
-
- const handleCheckOutDetails = async (bookingId:string) => {
-  try {
-    const { data, error } = await supabase
-      .from('Bookings')
-      .update({ status: 'checked-out' })
-      .eq('id', bookingId);
-
-    if (error) throw error;
-
-    console.log('booking chekcked out', data)
-    toast.success('Booking successfully checked-out!');
-  } catch (error) {
-    toast.error('Failed to check in the booking.');
-
-  }
-};
 
 // hash map
 export const btnsMap:BtnsMap = {
