@@ -2,12 +2,12 @@ import ModalButton from './ModalButton';
 import Modals from './Modals';
 
 
-interface OptionsMenuProps {
+type OptionsMenuProps = {
   options: string[];
   modalsActions: any[];
 }
 
-const OptionsMenu: React.FC<OptionsMenuProps> = ({  modalsActions }) => {
+const OptionsMenu = ({  modalsActions }: OptionsMenuProps) => {
   console.log('modalsActions', modalsActions)
   const modalType = modalsActions.length === 2 ? 'two-options' : 'three-options';
  
