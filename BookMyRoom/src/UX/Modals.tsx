@@ -1,4 +1,4 @@
-const Modals = ({ children, type }:{children:React.ReactNode}) => {
+const Modals = ({ children, type }:{children:React.ReactNode,type: string}) => {
 
   return (
     <div className={`options-menu ${type}`}>

@@ -1,11 +1,11 @@
 import React from 'react';
 
-interface ModalButtonProps {
+type ModalButtonProps = {
   children: React.ReactNode;
   onClick: () => void;
 }
 
-const ModalButton: React.FC<ModalButtonProps> = ({ children, onClick }) => {
+const ModalButton  = ({ children, onClick }:ModalButtonProps) => {
   return (
     <button onClick={onClick} className="modal-button">
       {children}

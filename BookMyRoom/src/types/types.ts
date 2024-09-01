@@ -56,3 +56,17 @@ type ButtonConfig = {
     [key: string]: ButtonConfig;
   };
   
+ export type FormProps = {
+    register: (name: string, options?: any) => { onChange: () => void; onBlur: () => void; ref: React.Ref<any> };
+    handleSubmit: (callback: (data: any) => void) => (event: React.FormEvent) => void;
+    onSubmit: (data: any) => void;
+    errors: {
+      [key: string]: {
+        message: string;
+      };
+    };
+    isEditSeason: boolean;
+    isValid: boolean;
+    closeEditModal: () => void;
+  }
+  
