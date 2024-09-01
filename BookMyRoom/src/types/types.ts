@@ -70,3 +70,23 @@ type ButtonConfig = {
     closeEditModal: () => void;
   }
   
+export type User = {
+    firstName: string;
+    lastName: string;
+    email: string;
+}
+
+export type Room = {
+    name: string;
+    maxCapacity: string;
+    regularPrice: string;
+    discount: string;
+    description: string;
+    image: string;
+}
+
+export type RoomsState = {
+    rooms: Room[];
+    currentUser: User | null; 
+    currentRoom: Room;
+}

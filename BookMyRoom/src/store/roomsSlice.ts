@@ -1,25 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Room, RoomsState, User } from '../types/types';
 
-interface User {
-    firstName: string;
-    lastName: string;
-    email: string;
-}
-
-interface Room {
-    name: string;
-    maxCapacity: string;
-    regularPrice: string;
-    discount: string;
-    description: string;
-    image: string;
-}
-
-interface RoomsState {
-    rooms: Room[];
-    currentUser: User | null; 
-    currentRoom: Room;
-}
 
 const initialState: RoomsState = {
     rooms: [],
