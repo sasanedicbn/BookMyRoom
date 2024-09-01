@@ -1,6 +1,6 @@
-type SupabaseResponse = boolean;
+import { supabase } from "../../supabase/supabaseClient";
 
-import { supabase } from "../supabase/supabaseClient";
+type SupabaseResponse = boolean;
 
 export const deleteBookingById = async (bookingId: string): Promise<SupabaseResponse> => {
   try {

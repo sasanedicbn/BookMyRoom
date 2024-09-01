@@ -1,7 +1,7 @@
-import { deleteBookingById } from "../api/deleteBookingById";
 import { BtnsMap } from "../types/types";
 import { handleCheckOutDetails } from "../api/Booking/checkOutDetails";
 import { handleCheckInDetails } from "../api/Booking/checkInDetails";
+import { deleteBookingById } from "../api/Booking/deleteBookingById";
 
 export const filterButtons = [
   { label: 'All', filterValue: 'all' },
@@ -64,7 +64,6 @@ export const formatBookingDate = (isoDate:string)  =>{
 
   return `Booked ${day}, ${month} ${dayOfMonth} ${year}, ${hours}:${minutes} ${ampm}`;
 }
-
 
 
 

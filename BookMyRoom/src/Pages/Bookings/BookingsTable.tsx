@@ -4,9 +4,9 @@ import { formatNumber, } from '../../constants/constnsts';
 import OptionsMenu from '../../UX/OptionsMenu';
 import { FaCheck, FaEye, FaTrash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { deleteBookingById } from '../../api/deleteBookingById';
 import { Booking } from '../../types/types';
 import { format } from 'date-fns';
+import { deleteBookingById } from '../../api/Booking/deleteBookingById';
 
 type BookingTableProps = {
     bookings: Booking[],
