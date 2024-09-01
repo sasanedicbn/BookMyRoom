@@ -92,6 +92,7 @@
 .Content-NavBar-user{
   font-size: 20px;
 }
+
 .Content-NavBar-icons{
   width: 80px;
   margin-left: 1.6rem;
@@ -439,6 +440,11 @@ tbody{
   font-size: 1rem;
   transition: border-color 0.3s ease-in-out;
 }
+.button-wrapper{
+  margin-top: 1.3rem;
+  display: flex;
+  justify-content: flex-end;
+}
 
 .settings-inputs input:focus {
   border-color: #007BFF; 
@@ -476,7 +482,8 @@ tbody{
   text-align: center;
   text-decoration: none;
   font-size: 16px;
-  margin: 0 2px ; 
+  /* margin: 0 2px ;  */
+  margin: 12px 2px;
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s ease;

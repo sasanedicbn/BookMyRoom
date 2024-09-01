@@ -19,7 +19,6 @@ const Settings = () => {
   useEffect(() => {
     const loadSettings = async () => {
       const settings = await fetchSettings();
-      console.log('settings', settings)
       if (settings && settings.length > 0) {
         setSettingsData(settings[0]);
       }
@@ -60,7 +59,6 @@ const Settings = () => {
     <div className="main-settings">
       <ComponentWrapper type={'componentWrapper'}>
         <h2>Update hotel settings</h2>
-        <div>
           {inputFields.map((field, index) => (
             <InputWrapper key={index}>
             <Label>{field.labelText}</Label>
@@ -73,7 +71,8 @@ const Settings = () => {
             />
             </InputWrapper>
           ))}
-          <Button type={'success'} onClick={handleUpdate}>Update changes</Button>
+        <div className='button-wrapper'>
+         <Button type={'success'} onClick={handleUpdate}>Update changes</Button>
         </div>
         </ComponentWrapper>
       </div>

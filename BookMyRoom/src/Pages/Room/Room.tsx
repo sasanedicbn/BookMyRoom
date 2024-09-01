@@ -95,8 +95,8 @@ const Room = ({ room }) => {
     <>
       <tr className="room-container">
         <td>{image && <img className="room-image" src={image} alt={name} />}</td>
-        <td>{name}</td>
-        <td>{maxCapacity}</td>
+        <td >{name}</td>
+        <td>Fits up to {maxCapacity} guests</td>
         <td>${regularPrice}</td>
         <td>{discount ? `${discount}%` : '/'}</td>
         <td className="ellipsis-cell">

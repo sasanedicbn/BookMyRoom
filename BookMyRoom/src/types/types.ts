@@ -73,9 +73,7 @@ type ButtonConfig = {
   }
   
 export type User = {
-    firstName: string;
-    lastName: string;
-    email: string;
+    currentUser: string | null
 }
 
 export type Room = {
