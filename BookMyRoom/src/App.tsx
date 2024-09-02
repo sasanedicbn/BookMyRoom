@@ -11,6 +11,7 @@ import Login from './Login/Login';
 import Bookings from './Pages/Bookings/Bookings';
 import Settings from './Pages/Settings/Settings';
 import SeeDetails from './Pages/Options/SeeDetails';
+import CheckIn from './Pages/Options/optionsHelpers/CheckIn';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -39,6 +40,9 @@ const router = createBrowserRouter([
       { 
         path: 'booking/:id',  
         element: <SeeDetails />
+      },
+      {path:'check-in/:id',
+        element:<CheckIn/>
       }
     ],
   },

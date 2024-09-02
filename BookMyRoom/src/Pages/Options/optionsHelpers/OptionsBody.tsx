@@ -36,7 +36,7 @@ const OptionsBody = ({ details }: OptionsBodyProps) => {
                 details={details}
                 hasBreakfast={hasBreakfast}
                 setHasBreakfast={setHasBreakfast}
-                priceForBreakfast={priceForBreakfast} // Prosledi priceForBreakfast
+                priceForBreakfast={priceForBreakfast} 
             />
             <div className="optionsBtns">
                 {currentBtns.map((btn, index) => (

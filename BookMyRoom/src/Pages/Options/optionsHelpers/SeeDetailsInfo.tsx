@@ -1,4 +1,3 @@
-// SeeDetailsInfo.tsx
 import { FaInfoCircle, FaCheckCircle } from "react-icons/fa";
 import { formatBookingDate } from "../../../constants/constnsts";
 import BreakfastCheckbox from "./BreakFastCheckBox";
@@ -9,7 +8,7 @@ type SeeDetailsInfoProps = {
     details: BookingDetails;
     hasBreakfast: boolean;
     setHasBreakfast: (hasBreakfast: boolean) => void;
-    priceForBreakfast: number; // Dodaj priceForBreakfast kao prop
+    priceForBreakfast: number; 
 };
 
 const SeeDetailsInfo = ({ details, hasBreakfast, setHasBreakfast, priceForBreakfast }: SeeDetailsInfoProps) => {
