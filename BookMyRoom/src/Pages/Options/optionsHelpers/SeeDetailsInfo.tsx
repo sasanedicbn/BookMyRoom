@@ -8,6 +8,7 @@ const SeeDetailsInfo = () => {
     const details = useSelector((state) => state.details.details);
     const hasBreakfast = useSelector((state) => state.details.hasBreakfast);
     const priceForBreakfast = useSelector((state) => state.details.priceForBreakfast);
+    console.log('priceforbreakfast', details)
 
     const { observations, totalPrice, isPaid, cabinId } = details;
 
@@ -17,9 +18,8 @@ const SeeDetailsInfo = () => {
 
     const formattedStartDate = format(createdAt, "EEE, d MMM yyyy");
     const formattedEndDate = format(finishBooking, "EEE, d MMM yyyy");
-    const finalPrice = totalPrice * nights;
     const finalPriceBreakfast = priceForBreakfast * nights;
-    const actualPriceForCabin = totalPrice - (hasBreakfast ? priceForBreakfast : 0);
+    const actualPriceForCabin = totalPrice + (hasBreakfast ? finalPriceBreakfast : 0)
 
     return (
         <section className="optionsBody-wrapper">
@@ -82,10 +82,10 @@ const SeeDetailsInfo = () => {
                         <span className="icon-text">
                             <span>Total price</span>
                         </span>
-                        ${finalPrice.toFixed(2)} (
-                        ${actualPriceForCabin.toFixed(2)} cabin
+                        ${actualPriceForCabin.toFixed(2)} (
+                        ${totalPrice.toFixed(2)} cabin
                         {hasBreakfast && (
-                            <> + ${finalPriceBreakfast.toFixed(2)} breakfast</>
+                            <> + ${finalPriceBreakfast} breakfast</>
                         )}
                         )
                     </div>
