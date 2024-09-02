@@ -17,7 +17,7 @@ const OptionsBody = ({ details }: OptionsBodyProps) => {
     const [priceForBreakfast, setPriceForBreakfast] = useState<number>(0);
     const [hasBreakfast, setHasBreakfast] = useState<boolean>(details.hasBreakfast);
     const dispatch = useDispatch();
-    const navigate = useNavigate(); // Inicijalizacija useNavigate hooka
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         if (details) {
