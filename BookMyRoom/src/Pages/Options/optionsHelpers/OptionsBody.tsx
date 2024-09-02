@@ -1,11 +1,11 @@
-// OptionsBody.tsx
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // Importuj hook useNavigate
+import { useDispatch } from "react-redux";
 import { fetchBreakfastSetting } from "../../../api/Booking/fetchBreakfast";
 import { btnsMap, getSeeDetailsBtns } from "../../../constants/constnsts";
 import Button from "../../../UX/Button";
 import { BookingDetails } from "../../../types/types";
 import SeeDetailsInfo from "./SeeDetailsInfo";
-import { useDispatch } from "react-redux";
 import { setDetails } from "../../../store/detailsSlice";
 
 type OptionsBodyProps = {
@@ -16,11 +16,15 @@ const OptionsBody = ({ details }: OptionsBodyProps) => {
     const [currentBtns, setCurrentBtns] = useState<string[]>([]);
     const [priceForBreakfast, setPriceForBreakfast] = useState<number>(0);
     const [hasBreakfast, setHasBreakfast] = useState<boolean>(details.hasBreakfast);
-    const dispatch = useDispatch()
-    
-    if(details) {
-        dispatch(setDetails(details))
-    }
+    const dispatch = useDispatch();
+    const navigate = useNavigate(); // Inicijalizacija useNavigate hooka
+
+    useEffect(() => {
+        if (details) {
+            dispatch(setDetails(details));
+        }
+    }, [details, dispatch]);
+
     useEffect(() => {
         const fetchPrice = async () => {
             const data = await fetchBreakfastSetting();
@@ -28,7 +32,7 @@ const OptionsBody = ({ details }: OptionsBodyProps) => {
                 setPriceForBreakfast(data[0].breakfast);
             }
         };
-        
+
         fetchPrice();
     }, []);
 
@@ -36,6 +40,7 @@ const OptionsBody = ({ details }: OptionsBodyProps) => {
         setCurrentBtns(getSeeDetailsBtns(details.status));
     }, [details]);
 
+ 
     return (
         <>
             <SeeDetailsInfo
@@ -46,11 +51,12 @@ const OptionsBody = ({ details }: OptionsBodyProps) => {
             />
             <div className="optionsBtns">
                 {currentBtns.map((btn, index) => (
-                    <Button key={index} type={btnsMap[btn].type} onClick={() => btnsMap[btn].handler(details.id)}>
+                    <Button key={index} type={btnsMap[btn].type} onClick={() => btnsMap[btn].handler(details, navigate)}>
                         {btn}
                     </Button>
                 ))}
             </div>
+            
         </>
     );
 };

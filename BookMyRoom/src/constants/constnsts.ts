@@ -66,6 +66,11 @@ export const formatBookingDate = (isoDate:string)  =>{
 }
 
 
+const handleNavigateToCheckIn = (details,navigate) => {
+  if (details.id) {
+      navigate(`/check-in/${details.id}`);
+  }
+};
 
 // hash map
 export const btnsMap:BtnsMap = {
@@ -76,7 +81,7 @@ export const btnsMap:BtnsMap = {
   },
   'Check-in': {
     type: 'success',
-    handler: handleCheckInDetails,
+    handler:  handleNavigateToCheckIn,
     content: ['Check-out', 'Delete booking'],
   },
   'Delete booking': {

@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import SeeDetailsInfo from './SeeDetailsInfo';
 
 const CheckIn = () => {
-    const details = useSelector((state) => state.details.initialState);
+    const details = useSelector((state) => state.details.details);
     console.log('DETAILS DETELINA', details)
 
     return (
