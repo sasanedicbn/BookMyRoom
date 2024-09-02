@@ -1,27 +1,24 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Importuj hook useNavigate
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchBreakfastSetting } from "../../../api/Booking/fetchBreakfast";
 import { btnsMap, getSeeDetailsBtns } from "../../../constants/constnsts";
 import Button from "../../../UX/Button";
-import { BookingDetails } from "../../../types/types";
 import SeeDetailsInfo from "./SeeDetailsInfo";
-import { setDetails } from "../../../store/detailsSlice";
+import { setCurrentBtns, setPriceForBreakfast } from "../../../store/detailsSlice";
+import { RootState } from "../../../store";
 
-type OptionsBodyProps = {
-    details: BookingDetails;
-};
-
-const OptionsBody = ({ details }: OptionsBodyProps) => {
-    const [currentBtns, setCurrentBtns] = useState<string[]>([]);
-    const [priceForBreakfast, setPriceForBreakfast] = useState<number>(0);
-    const [hasBreakfast, setHasBreakfast] = useState<boolean>(details.hasBreakfast);
+const OptionsBody = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
+    const details = useSelector((state: RootState) => state.details.details);
+    const currentBtns = useSelector((state: RootState) => state.details.currentBtns);
+    const priceForBreakfast = useSelector((state: RootState) => state.details.priceForBreakfast);
+    const hasBreakfast = useSelector((state: RootState) => state.details.hasBreakfast);
 
     useEffect(() => {
         if (details) {
-            dispatch(setDetails(details));
+            dispatch(setCurrentBtns(getSeeDetailsBtns(details.status)));
         }
     }, [details, dispatch]);
 
@@ -29,25 +26,20 @@ const OptionsBody = ({ details }: OptionsBodyProps) => {
         const fetchPrice = async () => {
             const data = await fetchBreakfastSetting();
             if (data) {
-                setPriceForBreakfast(data[0].breakfast);
+                dispatch(setPriceForBreakfast(data[0].breakfast));
             }
         };
 
         fetchPrice();
-    }, []);
+    }, [dispatch]);
 
-    useEffect(() => {
-        setCurrentBtns(getSeeDetailsBtns(details.status));
-    }, [details]);
-
- 
     return (
         <>
             <SeeDetailsInfo
                 details={details}
                 hasBreakfast={hasBreakfast}
-                setHasBreakfast={setHasBreakfast}
-                priceForBreakfast={priceForBreakfast} 
+                setHasBreakfast={(value: boolean) => dispatch(setHasBreakfast(value))}
+                priceForBreakfast={priceForBreakfast}
             />
             <div className="optionsBtns">
                 {currentBtns.map((btn, index) => (
@@ -56,7 +48,6 @@ const OptionsBody = ({ details }: OptionsBodyProps) => {
                     </Button>
                 ))}
             </div>
-            
         </>
     );
 };

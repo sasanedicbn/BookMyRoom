@@ -1,22 +1,20 @@
-import { useState, ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateHasBreakfast } from '../../../api/Booking/updateBreakfast';
+import { setHasBreakfast } from '../../../store/detailsSlice';
+import { RootState } from '../../../store';
 
 type BreakfastCheckboxProps = {
     bookingId: string;
-    onChange: (isChecked: boolean) => void;
-}
+};
 
-const BreakfastCheckbox = ({ bookingId, onChange }: BreakfastCheckboxProps) => {
-    const [checked, setChecked] = useState<boolean>(false);
+const BreakfastCheckbox = ({ bookingId }: BreakfastCheckboxProps) => {
+    const dispatch = useDispatch();
+    const hasBreakfast = useSelector((state: RootState) => state.details.hasBreakfast);
 
     const handleCheckboxChange = async (event: ChangeEvent<HTMLInputElement>) => {
         const isChecked = event.target.checked;
-        console.log('isChecked', isChecked);
-        setChecked(isChecked);
-        if (onChange) {
-            onChange(isChecked);
-        }
-        
+        dispatch(setHasBreakfast(isChecked));
         await updateHasBreakfast(bookingId, isChecked);
     };
 
@@ -26,7 +24,7 @@ const BreakfastCheckbox = ({ bookingId, onChange }: BreakfastCheckboxProps) => {
                 Do you want to add breakfast?
                 <input 
                     type="checkbox" 
-                    checked={checked} 
+                    checked={hasBreakfast} 
                     onChange={handleCheckboxChange} 
                 />
             </label>

@@ -1,17 +1,14 @@
+import { useSelector } from "react-redux";
 import { FaInfoCircle, FaCheckCircle } from "react-icons/fa";
 import { formatBookingDate } from "../../../constants/constnsts";
 import BreakfastCheckbox from "./BreakFastCheckBox";
-import { BookingDetails } from "../../../types/types";
 import { differenceInDays, parseISO, format } from "date-fns";
 
-type SeeDetailsInfoProps = {
-    details: BookingDetails;
-    hasBreakfast: boolean;
-    setHasBreakfast: (hasBreakfast: boolean) => void;
-    priceForBreakfast: number; 
-};
+const SeeDetailsInfo = () => {
+    const details = useSelector((state) => state.details.details);
+    const hasBreakfast = useSelector((state) => state.details.hasBreakfast);
+    const priceForBreakfast = useSelector((state) => state.details.priceForBreakfast);
 
-const SeeDetailsInfo = ({ details, hasBreakfast, setHasBreakfast, priceForBreakfast }: SeeDetailsInfoProps) => {
     const { observations, totalPrice, isPaid, cabinId } = details;
 
     const createdAt = parseISO(details.created_at);
