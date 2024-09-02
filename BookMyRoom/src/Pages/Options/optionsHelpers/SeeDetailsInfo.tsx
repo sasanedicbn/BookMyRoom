@@ -92,7 +92,7 @@ const SeeDetailsInfo = () => {
                     <p className="status-pay">{isPaid ? "Paid" : "Will pay at property"}</p>
                 </div>
                 <footer className="optionsBody-footer">
-                    {!hasBreakfast && <BreakfastCheckbox bookingId={details.id.toString()} onChange={(isChecked) => setHasBreakfast(isChecked)} />}
+                    {(!hasBreakfast || hasBreakfast) && <BreakfastCheckbox bookingId={details.id.toString()} onChange={(isChecked) => setHasBreakfast(isChecked)} />}
                     <p>{formatBookingDate(details.Guests.created_at)}</p>
                 </footer>
             </section>

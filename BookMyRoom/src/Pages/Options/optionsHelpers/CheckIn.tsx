@@ -3,6 +3,7 @@ import SeeDetailsInfo from './SeeDetailsInfo';
 import ComponentWrapper from '../../../UX/ComponentWrapper';
 import Spinner from '../../../global/Spinner';
 import OptionsHeader from './OptionsHeader';
+import ConfirmCheckIn from './ConfirmCheckIn';
 
 const CheckIn = () => {
     const details = useSelector((state) => state.details.details);
@@ -12,6 +13,7 @@ const CheckIn = () => {
             <ComponentWrapper type='tableWrapper'>
               <OptionsHeader />
               <SeeDetailsInfo />
+              <ConfirmCheckIn/>
             </ComponentWrapper>
         ) : (
             <Spinner/>

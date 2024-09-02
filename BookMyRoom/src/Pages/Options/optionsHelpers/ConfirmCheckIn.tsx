@@ -2,18 +2,16 @@ import { useSelector } from "react-redux";
 
 const ConfirmCheckIn = () => {
     const details = useSelector((state) => state.details.details)
-    const { totalPrice } = details
+    const { totalPrice, isPaid } = details
     return(
-        <div className="breakfast-checkbox">
-        <label>   
-            I confirm that ${details.Guests.fullName} has paid the total amount of $${totalPrice}.
+        <div className="container-checkIn">
+        <label>I confirm that {details.Guests.fullName} has paid the total amount of ${totalPrice}?</label>
             <input 
                 type="checkbox" 
-                checked={hasBreakfast} 
-                onChange={handleCheckboxChange} 
+                // checked={isPaid} 
+                // onChange={handleCheckboxChange} 
             />
-        </label>
-    </div>
+     </div>
     )
 }
 
