@@ -5,6 +5,8 @@ import { btnsMap, getSeeDetailsBtns } from "../../../constants/constnsts";
 import Button from "../../../UX/Button";
 import { BookingDetails } from "../../../types/types";
 import SeeDetailsInfo from "./SeeDetailsInfo";
+import { useDispatch } from "react-redux";
+import { setDetails } from "../../../store/detailsSlice";
 
 type OptionsBodyProps = {
     details: BookingDetails;
@@ -14,7 +16,11 @@ const OptionsBody = ({ details }: OptionsBodyProps) => {
     const [currentBtns, setCurrentBtns] = useState<string[]>([]);
     const [priceForBreakfast, setPriceForBreakfast] = useState<number>(0);
     const [hasBreakfast, setHasBreakfast] = useState<boolean>(details.hasBreakfast);
-
+    const dispatch = useDispatch()
+    
+    if(details) {
+        dispatch(setDetails(details))
+    }
     useEffect(() => {
         const fetchPrice = async () => {
             const data = await fetchBreakfastSetting();
@@ -22,7 +28,7 @@ const OptionsBody = ({ details }: OptionsBodyProps) => {
                 setPriceForBreakfast(data[0].breakfast);
             }
         };
-
+        
         fetchPrice();
     }, []);
 
