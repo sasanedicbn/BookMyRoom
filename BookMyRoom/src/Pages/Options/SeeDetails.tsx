@@ -7,10 +7,10 @@ import OptionsBody from "./optionsHelpers/OptionsBody";
 import Spinner from "../../global/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { setDetails } from "../../store/detailsSlice";
-import { RootState } from "../../store";
+import { RootState } from "@reduxjs/toolkit/query";
 
 const SeeDetails = () => {
-    const { id } = useParams<{ id: string }>();
+    const { id } = useParams<{ id: string }>()
     const dispatch = useDispatch();
     const details = useSelector((state: RootState) => state.details.details);
 
