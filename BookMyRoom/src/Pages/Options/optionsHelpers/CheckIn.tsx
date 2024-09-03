@@ -7,6 +7,7 @@ import ConfirmCheckIn from './ConfirmCheckIn';
 
 const CheckIn = () => {
     const details = useSelector((state) => state.details.details);
+    
 
     return (
         details ? (

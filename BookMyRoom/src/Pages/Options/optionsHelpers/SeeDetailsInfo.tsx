@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { FaInfoCircle, FaCheckCircle } from "react-icons/fa";
-import { formatBookingDate } from "../../../constants/constnsts";
+import { calculateNights, formatBookingDate } from "../../../constants/constnsts";
 import BreakfastCheckbox from "./BreakFastCheckBox";
 import { differenceInDays, parseISO, format } from "date-fns";
 
@@ -12,12 +12,10 @@ const SeeDetailsInfo = () => {
 
     const { observations, totalPrice, isPaid, cabinId } = details;
 
-    const createdAt = parseISO(details.created_at);
-    const finishBooking = parseISO(details.finish_booking);
-    const nights = differenceInDays(finishBooking, createdAt);
+    const nights = calculateNights(details.created_at, details.finish_booking);
 
-    const formattedStartDate = format(createdAt, "EEE, d MMM yyyy");
-    const formattedEndDate = format(finishBooking, "EEE, d MMM yyyy");
+    const formattedStartDate = format(parseISO(details.created_at), "EEE, d MMM yyyy");
+    const formattedEndDate = format(parseISO(details.finish_booking), "EEE, d MMM yyyy");
     const finalPriceBreakfast = priceForBreakfast * nights;
     const actualPriceForCabin = totalPrice + (hasBreakfast ? finalPriceBreakfast : 0)
 
