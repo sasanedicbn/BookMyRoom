@@ -43,7 +43,7 @@ const OptionsBody = () => {
             />
             <div className="optionsBtns">
                 {currentBtns.map((btn, index) => (
-                    <Button key={index} type={btnsMap[btn].type} onClick={() => btnsMap[btn].handler(details, navigate)}>
+                    <Button key={index} type={btnsMap[btn].type} onClick={() => btnsMap[btn].handler(details.id, navigate)}>
                         {btn}
                     </Button>
                 ))}

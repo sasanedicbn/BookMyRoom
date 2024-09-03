@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { getRooms } from '../../store/roomsSlice';
 import { toast } from 'react-toastify';
 import OptionsMenu from '../../UX/OptionsMenu';
+import { handleDelete } from '../../api/Rooms/handleDelete';
 
 const Room = ({ room }) => {
   const { name, maxCapacity, regularPrice, image, discount } = room;
@@ -23,40 +24,6 @@ const Room = ({ room }) => {
     setOpenEditModal(true);
     setOpenMenuModal(false); 
   };
-
-  const handleDelete = async () => {
-    try {
-      const { error: bookingsError } = await supabase
-        .from('Bookings')
-        .delete()
-        .eq('cabinId', room.id);
-  
-      if (bookingsError) {
-        console.error('Error deleting bookings:', bookingsError);
-        return;
-      }
-  
-      const { error: roomError } = await supabase
-        .from('Bedrooms')
-        .delete()
-        .eq('id', room.id);
-  
-      if (roomError) {
-        toast.error('You can not delete room!')
-
-      } else {
-        toast.success('Room deleted successfully!')
-        const { data: rooms, error: fetchError } = await supabase.from('Bedrooms').select('*');
-        if (!fetchError) {
-          dispatch(getRooms(rooms));
-        }
-        setOpenMenuModal(false);
-      }
-    } catch (error) {
-      console.error('An unexpected error occurred:', error);
-    }
-  };
-  
 
   const handleEditSubmit = async (updatedRoom) => {
     console.log('updatedRoom', updatedRoom);
@@ -86,7 +53,7 @@ const Room = ({ room }) => {
     },
      {
       icon: <FaTrash />,
-      onClick: handleDelete,
+      onClick:() => handleDelete(room, dispatch, setOpenMenuModal),
       label: 'Delete'
     },
   ]

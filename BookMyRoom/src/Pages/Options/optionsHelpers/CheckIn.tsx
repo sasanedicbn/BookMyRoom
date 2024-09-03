@@ -16,6 +16,9 @@ const CheckIn = () => {
         if (!details) return; 
         await handleCheckInDetails(details.id, navigate); 
     };
+    const backInDetails = () => {
+        navigate(`/booking/${details.id}`)
+    }
     return (
         details ? (
             <ComponentWrapper type='tableWrapper'>
@@ -31,7 +34,7 @@ const CheckIn = () => {
                     >
                         Check in booking #{details.id}
                     </Button>
-                    <Button type='danger'>Back</Button>
+                    <Button type='danger' onClick={backInDetails}>Back</Button>
                 </div>
             </ComponentWrapper>
         ) : (

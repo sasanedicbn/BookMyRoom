@@ -1,8 +1,9 @@
+import { toast } from "react-toastify";
 import { supabase } from "../../supabase/supabaseClient";
 
 type SupabaseResponse = boolean;
 
-export const deleteBookingById = async (bookingId: string): Promise<SupabaseResponse> => {
+export const deleteBookingById = async (bookingId: string, navigate): Promise<SupabaseResponse> => {
   try {
     const { error } = await supabase
       .from("Bookings")
@@ -13,12 +14,12 @@ export const deleteBookingById = async (bookingId: string): Promise<SupabaseResp
       console.error("Error deleting booking:", error.message);
       return false;
     }
-
-    console.log("Booking deleted successfully");
+    navigate('/booking')
+    toast.success('Delete Booking, success!')
     return true;
 
   } catch (error: any) {
-    console.error("Unexpected error deleting booking:", error.message);
+    toast.error("Error! You can't delete booking");
     return false;
   }
 };

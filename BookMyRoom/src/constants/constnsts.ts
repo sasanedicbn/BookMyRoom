@@ -38,8 +38,8 @@ export const formatNumber = (number:string ) => {
   return number.toString().padStart(3, '0');
 };
 
-const handleDeleteBooking = async (bookingId: string): Promise<void> => {
-  await deleteBookingById(bookingId);
+const handleDeleteBooking = async (bookingId: string,navigate): Promise<void> => {
+  await deleteBookingById(bookingId, navigate);
 };
 
 export const formatBookingDate = (isoDate:string)  =>{

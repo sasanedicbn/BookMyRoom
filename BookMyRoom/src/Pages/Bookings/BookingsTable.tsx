@@ -55,7 +55,7 @@ const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
 
     const handleDeleteBooking = async () => {
         if (currentBooking?.id) {
-            const success = await deleteBookingById(currentBooking.id);
+            const success = await deleteBookingById(currentBooking.id, navigate);
             if (success) {
                 handleCloseModal(); 
                 setBookings((prevBooking) => prevBooking.filter((booking) => booking.id !== currentBooking.id));
