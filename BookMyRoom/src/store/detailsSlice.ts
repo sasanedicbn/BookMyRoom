@@ -41,9 +41,10 @@ const detailsSlice = createSlice({
       if (state.details) {
         state.details.isPaid = action.payload;
       }
+    }
   }
 });
 
-export const { setDetails, clearDetails, setCurrentBtns, setPriceForBreakfast, setHasBreakfast } = detailsSlice.actions;
+export const { setDetails, clearDetails, setCurrentBtns, setPriceForBreakfast, setHasBreakfast, setisPaid } = detailsSlice.actions;
 
 export default detailsSlice.reducer;
