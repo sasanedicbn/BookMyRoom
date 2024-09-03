@@ -1,6 +1,5 @@
 import { BtnsMap } from "../types/types";
 import { handleCheckOutDetails } from "../api/Booking/checkOutDetails";
-import { handleCheckInDetails } from "../api/Booking/checkInDetails";
 import { deleteBookingById } from "../api/Booking/deleteBookingById";
 import { differenceInDays, parseISO } from "date-fns";
 
@@ -74,7 +73,7 @@ const handleNavigateToCheckIn = (details,navigate) => {
 };
 
 // hash map
-export const btnsMap:BtnsMap = {
+export const btnsMap: BtnsMap = {
   'Check-out': {
     type: 'success',
     handler: handleCheckOutDetails,
@@ -82,7 +81,7 @@ export const btnsMap:BtnsMap = {
   },
   'Check-in': {
     type: 'success',
-    handler:  handleNavigateToCheckIn,
+    handler: handleNavigateToCheckIn,  
     content: ['Check-out', 'Delete booking'],
   },
   'Delete booking': {

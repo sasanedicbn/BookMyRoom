@@ -5,10 +5,17 @@ import Spinner from '../../../global/Spinner';
 import OptionsHeader from './OptionsHeader';
 import ConfirmCheckIn from './ConfirmCheckIn';
 import Button from '../../../UX/Button';
+import { handleCheckInDetails } from '../../../api/Booking/checkInDetails';
+import { useNavigate } from 'react-router-dom';
 
 const CheckIn = () => {
     const details = useSelector((state) => state.details.details);
+    const navigate = useNavigate()
 
+    const handleCheckIn = async () => {
+        if (!details) return; 
+        await handleCheckInDetails(details.id, navigate); 
+    };
     return (
         details ? (
             <ComponentWrapper type='tableWrapper'>
@@ -19,6 +26,8 @@ const CheckIn = () => {
                     <Button 
                         type='success' 
                         disabled={!details.isPaid} 
+                        onClick={handleCheckIn}
+                
                     >
                         Check in booking #{details.id}
                     </Button>
