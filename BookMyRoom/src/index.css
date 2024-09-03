@@ -809,3 +809,11 @@ tbody{
   width: 14px;
   height: 14px;
 }
+.btn-container{
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 0;
+}
+.not-allowed{
+  cursor: not-allowed;
+}

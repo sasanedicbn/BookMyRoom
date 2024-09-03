@@ -8,19 +8,25 @@ import Button from '../../../UX/Button';
 
 const CheckIn = () => {
     const details = useSelector((state) => state.details.details);
-    
 
     return (
         details ? (
             <ComponentWrapper type='tableWrapper'>
-              <OptionsHeader />
-              <SeeDetailsInfo />
-              <ConfirmCheckIn/>
-              <Button type='success'>Check in booking #{details.id}</Button>
-              <Button type='danger'>Back</Button>
+                <OptionsHeader />
+                <SeeDetailsInfo />
+                <ConfirmCheckIn />
+                <div className='btn-container'>
+                    <Button 
+                        type='success' 
+                        disabled={!details.isPaid} 
+                    >
+                        Check in booking #{details.id}
+                    </Button>
+                    <Button type='danger'>Back</Button>
+                </div>
             </ComponentWrapper>
         ) : (
-            <Spinner/>
+            <Spinner />
         )
     );
 };
