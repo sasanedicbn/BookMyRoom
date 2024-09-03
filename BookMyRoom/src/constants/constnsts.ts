@@ -2,6 +2,7 @@ import { BtnsMap } from "../types/types";
 import { handleCheckOutDetails } from "../api/Booking/checkOutDetails";
 import { handleCheckInDetails } from "../api/Booking/checkInDetails";
 import { deleteBookingById } from "../api/Booking/deleteBookingById";
+import { differenceInDays, parseISO } from "date-fns";
 
 export const filterButtons = [
   { label: 'All', filterValue: 'all' },
@@ -103,4 +104,9 @@ export  const getSeeDetailsBtns = (status:string) => {
       default:
           return [];
   }
+};
+export const calculateNights = (created_at: string, finish_booking: string) => {
+  const createdAt = parseISO(created_at);
+  const finishBooking = parseISO(finish_booking);
+  return differenceInDays(finishBooking, createdAt);
 };
