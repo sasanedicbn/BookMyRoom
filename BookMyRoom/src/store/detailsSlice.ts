@@ -37,6 +37,10 @@ const detailsSlice = createSlice({
     setHasBreakfast(state, action: PayloadAction<boolean>) {
       state.hasBreakfast = action.payload;
     },
+    setisPaid(state, action: PayloadAction<boolean>) {
+      if (state.details) {
+        state.details.isPaid = action.payload;
+      }
   }
 });
 
