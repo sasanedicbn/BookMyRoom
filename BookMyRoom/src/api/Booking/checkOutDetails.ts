@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import { supabase } from "../../supabase/supabaseClient";
 
-export const handleCheckOutDetails = async (bookingId:string) => {
+export const handleCheckOutDetails = async (bookingId:string, navigate) => {
     try {
       const { data, error } = await supabase
         .from('Bookings')
@@ -12,6 +12,7 @@ export const handleCheckOutDetails = async (bookingId:string) => {
   
       console.log('booking chekcked out', data)
       toast.success('Booking successfully checked-out!');
+      navigate('/booking')
     } catch (error) {
       toast.error('Failed to check in the booking.');
   

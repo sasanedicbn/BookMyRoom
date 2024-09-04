@@ -41,6 +41,9 @@ export const formatNumber = (number:string ) => {
 const handleDeleteBooking = async (bookingId: string,navigate): Promise<void> => {
   await deleteBookingById(bookingId, navigate);
 };
+const handleCheckOut = async (bookingId, navigate) => {
+  await handleCheckOutDetails(bookingId, navigate)
+}
 
 export const formatBookingDate = (isoDate:string)  =>{
   const date = new Date(isoDate);
@@ -76,7 +79,7 @@ const handleNavigateToCheckIn = (details,navigate) => {
 export const btnsMap: BtnsMap = {
   'Check-out': {
     type: 'success',
-    handler: handleCheckOutDetails,
+    handler: handleCheckOut,
     content: ['Delete booking'],
   },
   'Check-in': {
