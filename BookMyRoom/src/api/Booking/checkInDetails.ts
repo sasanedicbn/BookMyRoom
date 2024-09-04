@@ -1,7 +1,8 @@
 import { toast } from "react-toastify";
 import { supabase } from "../../supabase/supabaseClient";
+import { NavigateFunction } from "react-router-dom";
 
-export const handleCheckInDetails = async (bookingId:string, navigate) => {
+export const handleCheckInDetails = async (bookingId:string, navigate: NavigateFunction) => {
     try {
       const { data, error } = await supabase
         .from('Bookings')
