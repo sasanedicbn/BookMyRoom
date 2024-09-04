@@ -2,6 +2,7 @@ import { BtnsMap } from "../types/types";
 import { handleCheckOutDetails } from "../api/Booking/checkOutDetails";
 import { deleteBookingById } from "../api/Booking/deleteBookingById";
 import { differenceInDays, parseISO } from "date-fns";
+import { NavigateFunction } from "react-router-dom";
 
 export const filterButtons = [
   { label: 'All', filterValue: 'all' },
@@ -38,10 +39,10 @@ export const formatNumber = (number:string ) => {
   return number.toString().padStart(3, '0');
 };
 
-const handleDeleteBooking = async (bookingId: string,navigate): Promise<void> => {
+const handleDeleteBooking = async (bookingId: string, navigate:NavigateFunction): Promise<void> => {
   await deleteBookingById(bookingId, navigate);
 };
-const handleCheckOut = async (bookingId, navigate) => {
+const handleCheckOut = async (bookingId:string, navigate:NavigateFunction) => {
   await handleCheckOutDetails(bookingId, navigate)
 }
 
@@ -69,7 +70,7 @@ export const formatBookingDate = (isoDate:string)  =>{
 }
 
 
-const handleNavigateToCheckIn = (details,navigate) => {
+const handleNavigateToCheckIn = (details:any,navigate:NavigateFunction) => {
   if (details.id) {
       navigate(`/check-in/${details.id}`);
   }

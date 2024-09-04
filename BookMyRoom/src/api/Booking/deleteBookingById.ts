@@ -1,9 +1,10 @@
 import { toast } from "react-toastify";
 import { supabase } from "../../supabase/supabaseClient";
+import { NavigateFunction } from "react-router-dom";
 
 type SupabaseResponse = boolean;
 
-export const deleteBookingById = async (bookingId: string, navigate): Promise<SupabaseResponse> => {
+export const deleteBookingById = async (bookingId: string, navigate:NavigateFunction): Promise<SupabaseResponse> => {
   try {
     const { error } = await supabase
       .from("Bookings")
