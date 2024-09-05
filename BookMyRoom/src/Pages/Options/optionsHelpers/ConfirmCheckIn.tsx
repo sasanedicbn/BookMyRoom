@@ -1,12 +1,18 @@
 import { useSelector, useDispatch } from "react-redux";
 import { calculateNights } from "../../../constants/constnsts";
 import { setisPaid } from "../../../store/detailsSlice";
+import { RootState } from "../../../store/store";
 
 const ConfirmCheckIn = () => {
     const dispatch = useDispatch();
-    const details = useSelector((state) => state.details.details);
+    const details = useSelector((state: RootState) => state.details.details);
+    const priceForBreakfast = useSelector((state: RootState) => state.details.priceForBreakfast);
+
+    if (!details) {
+        return 
+    }
+
     const { totalPrice, isPaid, hasBreakfast } = details;
-    const priceForBreakfast = useSelector((state) => state.details.priceForBreakfast);
 
     const nights = calculateNights(details.created_at, details.finish_booking);
     const finalPriceBreakfast = priceForBreakfast * nights;
