@@ -1,7 +1,6 @@
 import  { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import Button from './Button';
-import { FormProps } from '../types/types';
 
 const Form = ({ 
   register, 
@@ -11,7 +10,7 @@ const Form = ({
   isEditSeason, 
   isValid, 
   closeEditModal 
-}: FormProps) => {
+}: any) => {
   const formRef = useRef<HTMLFormElement | null>(null);
 
   useEffect(() => {

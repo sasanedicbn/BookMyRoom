@@ -6,7 +6,6 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import { supabase } from '../../supabase/supabaseClient';
 import { useDispatch } from 'react-redux';
 import { getRooms } from '../../store/roomsSlice';
-import { toast } from 'react-toastify';
 import OptionsMenu from '../../UX/OptionsMenu';
 import { handleDelete } from '../../api/Rooms/handleDelete';
 
@@ -25,25 +24,25 @@ const Room = ({ room }) => {
     setOpenMenuModal(false); 
   };
 
-  const handleEditSubmit = async (updatedRoom) => {
-    console.log('updatedRoom', updatedRoom);
+  // const handleEditSubmit = async (updatedRoom) => {
+  //   console.log('updatedRoom', updatedRoom);
 
-    const { error } = await supabase
-      .from('Bedrooms')
-      .update(updatedRoom)
-      .eq('id', room.id);
+  //   const { error } = await supabase
+  //     .from('Bedrooms')
+  //     .update(updatedRoom)
+  //     .eq('id', room.id);
 
-    if (error) {
-      console.error('Error updating room:', error);
-    } else {
-      console.log('Room updated successfully');
-      const { data: rooms, error: fetchError } = await supabase.from('Bedrooms').select('*');
-      if (!fetchError) {
-        dispatch(getRooms(rooms));
-      }
-      setOpenEditModal(false);
-    }
-  };
+  //   if (error) {
+  //     console.error('Error updating room:', error);
+  //   } else {
+  //     console.log('Room updated successfully');
+  //     const { data: rooms, error: fetchError } = await supabase.from('Bedrooms').select('*');
+  //     if (!fetchError) {
+  //       dispatch(getRooms(rooms));
+  //     }
+  //     setOpenEditModal(false);
+  //   }
+  // };
 
   const modalsActions = [
      {
@@ -53,7 +52,7 @@ const Room = ({ room }) => {
     },
      {
       icon: <FaTrash />,
-      onClick:() => handleDelete(room, dispatch, setOpenMenuModal),
+      onClick:() => handleDelete(room, dispatch),
       label: 'Delete'
     },
   ]
@@ -80,8 +79,6 @@ const Room = ({ room }) => {
           <NewEditRoom
             room={room}
             closeMenuModal={setOpenEditModal}
-            handleEditSubmit={handleEditSubmit} 
-            closeEditNewRoom={() => setOpenEditModal(false)}
           />
         </Modals>
       )}

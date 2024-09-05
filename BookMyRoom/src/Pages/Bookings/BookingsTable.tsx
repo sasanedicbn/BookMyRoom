@@ -65,10 +65,11 @@ const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
 
     const modalsActions = [
         { key: 'delete', icon: <FaTrash />, label: 'Delete', onClick: handleDeleteBooking },
-        { key: 'check-out', icon: <FaCheck />, label: 'Check Out', onClick: '/' },
-        { key: 'check-in', icon: <FaCheck />, label: 'Check In', onClick: '.' },
+        { key: 'check-out', icon: <FaCheck />, label: 'Check Out', onClick: () => {} },
+        { key: 'check-in', icon: <FaCheck />, label: 'Check In', onClick: () => {} },
         { key: 'see-details', icon: <FaEye />, label: 'See Details', onClick: () => handleSeeDetails(Number(currentBooking?.id)) }, 
     ];
+    
 
     const getModalOptions = (status: string) => {
         switch (status) {
@@ -136,7 +137,6 @@ const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
                                     <div ref={modalRef} className='optionsMenu-container'>
                                         <OptionsMenu 
                                             modalsActions={getModalsActions(getModalOptions(currentBooking.status))}
-                                            options={[]} 
                                         />
                                     </div>
                                 )}

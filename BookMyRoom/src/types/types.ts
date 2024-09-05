@@ -50,11 +50,6 @@ export type BookingDetails = {
     handler: (bookingId: string) => Promise<void>;
     Guests: Guest;
 };
-type ButtonConfig = {
-    type: string;
-    handler: (bookingId: string) => Promise<void>;
-    content: string[];
-  };
   
  export type BtnsMap = {
     [key: string]: {
@@ -62,24 +57,11 @@ type ButtonConfig = {
       handler: (details: any, navigate: NavigateFunction) => void;
       content: string[];
     };
-  };
- export type FormProps = {
-    register: (name: string, options?: any) => { onChange: () => void; onBlur: () => void; ref: React.Ref<any> };
-    handleSubmit: (callback: (data: any) => void) => (event: React.FormEvent) => void;
-    onSubmit: (data: any) => void;
-    errors: {
-      [key: string]: {
-        message: string;
-      };
-    };
-    isEditSeason: boolean;
-    isValid: boolean;
-    closeEditModal: () => void;
-  }
+  };  
   
-export type User = {
+ export type User = {
     currentUser: string | null
-}
+ }
 
 export type Room = {
     name: string;
@@ -88,6 +70,7 @@ export type Room = {
     discount: string;
     description: string;
     image: string;
+    id:number;
 }
 
 export type RoomsState = {

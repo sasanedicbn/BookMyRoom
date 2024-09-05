@@ -2,10 +2,16 @@ import ModalButton from './ModalButton';
 import Modals from './Modals';
 
 
+type ModalAction = {
+  icon: JSX.Element;  
+  onClick: () => void;
+  label: string;
+};
+
 type OptionsMenuProps = {
-  options: string[];
-  modalsActions: any[];
-}
+  modalsActions: ModalAction[]; 
+};
+
 
 const OptionsMenu = ({  modalsActions }: OptionsMenuProps) => {
   console.log('modalsActions', modalsActions)
