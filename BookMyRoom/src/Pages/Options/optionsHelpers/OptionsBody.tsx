@@ -6,15 +6,13 @@ import { btnsMap, getSeeDetailsBtns } from "../../../constants/constnsts";
 import Button from "../../../UX/Button";
 import SeeDetailsInfo from "./SeeDetailsInfo";
 import { setCurrentBtns, setPriceForBreakfast } from "../../../store/detailsSlice";
-import { RootState } from "../../../store";
+import { RootState } from "../../../store/store";
 
 const OptionsBody = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const details = useSelector((state: RootState) => state.details.details);
     const currentBtns = useSelector((state: RootState) => state.details.currentBtns);
-    const priceForBreakfast = useSelector((state: RootState) => state.details.priceForBreakfast);
-    const hasBreakfast = useSelector((state: RootState) => state.details.hasBreakfast);
 
     useEffect(() => {
         if (details) {
@@ -35,15 +33,10 @@ const OptionsBody = () => {
 
     return (
         <>
-            <SeeDetailsInfo
-                details={details}
-                hasBreakfast={hasBreakfast}
-                setHasBreakfast={(value: boolean) => dispatch(setHasBreakfast(value))}
-                priceForBreakfast={priceForBreakfast}
-            />
+            <SeeDetailsInfo/>
             <div className="optionsBtns">
                 {currentBtns.map((btn, index) => (
-                    <Button key={index} type={btnsMap[btn].type} onClick={() => btnsMap[btn].handler(details.id, navigate)}>
+                    <Button key={index} type={btnsMap[btn].type} onClick={() => btnsMap[btn].handler(details?.id, navigate)}>
                         {btn}
                     </Button>
                 ))}

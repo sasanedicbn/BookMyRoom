@@ -1,6 +1,6 @@
 import React from 'react';
 
-type ButtonType = 'primary' | 'secondary' | 'danger' | 'success' | 'back' | 'edit' | 'delete' | 'options' | 'optionRoom';
+type ButtonType =  string;
 
 type ButtonProps = {
   type: ButtonType;
