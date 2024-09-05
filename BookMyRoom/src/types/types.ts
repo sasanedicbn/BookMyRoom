@@ -1,3 +1,5 @@
+import { NavigateFunction } from "react-router-dom";
+
 export type SupabaseResponse = {
     error: null | {
         message: string;
@@ -55,9 +57,12 @@ type ButtonConfig = {
   };
   
  export type BtnsMap = {
-    [key: string]: ButtonConfig;
+    [key: string]: {
+      type: string;
+      handler: (details: any, navigate: NavigateFunction) => void;
+      content: string[];
+    };
   };
-  
  export type FormProps = {
     register: (name: string, options?: any) => { onChange: () => void; onBlur: () => void; ref: React.Ref<any> };
     handleSubmit: (callback: (data: any) => void) => (event: React.FormEvent) => void;
