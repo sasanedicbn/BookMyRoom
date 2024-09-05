@@ -7,17 +7,17 @@ import ConfirmCheckIn from './ConfirmCheckIn';
 import Button from '../../../UX/Button';
 import { handleCheckInDetails } from '../../../api/Booking/checkInDetails';
 import { useNavigate } from 'react-router-dom';
+import { RootState } from '../../../store/store';
 
 const CheckIn = () => {
-    const details = useSelector((state) => state.details.details);
+    const details = useSelector((state:RootState) => state.details.details);
     const navigate = useNavigate()
 
     const handleCheckIn = async () => {
-        if (!details) return; 
         await handleCheckInDetails(details.id, navigate); 
     };
     const backInDetails = () => {
-        navigate(`/booking/${details.id}`)
+        navigate(`/booking/${details?.id}`)
     }
     return (
         details ? (

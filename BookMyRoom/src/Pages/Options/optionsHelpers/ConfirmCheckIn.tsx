@@ -8,9 +8,9 @@ const ConfirmCheckIn = () => {
     const details = useSelector((state: RootState) => state.details.details);
     const priceForBreakfast = useSelector((state: RootState) => state.details.priceForBreakfast);
 
-    if (!details) {
-        return 
-    }
+    // if (!details) {
+    //     return 
+    // }
 
     const { totalPrice, isPaid, hasBreakfast } = details;
 

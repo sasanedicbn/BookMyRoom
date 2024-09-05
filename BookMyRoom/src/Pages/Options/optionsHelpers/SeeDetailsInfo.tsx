@@ -2,12 +2,13 @@ import { useSelector } from "react-redux";
 import { FaInfoCircle, FaCheckCircle } from "react-icons/fa";
 import { calculateNights, formatBookingDate } from "../../../constants/constnsts";
 import BreakfastCheckbox from "./BreakFastCheckBox";
-import { differenceInDays, parseISO, format } from "date-fns";
+import { parseISO, format } from "date-fns";
+import { RootState } from "../../../store/store";
 
 const SeeDetailsInfo = () => {
-    const details = useSelector((state) => state.details.details);
-    const hasBreakfast = useSelector((state) => state.details.hasBreakfast);
-    const priceForBreakfast = useSelector((state) => state.details.priceForBreakfast);
+    const details = useSelector((state:RootState) => state.details.details);
+    const hasBreakfast = useSelector((state:RootState) => state.details.hasBreakfast);
+    const priceForBreakfast = useSelector((state:RootState) => state.details.priceForBreakfast);
     console.log('priceforbreakfast', details)
 
     const { observations, totalPrice, isPaid, cabinId } = details;
@@ -90,7 +91,7 @@ const SeeDetailsInfo = () => {
                     <p className="status-pay">{isPaid ? "Paid" : "Will pay at property"}</p>
                 </div>
                 <footer className="optionsBody-footer">
-                    {(!hasBreakfast || hasBreakfast) && <BreakfastCheckbox bookingId={details.id.toString()} onChange={(isChecked) => setHasBreakfast(isChecked)} />}
+                    {(!hasBreakfast || hasBreakfast) && <BreakfastCheckbox bookingId={details.id.toString()} />}
                     <p>{formatBookingDate(details.Guests.created_at)}</p>
                 </footer>
             </section>
