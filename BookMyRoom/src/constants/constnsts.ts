@@ -21,7 +21,9 @@ export const sortMapping = {
   'price-lowest': { column: 'regularPrice', ascending: true },
   'price-highest': { column: 'regularPrice', ascending: false },
   'created_at': { column: 'created_at', ascending: true }
-};
+} as const;
+export type SortKey = keyof typeof sortMapping;
+
 export const bookingStatuses = [
   { label: 'All', filterValue: 'all' },
   { label: 'Checked out', filterValue: 'checked-out' },

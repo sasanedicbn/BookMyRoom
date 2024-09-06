@@ -9,7 +9,7 @@ const SeeDetailsInfo = () => {
     const details = useSelector((state:RootState) => state.details.details);
     const hasBreakfast = useSelector((state:RootState) => state.details.hasBreakfast);
     const priceForBreakfast = useSelector((state:RootState) => state.details.priceForBreakfast);
-    console.log('priceforbreakfast', details)
+    if(!details) return;
 
     const { observations, totalPrice, isPaid, cabinId } = details;
 

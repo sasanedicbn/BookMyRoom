@@ -4,12 +4,12 @@ import { supabase } from '../../supabase/supabaseClient';
 import { getRooms } from '../../store/roomsSlice';
 import Button from '../../UX/Button';
 import Select from '../../UX/Select';
-import { filterButtons, sortMapping, sortOptions } from '../../constants/constnsts';
+import { filterButtons, SortKey, sortMapping, sortOptions } from '../../constants/constnsts';
 
 const SortRooms = () => {
   const dispatch = useDispatch();
   const [filter, setFilter] = useState('all');
-  const [sort, setSort] = useState('name-asc');
+  const [sort, setSort] = useState<SortKey>('name-asc');
 
   useEffect(() => {
     const fetchRooms = async () => {
@@ -54,7 +54,7 @@ const SortRooms = () => {
         <div className="sort-options">
         <Select
             options={sortOptions}
-            onChange={(e) => setSort(e.target.value)}
+            onChange={(e) => setSort(e.target.value as SortKey)}
           />
         </div>
       </div>

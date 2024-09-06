@@ -1,26 +1,28 @@
-import { FaSignOutAlt, FaUser } from "react-icons/fa"
-import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
-import { RootState } from "../../store/store"
+import { FaSignOutAlt, FaUser } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { RootState } from "../../store/store";
 
 const ContentNavBar = () => {
-    const navigate = useNavigate()
-    const userName = useSelector((state:RootState) => state.rooms.currentUser)
-    const logOut = () => {
-        navigate('/login')
-    }
-    return( 
-        <div className="Content-NavBar">
-            <div className="Content-NavBar-items">
-                <img src="../src/assets/img/profile-img.jpg" alt="profile picture"/>
-                <p className="Content-NavBar-user">{userName}</p>
-                <div className="Content-NavBar-icons">
-                 <FaUser />
-                 <FaSignOutAlt onClick={logOut}/> 
-                </div>
+  const navigate = useNavigate();
+  const userName = useSelector((state: RootState) => state.rooms.currentUser);
 
-            </div>
+  const logOut = () => {
+    navigate('/login');
+  };
+
+  return (
+    <div className="Content-NavBar">
+      <div className="Content-NavBar-items">
+        <img src="../src/assets/img/profile-img.jpg" alt="profile picture" />
+        <p className="Content-NavBar-user">{userName ? userName.currentUser : "Guest"}</p>
+        <div className="Content-NavBar-icons">
+          <FaUser />
+          <FaSignOutAlt onClick={logOut} />
         </div>
-    )
-}
-export default ContentNavBar
+      </div>
+    </div>
+  );
+};
+
+export default ContentNavBar;

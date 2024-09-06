@@ -15,7 +15,7 @@ const Users = () => {
     repeatPassword: '',
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e:any) => {
     const { name, value } = e.target;
     setUserData((prevUserData) => ({
       ...prevUserData,
@@ -57,8 +57,7 @@ const Users = () => {
       }
 
     } catch (error) {
-      console.error("Error creating user:", error);
-      toast.error(error.message);
+      toast.error('Unfortunately, you have not created a user.');
     }
   };
 
@@ -83,7 +82,6 @@ const Users = () => {
               name={field.name}
               value={field.value}
               onChange={handleChange}
-              inputClassName="user-input"
             />
              </InputWrapper>
           ))}

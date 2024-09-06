@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BookingDetails } from '../types/types';
 
 interface DetailsState {
-  details: BookingDetails ;
+  details: BookingDetails | null ;
   currentBtns: string[];
   priceForBreakfast: number;
   hasBreakfast: boolean;

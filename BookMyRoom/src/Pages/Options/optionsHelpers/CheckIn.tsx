@@ -2,17 +2,17 @@ import { useSelector } from 'react-redux';
 import SeeDetailsInfo from './SeeDetailsInfo';
 import ComponentWrapper from '../../../UX/ComponentWrapper';
 import Spinner from '../../../global/Spinner';
-import OptionsHeader from './OptionsHeader';
 import ConfirmCheckIn from './ConfirmCheckIn';
 import Button from '../../../UX/Button';
 import { handleCheckInDetails } from '../../../api/Booking/checkInDetails';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../../store/store';
+import OptionsHeader from './OptionsHeader';
 
 const CheckIn = () => {
     const details = useSelector((state:RootState) => state.details.details);
     const navigate = useNavigate()
-
+    if(!details) return
     const handleCheckIn = async () => {
         await handleCheckInDetails(details.id, navigate); 
     };
