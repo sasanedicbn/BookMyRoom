@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Navigate to="/rooms" replace />,
+        element: <Navigate to="/login" replace />,
       },
       {
         path: '/rooms',
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         path: 'booking/:id',  
         element: <SeeDetails />
       },
-      {path:'check-in/:id',
+      {path: 'check-in/:id',
         element:<CheckIn/>
       }
     ],
