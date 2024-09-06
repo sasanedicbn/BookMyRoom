@@ -37,7 +37,7 @@ const SeeDetails = () => {
         <ComponentWrapper type={'tableWrapper'}>
             {details ? (
                 <>
-                    <OptionsHeader />
+                    <OptionsHeader/>
                     <OptionsBody />
                 </>
             ) : (
