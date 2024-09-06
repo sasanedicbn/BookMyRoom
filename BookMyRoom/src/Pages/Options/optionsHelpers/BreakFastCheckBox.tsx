@@ -2,10 +2,10 @@ import { ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateHasBreakfast } from '../../../api/Booking/updateBreakfast';
 import { setHasBreakfast } from '../../../store/detailsSlice';
-import { RootState } from '../../../store';
+import { RootState } from '../../../store/store';
 
 type BreakfastCheckboxProps = {
-    bookingId: string;
+    bookingId: string ;
 };
 
 const BreakfastCheckbox = ({ bookingId }: BreakfastCheckboxProps) => {

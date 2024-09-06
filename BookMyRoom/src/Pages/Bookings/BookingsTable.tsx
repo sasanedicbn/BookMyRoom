@@ -8,6 +8,7 @@ import { Booking } from '../../types/types';
 import { format } from 'date-fns';
 import { deleteBookingById } from '../../api/Booking/deleteBookingById';
 
+
 type BookingTableProps = {
     bookings: Booking[],
     setBookings: React.Dispatch<React.SetStateAction<Booking[]>>,
@@ -62,11 +63,12 @@ const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
             }
         }
     };
+    
 
     const modalsActions = [
         { key: 'delete', icon: <FaTrash />, label: 'Delete', onClick: handleDeleteBooking },
-        { key: 'check-out', icon: <FaCheck />, label: 'Check Out', onClick: () => {} },
-        { key: 'check-in', icon: <FaCheck />, label: 'Check In', onClick: () => {} },
+        { key: 'check-out', icon: <FaCheck />, label: 'Check Out', onClick: () => {console.log('check out')} },
+        { key: 'check-in', icon: <FaCheck />, label: 'Check In', onClick: () => {console.log('check in')} },
         { key: 'see-details', icon: <FaEye />, label: 'See Details', onClick: () => handleSeeDetails(Number(currentBooking?.id)) }, 
     ];
     

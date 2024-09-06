@@ -3,13 +3,11 @@ import { BiDotsVerticalRounded } from 'react-icons/bi';
 import Modals from '../../UX/Modals';
 import NewEditRoom from './newEditRoom';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import { supabase } from '../../supabase/supabaseClient';
 import { useDispatch } from 'react-redux';
-import { getRooms } from '../../store/roomsSlice';
 import OptionsMenu from '../../UX/OptionsMenu';
 import { handleDelete } from '../../api/Rooms/handleDelete';
 
-const Room = ({ room }) => {
+const Room = ({ room }:any) => {
   const { name, maxCapacity, regularPrice, image, discount } = room;
   const [openMenuModal, setOpenMenuModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
@@ -24,25 +22,6 @@ const Room = ({ room }) => {
     setOpenMenuModal(false); 
   };
 
-  // const handleEditSubmit = async (updatedRoom) => {
-  //   console.log('updatedRoom', updatedRoom);
-
-  //   const { error } = await supabase
-  //     .from('Bedrooms')
-  //     .update(updatedRoom)
-  //     .eq('id', room.id);
-
-  //   if (error) {
-  //     console.error('Error updating room:', error);
-  //   } else {
-  //     console.log('Room updated successfully');
-  //     const { data: rooms, error: fetchError } = await supabase.from('Bedrooms').select('*');
-  //     if (!fetchError) {
-  //       dispatch(getRooms(rooms));
-  //     }
-  //     setOpenEditModal(false);
-  //   }
-  // };
 
   const modalsActions = [
      {

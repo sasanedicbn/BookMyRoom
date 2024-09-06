@@ -8,13 +8,13 @@ export const handleCheckInDetails = async (bookingId:number, navigate: NavigateF
         .from('Bookings')
         .update({ status: 'checked-in' })
         .eq('id', bookingId);
-  
+    
       if (error) throw error;
-      
-      // console.log('Booking checked in:', data);
+      console.log('data iz CHECKINAA', data)
+
       toast.success('Booking successfully checked in!');
       navigate('/booking')
-      return data
+      return data;
     } catch (error) {
       toast.error('Failed to check in the booking.');
     }

@@ -1,17 +1,14 @@
 import { FaArrowLeft } from "react-icons/fa";
 import Button from "../../../UX/Button";
 import { useNavigate } from "react-router-dom";
-import { BookingDetails } from "../../../types/types";
 import { useSelector } from "react-redux";
- 
-
-// type OptionsHeaderProps = {
-//     details: BookingDetails;
-// }
+import { RootState } from "../../../store/store";
 
 const OptionsHeader = () => {
-    const details = useSelector((state) => state.details.details)
-    console.log('options header details', details)
+    const details = useSelector((state:RootState) => state.details.details)
+    if(!details){
+        return 
+    }
     const { id, status } = details;
     const navigate = useNavigate();
     

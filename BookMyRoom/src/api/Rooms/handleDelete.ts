@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import { supabase } from "../../supabase/supabaseClient";
 import { getRooms } from "../../store/roomsSlice";
 
-export const handleDelete = async (room, dispatch, setOpenMenuModal=false) => {
+export const handleDelete = async (room:any, dispatch:any,) => {
     try {
       const { error: bookingsError } = await supabase
         .from('Bookings')
@@ -28,7 +28,6 @@ export const handleDelete = async (room, dispatch, setOpenMenuModal=false) => {
         if (!fetchError) {
           dispatch(getRooms(rooms));
         }
-        setOpenMenuModal(false);
       }
     } catch (error) {
       console.error('An unexpected error occurred:', error);

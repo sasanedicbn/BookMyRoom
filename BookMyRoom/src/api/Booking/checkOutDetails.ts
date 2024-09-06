@@ -1,7 +1,8 @@
 import { toast } from "react-toastify";
 import { supabase } from "../../supabase/supabaseClient";
+import { NavigateFunction } from "react-router-dom";
 
-export const handleCheckOutDetails = async (bookingId:string, navigate) => {
+export const handleCheckOutDetails = async (bookingId:string, navigate:NavigateFunction) => {
     try {
       const { data, error } = await supabase
         .from('Bookings')
@@ -9,10 +10,12 @@ export const handleCheckOutDetails = async (bookingId:string, navigate) => {
         .eq('id', bookingId);
   
       if (error) throw error;
-  
-      console.log('booking chekcked out', data)
+   
+      console.log('data iz checkouta', data)
+
       toast.success('Booking successfully checked-out!');
       navigate('/booking')
+      return data;
     } catch (error) {
       toast.error('Failed to check in the booking.');
   

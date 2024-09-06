@@ -70,9 +70,9 @@ export const formatBookingDate = (isoDate:string)  =>{
 }
 
 
-const handleNavigateToCheckIn = (details:any,navigate:NavigateFunction) => {
-  if (details.id) {
-      navigate(`/check-in/${details.id}`);
+const handleNavigateToCheckIn = (detailsId:any,navigate:NavigateFunction) => {
+  if (detailsId) {
+      navigate(`/check-in/${detailsId}`);
   }
 };
 

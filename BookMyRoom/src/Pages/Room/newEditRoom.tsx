@@ -54,7 +54,6 @@ const NewEditRoom = ({ room = {}, closeMenuModal }: NewEditRoomProps) => {
   };
 
   const handleEditSubmit: SubmitHandler<Room> = async (updatedRoom) => {
-    console.log('updatedRoom', updatedRoom);
 
     const { error } = await supabase.from('Bedrooms').update(updatedRoom).eq('id', room.id);
 

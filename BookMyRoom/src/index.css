@@ -643,7 +643,6 @@ tbody{
 .bookings-container{
   display: flex;
   flex-direction: column;
-  width: 923px;
 }
 /* OPTIONS HEADER */
 .options-header{
@@ -816,4 +815,13 @@ tbody{
 }
 .not-allowed{
   cursor: not-allowed;
+}
+/* RESPONSIVE DESIGN */
+@media  screen and (max-width: 1300px) {
+  .table-wrapper {
+   padding: 1rem 3.5rem;  
+  }
+  .table-body td {
+   padding: 14px 22px;
+ }
 }

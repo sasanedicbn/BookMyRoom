@@ -10,15 +10,13 @@ import ComponentWrapper from "../../UX/ComponentWrapper";
 import TableHead from "./TableHead";
 import Modals from "../../UX/Modals";
 import Spinner from "../../global/Spinner";
-import { RootState } from "@reduxjs/toolkit/query";
+import { RootState } from "../../store/store";
 
 const RoomsList = () => {
   const dispatch = useDispatch();
   const [addNewRoom, setAddNewRoom] = useState(false);
-  const [openEditModal, setOpenEditModal] = useState(false);
 
   const rooms = useSelector((state:RootState) => state.rooms.rooms);
-  console.log('ROOMS', rooms);
 
   const handleAddNewRoom = () => {
     setAddNewRoom((prevState) => !prevState);
@@ -53,7 +51,7 @@ const RoomsList = () => {
             </Button>
             {addNewRoom && (
               <Modals type={'addNewRoom'}>
-                <NewEditRoom setOpenEditModal={setOpenEditModal} closeMenuModal={handleAddNewRoom} />
+                <NewEditRoom  closeMenuModal={handleAddNewRoom} />
               </Modals>
             )}
           </>

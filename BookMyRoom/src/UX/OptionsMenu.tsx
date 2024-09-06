@@ -14,7 +14,6 @@ type OptionsMenuProps = {
 
 
 const OptionsMenu = ({  modalsActions }: OptionsMenuProps) => {
-  console.log('modalsActions', modalsActions)
   const modalType = modalsActions.length === 2 ? 'two-options' : 'three-options';
  
   return (
