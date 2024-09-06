@@ -2,12 +2,12 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { supabase } from "../../supabase/supabaseClient";
 import ComponentWrapper from "../../UX/ComponentWrapper";
-import OptionsHeader from "./optionsHelpers/OptionsHeader";
 import OptionsBody from "./optionsHelpers/OptionsBody";
 import Spinner from "../../global/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { setDetails } from "../../store/detailsSlice";
 import { RootState } from "../../store/store";
+import OptionsHeader from "./optionsHelpers/OptionsHeader";
 
 const SeeDetails = () => {
     const { id } = useParams<{ id: string }>()

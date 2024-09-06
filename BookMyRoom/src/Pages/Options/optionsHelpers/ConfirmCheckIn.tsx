@@ -7,11 +7,15 @@ const ConfirmCheckIn = () => {
     const dispatch = useDispatch();
     const details = useSelector((state: RootState) => state.details.details);
     const priceForBreakfast = useSelector((state: RootState) => state.details.priceForBreakfast);
+    
+    if (!details) {
+        return null;  
+    }
 
-
+   
     const { totalPrice, isPaid, hasBreakfast } = details;
 
-    const nights = calculateNights(details.created_at, details.finish_booking);
+    const nights = calculateNights(details?.created_at, details?.finish_booking);
     const finalPriceBreakfast = priceForBreakfast * nights;
     const actualPriceForCabin = totalPrice + (hasBreakfast ? finalPriceBreakfast : 0);
 
@@ -22,7 +26,7 @@ const ConfirmCheckIn = () => {
     return (
         <div className="container-checkIn">
             <label>
-                I confirm that {details.Guests.fullName} has paid the total amount of ${actualPriceForCabin}?
+                I confirm that {details?.Guests?.fullName} has paid the total amount of ${actualPriceForCabin}?
             </label>
             <input 
                 type="checkbox" 

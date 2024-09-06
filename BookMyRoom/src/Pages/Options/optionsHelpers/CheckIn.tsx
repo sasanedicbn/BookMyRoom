@@ -28,7 +28,7 @@ const CheckIn = () => {
                 <div className='btn-container'>
                     <Button 
                         type='success' 
-                        disabled={!details.isPaid} 
+                        disabled={!details?.isPaid} 
                         onClick={handleCheckIn}
                 
                     >
