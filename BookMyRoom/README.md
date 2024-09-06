@@ -1,30 +1,39 @@
-# React + TypeScript + Vite
+Book My Room
+Book My Room is a comprehensive room management application designed for administrative use. This application allows you to manage rooms, bookings, settings, and users efficiently.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+Login: Secure login with provided credentials.
 
-Currently, two official plugins are available:
+Username: dragisa22@gmail.com
+Password: sasanedic123
+Rooms:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+View, edit, and delete rooms.
+Sort rooms by status: All, Checked-In, Checked-Out, Unconfirmed.
+Sort rooms alphabetically (A-Z, Z-A) or by price (Low to High, High to Low).
+Add new rooms.
+Bookings:
 
-## Expanding the ESLint configuration
+View and sort bookings similarly to rooms.
+Manage bookings by checking in, checking out, deleting, adding breakfast, and confirming payment.
+Settings:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Configure breakfast price.
+Set maximum and minimum days for bookings.
+Define the maximum number of guests allowed per booking.
+Users:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Create new users with assigned passwords.
+Technologies Used
+Vite
+React.js
+TypeScript
+React Hook Form
+Zod
+Toastify
+React Icons
+Redux
+Date-fns
+Supabase
+React Router DOM
+Note: This application is intended for administrative management of rooms and bookings.
