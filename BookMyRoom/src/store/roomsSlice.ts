@@ -6,6 +6,7 @@ const initialState: RoomsState = {
     rooms: [],
     currentUser: null,
     currentRoom: {
+        id:'',
         name: '',
         maxCapacity: '',
         regularPrice: '',

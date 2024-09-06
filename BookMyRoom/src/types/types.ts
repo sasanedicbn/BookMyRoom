@@ -70,7 +70,7 @@ export type Room = {
     discount: string;
     description: string;
     image: string;
-    id:number;
+    id:string;
 }
 
 export type RoomsState = {
