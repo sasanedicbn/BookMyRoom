@@ -13,10 +13,11 @@ const OptionsBody = () => {
     const navigate = useNavigate();
     const details = useSelector((state: RootState) => state.details.details);
     const currentBtns = useSelector((state: RootState) => state.details.currentBtns);
+    if(!details) return
 
     useEffect(() => {
         if (details) {
-            dispatch(setCurrentBtns(getSeeDetailsBtns(details.status)));
+            dispatch(setCurrentBtns(getSeeDetailsBtns(details?.status)));
         }
     }, [details, dispatch]);
 
