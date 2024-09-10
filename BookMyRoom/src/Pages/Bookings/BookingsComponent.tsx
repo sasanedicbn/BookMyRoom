@@ -55,6 +55,7 @@ const BookingsComponent = () => {
     const handleFilterChange = (filter: string) => {
         fetchBookings(undefined, filter);
     };
+    console.log('Bookings',bookings)
 
     return (
         <div className="bookings-container">
