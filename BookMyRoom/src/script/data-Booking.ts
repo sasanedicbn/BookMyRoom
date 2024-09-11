@@ -10,10 +10,10 @@ export const bookings = [
   {
     id: 39,
     cabinId: 8,
-    guest: {
-      fullName: "Petre Smith",
-      email: "petresmith321@gmail.com",
-    },
+    // guest: {
+    //   fullName: "Petre Smith",
+    //   email: "petresmith321@gmail.com",
+    // },
     status: "checked-out",
     create_booking: currentDate(5),  
     finish_booking: currentDate(8),  
@@ -26,10 +26,10 @@ export const bookings = [
   {
     id: 38,
     cabinId: 8,
-    guest: {
-      fullName: "John McEnrol",
-      email: "johnmcenrol1@gmail.com",
-    },
+    // guest: {
+    //   fullName: "John McEnrol",
+    //   email: "johnmcenrol1@gmail.com",
+    // },
     status: "unconfirmed",
     create_booking: currentDate(0),  
     finish_booking: currentDate(2), 

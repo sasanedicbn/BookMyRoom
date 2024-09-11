@@ -12,6 +12,10 @@ export const roomsSlice = createSlice({
     setBookings: (state, action) => {
         state.bookings = action.payload
     },
+    // cleanBookings: (state, action) => {
+    //     state.bookings = []
+    // },
+
   },
 });
 
