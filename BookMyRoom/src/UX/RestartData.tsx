@@ -1,8 +1,12 @@
+import { uploadBookings } from "../script/UploadBookings";
+import Button from "./Button";
+
 const RestartData = () => {
+
     return(
       <div className="restartData-container">
-        <Button>Upload ALL</Button>
-        <Button>Upload bookings ONLY</Button>
+        <Button type="success">Upload ALL</Button>
+        <Button type="success" onClick={() => uploadBookings}>Upload bookings ONLY</Button>
       </div>
     )
 }
