@@ -825,3 +825,9 @@ tbody{
    padding: 14px 22px;
  }
 }
+
+.restartData-container{
+  width: 200px;
+  height: 100px;
+  background-color: red;
+}

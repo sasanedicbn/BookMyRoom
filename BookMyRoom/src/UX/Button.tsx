@@ -6,7 +6,7 @@ type ButtonProps = {
   type: ButtonType;
   onClick?: () => void; 
   children: React.ReactNode; 
-  disabled?: boolean; // Dodajemo prop za disabled stanje
+  disabled?: boolean; 
 };
 
 const Button: React.FC<ButtonProps> = ({ type, onClick, children, disabled = false }) => {
