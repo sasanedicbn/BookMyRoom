@@ -39,22 +39,22 @@ export const bookings = [
     observations: null,
     created_at: currentDate(-1),  
   },
-  // {
-  //   id: 37,
-  //   cabinId: 11,
-  //   guest: {
-  //     fullName: "Olga Danilovic",
-  //     email: "olgadanilovic@gmail.com",
-  //   },
-  //   status: "checked-in",
-  //   create_booking: currentDate(-5),  
-  //   finish_booking: currentDate(1),  
-  //   hasBreakfast: true,
-  //   isPaid: false,
-  //   totalPrice: 3000,
-  //   observations: null,
-  //   created_at: currentDate(-5),  
-  // },
+  {
+    id: 37,
+    cabinId: 11,
+    // guest: {
+    //   fullName: "Olga Danilovic",
+    //   email: "olgadanilovic@gmail.com",
+    // },
+    status: "checked-in",
+    create_booking: currentDate(-5),  
+    finish_booking: currentDate(1),  
+    hasBreakfast: true,
+    isPaid: false,
+    totalPrice: 3000,
+    observations: null,
+    created_at: currentDate(-5),  
+  },
   // {
   //   id: 36,
   //   cabinId: 14,
@@ -121,4 +121,3 @@ export const bookings = [
   // },
 ];
 
-console.log('sve rezervacije', bookings)
