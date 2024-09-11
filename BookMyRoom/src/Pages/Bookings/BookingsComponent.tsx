@@ -6,9 +6,14 @@ import BookingsTable from "./BookingsTable";
 import { bookingStatuses, selectOptions } from "../../constants/constnsts";
 import Spinner from "../../global/Spinner";
 import { Booking, SortOption } from "../../types/types";
+import { useDispatch, useSelector } from "react-redux";
+import { setBookings } from "../../store/bookingsSlice";
 
 const BookingsComponent = () => {
-    const [bookings, setBookings] = useState<Booking[]>([]);
+    const dispatch = useDispatch()
+    const bookings = useSelector((booking) => booking.bookings.bookings)
+    console.log('BOOKINGS IZ SLAJSA', bookings)
+    // const [bookings, setBookings] = useState<Booking[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
     const sortMapping: Record<SortOption, { column: string; ascending: boolean }> = {
@@ -39,7 +44,7 @@ const BookingsComponent = () => {
         if (error) {
             console.error('Error fetching bookings:', error);
         } else {
-            setBookings(data || []);
+            dispatch(setBookings(data));
         }
     };
 
@@ -55,7 +60,6 @@ const BookingsComponent = () => {
     const handleFilterChange = (filter: string) => {
         fetchBookings(undefined, filter);
     };
-    console.log('Bookings',bookings)
 
     return (
         <div className="bookings-container">
@@ -74,7 +78,7 @@ const BookingsComponent = () => {
             {loading ? (
                 <Spinner />
             ) : (
-                <BookingsTable bookings={bookings} setBookings={setBookings} />
+                <BookingsTable />
             )}
         </div>
     );

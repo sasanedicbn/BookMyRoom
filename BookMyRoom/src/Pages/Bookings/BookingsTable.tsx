@@ -1,24 +1,22 @@
 import { useState, useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux'; 
 import TableHeadBookings from './TableHeadBookings';
-import { formatNumber, } from '../../constants/constnsts';
+import { formatNumber } from '../../constants/constnsts';
 import OptionsMenu from '../../UX/OptionsMenu';
 import { FaCheck, FaEye, FaTrash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { Booking } from '../../types/types';
 import { format } from 'date-fns';
 import { deleteBookingById } from '../../api/Booking/deleteBookingById';
+import { setBookings } from '../../store/bookingsSlice';
 
-
-type BookingTableProps = {
-    bookings: Booking[],
-    setBookings: React.Dispatch<React.SetStateAction<Booking[]>>,
-};
-
-const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
+const BookingsTable = () => {
     const [openMenuModal, setOpenMenuModal] = useState<boolean>(false);
     const [currentBooking, setCurrentBooking] = useState<Booking | null>(null);
     const modalRef = useRef<HTMLDivElement | null>(null); 
     const navigate = useNavigate(); 
+    const dispatch = useDispatch(); 
+    const bookings = useSelector((state) => state.bookings.bookings); 
 
     const handleSeeDetails = (id: number | undefined) => {
         if (id) {
@@ -59,11 +57,10 @@ const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
             const success = await deleteBookingById(currentBooking.id, navigate);
             if (success) {
                 handleCloseModal(); 
-                setBookings((prevBooking) => prevBooking.filter((booking) => booking.id !== currentBooking.id));
+                dispatch(setBookings(bookings.filter((booking) => booking.id !== currentBooking.id)));
             }
         }
     };
-    
 
     const modalsActions = [
         { key: 'delete', icon: <FaTrash />, label: 'Delete', onClick: handleDeleteBooking },
@@ -71,7 +68,6 @@ const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
         { key: 'check-in', icon: <FaCheck />, label: 'Check In', onClick: () => {console.log('check in')} },
         { key: 'see-details', icon: <FaEye />, label: 'See Details', onClick: () => handleSeeDetails(Number(currentBooking?.id)) }, 
     ];
-    
 
     const getModalOptions = (status: string) => {
         switch (status) {
@@ -90,7 +86,6 @@ const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
         return modalsActions.filter(action => options.includes(action.key));
     };
 
-  
     return (
         <div>
             <table className="table">
@@ -103,8 +98,8 @@ const BookingsTable = ({ bookings, setBookings }: BookingTableProps) => {
                                 {booking.Guests?.fullName} <span>{booking.Guests?.email}</span>
                             </td>
                             <td>
-                            {booking.create_booking ? format(new Date(booking.create_booking), "d MMM yyyy") : 'Invalid date'}
-                             — {booking.finish_booking ? format(new Date(booking.finish_booking), "d MMM yyyy") : 'Invalid date'}
+                                {booking.create_booking ? format(new Date(booking.create_booking), "d MMM yyyy") : 'Invalid date'}
+                                 — {booking.finish_booking ? format(new Date(booking.finish_booking), "d MMM yyyy") : 'Invalid date'}
                             </td>
                             <td>
                                 <span className={`${
