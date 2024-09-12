@@ -1,9 +1,9 @@
-import { addBookingsData } from "../api/Booking/addBookings";
 import { deleteAllBookings } from "../api/Booking/deleteAllBookings";
 import { useDispatch } from 'react-redux'; // Ovde koristiš dispatch
 import Button from "./Button";
 import { bookings } from "../script/data-Booking";
 import { setBookings } from "../store/bookingsSlice";
+import { addBookingsData } from "../api/Booking/addBookings";
 
 const RestartData = () => {
   const dispatch = useDispatch(); 
