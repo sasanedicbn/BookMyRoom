@@ -5,7 +5,7 @@ import { supabase } from "../../supabase/supabaseClient";
 import BookingsTable from "./BookingsTable";
 import { bookingStatuses, selectOptions } from "../../constants/constnsts";
 import Spinner from "../../global/Spinner";
-import { Booking, SortOption } from "../../types/types";
+import {  SortOption } from "../../types/types";
 import { useDispatch, useSelector } from "react-redux";
 import { setBookings } from "../../store/bookingsSlice";
 
@@ -13,7 +13,6 @@ const BookingsComponent = () => {
     const dispatch = useDispatch()
     const bookings = useSelector((booking) => booking.bookings.bookings)
     console.log('BOOKINGS IZ SLAJSA', bookings)
-    // const [bookings, setBookings] = useState<Booking[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
     const sortMapping: Record<SortOption, { column: string; ascending: boolean }> = {
