@@ -18,8 +18,13 @@ const BookingsComponent = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [searchParams] = useSearchParams()
     const filterValue = searchParams.get('status') || 'All'
-    let filteredBookings = bookings.filter()
-    console.log('filtervalueee', filteredBookings)
+    // let filteredBookings = bookings.filter((booking) => {
+    //     if(booking.status === 'All'){
+    //         fetchBookings(undefined, filterValue)
+    //     }
+    //     return fetchBookings(undefined, filterValue)
+    // })
+    console.log('filtervalueee', filterValue)
 
     const sortMapping: Record<SortOption, { column: string; ascending: boolean }> = {
         'date-desc': { column: 'created_at', ascending: false },
@@ -53,9 +58,9 @@ const BookingsComponent = () => {
         }
     };
 
-    useEffect(() => {
-        fetchBookings();
-    }, []);
+    // useEffect(() => {
+    //     fetchBookings();
+    // }, []);
 
     const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedSort = e.target.value as SortOption;
@@ -76,7 +81,7 @@ const BookingsComponent = () => {
                         {status.label}
                     </Button>
                 ))} */}
-                <Filter options={['All', 'Chekcked-out', "Checked-in", 'Unconfirmed']}></Filter>
+                <Filter  options={['all', 'chekcked-out', "checked-in", 'unconfirmed']}></Filter>
                 <Select
                     options={selectOptions}
                     onChange={handleSortChange}

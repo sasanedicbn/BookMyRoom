@@ -9,11 +9,8 @@ export function currentDate(numberDays) {
 export const bookings = [
   {
     id: 39,
-    cabinId: 8,
-    Guest: {
-      fullName: "Petre Smith",
-      email: "petresmith321@gmail.com",
-    },
+    cabinId: 5,
+    guestId:6,
     status: "checked-out",
     create_booking: currentDate(5),  
     finish_booking: currentDate(8),  
@@ -26,10 +23,7 @@ export const bookings = [
   {
     id: 38,
     cabinId: 8,
-    // Guest: {
-    //   fullName: "John McEnrol",
-    //   email: "johnmcenrol1@gmail.com",
-    // },
+    guestId:4,
     status: "unconfirmed",
     create_booking: currentDate(0),  
     finish_booking: currentDate(2), 
@@ -42,10 +36,7 @@ export const bookings = [
   {
     id: 37,
     cabinId: 11,
-    // Guest: {
-    //   fullName: "Olga Danilovic",
-    //   email: "olgadanilovic@gmail.com",
-    // },
+    guestId:5,
     status: "checked-in",
     create_booking: currentDate(-5),  
     finish_booking: currentDate(1),  
@@ -57,11 +48,8 @@ export const bookings = [
   },
   {
     id: 36,
-    cabinId: 14,
-    // guest: {
-    //   fullName: "Stipe Antic",
-    //   email: "stipeantic1@gmail.com",
-    // },
+    cabinId: 13,
+    guestId:1,
     status: "unconfirmed",
     create_booking: currentDate(-5),  
     finish_booking: currentDate(1),  
@@ -74,10 +62,7 @@ export const bookings = [
   {
     id: 35,
     cabinId: 14,
-    // guest: {
-    //   fullName: "Olga Danilovic",
-    //   email: "olgadanilovic@gmail.com",
-    // },
+    guestId:2,
     status: "checked-out",
     create_booking: currentDate(-5), 
     finish_booking: currentDate(0), 
@@ -89,11 +74,8 @@ export const bookings = [
   },
   {
     id: 34,
-    cabinId: 8,
-    // guest: {
-    //   fullName: "Bautisa Agut",
-    //   email: "bautistaAgut994@gmail.com",
-    // },
+    cabinId: 7,
+    guestId:3,
     status: "checked-in",
     create_booking: currentDate(-5),  
     finish_booking: currentDate(-2),  
@@ -106,10 +88,7 @@ export const bookings = [
   {
     id: 5,
     cabinId: 7,
-    // guest: {
-    //   fullName: "Zher Haren",
-    //   email: "zherHarem312@gmail.com",
-    // },
+    guestId:8,
     status: "checked-out",
     create_booking: currentDate(-20),  
     finish_booking: currentDate(-12),  

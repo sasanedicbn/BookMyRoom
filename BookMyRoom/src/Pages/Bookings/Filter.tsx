@@ -1,4 +1,5 @@
 import { useSearchParams } from "react-router-dom";
+import Button from "../../UX/Button";
 
 const Filter = ({options }) => {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -10,12 +11,13 @@ const Filter = ({options }) => {
     return (
       <div>
         {options.map((o) => (
-          <button
+          <Button
           onClick={() => handleClick(o)}
           key={o}
+          type="success"
           >
             {o}
-          </button>
+          </Button>
         ))}
         </div>
     );
