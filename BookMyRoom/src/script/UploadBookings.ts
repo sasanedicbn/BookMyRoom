@@ -8,6 +8,7 @@ export const uploadBookings = async () => {
   const removeBooking = await deleteAllBookings();
   if (removeBooking) {
     const success = await addBookingsData(bookings);
+    console.log(success)
     if (success) {
       
         console.log('succes bookings', bookings)

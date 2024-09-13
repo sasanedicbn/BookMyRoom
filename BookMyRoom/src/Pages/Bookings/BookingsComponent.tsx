@@ -8,12 +8,18 @@ import Spinner from "../../global/Spinner";
 import {  SortOption } from "../../types/types";
 import { useDispatch, useSelector } from "react-redux";
 import { setBookings } from "../../store/bookingsSlice";
+import Filter from "./Filter";
+import { useSearchParams } from "react-router-dom";
 
 const BookingsComponent = () => {
     const dispatch = useDispatch()
     const bookings = useSelector((booking) => booking.bookings.bookings)
     console.log('BOOKINGS IZ SLAJSA', bookings)
     const [loading, setLoading] = useState<boolean>(true);
+    const [searchParams] = useSearchParams()
+    const filterValue = searchParams.get('status') || 'All'
+    let filteredBookings = bookings.filter()
+    console.log('filtervalueee', filteredBookings)
 
     const sortMapping: Record<SortOption, { column: string; ascending: boolean }> = {
         'date-desc': { column: 'created_at', ascending: false },
@@ -60,15 +66,17 @@ const BookingsComponent = () => {
         fetchBookings(undefined, filter);
     };
 
+
     return (
         <div className="bookings-container">
             <div className="bookings-filters">
                 <h1>Bookings</h1>
-                {bookingStatuses.map((status, index) => (
+                {/* {bookingStatuses.map((status, index) => (
                     <Button key={index} type="success" onClick={() => handleFilterChange(status.filterValue)}>
                         {status.label}
                     </Button>
-                ))}
+                ))} */}
+                <Filter options={['All', 'Chekcked-out', "Checked-in", 'Unconfirmed']}></Filter>
                 <Select
                     options={selectOptions}
                     onChange={handleSortChange}
