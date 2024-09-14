@@ -5,96 +5,71 @@ import { supabase } from "../../supabase/supabaseClient";
 import BookingsTable from "./BookingsTable";
 import { bookingStatuses, selectOptions } from "../../constants/constnsts";
 import Spinner from "../../global/Spinner";
-import {  SortOption } from "../../types/types";
+import { SortOption } from "../../types/types";
 import { useDispatch, useSelector } from "react-redux";
 import { setBookings } from "../../store/bookingsSlice";
 import Filter from "./Filter";
 import { useSearchParams } from "react-router-dom";
 
 const BookingsComponent = () => {
-    const dispatch = useDispatch()
-    const bookings = useSelector((booking) => booking.bookings.bookings)
-    console.log('BOOKINGS IZ SLAJSA', bookings)
+    const dispatch = useDispatch();
+    const bookings = useSelector((booking) => booking.bookings.bookings); // Uzmi bookings iz Redux state-a
+    console.log('BOOKINGS IZ SLAJSA', bookings);
     const [loading, setLoading] = useState<boolean>(true);
-    const [searchParams] = useSearchParams()
-    const filterValue = searchParams.get('status') || 'All'
-    // let filteredBookings = bookings.filter((booking) => {
-    //     if(booking.status === 'All'){
-    //         fetchBookings(undefined, filterValue)
-    //     }
-    //     return fetchBookings(undefined, filterValue)
-    // })
-    console.log('filtervalueee', filterValue)
+    const [searchParams] = useSearchParams();
+    const filterValue = searchParams.get('status') || 'all'; // Iz URL parametara uzmi status za filtriranje
+    let query = supabase.from('Bookings').select(`
+        *,
+        Bedrooms (id),
+        Guests (fullName, email)
+    `); // Osnovni query
 
-    const sortMapping: Record<SortOption, { column: string; ascending: boolean }> = {
-        'date-desc': { column: 'created_at', ascending: false },
-        'date-asc': { column: 'created_at', ascending: true },
-        'amount-high': { column: 'totalPrice', ascending: false },
-        'amount-low': { column: 'totalPrice', ascending: true }
-    };
-
-    const fetchBookings = async (sort: SortOption = 'date-desc', filter: string = 'all') => {
+    // Funkcija za preuzimanje podataka sa filtriranjem
+    const fetchBookings = async (filter: string = 'all') => {
         setLoading(true);
 
-        let query = supabase.from('Bookings').select(`
-            *,
-            Bedrooms (id),
-            Guests (fullName, email)
-        `);
-
+        // Dodaj filtriranje na status
         if (filter !== 'all') {
             query = query.eq('status', filter);
         }
 
-        const { column, ascending } = sortMapping[sort];
-        console.log('column', column , 'ascending', ascending)
-
-        const { data, error } = await query.order(column, { ascending });
+        const { data, error } = await query;
         setLoading(false);
+
         if (error) {
             console.error('Error fetching bookings:', error);
         } else {
-            dispatch(setBookings(data));
+            dispatch(setBookings(data)); // Ubacuje bookings u Redux store
         }
     };
 
     useEffect(() => {
-        fetchBookings();
-    }, []);
+        fetchBookings(filterValue); // Pozovi preuzimanje bookings sa filterom
+    }, [filterValue]); // Ponovo pozovi kada se promeni filter
 
     const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedSort = e.target.value as SortOption;
-        fetchBookings(selectedSort);
+        fetchBookings(selectedSort); // Ovo ostaje ako budeš želeo sortiranje
     };
-
-    // const handleFilterChange = (filter: string) => {
-    //     fetchBookings(undefined, filter);
-    // };
-
 
     return (
         <div className="bookings-container">
             <div className="bookings-filters">
                 <h1>Bookings</h1>
-                {/* {bookingStatuses.map((status, index) => (
-                    <Button key={index} type="success" onClick={() => handleFilterChange(status.filterValue)}>
-                        {status.label}
-                    </Button>
-                ))} */}
-                <Filter  options={['all', 'chekcked-out', "checked-in", 'unconfirmed']}></Filter>
+                {/* Filtriraj bookings pomoću dugmića ili dropdowna */}
+                <Filter options={['all', 'checked-out', 'checked-in', 'unconfirmed']} />
                 <Select
                     options={selectOptions}
-                    onChange={handleSortChange}
+                    onChange={handleSortChange} // Pozovi promenu sort opcije
                 />
             </div>
             {loading ? (
-                <Spinner />
+                <Spinner /> // Prikaži spinner dok traje preuzimanje podataka
             ) : (
-                <BookingsTable />
+                <BookingsTable bookings={bookings} /> // Prikazivanje bookings u tabeli
             )}
         </div>
     );
 };
 
 export default BookingsComponent;
-
