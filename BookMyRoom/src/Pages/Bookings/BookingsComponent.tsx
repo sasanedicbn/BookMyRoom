@@ -17,14 +17,13 @@ const BookingsComponent = () => {
     console.log('BOOKINGS IZ SLAJSA', bookings);
     const [loading, setLoading] = useState<boolean>(true);
     const [searchParams] = useSearchParams();
-    const filterValue = searchParams.get('status') || 'all'; // Iz URL parametara uzmi status za filtriranje
+    const filterValue = searchParams.get('status') || 'all'; /
     let query = supabase.from('Bookings').select(`
         *,
         Bedrooms (id),
         Guests (fullName, email)
     `); // Osnovni query
 
-    // Funkcija za preuzimanje podataka sa filtriranjem
     const fetchBookings = async (filter: string = 'all') => {
         setLoading(true);
 
