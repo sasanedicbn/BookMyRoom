@@ -22,12 +22,11 @@ const BookingsComponent = () => {
         *,
         Bedrooms (id),
         Guests (fullName, email)
-    `); // Osnovni query
+    `); 
 
     const fetchBookings = async (filter: string = 'all') => {
         setLoading(true);
 
-        // Dodaj filtriranje na status
         if (filter !== 'all') {
             query = query.eq('status', filter);
         }
