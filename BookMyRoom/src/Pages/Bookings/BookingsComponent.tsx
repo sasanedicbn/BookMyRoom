@@ -13,11 +13,11 @@ import { useSearchParams } from "react-router-dom";
 
 const BookingsComponent = () => {
     const dispatch = useDispatch();
-    const bookings = useSelector((booking) => booking.bookings.bookings); // Uzmi bookings iz Redux state-a
+    const bookings = useSelector((booking) => booking.bookings.bookings); 
     console.log('BOOKINGS IZ SLAJSA', bookings);
     const [loading, setLoading] = useState<boolean>(true);
     const [searchParams] = useSearchParams();
-    const filterValue = searchParams.get('status') || 'all'; /
+    const filterValue = searchParams.get('status') || 'all'; 
     let query = supabase.from('Bookings').select(`
         *,
         Bedrooms (id),
@@ -27,6 +27,7 @@ const BookingsComponent = () => {
     const fetchBookings = async (filter: string = 'all') => {
         setLoading(true);
 
+        // Dodaj filtriranje na status
         if (filter !== 'all') {
             query = query.eq('status', filter);
         }
@@ -47,14 +48,14 @@ const BookingsComponent = () => {
 
     const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedSort = e.target.value as SortOption;
-        fetchBookings(selectedSort); // Ovo ostaje ako budeš želeo sortiranje
+        fetchBookings(selectedSort); 
     };
 
     return (
         <div className="bookings-container">
             <div className="bookings-filters">
                 <h1>Bookings</h1>
-                {/* Filtriraj bookings pomoću dugmića ili dropdowna */}
+                
                 <Filter options={['all', 'checked-out', 'checked-in', 'unconfirmed']} />
                 <Select
                     options={selectOptions}
@@ -62,7 +63,7 @@ const BookingsComponent = () => {
                 />
             </div>
             {loading ? (
-                <Spinner /> // Prikaži spinner dok traje preuzimanje podataka
+                <Spinner /> 
             ) : (
                 <BookingsTable bookings={bookings} /> // Prikazivanje bookings u tabeli
             )}
