@@ -18,6 +18,7 @@ const BookingsTable = () => {
     const dispatch = useDispatch(); 
     const bookings = useSelector((state) => state.bookings.bookings); 
 
+    console.log('//////////', bookings)
     const handleSeeDetails = (id: number | undefined) => {
         if (id) {
             navigate(`/booking/${id}`);
@@ -61,7 +62,7 @@ const BookingsTable = () => {
             }
         }
     };
-
+    
     const modalsActions = [
         { key: 'delete', icon: <FaTrash />, label: 'Delete', onClick: handleDeleteBooking },
         { key: 'check-out', icon: <FaCheck />, label: 'Check Out', onClick: () => {console.log('check out')} },

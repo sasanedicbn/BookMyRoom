@@ -58,18 +58,18 @@ const BookingsComponent = () => {
         }
     };
 
-    // useEffect(() => {
-    //     fetchBookings();
-    // }, []);
+    useEffect(() => {
+        fetchBookings();
+    }, []);
 
     const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedSort = e.target.value as SortOption;
         fetchBookings(selectedSort);
     };
 
-    const handleFilterChange = (filter: string) => {
-        fetchBookings(undefined, filter);
-    };
+    // const handleFilterChange = (filter: string) => {
+    //     fetchBookings(undefined, filter);
+    // };
 
 
     return (

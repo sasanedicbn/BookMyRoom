@@ -4,12 +4,14 @@ import Button from "./Button";
 import { bookings } from "../script/data-Booking";
 import { setBookings } from "../store/bookingsSlice";
 import { addBookingsData } from "../api/Booking/addBookings";
+import { uploadBookings } from "../script/UploadBookings";
 
 const RestartData = () => {
   const dispatch = useDispatch(); 
 
   const uploadBookings = async () => {
     const removeBooking = await deleteAllBookings();
+    console.log('treba da bude boolean', removeBooking)
     if (removeBooking) {
       const success = await addBookingsData(bookings);
       if (success) {
