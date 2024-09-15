@@ -10,7 +10,6 @@ export const handleCheckInDetails = async (bookingId:number, navigate: NavigateF
         .eq('id', bookingId);
     
       if (error) throw error;
-      console.log('data iz CHECKINAA', data)
 
       toast.success('Booking successfully checked in!');
       navigate('/booking')

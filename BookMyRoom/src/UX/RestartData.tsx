@@ -25,6 +25,9 @@ const RestartData = () => {
       console.error('Failed to delete all bookings');
     }
   };
+  // const uploadAllData = async () => {
+
+  // }
 
   return (
     <div className="restartData-container">
