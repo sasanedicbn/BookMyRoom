@@ -29,6 +29,7 @@ const RestartData = () => {
   return (
     <div className="restartData-container">
       <Button type="success" onClick={uploadBookings}>Upload bookings ONLY</Button>
+      <Button type="success" onClick={() => {}}>Upload All</Button>
     </div>
   );
 }
