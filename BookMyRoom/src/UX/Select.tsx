@@ -11,7 +11,7 @@ type SelectProps = {
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-const Select: React.FC<SelectProps> = ({ options, onChange }) => {
+const Select = ({ options, onChange }) => {
   const [searchSelectParams, setSearchSelectParams] = useSearchParams();
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -22,7 +22,7 @@ const Select: React.FC<SelectProps> = ({ options, onChange }) => {
   }
 
   return (
-    <select onChange={handleSelectChange} className='sort-select'>
+    <select onChange={onChange} className='sort-select'>
       {options.map((option, index) => (
         <option key={index} value={option.value}>
           {option.label}
