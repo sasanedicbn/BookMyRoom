@@ -1,16 +1,23 @@
 import { supabase } from "../../supabase/supabaseClient";
 
-export const fetchRooms = async () => {
-  let { data: rooms, error } = await supabase
-    .from('Bedrooms')
-    .select('*');
-  if (error) {
-    console.log('Error fetching rooms:', error);
+export const fetchOrInsertRooms = async (rooms) => {
+  let data, error;
+
+  if (rooms) {
+    ({ data, error } = await supabase
+      .from('Bedrooms')
+      .insert(rooms));
+  } else {
+    ({ data, error } = await supabase
+      .from('Bedrooms')
+      .select('*'));
   }
-  return rooms;
+
+  if (error) {
+    console.log('Error:', error);
+  }
+
+  return data;
 };
-
-
-
 
 
