@@ -1,10 +1,9 @@
 import { deleteAllBookings } from "../api/Booking/deleteAllBookings";
-import { useDispatch } from 'react-redux'; // Ovde koristiš dispatch
+import { useDispatch } from 'react-redux'; 
 import Button from "./Button";
 import { bookings } from "../script/data-Booking";
 import { setBookings } from "../store/bookingsSlice";
 import { addBookingsData } from "../api/Booking/addBookings";
-import { uploadBookings } from "../script/UploadBookings";
 
 const RestartData = () => {
   const dispatch = useDispatch(); 
@@ -14,6 +13,7 @@ const RestartData = () => {
     console.log('treba da bude boolean', removeBooking)
     if (removeBooking) {
       const success = await addBookingsData(bookings);
+      console.log('success', success)
       if (success) {
         console.log('New bookings have been added successfully');
         

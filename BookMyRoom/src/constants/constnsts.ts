@@ -38,7 +38,7 @@ export const selectOptions = [
     { value: 'amount-low', label: 'Sort by amount (low first)' }
 ];
 export const formatNumber = (number:string ) => {
-  return number.toString().padStart(3, '0');
+  return number;
 };
 
 const handleDeleteBooking = async (bookingId: string, navigate:NavigateFunction): Promise<void> => {
