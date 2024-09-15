@@ -1,8 +1,8 @@
 import { supabase } from "../../supabase/supabaseClient";
 
-export const deleteRooms = async () => {
+export const deleteGuests = async () => {
   let { data: rooms, error } = await supabase
-    .from('Bedrooms')
+    .from('Guests')
     .delete()
     
   if (error) {
