@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRooms } from "../../store/roomsSlice";
-import { fetchRooms } from "../../api/Rooms/fetchRooms";
 import Room from "./Room";
 import NewEditRoom from "./newEditRoom";
 import SortRooms from "./SortRooms";
@@ -11,6 +10,7 @@ import TableHead from "./TableHead";
 import Modals from "../../UX/Modals";
 import Spinner from "../../global/Spinner";
 import { RootState } from "../../store/store";
+import { fetchRooms } from "../../api/Rooms/fetchRooms";
 
 const RoomsList = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const RoomsList = () => {
 
   useEffect(() => {
     const roomsListHandler = async () => {
-      const rooms = await fetchRooms();
+      const rooms = await fetchRooms(null);
       if (rooms) {
         dispatch(getRooms(rooms));
       }

@@ -1,6 +1,6 @@
 import { supabase } from "../../supabase/supabaseClient";
 
-export const fetchOrInsertRooms = async (rooms) => {
+export const fetchRooms = async (rooms) => {
   let data, error;
 
   if (rooms) {

@@ -1,6 +1,6 @@
 import { supabase } from "../../supabase/supabaseClient";
 
-export const fetchRooms = async (guests) => {
+export const fetchGuests = async (guests) => {
   let { data: rooms, error } = await supabase
     .from('Guests')
     .insert(guests)

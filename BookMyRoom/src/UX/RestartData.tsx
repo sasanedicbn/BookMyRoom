@@ -4,6 +4,12 @@ import Button from "./Button";
 import { bookings } from "../script/data-Booking";
 import { setBookings } from "../store/bookingsSlice";
 import { addBookingsData } from "../api/Booking/addBookings";
+import { deleteRooms } from "../api/Rooms/deleteRooms";
+import { deleteGuests } from "../api/Booking/deleteGuests";
+import { fetchGuests } from "../api/Booking/fetchGuests";
+import { cabins } from "../script/data-cabins";
+import { dataGuest } from "../script/data-guests";
+import { fetchRooms } from "../api/Rooms/fetchRooms";
 
 const RestartData = () => {
   const dispatch = useDispatch(); 
@@ -25,14 +31,28 @@ const RestartData = () => {
       console.error('Failed to delete all bookings');
     }
   };
-  // const uploadAllData = async () => {
-
-  // }
+  const uploadAllData = async () => {
+      const removeRooms = await deleteRooms()
+      const removeGuests = await deleteGuests()
+      if(removeRooms && removeGuests){
+       const removeBooking = await deleteAllBookings()
+      if(removeBooking && removeGuests && removeRooms){
+        const successRooms = fetchRooms(cabins)
+        const succesGuests = fetchGuests(dataGuest)
+        const successBookings = addBookingsData(bookings)
+        console.log('successRooms', successRooms, 'successuests', succesGuests, 'successBookings', successBookings)
+      
+      // if(succesGuests && successRooms && successBookings){
+      //   console.log(' VEOMA DOBRO')
+      // }
+      }
+    }
+  }
 
   return (
     <div className="restartData-container">
       <Button type="success" onClick={uploadBookings}>Upload bookings ONLY</Button>
-      <Button type="success" onClick={() => {}}>Upload All</Button>
+      <Button type="success" onClick={uploadAllData}>Upload All</Button>
     </div>
   );
 }
