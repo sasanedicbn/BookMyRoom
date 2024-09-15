@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 type SelectOption = {
   value: string | number;
@@ -11,8 +12,17 @@ type SelectProps = {
 }
 
 const Select: React.FC<SelectProps> = ({ options, onChange }) => {
+  const [searchSelectParams, setSearchSelectParams] = useSearchParams();
+
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+    searchSelectParams.set('select', value); 
+    setSearchSelectParams(searchSelectParams); 
+    onChange(event); 
+  }
+
   return (
-    <select onChange={onChange} className='sort-select'>
+    <select onChange={handleSelectChange} className='sort-select'>
       {options.map((option, index) => (
         <option key={index} value={option.value}>
           {option.label}
