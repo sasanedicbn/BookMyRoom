@@ -9,8 +9,8 @@ export function currentDate(numberDays) {
 export const bookings = [
   {
     id: 39,
-    // cabinId: 18,
-    // guestId: 7,
+    cabinId: 280,
+    guestId: 418,
     status: "checked-out",
     create_booking: currentDate(5),  
     finish_booking: currentDate(8),  

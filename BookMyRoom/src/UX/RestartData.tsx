@@ -62,32 +62,3 @@ const RestartData = () => {
 export default RestartData;
 
 
-// const uploadAllData = async () => {
-//   try {    
-//     const removeRooms = await deleteRooms();
-//     const removeGuests = await deleteGuests();
-//     const removeBooking = await deleteAllBookings();
-
-//     if (removeRooms && removeGuests && removeBooking) {
-//       console.log('All data deleted successfully, now uploading new data...');
-//       const successRooms = await fetchRooms(cabins);
-//       const successGuests = await fetchGuests(dataGuest);
-//       console.log(successRooms, successGuests)
-//       if(successRooms && successGuests){
-//         const successBookings = await addBookingsData(bookings);
-//         console.log('PROSLO OBA')
-//         console.log('successBooking', successBookings)
-//         if (successRooms && successGuests && successBookings) {
-//           console.log('All data uploaded successfully');
-//         } 
-//       }else {
-//         console.error('Failed to upload all data');
-//       }
-//     }
-//      else {
-//       console.error('Failed to delete rooms, guests, or bookings');
-//     }
-//   } catch (error) {
-//     console.error('Error uploading all data:', error);
-//   }
-// };

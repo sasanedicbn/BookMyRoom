@@ -21,7 +21,7 @@ export const cabins = [
       name: "007",
       maxCapacity: 9,
       regularPrice: 600,
-      discount: 1000,
+      discount: 0,
       image: "https://images.unsplash.com/flagged/photo-1556438758-8d49568ce18e?q=80&w=1474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description:
         "Relax in the en-suite bathroom featuring a deep soaking tub and rainfall shower.",
