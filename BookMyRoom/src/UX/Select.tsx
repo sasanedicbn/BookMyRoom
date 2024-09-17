@@ -12,14 +12,8 @@ type SelectProps = {
 }
 
 const Select = ({ options, onChange }) => {
-  const [searchSelectParams, setSearchSelectParams] = useSearchParams();
 
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = event.target.value;
-    searchSelectParams.set('select', value); 
-    setSearchSelectParams(searchSelectParams); 
-    onChange(event); 
-  }
+  
 
   return (
     <select onChange={onChange} className='sort-select'>
