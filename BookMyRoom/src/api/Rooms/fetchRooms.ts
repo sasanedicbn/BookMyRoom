@@ -4,20 +4,30 @@ export const fetchRooms = async (rooms) => {
   let data, error;
 
   if (rooms) {
-    ({ data, error } = await supabase
+    const response = await supabase
       .from('Bedrooms')
-      .insert(rooms));
-  } else {
-    ({ data, error } = await supabase
-      .from('Bedrooms')
-      .select('*'));
-  }
+      .insert(rooms);
 
-  if (error) {
-    console.log('Error:', error);
+    data = response.data;
+    error = response.error;
+
+    if (error) {
+      console.error('Error inserting rooms:', error);
+      return null; // Dodaj povratnu vrednost za slučaj greške
+    }
+  } else {
+    const response = await supabase
+      .from('Bedrooms')
+      .select('*');
+
+    data = response.data;
+    error = response.error;
+
+    if (error) {
+      console.error('Error fetching rooms:', error);
+      return null; // Dodaj povratnu vrednost za slučaj greške
+    }
   }
 
   return data;
 };
-
-
