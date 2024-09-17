@@ -3,6 +3,7 @@ import { supabase } from "../../supabase/supabaseClient";
 export const fetchRooms = async (rooms) => {
   let data, error;
 
+  console.log('rooms koji je proslijeden prvi', rooms)
   if (rooms) {
     const response = await supabase
       .from('Bedrooms')
@@ -13,7 +14,7 @@ export const fetchRooms = async (rooms) => {
 
     if (error) {
       console.error('Error inserting rooms:', error);
-      return null; // Dodaj povratnu vrednost za slučaj greške
+      return null; 
     }
   } else {
     const response = await supabase
@@ -25,9 +26,11 @@ export const fetchRooms = async (rooms) => {
 
     if (error) {
       console.error('Error fetching rooms:', error);
-      return null; // Dodaj povratnu vrednost za slučaj greške
+      return null;
     }
   }
 
+  console.log('finnall result rooms',data)
   return data;
+  
 };

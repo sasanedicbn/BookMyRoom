@@ -1,5 +1,6 @@
 export const cabins = [
     {
+      id: 18,
       name: "005",
       maxCapacity: 8,
       regularPrice: 350,
@@ -9,7 +10,8 @@ export const cabins = [
       'Indulge in the comfort of our plush seating area perfect for unwinding.'
     },
     {
-      name: "006",
+      id: 5,
+      name: 5,
       maxCapacity: 2,
       regularPrice: 800,
       discount: 100,
@@ -18,6 +20,7 @@ export const cabins = [
         "Our soundproof rooms ensure a peaceful and quiet stay.",
     },
     {
+      id:11,
       name: "007",
       maxCapacity: 9,
       regularPrice: 600,
@@ -27,6 +30,7 @@ export const cabins = [
         "Relax in the en-suite bathroom featuring a deep soaking tub and rainfall shower.",
     },
     {
+      id:13,
       name: "008",
       maxCapacity: 14,
       regularPrice: 200,
@@ -36,6 +40,7 @@ export const cabins = [
         "Our rooms offer beautiful views, adding to the serene and comfortable environment.",
     },
     {
+      id:14,
       name: "009",
       maxCapacity: 2,
       regularPrice: 105,
@@ -45,6 +50,7 @@ export const cabins = [
         "Enjoy a comfortable and cozy getaway with your group or family.",
     },
     {
+      id: 6,
       name: "011",
       maxCapacity: 6,
       regularPrice: 800,
@@ -54,6 +60,7 @@ export const cabins = [
         "Experience the epitome of luxury with your group or family.",
     },
     {
+      id: 7,
       name: "010",
       maxCapacity: 8,
       regularPrice: 600,

@@ -38,7 +38,7 @@ const RestartData = () => {
     }
   };
 
-  const uploadAllData = async () => {
+  const uploadRooms = async () => {
     try {
       await deleteRooms(); 
       await deleteGuests(); 
@@ -54,7 +54,7 @@ const RestartData = () => {
   return (
     <div className="restartData-container">
        <Button type="restartData" onClick={uploadBookings}>Upload bookings</Button>
-      <Button type="restartData" onClick={uploadAllData}>Upload rooms</Button>
+      <Button type="restartData" onClick={uploadRooms}>Upload rooms</Button>
     </div>
   );
 };
