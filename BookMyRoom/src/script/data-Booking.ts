@@ -1,6 +1,6 @@
 import { add } from "date-fns";
 
-export function currentDate(numberDays) {
+export function currentDate(numberDays:number) {
   const date = add(new Date(), { days: numberDays });
   console.log(`trenutni datum ${numberDays} :`, date.toISOString()); 
   return date.toISOString(); 
