@@ -15,7 +15,6 @@ const ContentNavBar = () => {
   return (
     <div className="Content-NavBar">
       <div className="Content-NavBar-items">
-        <RestartData/>
         <img src="../src/assets/img/profile-img.jpg" alt="profile picture" />
         <p className="Content-NavBar-user">{userName ? userName.currentUser : "Guest"}</p>
         <div className="Content-NavBar-icons">

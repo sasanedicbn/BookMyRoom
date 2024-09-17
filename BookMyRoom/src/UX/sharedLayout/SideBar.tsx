@@ -2,6 +2,7 @@ import { FaCalendarCheck, FaCog, FaHotel, FaUsers } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import Logo from "../../assets/Logo";
 import ContentNavBar from "../../Pages/Bookings/ContentNavBar";
+import RestartData from "../RestartData";
 
 const SideBar = () => {
   return (
@@ -32,6 +33,9 @@ const SideBar = () => {
             <NavLink to="/settings" className="nav-link">
               Settings
             </NavLink>
+          </li>
+          <li>
+            <RestartData/>
           </li>
         </ul>
       </div>

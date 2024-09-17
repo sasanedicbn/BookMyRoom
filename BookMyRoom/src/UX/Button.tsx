@@ -22,6 +22,8 @@ const Button: React.FC<ButtonProps> = ({ type, onClick, children, disabled = fal
     delete: `delete-btn`,
     options: `options-btn`,
     optionRoom: `options-btn options-room`,
+    restartData: `restartData`,
+    active: `active`
   };
 
   const buttonClass = `${styles[type]} ${disabled ? 'not-allowed' : ''}`;

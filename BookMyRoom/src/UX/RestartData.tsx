@@ -53,8 +53,8 @@ const RestartData = () => {
 
   return (
     <div className="restartData-container">
-      <Button type="success" onClick={uploadBookings}>Upload bookings</Button>
-      <Button type="success" onClick={uploadAllData}>Upload rooms</Button>
+       <Button type="restartData" onClick={uploadBookings}>Upload bookings</Button>
+      <Button type="restartData" onClick={uploadAllData}>Upload rooms</Button>
     </div>
   );
 };
