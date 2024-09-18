@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSearchParams } from 'react-router-dom';
 
 type SelectOption = {
   value: string | number;
@@ -11,7 +10,7 @@ type SelectProps = {
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-const Select = ({ options, onChange }) => {
+const Select = ({ options, onChange }:SelectProps) => {
 
   
 
