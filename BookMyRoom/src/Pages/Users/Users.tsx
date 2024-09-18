@@ -50,7 +50,6 @@ const Users = () => {
         .insert([{ fullName, email, password }]);
 
       if (error || profileError) {
-        console.log('error', error, profileError);
         toast.error("Error creating user");
       } else {
         toast.success("User created successfully");

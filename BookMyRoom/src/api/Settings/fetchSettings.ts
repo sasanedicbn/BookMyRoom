@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { supabase } from "../../supabase/supabaseClient";
 
 export const fetchSettings = async () => { 
@@ -7,7 +8,7 @@ export const fetchSettings = async () => {
         
     
     if (error) {
-        console.log('Error fetching settings:', error);
+        toast.error('Error fetching settings:');
         return 
     }
     return Settings;

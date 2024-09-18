@@ -5,7 +5,7 @@ import { formatNumber } from '../../constants/constnsts';
 import OptionsMenu from '../../UX/OptionsMenu';
 import { FaCheck, FaEye, FaTrash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { Booking } from '../../types/types';
+import { Booking,  } from '../../types/types';
 import { format } from 'date-fns';
 import { deleteBookingById } from '../../api/Booking/deleteBookingById';
 import { setBookings } from '../../store/bookingsSlice';
@@ -58,7 +58,7 @@ const BookingsTable = () => {
             const success = await deleteBookingById(currentBooking.id, navigate);
             if (success) {
                 handleCloseModal(); 
-                dispatch(setBookings(bookings.filter((booking) => booking.id !== currentBooking.id)));
+                dispatch(setBookings(bookings.filter((booking:Booking) => booking.id !== currentBooking.id)));
             }
         }
     };

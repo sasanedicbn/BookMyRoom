@@ -19,13 +19,11 @@ const RestartData = () => {
   const uploadBookings = async () => {
     try {
       const removeBooking = await deleteAllBookings();
-      console.log('Bookings deletion status:', removeBooking);
 
       if (removeBooking) {
         const success = await addBookingsData(bookings);
-        console.log('success iz bookinga', success)
         if (success) {
-          console.log('New bookings have been added successfully');
+          toast.success('New bookings have been added successfully');
           dispatch(setBookings(bookings));
         } else {
           console.error('Failed to add new bookings');

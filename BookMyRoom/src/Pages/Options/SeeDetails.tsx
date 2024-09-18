@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setDetails } from "../../store/detailsSlice";
 import { RootState } from "../../store/store";
 import OptionsHeader from "./optionsHelpers/OptionsHeader";
+import { toast } from "react-toastify";
 
 const SeeDetails = () => {
     const { id } = useParams<{ id: string }>()
@@ -23,7 +24,7 @@ const SeeDetails = () => {
                 .single();
 
             if (error) {
-                console.log('Error fetching details', error);
+                toast.error('Error fetching details', error);
             } else {
                 dispatch(setDetails(data));
             }

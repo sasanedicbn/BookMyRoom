@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { supabase } from "../../supabase/supabaseClient";
 
 export const deleteGuests = async () => {
@@ -6,7 +7,7 @@ export const deleteGuests = async () => {
     .delete()
     
   if (error) {
-    console.log('Error fetching rooms:', error);
+    toast.error('Error fetching rooms');
   }
   return rooms;
 };
